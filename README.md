@@ -1,4 +1,4 @@
 ## LeetCode 
-My submissions for [LeetCode Oj] [leetoj].
+My submissions for [LeetCode Oj][leetoj].
 
-[leetoj] : https://oj.leetcode.com/
+[leetoj]:https://oj.leetcode.com/
