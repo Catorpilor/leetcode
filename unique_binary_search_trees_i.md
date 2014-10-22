@@ -1,7 +1,7 @@
 ###[Unique Binary Search Trees][qurl]
 ## Analysis
   - Using DP
-  - Binary Search Trees have fixed format that is root is larger than its chile subtrees and smaller than its right child subtree;
+  - Binary Search Trees have fixed format that is root is larger than its left subtree and smaller than its right subtree;
   - 1...n given the fixed root k then its combiantion is T[k] * T[n-k]
   
 
