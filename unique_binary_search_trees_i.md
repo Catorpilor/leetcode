@@ -1,8 +1,8 @@
 ###[Unique Binary Search Trees][qurl]
 ## Analysis
-    *   Using DP
-    *   Binary Search Trees have fixed format that is root is larger than its chile subtrees and smaller than its right child subtree;
-    *   1...n given the fixed root k then its combiantion is T[k](its left child subtree combinations) * T[n-k](right subtree combinations)
+  - Using DP
+  - Binary Search Trees have fixed format that is root is larger than its chile subtrees and smaller than its right child subtree;
+  - 1...n given the fixed root k then its combiantion is T[k](its left child subtree combinations) * T[n-k](right subtree combinations)
 
 ## Solutions
 ```c++
