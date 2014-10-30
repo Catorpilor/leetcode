@@ -1,7 +1,7 @@
 ###[3 Sum][qurl]
 
 ##Analysis
-一年前写了关于TA的[blog][blogurl]
+2年前写了关于TA的[blog][blogurl]
 
 
 ##Solutions
