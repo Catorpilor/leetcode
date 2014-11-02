@@ -54,6 +54,27 @@ class Solution {
 - So, how we can build paths. Let us choose (n - 1) movements(number of steps to the right) from (m + n - 2), and rest (m - 1) is (number of steps down).
 I think now it is obvious that count of different paths are all combinations (n - 1) movements from (m + n-2).
 
+##Another Update
+Using one dimension vector array to save the caculates. Extra space O(min{m,n})
+Solution as below:
+```c++
+    // Reduces the problem to m <= n, because internal loop is faster.
+    if (m > n) swap(m, n);
+    if (m <= 1) return m; // Corner cases, one border is 0 or 1.
+    // Uses a map to memoize previous results:
+    vector<int> map(n, 1); // The map is filled of 1, so that first step is already done.
+    // For every horizontal step...
+    for (int i = 1; i < m; ++i) {
+        // For every vertical step...
+        for (int j = 1; j < n; ++j) {
+            map[j] += map[j - 1];
+        }
+    }
+    // The last element contains our solution.
+    return map[n - 1];
+}
+
+```
 
 [qurl]:https://oj.leetcode.com/problems/unique-paths/
 [discussurl]:https://oj.leetcode.com/discuss/9110/my-ac-solution-using-formula
