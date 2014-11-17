@@ -25,6 +25,7 @@ public:
                 l1->val += l2->val;
                 if(l1->val >= 10){
                     bret=true;
+                    
                     l1->val %= 10;
                     if(l1->next) {
                         tmp = l1->next;
