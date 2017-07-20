@@ -26,3 +26,16 @@ func Rob(nums []int) int {
 	}
 	return sum[l-1]
 }
+
+func RobSimplify(nums []int) int {
+	prevMax := 0
+	curMax := 0
+	for _, n := range nums {
+		temp := curMax
+		if prevMax+n > curMax {
+			curMax = prevMax + n
+		}
+		prevMax = temp
+	}
+	return curMax
+}
