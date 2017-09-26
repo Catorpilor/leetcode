@@ -17,7 +17,7 @@ func TestReverse(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			ret := Reverse(c.s)
 			if ret != c.exp {
-				t.Fatalf("expeced %d but got %d, with input %s",
+				t.Fatalf("expeced %s but got %s, with input %s",
 					c.exp, ret, c.s)
 			}
 		})
