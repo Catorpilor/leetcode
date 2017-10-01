@@ -4,22 +4,19 @@ func LongestPalindrome(s string) int {
 	if len(s) <= 1 {
 		return len(s)
 	}
+	count := 0
 	hm := make(map[rune]int)
 	for _, c := range s {
-		hm[c] += 1
-	}
-	ret := 0
-	added := false
-	for _, v := range hm {
-		if v%2 != 0 {
-			ret += v - 1
-			if v == 1 && !added {
-				ret += 1
-				added = true
-			}
+		if _, ok := hm[c]; ok {
+			count += 1
+			delete(hm, c)
 		} else {
-			ret += v
+			hm[c] = 1
 		}
 	}
-	return ret
+	if len(hm) != 0 {
+		return count*2 + 1
+	}
+	return count * 2
+
 }
