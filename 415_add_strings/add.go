@@ -1,7 +1,5 @@
 package add
 
-import "fmt"
-
 func AddStrings(num1, num2 string) string {
 	n1, n2 := len(num1), len(num2)
 	n := n1
@@ -24,13 +22,12 @@ func AddStrings(num1, num2 string) string {
 		ret = append(ret, byte(digit+'0'))
 		carrier = sum / 10
 	}
-	fmt.Println(string(ret))
-	return string(reverse(ret))
+	reverse(ret)
+	return string(ret)
 }
 
-func reverse(sl []byte) []byte {
+func reverse(sl []byte) {
 	for i, j := 0, len(sl)-1; i < j; i, j = i+1, j-1 {
 		sl[i], sl[j] = sl[j], sl[i]
 	}
-	return sl
 }
