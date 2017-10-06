@@ -43,4 +43,8 @@ func palindrome(fh int64) int64{
 	pli += string(runes)
 	p64, _ := strconv.ParseInt(pli, 10, 64)
 	return p64
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 887423d777e2bfc53953824737522643265c4b0d
