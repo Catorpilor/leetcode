@@ -30,6 +30,22 @@ func Desc(nums []int) bool {
 	// return true
 }
 
+func descWithoutMidification(nums []int) bool {
+	var cnt int
+	for i:=0;i<len(nums) - 1; i++ {
+		if nums[i] > nums[i+1] {
+			if cnt > 0 {
+				return false
+			}
+			if i - 1 >= 0 && i+2 < len(nums) && nums[i] > nums[i+2] && nums[i-1] > nums[i+1] {
+				return false
+			}
+			cnt += 1
+		}
+	}
+	return true
+}
+
 func max(a,b int) int{
 	if a < b {
 		return b

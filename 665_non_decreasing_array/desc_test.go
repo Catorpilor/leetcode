@@ -17,7 +17,7 @@ func TestDesc(t *testing.T){
 
 	for _,c := range st{
 		t.Run(c.name, func(t *testing.T){
-			ret := Desc(c.nums)
+			ret := descWithoutMidification(c.nums)
 			if ret != c.exp {
 				t.Fatalf("expected %t but got %t, with input %v",
 					c.exp, ret, c.nums)
