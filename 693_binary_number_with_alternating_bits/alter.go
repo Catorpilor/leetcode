@@ -22,6 +22,10 @@ func HasAlter2(n int) bool {
 	np := n + (n >> 1)
 	bitLength, numOfOne := 0, 0
 	for np > 0 {
+		// no need to travers all bits
+		if np&1 == 0 {
+			return false
+		}
 		numOfOne += (np & 1)
 		bitLength += 1
 		np >>= 1
