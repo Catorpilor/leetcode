@@ -1,6 +1,8 @@
 package average
 
 import (
+	"fmt"
+
 	"github.com/catorpilor/leetcode/utils"
 )
 
@@ -18,6 +20,7 @@ func MaxAverage(nums []int, k int) float64 {
 		maxSofar = utils.Max(cur, maxSofar)
 		prev = cur
 	}
+	fmt.Println(maxSofar)
 	return float64(maxSofar) / float64(k)
 }
 
