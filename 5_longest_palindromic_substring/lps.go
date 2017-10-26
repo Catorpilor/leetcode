@@ -1,5 +1,6 @@
 package lps
 
+// Lps returns the longest papindromic substring in s
 func Lps(s string) string {
 	n := len(s)
 	if n <= 1 {
@@ -33,4 +34,42 @@ func Lps(s string) string {
 		}
 	}
 	return s[start : start+maxLen]
+}
+
+// Lps2 returns the longest palindromic substring in s
+func Lps2(s string) string {
+	n := len(s)
+	if n <= 1 {
+		return s
+	}
+	cap, extended, exs := n, false, []byte(s)
+	if n%2 == 0 {
+		cap = 2*n + 1
+		extended = true
+		exs = nil
+		exs = make([]byte, cap)
+		for i := range exs {
+			if i%2 == 0 {
+				exs[i] = '$'
+			} else {
+				exs[i] = s[i/2]
+			}
+		}
+	}
+	dp := make([]int, cap)
+	dp[0] = 1
+	// prevcenter, leftbound, rightbound
+	pc, lb, rb, max := 0, 0, 0, 1
+	for i := 1; i < cap; i++ {
+		cnt := maxPalinLength(exs, i, i)
+	}
+
+}
+
+func maxPalinLength(b []byte, l, r int) int {
+	var count int
+	for l >= 0 && r < len(b) && b[l] == b[r] {
+		count, l, r = count+1, l-1, r+1
+	}
+	return count
 }
