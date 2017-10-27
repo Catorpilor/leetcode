@@ -57,19 +57,66 @@ func Lps2(s string) string {
 		}
 	}
 	dp := make([]int, cap)
-	dp[0] = 1
-	// prevcenter, leftbound, rightbound
-	pc, lb, rb, max := 0, 0, 0, 1
-	for i := 1; i < cap; i++ {
-		cnt := maxPalinLength(exs, i, i)
+	for i := range dp {
+		dp[i] = 1
 	}
-
+	// prevcenter, leftbound, rightbound
+	pc, lb, rb, max, nc, fc := 0, 0, 0, 1, 1, 0
+	// i stands for current cent
+	for nc < cap {
+		cnt := maxPalinLength(exs, nc-dp[nc]/2-1, nc+dp[nc]/2+1)
+		dp[nc] += cnt
+		if dp[nc] > max {
+			max = dp[nc]
+			fc = nc
+		}
+		lb, rb = nc-dp[nc]/2, nc+dp[nc]/2
+		if rb-lb <= 3 {
+			nc += 1
+		} else {
+			// we have to find next center
+			if rb == cap-1 {
+				break
+			}
+			pc = nc
+			cmax := dp[nc-1]
+			for j, k := nc+1, nc-1; j <= rb && k >= lb; j, k = j+1, k-1 {
+				dp[j] = dp[k]
+				if k-dp[k]/2 < lb {
+					if k+dp[k]/2 > nc {
+						dp[j] = rb - nc + 1
+					} else {
+						dp[j] = 1
+					}
+				}
+				if dp[j] > cmax && j+dp[j]/2 >= rb && k-dp[k]/2 >= lb {
+					nc, cmax = j, dp[k]
+				}
+			}
+			// if not found
+			if pc == nc {
+				nc = rb
+			}
+		}
+	}
+	start, end := fc-max/2, fc+max/2+1
+	if extended {
+		max /= 2
+		start, end = fc-max, fc
+		if fc%2 != 0 && start > 1 {
+			start, end = start-1, end-1
+		}
+	}
+	if end >= n {
+		return s[start:]
+	}
+	return s[start:end]
 }
 
 func maxPalinLength(b []byte, l, r int) int {
-	var count int
+	count := 0
 	for l >= 0 && r < len(b) && b[l] == b[r] {
-		count, l, r = count+1, l-1, r+1
+		count, l, r = count+2, l-1, r+1
 	}
 	return count
 }
