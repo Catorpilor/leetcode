@@ -42,25 +42,22 @@ func Lps2(s string) string {
 	if n <= 1 {
 		return s
 	}
-	cap, extended, exs := n, false, []byte(s)
-	if n%2 == 0 {
-		cap = 2*n + 1
-		extended = true
-		exs = nil
-		exs = make([]byte, cap)
-		for i := range exs {
-			if i%2 == 0 {
-				exs[i] = '$'
-			} else {
-				exs[i] = s[i/2]
-			}
+	cap := 2*n + 1
+	exs := make([]byte, cap)
+	for i := range exs {
+		if i%2 == 0 {
+			exs[i] = '$'
+		} else {
+			exs[i] = s[i/2]
 		}
 	}
+
 	dp := make([]int, cap)
 	for i := range dp {
 		dp[i] = 1
 	}
-	// prevcenter, leftbound, rightbound
+	// prevcenter, leftbound, rightbound, maxlength of palindromic substring
+	// nc stands for current center, fc stands for final palindromic substring center
 	pc, lb, rb, max, nc, fc := 0, 0, 0, 1, 1, 0
 	// i stands for current cent
 	for nc < cap {
@@ -76,15 +73,19 @@ func Lps2(s string) string {
 		} else {
 			// we have to find next center
 			if rb == cap-1 {
+				// if right bound reaches the end of string
 				break
 			}
+			// set prev cent to current center
 			pc = nc
-			cmax := dp[nc-1]
+			cmax := 0
 			for j, k := nc+1, nc-1; j <= rb && k >= lb; j, k = j+1, k-1 {
 				dp[j] = dp[k]
+				// if k's left bound goes beyond current center's left bound
+				// j can not be our next center
 				if k-dp[k]/2 < lb {
 					if k+dp[k]/2 > nc {
-						dp[j] = rb - nc + 1
+						dp[j] = rb - nc
 					} else {
 						dp[j] = 1
 					}
@@ -94,23 +95,21 @@ func Lps2(s string) string {
 				}
 			}
 			// if not found
+			// nextcenter should be the right bound of current palindromic substring
+			// or rb+1
 			if pc == nc {
 				nc = rb
 			}
 		}
 	}
 	start, end := fc-max/2, fc+max/2+1
-	if extended {
-		max /= 2
-		start, end = fc-max, fc
-		if fc%2 != 0 && start > 1 {
-			start, end = start-1, end-1
+	ret := make([]byte, 0, max/2)
+	for i := start; i < end; i++ {
+		if exs[i] != '$' {
+			ret = append(ret, exs[i])
 		}
 	}
-	if end >= n {
-		return s[start:]
-	}
-	return s[start:end]
+	return string(ret)
 }
 
 func maxPalinLength(b []byte, l, r int) int {
