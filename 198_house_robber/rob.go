@@ -1,5 +1,9 @@
 package robber
 
+import (
+	"github.com/catorpilor/leetcode/utils"
+)
+
 func Rob(nums []int) int {
 	l := len(nums)
 	if l == 0 {
@@ -38,4 +42,14 @@ func RobSimplify(nums []int) int {
 		prevMax = temp
 	}
 	return curMax
+}
+
+func Rob2(nums []int) int {
+	var include, exclude int
+	for _, n := range nums {
+		t, e := include, exclude
+		include = exclude + n
+		exclude = utils.Max(t, e)
+	}
+	return utils.Max(include, exclude)
 }
