@@ -1,6 +1,7 @@
 package ts
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -62,6 +63,32 @@ func TargetSum2(nums []int, s int) int {
 		return 0
 	}
 	target := (sum - s) / 2
+	dp := make([]int, target+1)
+	dp[0] = 1
+	for i := 0; i < len(nums); i++ {
+		for j := target; j >= nums[i]; j-- {
+			dp[j] += dp[j-nums[i]]
+		}
+		fmt.Println(dp)
+	}
+	return dp[target]
+}
+
+func TargetSum3(nums []int, s int) int {
+	// we have to find a subset P and N
+	// sum(P) - sum(N) = s
+	// sum(P) + sum(N) + sum(P) - sun(N) = s + sum(P) + sum(N)
+	// 2 * sum(P) = s + sum(nums)
+	// sum(P) = (s + sum(nums)) / 2
+	var sum int
+	for i := range nums {
+		sum += nums[i]
+	}
+	if s > sum || (sum+s)%2 == 1 {
+		return 0
+	}
+	// then become the 0-1 knapsack problem
+	target := (sum + s) / 2
 	dp := make([]int, target+1)
 	dp[0] = 1
 	for i := 0; i < len(nums); i++ {
