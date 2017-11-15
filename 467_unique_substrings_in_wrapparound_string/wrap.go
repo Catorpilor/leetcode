@@ -31,3 +31,25 @@ func NumOfSubStrings(p string) int {
 	}
 	return ret
 }
+
+func NumOfSubStrings2(p string) int {
+	// brute force
+	n := len(p)
+	if n <= 1 {
+		return n
+	}
+	hash := make(map[string]bool)
+	for i := 0; i < n; i++ {
+		for j := i; j < n; j++ {
+			if j > i && (p[j]-p[j-1] != 1 && p[j-1]-p[j] != 25) {
+				break
+			}
+			if j+1 < n {
+				hash[p[i:j+1]] = true
+			} else {
+				hash[p[i:]] = true
+			}
+		}
+	}
+	return len(hash)
+}
