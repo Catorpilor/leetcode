@@ -8,12 +8,13 @@ func SubArraySum(nums []int, k int) int {
 	}
 	var ret int
 	for i := range nums {
-		cur := nums[i]
-		if cur == k {
-			ret++
-		}
-
-		for j := i + 1; j < n; j++ {
+		// no need to set to nums[i]
+		// cur := nums[i]
+		// if cur == k {
+		// 	ret++
+		// }
+		cur := 0
+		for j := i; j < n; j++ {
 			cur += nums[j]
 			if cur == k {
 				ret++
