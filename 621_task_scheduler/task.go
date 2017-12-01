@@ -19,7 +19,7 @@ func LeastInterval(tasks []byte, n int) int {
 	}
 	// formular (maxF - 1) * (n+1) + numOfMaxf
 	// for example with input tasks ['A','A','A','B','B','C'] and n = 3
-	// so 'A' has the max frequency as illustrated as follows
+	// so 'A' has the max frequency illustrated as follows
 	// A***A***A
 	// then the less frequency one is 'B', we insert B to the slot
 	// AB**AB**A
