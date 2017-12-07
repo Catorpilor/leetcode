@@ -79,3 +79,28 @@ func helper(nums []int, v int) bool {
 	}
 	return false
 }
+
+func LongestConsecutive4(nums []int) int {
+	n := len(nums)
+	if n <= 1 {
+		return n
+	}
+	set := make(map[int]bool)
+	for _, v := range nums {
+		set[v] = true
+	}
+	var ret, lenSofar, curNum int
+	for _, v := range nums {
+		if !set[v-1] {
+			// means v is the starting point of the sequence
+			curNum, lenSofar = v, 1
+			for set[curNum+1] {
+				curNum, lenSofar = curNum+1, lenSofar+1
+			}
+			if lenSofar > ret {
+				ret = lenSofar
+			}
+		}
+	}
+	return ret
+}
