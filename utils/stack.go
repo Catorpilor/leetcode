@@ -1,5 +1,7 @@
 package utils
 
+import "fmt"
+
 // Stack is LIFO
 type Stack struct {
 	top  *element
@@ -40,6 +42,16 @@ func (s *Stack) Pop() interface{} {
 		s.size -= 1
 	}
 	return value
+}
+
+func (s *Stack) String() string {
+	temp := s.top
+	var ret []interface{}
+	for temp != nil {
+		ret = append(ret, temp.value)
+		temp = temp.next
+	}
+	return fmt.Sprintf("stack is: %v", ret)
 }
 
 // NewStack returns a brand new stack
