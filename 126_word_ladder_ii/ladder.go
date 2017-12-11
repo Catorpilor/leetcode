@@ -1,5 +1,9 @@
 package ladder
 
+import (
+	"github.com/catorpilor/leetcode/utils"
+)
+
 func Ladders(start, end string, ws []string) [][]string {
 	var ret [][]string
 	temp := []string{start}
@@ -7,71 +11,78 @@ func Ladders(start, end string, ws []string) [][]string {
 	for i := range ws {
 		dict[ws[i]] = true
 	}
-	helper(&ret, ws, &temp, start, end)
+	ns := make(map[string][]string)  // store neighbors for key
+	distance := make(map[string]int) // distance from the start
+	dict[start] = true
+	bfs(start, end, dict, ns, distance)
+	helper(&ret, dict, &temp, ns, distance, start, end)
 	return ret
 }
 
-func helper(res *[][]string, ws []string, temp *[]string, pivotS, es string) {
+func helper(res *[][]string, dict map[string]bool, temp *[]string, ns map[string][]string, distance map[string]int, pivotS, es string) {
+	// n := len(*temp)
+	// *temp = append(*temp, pivotS)
 	if pivotS == es {
-		if *res != nil && len(*temp) > len((*res)[0]) {
-			return
-		}
-		// if *res == nil || *res != nil && len((*res)[0]) == len(*temp) {
-		// 	bak := make([]string, len(*temp))
-		// 	copy(bak, *temp)
-		// 	*res = append(*res, bak)
-		// }
-		if *res != nil && len(*temp) < len((*res)[0]) {
-			*res = nil
-			// bak := make([]string, len(*temp))
-			// copy(bak, *temp)
-			// *res = append(*res, bak)
-			// return
-		}
-		// if len((*res)[0]) == len(*temp) {
-		// 	bak := make([]string, len(*temp))
-		// 	copy(bak, *temp)
-		// 	*res = append(*res, bak)
-		// }
 		bak := make([]string, len(*temp))
 		copy(bak, *temp)
 		*res = append(*res, bak)
-		// fmt.Println(bak)
-
 	} else {
-		// find next pivotS
-		for i := range ws {
-			if !exists(*temp, ws[i]) && dis(pivotS, ws[i]) == 1 {
-				// fmt.Println(*temp)
+		for _, s := range ns[pivotS] {
+			if distance[s] == distance[pivotS]+1 {
 				n := len(*temp)
-				*temp = append(*temp, ws[i])
-				helper(res, ws, temp, ws[i], es)
+				*temp = append(*temp, s)
+				helper(res, dict, temp, ns, distance, s, es)
 				*temp = (*temp)[:n]
+			}
+		}
+	}
+	// *temp = (*temp)[:n]
+}
+
+func bfs(ss, es string, dict map[string]bool, hn map[string][]string, distance map[string]int) {
+	q := utils.NewQueue()
+	q.Enroll(ss)
+	distance[ss] = 0
+	var found bool
+	for !q.IsEmpty() {
+		cnt := q.Size()
+		for i := 0; i < cnt; i++ {
+			cur := q.Pull().(string)
+			curDis := distance[cur]
+			ns := neighbors(cur, dict)
+			hn[cur] = append(hn[cur], ns...)
+			for _, s := range ns {
+				if _, ok := distance[s]; !ok {
+					distance[s] = curDis + 1
+					if s == es {
+						found = true
+					} else {
+						q.Enroll(s)
+					}
+				}
+			}
+			if found {
+				break
 			}
 		}
 	}
 }
 
-func exists(ws []string, p string) bool {
-	for i := range ws {
-		if ws[i] == p {
-			return true
-		}
-	}
-	return false
-}
-
-func dis(s, t string) int {
-	// assume s and t has the same length
-	var ret int
-	for i := 0; i < len(s); i++ {
-		if s[i] != t[i] {
-			ret++
+func neighbors(s string, dict map[string]bool) []string {
+	var ret []string
+	bs := []byte(s)
+	for c := 'a'; c <= 'z'; c++ {
+		for i, cc := range bs {
+			if c == rune(cc) {
+				continue
+			}
+			oldC := bs[i]
+			bs[i] = byte(c)
+			if dict[string(bs)] {
+				ret = append(ret, string(bs))
+			}
+			bs[i] = oldC
 		}
 	}
 	return ret
 }
-
-// func distance(s string, dict map[string]bool) []string{
-
-// }
