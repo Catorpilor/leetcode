@@ -17,10 +17,12 @@ func Insert(intervals []Interval, newInterval Interval) []Interval {
 	}
 	// mrege the overlapped ones
 	for idx < n && intervals[idx].Start <= newInterval.End {
-		newInterval = Interval{
-			Start: utils.Min(intervals[idx].Start, newInterval.Start),
-			End:   utils.Max(intervals[idx].End, newInterval.End),
-		}
+		// newInterval = Interval{
+		// 	Start: utils.Min(intervals[idx].Start, newInterval.Start),
+		// 	End:   utils.Max(intervals[idx].End, newInterval.End),
+		// }
+		newInterval.Start = utils.Min(intervals[idx].Start, newInterval.Start)
+		newInterval.End = utils.Max(intervals[idx].End, newInterval.End)
 		idx++
 	}
 	ret = append(ret, newInterval)
