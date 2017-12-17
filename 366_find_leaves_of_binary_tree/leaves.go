@@ -18,6 +18,6 @@ func height(root *utils.TreeNode, res *[][]int) int {
 	if level == len(*res) {
 		*res = append(*res, []int{})
 	}
-	*res[level] = append((*res)[level], root.Val)
+	(*res)[level] = append((*res)[level], root.Val)
 	return level
 }
