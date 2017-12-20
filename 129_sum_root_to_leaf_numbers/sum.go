@@ -5,11 +5,7 @@ import (
 )
 
 func SumNumbers(root *utils.TreeNode) int {
-	if root == nil {
-		return 0
-	}
 	return helper(root, 0)
-
 }
 
 func helper(node *utils.TreeNode, val int) int {
