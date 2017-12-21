@@ -5,6 +5,7 @@ import (
 )
 
 func PathSum(root *utils.TreeNode, sum int) [][]int {
+	// backtracking and dfs
 	var ret [][]int
 	if root == nil {
 		return ret
