@@ -22,3 +22,33 @@ func dfs(grid [][]int, visited *[]bool, i, n int) {
 		}
 	}
 }
+
+func Circles2(grid [][]int) int {
+	n := len(grid)
+	ret := n
+	ids := make([]int, n)
+	for i := range ids {
+		ids[i] = i // each person i is his/her own circle
+	}
+	union := func(p, q int) {
+		// union person p and q
+		// change all id in ids equal to ids[p] to ids[q]
+		pid := ids[p]
+		for i := range ids {
+			if ids[i] == pid {
+				ids[i] = ids[q]
+			}
+		}
+	}
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			if grid[i][j] == 1 {
+				if ids[i] != ids[j] {
+					ret--
+					union(i, j)
+				}
+			}
+		}
+	}
+	return ret
+}
