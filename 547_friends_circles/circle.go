@@ -27,6 +27,7 @@ func Circles2(grid [][]int) int {
 	n := len(grid)
 	ret := n
 	ids := make([]int, n)
+	// quick-find,
 	for i := range ids {
 		ids[i] = i // each person i is his/her own circle
 	}
@@ -44,6 +45,117 @@ func Circles2(grid [][]int) int {
 		for j := i + 1; j < n; j++ {
 			if grid[i][j] == 1 {
 				if ids[i] != ids[j] {
+					ret--
+					union(i, j)
+				}
+			}
+		}
+	}
+	return ret
+}
+
+func Circles3(grid [][]int) int {
+	n := len(grid)
+	ret := n
+	// quick-union
+	ids := make([]int, n) // ids[i] represents the parent of i
+	for i := range ids {
+		ids[i] = i
+	}
+	root := func(i int) int {
+		for i != ids[i] {
+			i = ids[i]
+		}
+		return i
+	}
+	union := func(p, q int) {
+		i, j := root(p), root(q)
+		ids[i] = j
+	}
+	for i := 0; i < n; i++ {
+		for j := 1; j < n; j++ {
+			if grid[i][j] == 1 {
+				if root(i) != root(j) {
+					ret--
+					union(i, j)
+				}
+			}
+		}
+	}
+	return ret
+}
+
+func Circles4(grid [][]int) int {
+	n := len(grid)
+	ret := n
+	// quick-union with weighted
+	ids := make([]int, n) // ids[i] represents the parent of i
+	sz := make([]int, n)  // sz[i] reprents the number of elements of root i
+	for i := range ids {
+		ids[i] = i
+		sz[i] = 1
+	}
+	root := func(i int) int {
+		for i != ids[i] {
+			i = ids[i]
+		}
+		return i
+	}
+	union := func(p, q int) {
+		i, j := root(p), root(q)
+		// merge smaller tree into larger tree
+		if sz[i] < sz[j] {
+			ids[i] = j
+			sz[j] += sz[i]
+		} else {
+			ids[j] = i
+			sz[i] += sz[j]
+		}
+	}
+	for i := 0; i < n; i++ {
+		for j := 1; j < n; j++ {
+			if grid[i][j] == 1 {
+				if root(i) != root(j) {
+					ret--
+					union(i, j)
+				}
+			}
+		}
+	}
+	return ret
+}
+
+func Circles5(grid [][]int) int {
+	n := len(grid)
+	ret := n
+	// weighted quick-union with path compression
+	ids := make([]int, n) // ids[i] represents the parent of i
+	sz := make([]int, n)
+	for i := range ids {
+		ids[i] = i
+		sz[i] = 1
+	}
+	root := func(i int) int {
+		for i != ids[i] {
+			ids[i] = ids[ids[i]] // make every other node in path point to its grandparent
+			i = ids[i]
+		}
+		return i
+	}
+	union := func(p, q int) {
+		i, j := root(p), root(q)
+		if sz[i] < sz[j] {
+			ids[i] = j
+			sz[j] += sz[i]
+		} else {
+			ids[j] = i
+			sz[i] += sz[j]
+		}
+	}
+	for i := 0; i < n; i++ {
+		for j := 1; j < n; j++ {
+			if grid[i][j] == 1 {
+				if root(i) != root(j) {
 					ret--
 					union(i, j)
 				}
