@@ -104,6 +104,10 @@ func Circles4(grid [][]int) int {
 	union := func(p, q int) {
 		i, j := root(p), root(q)
 		// merge smaller tree into larger tree
+		if i == j {
+			// no need to merge
+			return
+		}
 		if sz[i] < sz[j] {
 			ids[i] = j
 			sz[j] += sz[i]
