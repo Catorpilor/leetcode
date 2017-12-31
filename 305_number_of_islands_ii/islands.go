@@ -5,9 +5,12 @@ func NumberOfIslands(m, n int, pos [][]int) []int {
 		return nil
 	}
 	ids := make([]int, m*n)
+	for i := range ids {
+		ids[i] = -1
+	}
 	wz := make([]int, m*n)
 	ret := make([]int, 0, len(pos))
-	hm := make(map[int]bool)
+	// hm := make(map[int]bool)
 	root := func(p int) int {
 		for p != ids[p] {
 			ids[p] = ids[ids[p]]
@@ -29,38 +32,24 @@ func NumberOfIslands(m, n int, pos [][]int) []int {
 		}
 		return true
 	}
+	dirs := [4][2]int{[2]int{-1, 0}, [2]int{1, 0}, [2]int{0, -1}, [2]int{0, 1}}
+	var count int
 	for i := range pos {
-		t := pos[i][0]*n + pos[i][1]
+		r, c := pos[i][0], pos[i][1]
+		t := r*n + c
 		ids[t] = t
 		wz[t] = 1
-		// hm[t] = true
-		ret = append(ret, i+1)
-	}
-	hm[pos[0][0]*n+pos[0][1]] = true
-	for k := 1; k < len(pos); k++ {
-		ret[k] = ret[k-1] + 1
-		i, j := pos[k][0], pos[k][1]
-		hm[i*n+j] = true
-		if i > 0 && hm[(i-1)*n+j] {
-			if union(i*n+j, (i-1)*n+j) {
-				ret[k]--
+		count++
+		for _, v := range dirs {
+			x, y := r+v[0], c+v[1]
+			tp := x*n + y
+			if x >= 0 && x < m && y >= 0 && y < n && ids[tp] != -1 {
+				if union(t, tp) {
+					count--
+				}
 			}
 		}
-		if j > 0 && hm[i*n+j-1] {
-			if union(i*n+j, i*n+j-1) {
-				ret[k]--
-			}
-		}
-		if i+1 < m && hm[(i+1)*n+j] {
-			if union(i*n+j, (i+1)*n+j) {
-				ret[k]--
-			}
-		}
-		if j+1 < n && hm[i*n+j+1] {
-			if union(i*n+j, i*n+j+1) {
-				ret[k]--
-			}
-		}
+		ret = append(ret, count)
 	}
 	return ret
 }
