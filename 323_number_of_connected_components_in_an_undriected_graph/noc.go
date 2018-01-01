@@ -1,5 +1,9 @@
 package noc
 
+import (
+	"github.com/catorpilor/leetcode/utils"
+)
+
 func CountComponents(n int, edges [][]int) int {
 	if n <= 1 {
 		return n
@@ -65,4 +69,35 @@ func dfs(g map[int][]int, visited *[]bool, node int) {
 			dfs(g, visited, n)
 		}
 	}
+}
+
+func CountComponents3(n int, edges [][]int) int {
+	if n <= 1 {
+		return n
+	}
+	g := make(map[int][]int)
+	for _, v := range edges {
+		g[v[0]] = append(g[v[0]], v[1])
+		g[v[1]] = append(g[v[1]], v[0])
+	}
+	visited := make([]bool, n)
+	var ret int
+	q := utils.NewQueue()
+	for i := 0; i < n; i++ {
+		if !visited[i] {
+			q.Enroll(i)
+			for !q.IsEmpty() {
+				k := q.Pull().(int)
+				visited[k] = true
+				for _, v := range g[k] {
+					if !visited[v] {
+						q.Enroll(v)
+					}
+				}
+			}
+			ret++
+		}
+
+	}
+	return ret
 }
