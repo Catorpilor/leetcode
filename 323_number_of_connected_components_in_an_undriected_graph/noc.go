@@ -37,3 +37,32 @@ func CountComponents(n int, edges [][]int) int {
 	}
 	return ret
 }
+
+func CountComponents2(n int, edges [][]int) int {
+	if n <= 1 {
+		return n
+	}
+	g := make(map[int][]int)
+	for _, v := range edges {
+		g[v[0]] = append(g[v[0]], v[1])
+		g[v[1]] = append(g[v[1]], v[0])
+	}
+	visited := make([]bool, n)
+	var ret int
+	for i := 0; i < n; i++ {
+		if !visited[i] {
+			dfs(g, &visited, i)
+			ret++
+		}
+	}
+	return ret
+}
+
+func dfs(g map[int][]int, visited *[]bool, node int) {
+	(*visited)[node] = true
+	for _, n := range g[node] {
+		if !(*visited)[n] {
+			dfs(g, visited, n)
+		}
+	}
+}
