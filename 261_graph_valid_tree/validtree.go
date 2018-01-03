@@ -1,5 +1,9 @@
 package validtree
 
+import (
+	"github.com/catorpilor/leetcode/utils"
+)
+
 func ValidTree(n int, edges [][]int) bool {
 	if n <= 0 {
 		return false
@@ -76,5 +80,36 @@ func dfs(g map[int][]int, visited *[]bool, node int) {
 	for _, n := range g[node] {
 		dfs(g, visited, n)
 	}
+
+}
+
+func ValidTree3(n int, edges [][]int) bool {
+	if len(edges) != n-1 {
+		return false
+	}
+	g := make(map[int][]int)
+	for _, v := range edges {
+		g[v[0]], g[v[1]] = append(g[v[0]], v[1]), append(g[v[1]], v[0])
+	}
+	visited := make([]bool, n)
+	q := utils.NewQueue()
+	q.Enroll(0)
+	for !q.IsEmpty() {
+		n := q.Pull().(int)
+		if visited[n] {
+			return false
+		}
+		visited[n] = true
+		for _, v := range g[n] {
+			q.Enroll(v)
+			g[v] = utils.DeleteFromIntSlice(g[v], n)
+		}
+	}
+	for _, v := range visited {
+		if !v {
+			return false
+		}
+	}
+	return true
 
 }
