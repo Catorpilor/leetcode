@@ -42,3 +42,39 @@ func ValidTree(n int, edges [][]int) bool {
 
 	return n == 1
 }
+
+func ValidTree2(n int, edges [][]int) bool {
+	if n <= 0 {
+		return false
+	}
+	if n == 1 {
+		return true
+	}
+	if len(edges) != n-1 {
+		return false
+	}
+	// depth-first-search
+	g := make(map[int][]int) // g represents a gragh
+	for _, v := range edges {
+		g[v[0]], g[v[1]] = append(g[v[0]], v[1]), append(g[v[1]], v[0])
+	}
+	visited := make([]bool, n)
+	dfs(g, &visited, 0)
+	for _, v := range visited {
+		if !v {
+			return false
+		}
+	}
+	return true
+}
+
+func dfs(g map[int][]int, visited *[]bool, node int) {
+	if (*visited)[node] {
+		return
+	}
+	(*visited)[node] = true
+	for _, n := range g[node] {
+		dfs(g, visited, n)
+	}
+
+}
