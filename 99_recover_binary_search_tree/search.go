@@ -1,8 +1,6 @@
 package search
 
 import (
-	"math"
-
 	"github.com/catorpilor/leetcode/utils"
 )
 
@@ -15,8 +13,7 @@ func RecoverTree(root *utils.TreeNode) []int {
 	}
 	// inorder travesal
 	// recursion so space is O(lgN) not constant
-	var first, second *utils.TreeNode
-	prev := &utils.TreeNode{Val: math.MinInt32}
+	var first, second, prev *utils.TreeNode
 	traverse(root, &first, &second, &prev)
 	// fmt.Println(first, second)
 	first.Val, second.Val = second.Val, first.Val
@@ -28,11 +25,13 @@ func traverse(node *utils.TreeNode, first, second, prev **utils.TreeNode) {
 		return
 	}
 	traverse(node.Left, first, second, prev)
-	if (*first) == nil && (*prev).Val >= node.Val {
-		*first = *prev
-	}
-	if (*first) != nil && (*prev).Val >= node.Val {
-		*second = node
+	if *prev != nil && (*prev).Val >= node.Val {
+		if *first == nil {
+			*first = *prev
+		}
+		if *first != nil {
+			*second = node
+		}
 	}
 	*prev = node
 	traverse(node.Right, first, second, prev)
