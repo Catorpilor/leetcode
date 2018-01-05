@@ -12,7 +12,7 @@ func RecoverTree(root *utils.TreeNode) []int {
 		return utils.LevelOrderTravesal(root)
 	}
 	// inorder travesal
-	// recursion so space is O(lgN) not constant
+	// recursion so bset or normal space complex is O(lgN) and worst case is O(N)
 	var first, second, prev *utils.TreeNode
 	traverse(root, &first, &second, &prev)
 	// fmt.Println(first, second)
