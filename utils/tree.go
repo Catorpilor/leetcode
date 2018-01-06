@@ -56,3 +56,106 @@ func LevelOrderTravesal(root *TreeNode) []int {
 	}
 	return ret
 }
+
+// InorderTraversal uses Morris Traversal Algorithm
+// time complexity is O(n) and space complexity is O(1)
+func InorderTraversal(root *TreeNode) []int {
+	var ret []int
+	cur := root
+	for cur != nil {
+		if cur.Left == nil {
+			ret = append(ret, cur.Val)
+			cur = cur.Right
+		} else {
+			predecessor := cur.Left
+			for predecessor.Right != cur && predecessor.Right != nil {
+				predecessor = predecessor.Right
+			}
+			if predecessor.Right == nil {
+				predecessor.Right = cur
+				cur = cur.Left
+			} else {
+				predecessor.Right = nil
+				ret = append(ret, cur.Val)
+				cur = cur.Right
+			}
+		}
+	}
+	return ret
+}
+
+// PreorderTraversal uses Morris Traversal Algorithm
+// time complexity is O(n) and space complexity is O(1)
+func PreorderTraversal(root *TreeNode) []int {
+	var ret []int
+	cur := root
+	for cur != nil {
+		if cur.Left == nil {
+			ret = append(ret, cur.Val)
+			cur = cur.Right
+		} else {
+			predecessor := cur.Left
+			for predecessor.Right != cur && predecessor.Right != nil {
+				predecessor = predecessor.Right
+			}
+			if predecessor.Right == nil {
+				predecessor.Right = cur
+				ret = append(ret, cur.Val)
+				cur = cur.Left
+			} else {
+				predecessor.Right = nil
+				cur = cur.Right
+			}
+		}
+	}
+	return ret
+}
+
+// PostorderTraversal uses Morris Traversal Algorithm
+// time complexity is O(n) and space complexity is O(1)
+func PostorderTraversal(root *TreeNode) []int {
+	var ret []int
+	dummy := &TreeNode{Left: root}
+	var predecessor, first, middle, last *TreeNode
+	cur := dummy
+	for cur != nil {
+		if cur.Left == nil {
+			// ret = append(ret, cur.Val)
+			cur = cur.Right
+		} else {
+			predecessor = cur.Left
+			for predecessor.Right != cur && predecessor.Right != nil {
+				predecessor = predecessor.Right
+			}
+			if predecessor.Right == nil {
+				predecessor.Right = cur
+				// ret = append(ret, cur.Val)
+				cur = cur.Left
+			} else {
+				// predeccessor found second time
+				// reverse the right references in chain from predecessor to p
+				first, middle = cur, cur.Left
+				for middle != cur {
+					last = middle.Right
+					middle.Right = first
+					first = middle
+					middle = last
+				}
+
+				// visit the nodes from pred to p
+				// again reverse the right references from pred to p
+				first, middle = cur, predecessor
+				for middle != cur {
+					ret = append(ret, middle.Val)
+					last = middle.Right
+					middle.Right = first
+					first = middle
+					middle = last
+				}
+				predecessor.Right = nil
+				cur = cur.Right
+			}
+		}
+	}
+	return ret
+}

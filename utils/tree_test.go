@@ -31,3 +31,72 @@ func TestContstructTree(t *testing.T) {
 		})
 	}
 }
+
+func TestInorderTraversal(t *testing.T) {
+	st := []struct {
+		name string
+		nums []int
+		exp  []int
+	}{
+		{"empty", nil, nil},
+		{"single", []int{1}, []int{1}},
+		{"two nodes", []int{1, 2}, []int{2, 1}},
+		{"test 1", []int{1, 2, 3}, []int{2, 1, 3}},
+	}
+	for _, c := range st {
+		t.Run(c.name, func(t *testing.T) {
+			root := ConstructTree(c.nums)
+			ret := InorderTraversal(root)
+			if !reflect.DeepEqual(ret, c.exp) {
+				t.Fatalf("expected %v but got %v with input %v",
+					c.exp, ret, c.nums)
+			}
+		})
+	}
+}
+
+func TestPreorderTraversal(t *testing.T) {
+	st := []struct {
+		name string
+		nums []int
+		exp  []int
+	}{
+		{"empty", nil, nil},
+		{"single", []int{1}, []int{1}},
+		{"two nodes", []int{1, 2}, []int{1, 2}},
+		{"test 1", []int{1, 2, 3}, []int{1, 2, 3}},
+	}
+	for _, c := range st {
+		t.Run(c.name, func(t *testing.T) {
+			root := ConstructTree(c.nums)
+			ret := PreorderTraversal(root)
+			if !reflect.DeepEqual(ret, c.exp) {
+				t.Fatalf("expected %v but got %v with input %v",
+					c.exp, ret, c.nums)
+			}
+		})
+	}
+}
+
+func TestPostorderTraversal(t *testing.T) {
+	st := []struct {
+		name string
+		nums []int
+		exp  []int
+	}{
+		{"empty", nil, nil},
+		{"single", []int{1}, []int{1}},
+		{"two nodes", []int{1, 2}, []int{2, 1}},
+		{"test 1", []int{1, 2, 3}, []int{2, 3, 1}},
+	}
+	for _, c := range st {
+		t.Run(c.name, func(t *testing.T) {
+			root := ConstructTree(c.nums)
+			ret := PostorderTraversal(root)
+			if !reflect.DeepEqual(ret, c.exp) {
+				t.Fatalf("expected %v but got %v with input %v",
+					c.exp, ret, c.nums)
+			}
+		})
+	}
+}
