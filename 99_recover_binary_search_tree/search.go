@@ -39,12 +39,6 @@ func traverse(node *utils.TreeNode, first, second, prev **utils.TreeNode) {
 
 func RecoverTree2(root *utils.TreeNode) []int {
 	// morris traversal
-	if root == nil {
-		return nil
-	}
-	if root.Left == nil && root.Right == nil {
-		return []int{root.Val}
-	}
 	var first, second, prev, cur *utils.TreeNode
 	cur = root
 	for cur != nil {
@@ -53,18 +47,12 @@ func RecoverTree2(root *utils.TreeNode) []int {
 				if first == nil {
 					first = prev
 				}
-				if first != nil {
-					second = cur
-				}
+				second = cur
 			}
 			prev = cur
 			cur = cur.Right
 		} else {
-			predecessor := cur.Left
-			for predecessor.Right != cur && predecessor.Right != nil {
-				predecessor = predecessor.Right
-			}
-			// node := preInorder(cur)
+			predecessor := preInorder(cur)
 			if predecessor.Right == nil {
 				predecessor.Right = cur
 				cur = cur.Left
@@ -74,16 +62,16 @@ func RecoverTree2(root *utils.TreeNode) []int {
 					if first == nil {
 						first = prev
 					}
-					if first != nil {
-						second = cur
-					}
+					second = cur
 				}
 				prev = cur
 				cur = cur.Right
 			}
 		}
 	}
-	first.Val, second.Val = second.Val, first.Val
+	if first != nil && second != nil {
+		first.Val, second.Val = second.Val, first.Val
+	}
 	return utils.LevelOrderTravesal(root)
 }
 
