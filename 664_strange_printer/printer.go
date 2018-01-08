@@ -30,3 +30,58 @@ func dfs(s string, ans *[100][100]int, l, r int) int {
 	}
 	return (*ans)[l][r]
 }
+
+func StrangePrinter2(s string) int {
+	n := len(s)
+	if n <= 1 {
+		return n
+	}
+	dp := [101][101]int{}
+	// for single character set dp[i][i] to 1
+	for i := 0; i < n; i++ {
+		dp[i][i] = 1
+	}
+	var right int
+	for l := 2; l <= n; l++ {
+		for left := 0; left < n-l+1; left++ {
+			right = left + l - 1
+			dp[left][right] = l
+			for k := left; k < right; k++ {
+				steps := dp[left][k] + dp[k+1][right]
+				if s[k] == s[right] {
+					steps--
+				}
+				dp[left][right] = utils.Min(dp[left][right], steps)
+			}
+		}
+	}
+	return dp[0][n-1]
+}
+
+func StrangePrinter3(s string) int {
+	n := len(s)
+	if n <= 1 {
+		return n
+	}
+	dp := [101][101]int{}
+	// for single character set dp[i][i] to 1
+	for i := 0; i < n; i++ {
+		dp[i][i] = 1
+	}
+	var right int
+	for l := 2; l <= n; l++ {
+		for left := 0; left < n-l+1; left++ {
+			right = left + l - 1
+			dp[left][right] = dp[left][right-1] + 1
+			if s[right] == s[right-1] {
+				dp[left][right]--
+			}
+			for k := left + 1; k <= right; k++ {
+				if s[k-1] == s[right] {
+					dp[left][right] = utils.Min(dp[left][right], dp[left][k-1]+dp[k][right]-1)
+				}
+			}
+		}
+	}
+	return dp[0][n-1]
+}
