@@ -10,8 +10,8 @@ func RemoveBoxes(boxes []int) int {
 	// for example ans[l][r][3] represents the solution for [b_l, ... b_r, b_r, b_r, b_r] (format ABDAA) => (BDAAA)
 	// The transition function is to find the maximum among all b_i==b_r for i=l,...,r-1:
 	ans := [101][101][101]int{}
-	// k >= 1
-	return dfs(boxes, &ans, 0, n-1, 1)
+	// 0 means no boxes attatched to the left of array at the beginning.
+	return dfs(boxes, &ans, 0, n-1, 0)
 }
 
 func dfs(boxes []int, ans *[101][101][101]int, l, r, k int) int {
@@ -28,10 +28,10 @@ func dfs(boxes []int, ans *[101][101][101]int, l, r, k int) int {
 	for l < r && boxes[l] == boxes[r] {
 		l, k = l+1, k+1
 	}
-	(*ans)[l][r][k] = dfs(boxes, ans, l, r-1, 1) + k*k
+	(*ans)[l][r][k] = dfs(boxes, ans, l, r-1, 0) + (k+1)*(k+1)
 	for i := l; i < r; i++ {
 		if boxes[i] == boxes[r] {
-			(*ans)[l][r][k] = utils.Max((*ans)[l][r][k], dfs(boxes, ans, l, i, k+1)+dfs(boxes, ans, i+1, r-1, 1))
+			(*ans)[l][r][k] = utils.Max((*ans)[l][r][k], dfs(boxes, ans, l, i, k+1)+dfs(boxes, ans, i+1, r-1, 0))
 		}
 	}
 	return (*ans)[l][r][k]
