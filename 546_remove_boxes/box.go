@@ -36,3 +36,34 @@ func dfs(boxes []int, ans *[101][101][101]int, l, r, k int) int {
 	}
 	return (*ans)[l][r][k]
 }
+
+func RemoveBoxes2(boxes []int) int {
+	// bottom up approach
+	n := len(boxes)
+	if n <= 1 {
+		return n
+	}
+	ans := [100][100][100]int{}
+	for i := 0; i < n; i++ {
+		for k := 0; k <= i; k++ {
+			ans[i][i][k] = (k + 1) * (k + 1)
+		}
+	}
+	for l := 1; l < n; l++ {
+		// l stands for length
+		for j := l; j < n; j++ {
+			// j stands for the right border
+			i := j - l
+			for k := 0; k <= i; k++ {
+				res := (k+1)*(k+1) + ans[i+1][j][0]
+				for m := i + 1; m <= j; m++ {
+					if boxes[m] == boxes[j] {
+						res = utils.Max(res, ans[i+1][m-1][0]+ans[m][j][k+1])
+					}
+				}
+				ans[i][j][k] = res
+			}
+		}
+	}
+	return ans[0][n-1][0]
+}
