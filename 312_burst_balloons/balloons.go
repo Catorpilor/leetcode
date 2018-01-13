@@ -31,3 +31,33 @@ func dfs(nums []int, ans *[501][501]int, i, j, left, right int) int {
 	(*ans)[i][j] = res
 	return res
 }
+
+func MaxCoins2(nums []int) int {
+	n := len(nums)
+	dp := make([][]int, n+1)
+	for i := range dp {
+		dp[i] = make([]int, n+1)
+	}
+	var end, res, score int
+	for l := 1; l <= n; l++ {
+		for start := 0; start+l <= n; start++ {
+			res = 0
+			end = start + l
+			for k := start; k < end; k++ {
+				score = nums[k]
+				if start > 0 {
+					score *= nums[start-1]
+				}
+				if end < n {
+					score *= nums[end]
+				}
+				score += dp[start][k] + dp[k+1][end]
+				if score > res {
+					res = score
+				}
+			}
+			dp[start][end] = res
+		}
+	}
+	return dp[0][n]
+}
