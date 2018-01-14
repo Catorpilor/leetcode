@@ -44,6 +44,7 @@ func MaxCoins2(nums []int) int {
 			res = 0
 			end = start + l
 			for k := start; k < end; k++ {
+				// k is the last to burst
 				score = nums[k]
 				if start > 0 {
 					score *= nums[start-1]
