@@ -43,17 +43,6 @@ func dfs(maze [][]int, start, dest []int, ans *[][]int, dirs [4][2]int) {
 		(*ans)[x][y] = l
 		dfs(maze, []int{x, y}, dest, ans, dirs)
 	}
-
-	// x y represts the point to make desions which direction to go.
-
-	// for _, c := range dirs {
-	// 	// tempx, tempy = x+c[0], y+c[1]
-	// 	newStart := roll(maze, x, y, c[0], c[1])
-	// 	if dfs(maze, newStart, dest, visited, dirs) {
-	// 		return true
-	// 	}
-	// }
-	// return false
 }
 
 func dfs2(maze [][]int, start, dest []int, visited *[][]bool, dirs [4][2]int) bool {
