@@ -48,3 +48,33 @@ func isDigit(b byte) bool {
 	}
 	return false
 }
+
+func DecodeString2(s string) string {
+	var i int
+	return dfs(s, &i)
+}
+
+func dfs(s string, idx *int) string {
+	var b bytes.Buffer
+	for (*idx) < len(s) && s[(*idx)] != ']' {
+		if !isDigit(s[(*idx)]) {
+			b.WriteByte(s[(*idx)])
+			*idx += 1
+		} else {
+			k := 0
+			for (*idx) < len(s) && isDigit(s[(*idx)]) {
+				k = 10*k + int(s[(*idx)]-'0')
+				*idx += 1
+			}
+			// skip [
+			(*idx)++
+			t := dfs(s, idx)
+			// skip ]
+			(*idx)++
+			for i := 0; i < k; i++ {
+				b.WriteString(t)
+			}
+		}
+	}
+	return b.String()
+}
