@@ -23,6 +23,7 @@ func CanFinish(numCourses int, pres [][]int) bool {
 }
 
 func dfsCycle(g map[int][]int, visited, onpath *[]bool, node int) bool {
+	// prune the duplicated check
 	if (*visited)[node] {
 		return false
 	}
@@ -34,6 +35,7 @@ func dfsCycle(g map[int][]int, visited, onpath *[]bool, node int) bool {
 			return true
 		}
 	}
+	// make node onpath to false
 	(*onpath)[node] = false
 	return false
 }
