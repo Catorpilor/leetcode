@@ -1,5 +1,10 @@
 package find
 
+import (
+	"math"
+	"strings"
+)
+
 func Match(a, b string) int {
 	la, lb := len(a), len(b)
 	i, j := 0, 0
@@ -75,6 +80,34 @@ func Match3(A, B string) int {
 			}
 			return (i+j)/len(A) + add
 		}
+	}
+	return -1
+}
+
+func Match4(a, b string) int {
+	if len(a) == 0 {
+		return -1
+	}
+	min := int(math.Max(float64(len(b)/len(a)), 1.0))
+	if strings.Contains(strings.Repeat(a, min), b) {
+		return min
+	}
+	if strings.Contains(strings.Repeat(a, min+1), b) {
+		return min + 1
+	}
+	return -1
+}
+
+func Match5(a, b string) int {
+	if len(a) == 0 {
+		return -1
+	}
+	res := a
+	for ret := 1; ret <= len(b)/len(a)+2; ret++ {
+		if strings.Index(res, b) != -1 {
+			return ret
+		}
+		res += a
 	}
 	return -1
 }
