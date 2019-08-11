@@ -4,11 +4,7 @@ import "github.com/catorpilor/leetcode/utils"
 
 func IntervalIntersection(A [][]int, B [][]int) [][]int {
 	lenA, lenB := len(A), len(B)
-	// if lenA == 0 || lenB == 0 {
-	// 	return [][]int{}
-	// }
 	var start, end int
-
 	res := [][]int{}
 	// res = append(res, []int{start, end})
 	var i, j int
