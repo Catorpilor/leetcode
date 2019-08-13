@@ -23,6 +23,7 @@ func TestIsValid(t *testing.T) {
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
 			out := IsValid(tt.code)
+			// containTags = false
 			if out != tt.exp {
 				t.Fatalf("with input code: %s, wanted %t but got %t", tt.code, tt.exp, out)
 			}

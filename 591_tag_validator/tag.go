@@ -7,7 +7,9 @@ import (
 	"github.com/catorpilor/LeetCode/utils"
 )
 
-var containTags bool
+type sb struct {
+	containTags bool
+}
 
 func IsValid(code string) bool {
 	n := len(code)
@@ -18,11 +20,12 @@ func IsValid(code string) bool {
 	if code[0] != '<' || code[n-1] != '>' {
 		return false
 	}
+	cts := sb{}
 	st := utils.NewStack()
 	for i := 0; i < n; i++ {
 		ended := false
 		cl := 0
-		if st.IsEmpty() && containTags {
+		if st.IsEmpty() && cts.containTags {
 			// <A></A><B></B>
 			return false
 		}
@@ -34,6 +37,7 @@ func IsValid(code string) bool {
 				}
 				fmt.Printf("cdata section cl: %d, i:%d\n", cl, i)
 				if cl < 0 || !isValidCDATA(code[i+2:cl]) {
+					fmt.Printf("failed here with cl: %d, and cdata start index: %d\n", cl, i+2)
 					return false
 				}
 			} else {
@@ -46,7 +50,8 @@ func IsValid(code string) bool {
 					cl += i
 				}
 				fmt.Printf("cdata section cl: %d, i:%d\n", cl, i)
-				if cl < 0 || !validTag(code[i+1:cl], st, ended) {
+				if cl < 0 || !validTag(code[i+1:cl], st, ended, &cts) {
+					fmt.Printf("failed here with cl: %d, and tag's start index: %d\n", cl, i+1)
 					return false
 				}
 			}
@@ -54,10 +59,11 @@ func IsValid(code string) bool {
 			fmt.Printf("setting i to %d\n", cl)
 		}
 	}
-	return st.IsEmpty() && containTags
+	fmt.Printf("st: %t and containtags: %t\n", st.IsEmpty(), cts.containTags)
+	return st.IsEmpty() && cts.containTags
 }
 
-func validTag(code string, st *utils.Stack, ending bool) (b bool) {
+func validTag(code string, st *utils.Stack, ending bool, cts *sb) (b bool) {
 	// fmt.Printf("tag is %s\n", code)
 	n := len(code)
 	if n < 1 || n > 9 {
@@ -77,7 +83,7 @@ func validTag(code string, st *utils.Stack, ending bool) (b bool) {
 		}
 	} else {
 		st.Push(code)
-		containTags = true
+		cts.containTags = true
 	}
 	return true
 }
