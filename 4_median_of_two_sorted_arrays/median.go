@@ -59,7 +59,8 @@ func Median2(nums1, nums2 []int) float64 {
 	// if n1 + n2 is even then we can evenly split the nums1 and nums2
 	// if n1 + n2 is odd, then the left split has one more element
 	start, end, p1, p2, el := 0, n1, 0, 0, (n1+n2+1)/2
-	maxLeft1, maxLeft2, minRight1, minRight2 := math.MinInt32, math.MinInt32, math.MaxInt32, math.MaxInt32
+	// maxLeft1, maxLeft2, minRight1, minRight2 := math.MinInt32, math.MinInt32, math.MaxInt32, math.MaxInt32
+	var maxLeft1, maxLeft2, minRight1, minRight2 int
 	for start <= end {
 		// start = end split the whole array..
 		p1 = start + (end-start)/2
