@@ -11,13 +11,13 @@ import (
 func Calculate(input string) int {
 	var ret int
 	input = strings.Replace(input, " ", "", -1)
-	st1, st2 := utils.NewStack(), utils.NewStack()
+	st1 := utils.NewStack()
+	var highOp string
 	bp, ep := len(input), len(input)
 	ended := true
 	for i := 0; i < len(input); i++ {
 		switch input[i] {
 		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
-			fmt.Printf("current index: %d\n", i)
 			if ended {
 				bp = i
 				ended = false
@@ -26,82 +26,42 @@ func Calculate(input string) int {
 			if ep >= len(input) {
 				st1.Push(input[bp:])
 			}
-		case '*', '/':
+		case '*', '/', '+', '-':
 			ended = true
-			var op1 string
+			var op2 string
 			if ep >= len(input) {
-				op1 = input[bp:]
+				op2 = input[bp:]
 			} else {
-				op1 = input[bp:ep]
+				op2 = input[bp:ep]
 			}
+			var higherOp bool
+			ops := string(input[i])
+			if ops == "*" || ops == "/" {
+				higherOp = true
+			}
+			highOp = cal(st1, ops, highOp, op2, higherOp)
+			// st1.Push(input[bp:ep])
 
-			// st1.Push(input[bp:ep])
-			if !st2.IsEmpty() {
-				oprand2, _ := strconv.Atoi(op1)
-				op := st2.Pop().(byte)
-				oprand1, _ := strconv.Atoi(st1.Pop().(string))
-				var ret int
-				switch op {
-				case '*':
-					ret = oprand1 * oprand2
-				case '/':
-					ret = oprand1 / oprand2
-				}
-				st1.Push(strconv.Itoa(ret))
+			if higherOp {
+				highOp = ops
 			} else {
-				st1.Push(op1)
+				st1.Push(ops)
 			}
-			st2.Push(input[i])
-		case '+', '-':
-			ended = true
-			var op1 string
-			if ep >= len(input) {
-				op1 = input[bp:]
-			} else {
-				op1 = input[bp:ep]
-			}
-			if !st2.IsEmpty() {
-				oprand2, _ := strconv.Atoi(op1)
-				oprand1, _ := strconv.Atoi(st1.Pop().(string))
-				var res int
-				op := st2.Pop().(byte)
-				switch op {
-				case '*':
-					res = oprand1 * oprand2
-				case '/':
-					res = oprand1 / oprand2
-				}
-				st1.Push(strconv.Itoa(res))
-			} else {
-				st1.Push(op1)
-			}
-			if st1.Len() == 3 {
-				op2, _ := strconv.Atoi(st1.Pop().(string))
-				op := st1.Pop().(string)
-				op1, _ := strconv.Atoi(st1.Pop().(string))
-				switch op {
-				case "+":
-					st1.Push(strconv.Itoa(op1 + op2))
-				case "-":
-					st1.Push(strconv.Itoa(op1 - op2))
-				}
-			}
-			// st1.Push(input[bp:ep])
-			st1.Push(string(input[i]))
 		}
 	}
 	fmt.Printf("stack1: %s\n", st1.String())
-	fmt.Printf("stack2: %s\n", st2.String())
-	if !st2.IsEmpty() {
+	// fmt.Printf("stack2: %s\n", st2.String())
+	if highOp != "" {
 		op2, _ := strconv.Atoi(st1.Pop().(string))
-		op := st2.Pop().(byte)
+		// op := st2.Pop().(string)
 		op1, _ := strconv.Atoi(st1.Pop().(string))
-		switch op {
-		case '*':
+		switch highOp {
+		case "*":
 			ret = op1 * op2
-		case '/':
+		case "/":
 			ret = op1 / op2
 		}
+		highOp = ""
 		st1.Push(strconv.Itoa(ret))
 	}
 	for st1.Len() >= 3 {
@@ -121,4 +81,40 @@ func Calculate(input string) int {
 	}
 
 	return ret
+}
+
+func cal(st1 *utils.Stack, op, prevOp, op2 string, higherOp bool) string {
+	fmt.Printf("stack1 is %s, op is %s, prevOp is %s, op2 is %s and flag is %t\n",
+		st1.String(), op, prevOp, op2, higherOp)
+	// if !st2.IsEmpty() {
+	if prevOp != "" {
+		oprand2, _ := strconv.Atoi(op2)
+		oprand1, _ := strconv.Atoi(st1.Pop().(string))
+		var res int
+		// op := st2.Pop().(string)
+		switch prevOp {
+		case "*":
+			res = oprand1 * oprand2
+		case "/":
+			res = oprand1 / oprand2
+		}
+		prevOp = ""
+		st1.Push(strconv.Itoa(res))
+	} else {
+		st1.Push(op2)
+	}
+	if !higherOp {
+		if st1.Len() == 3 {
+			op2, _ := strconv.Atoi(st1.Pop().(string))
+			op := st1.Pop().(string)
+			op1, _ := strconv.Atoi(st1.Pop().(string))
+			switch op {
+			case "+":
+				st1.Push(strconv.Itoa(op1 + op2))
+			case "-":
+				st1.Push(strconv.Itoa(op1 - op2))
+			}
+		}
+	}
+	return prevOp
 }
