@@ -118,3 +118,58 @@ func cal(st1 *utils.Stack, op, prevOp, op2 string, higherOp bool) string {
 	}
 	return prevOp
 }
+
+/*
+curInde: 0, num: 1, lastSign: +, sum: 0, tempSum: 0
+curInde: 1, num: 1, lastSign: +, sum: 0, tempSum: 0
+curInde: 2, num: 2, lastSign: *, sum: 0, tempSum: 1
+curInde: 3, num: 2, lastSign: *, sum: 0, tempSum: 1
+curInde: 4, num: 3, lastSign: -, sum: 0, tempSum: 2
+curInde: 5, num: 3, lastSign: -, sum: 0, tempSum: 2
+curInde: 6, num: 4, lastSign: /, sum: 2, tempSum: -3
+curInde: 7, num: 4, lastSign: /, sum: 2, tempSum: -3
+curInde: 8, num: 5, lastSign: +, sum: 2, tempSum: 0
+curInde: 9, num: 5, lastSign: +, sum: 2, tempSum: 0
+curInde: 10, num: 6, lastSign: *, sum: 2, tempSum: 5
+curInde: 11, num: 6, lastSign: *, sum: 2, tempSum: 5
+curInde: 12, num: 7, lastSign: -, sum: 2, tempSum: 30
+curInde: 13, num: 7, lastSign: -, sum: 2, tempSum: 30
+curInde: 14, num: 8, lastSign: *, sum: 32, tempSum: -7
+curInde: 15, num: 8, lastSign: *, sum: 32, tempSum: -7
+curInde: 16, num: 9, lastSign: +, sum: 32, tempSum: -56
+curInde: 17, num: 9, lastSign: +, sum: 32, tempSum: -56
+curInde: 18, num: 1, lastSign: /, sum: -24, tempSum: 9
+curInde: 19, num: 10, lastSign: /, sum: -24, tempSum: 9
+*/
+
+func Calculate2(s string) int {
+	s = strings.Replace(s, " ", "", -1)
+	var sum, tempSum, num int
+	lastSign := byte('+')
+	for i := 0; i < len(s); i++ {
+		// fmt.Printf("curInde: %d, num: %d, ")
+		if s[i] >= '0' && s[i] <= '9' {
+			num = num*10 + int(s[i]-'0')
+		}
+		if i == len(s)-1 || s[i] < '0' || s[i] > '9' {
+			switch lastSign {
+			case '+':
+				sum += tempSum
+				tempSum = num
+			case '-':
+				sum += tempSum
+				tempSum = -num
+			case '*':
+				tempSum *= num
+			case '/':
+				tempSum /= num
+			}
+			lastSign = s[i]
+			num = 0
+		}
+		fmt.Printf("curInde: %d, num: %d, lastSign: %s, sum: %d, tempSum: %d\n",
+			i, num, string(lastSign), sum, tempSum)
+	}
+	sum += tempSum
+	return sum
+}
