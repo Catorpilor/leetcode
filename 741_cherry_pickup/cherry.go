@@ -7,6 +7,21 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
+// Wrong Solution
+// Greedy DP not working
+// this is a two-leg dp, one leg greedy did not mean the global optimization
+// for example
+/*
+  grid = [[1,1,1,0,1],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [1,0,1,1,1]].
+   greedy solution: from (0,0) -> (n-1, n-1) is 6, from (n-1,n-1) -> (0,0) is 1 so the total is 7.
+   The expected solution is follow the edges,
+   (0,0) -> (n-1, n-1) is 5
+   (n-1,n-1) -> (0,0) is 3, so the total is 8
+*/
 func CherryPickUp(grid [][]int) int {
 	n := len(grid)
 	if n == 1 {
@@ -65,4 +80,45 @@ func validDownsidePath(grid [][]int, dp [][]int, i, j int) bool {
 		}
 	}
 	return true
+}
+
+// This solution based on the discussion
+// https://leetcode.com/problems/cherry-pickup/discuss/109903/Step-by-step-guidance-of-the-O(N3)-time-and-O(N2)-space-solution
+
+func CherryPickUpNew(grid [][]int) int {
+	N := len(grid)
+	M := (N << 1) - 1
+	dp := make([][]int, N)
+	for i := range dp {
+		dp[i] = make([]int, N)
+	}
+	dp[0][0] = grid[0][0]
+	for n := 1; n < M; n++ {
+		for i := N - 1; i >= 0; i-- {
+			for p := N - 1; p >= 0; p-- {
+				j, q := n-i, n-p
+				if j < 0 || j >= N || q < 0 || q >= N || grid[i][j] < 0 || grid[p][q] < 0 {
+					dp[i][p] = -1
+					continue
+				}
+
+				if i > 0 {
+					dp[i][p] = utils.Max(dp[i][p], dp[i-1][p])
+				}
+				if p > 0 {
+					dp[i][p] = utils.Max(dp[i][p], dp[i][p-1])
+				}
+				if i > 0 && p > 0 {
+					dp[i][p] = utils.Max(dp[i][p], dp[i-1][p-1])
+				}
+				if dp[i][p] >= 0 {
+					dp[i][p] += grid[i][j]
+					if i != p {
+						dp[i][p] += grid[p][q]
+					}
+				}
+			}
+		}
+	}
+	return utils.Max(dp[N-1][N-1], 0)
 }
