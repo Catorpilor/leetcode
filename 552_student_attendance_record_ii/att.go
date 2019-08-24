@@ -89,7 +89,7 @@ func DynamicProg(n int) int {
     dp[2] = 4
     dp[3] = 7
     for i := 4; i <= n; i++ {
-        dp[i] = (2*dp[i-1])%M - (dp[i-4])%M
+        dp[i] = (2*dp[i-1])%M + (M-dp[i-4])%M
     }
     sum := dp[n]
     for i := 1; i <= n; i++ {
