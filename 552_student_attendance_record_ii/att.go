@@ -8,11 +8,14 @@ import (
 func CheckRecord(n int) int {
     var cnt int
     if n > 0 {
-        bruteForce(&cnt, n)
+        // bruteForce(&cnt, n)
+        cnt = RecursiveFormula(n)
     }
     return cnt
 }
 
+// time complexity O(3^n)
+// space O(n^n)
 func bruteForce(count *int, n int) {
     gen("", count, n)
     return
@@ -38,4 +41,38 @@ func isValid(s string) bool {
         }
     }
     return len(s) > 0 && cnt < 2 && strings.Index(s, "LLL") < 0
+}
+
+const (
+    M = 1000000007
+)
+
+// time complexity O(2^n)
+// space O(n)
+func RecursiveFormula(n int) int {
+    f := make([]int, n+1)
+    f[0] = 1
+    for i := 1; i <= n; i++ {
+        f[i] = recur(i)
+    }
+    cnt := f[n]
+    for i := 1; i <= n; i++ {
+        cnt += (recur(i-1) * recur(n-i)) % M
+    }
+    return cnt % M
+}
+
+func recur(n int) int {
+    switch n {
+    case 0:
+        return 1
+    case 1:
+        return 2
+    case 2:
+        return 4
+    case 3:
+        return 7 // 2^3 - 1 (LLL)
+    default:
+        return (2*recur(n-1) - recur(n-4)) % M
+    }
 }
