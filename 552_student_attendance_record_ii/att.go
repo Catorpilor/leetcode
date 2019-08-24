@@ -9,7 +9,8 @@ func CheckRecord(n int) int {
     var cnt int
     if n > 0 {
         // bruteForce(&cnt, n)
-        cnt = RecursiveFormula(n)
+        // cnt = RecursiveFormula(n)
+        cnt = DynamicProg(n)
     }
     return cnt
 }
@@ -75,4 +76,25 @@ func recur(n int) int {
     default:
         return (2*recur(n-1) - recur(n-4)) % M
     }
+}
+
+func DynamicProg(n int) int {
+    capN := n + 1
+    if n <= 5 {
+        capN = 6
+    }
+    dp := make([]int, capN)
+    dp[0] = 1
+    dp[1] = 2
+    dp[2] = 4
+    dp[3] = 7
+    for i := 4; i <= n; i++ {
+        dp[i] = (2*dp[i-1])%M - (dp[i-4])%M
+    }
+    sum := dp[n]
+    for i := 1; i <= n; i++ {
+        sum += (dp[i-1] * dp[n-i]) % M
+    }
+    return sum % M
+
 }
