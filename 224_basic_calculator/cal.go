@@ -1,6 +1,7 @@
 package cal
 
 import (
+	"fmt"
 	"math"
 	"strings"
 
@@ -27,12 +28,12 @@ func reverseWithStack(s string, st *utils.Stack) int {
 				n = 0
 			}
 			switch s[i] {
-			case ')':
-				st.Push(s[i])
 			case '(':
 				res := evalutateSt(st)
 				st.Pop()
 				st.Push(res)
+			default:
+				st.Push(s[i])
 			}
 		}
 	}
@@ -43,6 +44,7 @@ func reverseWithStack(s string, st *utils.Stack) int {
 }
 
 func evalutateSt(st *utils.Stack) int {
+	fmt.Printf("before evaluate stack is %s\n", st.String())
 	var res int
 	if !st.IsEmpty() {
 		res = st.Pop().(int)
@@ -59,5 +61,7 @@ func evalutateSt(st *utils.Stack) int {
 			break
 		}
 	}
+	fmt.Printf("after evaluate stack is %s\n", st.String())
+
 	return res
 }
