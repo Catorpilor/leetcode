@@ -30,7 +30,7 @@ func reverseWithStack(s string, st *utils.Stack) int {
 			switch s[i] {
 			case '(':
 				res := evalutateSt(st)
-				st.Pop()
+				// st.Pop()
 				st.Push(res)
 			default:
 				st.Push(s[i])
