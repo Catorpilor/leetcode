@@ -11,7 +11,43 @@ import (
 // Calculator calculate s
 func Calculator(s string) int {
 	st := utils.NewStack()
-	return reverseWithStack(s, st)
+	// return reverseWithStack(s, st)
+	return iterativeWithStack(s, st)
+}
+
+// based on discussion:
+// https://leetcode.com/problems/basic-calculator/discuss/62361/southpenguin
+func iterativeWithStack(s string, st *utils.Stack) int {
+	s = strings.Replace(s, " ", "", -1)
+	sign := 1
+	operand := 0
+	var result int
+	for i := range s {
+		if s[i] >= '0' && s[i] <= '9' {
+			operand = operand*10 + int(s[i]-'0')
+		} else if s[i] == '+' {
+			result += sign * operand
+			operand = 0
+			sign = 1
+		} else if s[i] == '-' {
+			result += sign * operand
+			operand = 0
+			sign = -1
+		} else if s[i] == '(' {
+			st.Push(result)
+			st.Push(sign)
+			// reset sing and oprand
+			sign = 1
+			result = 0
+		} else {
+			// ')'
+			result += sign * operand
+			operand = 0
+			result *= st.Pop().(int) // *sign
+			result += st.Pop().(int) // the pre calculated result before '('
+		}
+	}
+	return result + sign*operand
 }
 
 func reverseWithStack(s string, st *utils.Stack) int {
