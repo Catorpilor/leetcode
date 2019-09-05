@@ -4,7 +4,8 @@ import "github.com/catorpilor/leetcode/utils"
 
 func MinCameras(root *utils.TreeNode) int {
 	var res int
-	state := dfs(root, &res)
+	// state := dfs(root, &res)
+	state := simpleDFS(root, &res)
 	if state < 1 {
 		// need camera
 		res++
@@ -48,6 +49,21 @@ func dfs(root *utils.TreeNode, res *int) int {
 		return 1
 	}
 	if covered > 0 {
+		return 2
+	}
+	return 0
+}
+
+func simpleDFS(root *utils.TreeNode, res *int) int {
+	if root == nil {
+		return 2
+	}
+	l, r := simpleDFS(root.Left, res), simpleDFS(root.Right, res)
+	if l == 0 || r == 0 {
+		*res++
+		return 1
+	}
+	if l == 1 || r == 1 {
 		return 2
 	}
 	return 0

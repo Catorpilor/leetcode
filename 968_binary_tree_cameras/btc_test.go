@@ -14,7 +14,7 @@ func TestMinCameras(t *testing.T) {
 		root  *utils.TreeNode
 		exp   int
 	}{
-		// {"empty tree", []int{}, nil, 0},
+		{"empty tree", []int{}, nil, 0},
 		{"single node", []int{1}, utils.ConstructTree([]int{1}), 1},
 		{"testcase1", []int{0, 0, math.MinInt32, 0, 0}, utils.ConstructTree([]int{0, 0, math.MinInt32, 0, 0}), 1},
 		{"testcase2", []int{0, 0, math.MinInt32, 0, math.MinInt32, 0, math.MinInt32, math.MinInt32, 0}, utils.ConstructTree([]int{0, 0, math.MinInt32, 0, math.MinInt32, 0, math.MinInt32, math.MinInt32, 0}), 2},
