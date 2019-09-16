@@ -2,7 +2,28 @@ package pis
 
 func checkInclusion(s1, s2 string) bool {
 	// return hashmap(s1, s2)
-	return array(s1, s2)
+	// return array(s1, s2)
+	return slideWindow(s1, s2)
+}
+
+func slideWindow(s1, s2 string) bool {
+	n1, n2 := len(s1), len(s2)
+	if n1 == 0 || n2 == 0 || n1 > n2 {
+		return false
+	}
+	c1, c2 := make([]int, 26), make([]int, 26)
+	for i := range s1 {
+		c1[int(s1[i]-'a')]++
+		c2[int(s2[i]-'a')]++
+	}
+	for i := 0; i < n2-n1; i++ {
+		if compArray(c1, c2) {
+			return true
+		}
+		c2[int(s2[i+n1]-'a')]++
+		c2[int(s2[i]-'a')]--
+	}
+	return compArray(c1, c2)
 }
 
 func array(s1, s2 string) bool {
