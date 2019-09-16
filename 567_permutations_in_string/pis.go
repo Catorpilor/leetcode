@@ -1,6 +1,41 @@
 package pis
 
 func checkInclusion(s1, s2 string) bool {
+	// return hashmap(s1, s2)
+	return array(s1, s2)
+}
+
+func array(s1, s2 string) bool {
+	n1, n2 := len(s1), len(s2)
+	if n1 == 0 || n2 == 0 || n1 > n2 {
+		return false
+	}
+	cache1 := make([]int, 26)
+	for i := range s1 {
+		cache1[int(s1[i]-'a')]++
+	}
+	for i := 0; i <= n2-n1; i++ {
+		cache2 := make([]int, 26)
+		for j := i; j < i+n1; j++ {
+			cache2[int(s2[j]-'a')]++
+		}
+		if compArray(cache1, cache2) {
+			return true
+		}
+	}
+	return false
+}
+
+func compArray(a1, a2 []int) bool {
+	for i := 0; i < len(a1); i++ {
+		if a1[i] != a2[i] {
+			return false
+		}
+	}
+	return true
+}
+
+func hashmap(s1, s2 string) bool {
 	// time complexity O((n2-n1)*n1+n1)
 	// space complexity O((n2-n1)*n1)
 	n1, n2 := len(s1), len(s2)
