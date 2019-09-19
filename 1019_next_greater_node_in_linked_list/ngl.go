@@ -33,9 +33,8 @@ func nextLargeNode(head *utils.ListNode) []int {
 				if reversd[j] > reversd[i] {
 					dp[i] = j
 					break
-				} else {
-					j = dp[j]
 				}
+				j = dp[j]
 			}
 			if j == -1 && dp[i] == 0 {
 				dp[i] = j
