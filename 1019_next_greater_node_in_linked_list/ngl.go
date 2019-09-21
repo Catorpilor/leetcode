@@ -5,6 +5,10 @@ import (
 )
 
 func nextLargeNode(head *utils.ListNode) []int {
+	return nlg(head)
+}
+
+func sdp(head *utils.ListNode) []int {
 	if head == nil {
 		return []int{}
 	}
@@ -47,5 +51,26 @@ func nextLargeNode(head *utils.ListNode) []int {
 		}
 	}
 
+	return res
+}
+
+func nlg(head *utils.ListNode) []int {
+	if head == nil {
+		return []int{}
+	}
+	var arr []int
+	for p := head; p != nil; p = p.Next {
+		arr = append(arr, p.Val)
+	}
+	n := len(arr)
+	res := make([]int, n)
+	st := utils.NewStack()
+	for i := 0; i < n; i++ {
+		for !st.IsEmpty() && arr[st.Top().(int)] < arr[i] {
+			idx := st.Pop().(int)
+			res[idx] = arr[i]
+		}
+		st.Push(i)
+	}
 	return res
 }
