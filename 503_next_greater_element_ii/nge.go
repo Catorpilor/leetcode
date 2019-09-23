@@ -3,6 +3,11 @@ package nge
 import "github.com/catorpilor/LeetCode/utils"
 
 func nextGreaterElement(nums []int) []int {
+	// return expended(nums)
+	return circular(nums)
+}
+
+func expended(nums []int) []int {
 	n := len(nums)
 	res := make([]int, 2*n)
 	for i := range res {
@@ -22,4 +27,23 @@ func nextGreaterElement(nums []int) []int {
 		st.Push(i)
 	}
 	return res[:n]
+}
+
+func circular(nums []int) []int {
+	n := len(nums)
+	res := make([]int, n)
+	for i := range res {
+		res[i] = -1
+	}
+	st := utils.NewStack()
+	for i := 0; i < 2*n; i++ {
+		num := nums[i%n]
+		for !st.IsEmpty() && nums[st.Top().(int)] < num {
+			res[st.Pop().(int)] = num
+		}
+		if i < n {
+			st.Push(i)
+		}
+	}
+	return res
 }
