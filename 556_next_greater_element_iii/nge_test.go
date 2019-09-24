@@ -16,6 +16,7 @@ func TestNextGreaterElement(t *testing.T) {
 		{"testcase2", 21, -1},
 		{"testcase3", 139, 193},
 		{"failed1", 12222333, 12223233},
+		{"faield2", 230241, 230412},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

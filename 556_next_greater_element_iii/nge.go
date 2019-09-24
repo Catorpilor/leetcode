@@ -1,7 +1,6 @@
 package nge
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -27,21 +26,24 @@ func nextGreaterElement(num int) int {
 		// num in descresing order
 		return -1
 	}
-	// find the largest digit in digits[:i] that is smaller than digits[i]
+	// find the first digit in digits[:i] that is smaller than or equal to digits[i]
 	// larger than digits[i+1]
 	x, smallest := digits[i+1], i
 	for j := 0; j < i; j++ {
 		if digits[j] > x && digits[j] <= digits[smallest] {
+			// we are in reverse order
+			// just find the first digit
 			smallest = j
+			break
 		}
 	}
 	// swap i with curMaxIdx
 	digits[i+1], digits[smallest] = digits[smallest], digits[i+1]
-	fmt.Printf("swaped digs: %v\n", digits)
-	for l, r := smallest, i; l < r; l, r = l+1, r-1 {
+	// fmt.Printf("swaped digs: %v\n", digits)
+	for l, r := 0, i; l < r; l, r = l+1, r-1 {
 		digits[l], digits[r] = digits[r], digits[l]
 	}
-	fmt.Printf("input %d final digits: %v\n", num, digits)
+	// fmt.Printf("input %d final digits: %v\n", num, digits)
 	var res int64
 	// res = (int64)(digits[0])
 	k := 1
@@ -49,7 +51,7 @@ func nextGreaterElement(num int) int {
 		res += (int64)(digits[p] * k)
 		k *= 10
 	}
-	fmt.Printf("res is %d\n", res)
+	// fmt.Printf("res is %d\n", res)
 	if res > math.MaxInt32 {
 		return -1
 	}
