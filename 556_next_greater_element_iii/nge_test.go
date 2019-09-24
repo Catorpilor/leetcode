@@ -11,10 +11,11 @@ func TestNextGreaterElement(t *testing.T) {
 		{"zero", 0, -1},
 		{"one digit", 1, -1},
 		{"descresing", 321, -1},
-		{"increasing", 132, 231},
+		{"increasing", 132, 213},
 		{"testcase1", 12, 21},
 		{"testcase2", 21, -1},
 		{"testcase3", 139, 193},
+		{"failed1", 12222333, 12223233},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
