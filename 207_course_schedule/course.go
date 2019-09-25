@@ -27,6 +27,7 @@ func dfsCycle(g map[int][]int, visited, onpath *[]bool, node int) bool {
 	if (*visited)[node] {
 		return false
 	}
+
 	// mark node as visited
 	(*visited)[node], (*onpath)[node] = true, true
 
@@ -73,4 +74,41 @@ func CanFinish2(numCourses int, pres [][]int) bool {
 		}
 	}
 	return true
+}
+
+func toplogicalSort(numCourses int, pres [][]int) bool {
+	n := len(pres)
+	if n == 0 {
+		return true
+	}
+	g := make(map[int][]int, numCourses)
+	for _, v := range pres {
+		g[v[1]] = append(g[v[1]], v[0])
+	}
+	// count indegress of each nodes
+	degs := make([]int, numCourses)
+	for i := 0; i < numCourses; i++ {
+		for _, v := range g[i] {
+			degs[v]++
+		}
+	}
+	res := make([]int, 0, numCourses)
+	// like enqueue
+	// append all degs[i] = 0 to res
+	for i := range degs {
+		if degs[i] == 0 {
+			res = append(res, i)
+		}
+	}
+	// iterator the indegree = 0's node "remove" them from graph
+	for i := 0; i < len(res); i++ {
+		for _, v := range g[res[i]] {
+			degs[v]--
+			if degs[v] == 0 {
+				res = append(res, v)
+			}
+		}
+	}
+	// check if it's an acyclic dag
+	return len(res) == numCourses
 }
