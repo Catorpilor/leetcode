@@ -12,7 +12,7 @@ func TestAlienOrder(t *testing.T) {
 		{"test1", []string{"wrt", "wrf", "er", "ett", "rftt"}, "wertf"},
 		{"test2", []string{"z", "x"}, "zx"},
 		{"test3", []string{"z", "x", "z"}, ""},
-		{"failed1", []string{"za", "zb", "ca", "cb"}, "abzc"},
+		{"failed1", []string{"za", "zb", "ca", "cb"}, "zacb"},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
