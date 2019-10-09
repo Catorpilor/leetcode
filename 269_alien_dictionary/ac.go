@@ -28,14 +28,16 @@ func alienOrder(words []string) string {
 				if nodes == nil {
 					nodes = make(map[byte]bool)
 				}
-				nodes[nxtW[j]] = true
-				g[curW[j]] = nodes
-				indegress[nxtW[j]]++
+				if nodes[nxtW[j]] == false {
+					nodes[nxtW[j]] = true
+					g[curW[j]] = nodes
+					indegress[nxtW[j]]++
+				}
 				break
 			}
 		}
 	}
-	fmt.Printf("graph is %v\n", g)
+	fmt.Printf("graph is %v\n, indegress is %v\n", g, indegress)
 	for k := range indegress {
 		if indegress[k] == 0 {
 			ans += string(k)
@@ -44,6 +46,7 @@ func alienOrder(words []string) string {
 	fmt.Printf("current ans: %s\n", ans)
 	for i := 0; i < len(ans); i++ {
 		nodes := g[ans[i]]
+		fmt.Printf("current nodes is: %v\n", nodes)
 		for k := range nodes {
 			indegress[k]--
 			if indegress[k] == 0 {
