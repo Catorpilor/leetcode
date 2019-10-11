@@ -159,3 +159,16 @@ func PostorderTraversal(root *TreeNode) []int {
 	}
 	return ret
 }
+
+func IsEqual(l, r *TreeNode) bool {
+	if (l == nil && r != nil) || (l != nil && r == nil) {
+		return false
+	}
+	if l == nil && r == nil {
+		return true
+	}
+	if l.Val != r.Val {
+		return false
+	}
+	return IsEqual(l.Left, r.Left) && IsEqual(l.Right, r.Right)
+}

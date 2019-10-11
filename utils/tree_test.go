@@ -100,3 +100,26 @@ func TestPostorderTraversal(t *testing.T) {
 		})
 	}
 }
+
+func TestIsEqual(t *testing.T) {
+	st := []struct {
+		name string
+		l, r *TreeNode
+		exp  bool
+	}{
+		{"both empty", nil, nil, true},
+		{"one is empty", ConstructTree([]int{1}), nil, false},
+		{"equal", ConstructTree([]int{4, 1, 7, 3, 2}), ConstructTree([]int{4, 1, 7, 3, 2}), true},
+		{"single node", ConstructTree([]int{4}), ConstructTree([]int{4}), true},
+		{"testcase1", ConstructTree([]int{4, 1, 7, 3, 2}), ConstructTree([]int{4, 1, 7, 3, 2, 5}), false},
+	}
+	for _, tt := range st {
+		t.Run(tt.name, func(t *testing.T) {
+			out := IsEqual(tt.l, tt.r)
+			if out != tt.exp {
+				t.Fatalf("with input l:%v and r:%v wanted %t but got %t", InorderTraversal(tt.l), InorderTraversal(tt.r), tt.exp, out)
+			}
+		})
+		t.Log("pass")
+	}
+}
