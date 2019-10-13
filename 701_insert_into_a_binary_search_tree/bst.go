@@ -13,3 +13,28 @@ func insertTree(root *utils.TreeNode, val int) *utils.TreeNode {
     }
     return root
 }
+
+func insertTreeIter(root *utils.TreeNode, val int) *utils.TreeNode {
+    cur := root
+    if cur == nil {
+        return &utils.TreeNode{Val: val}
+    }
+    for {
+        if val > cur.Val {
+            if cur.Right == nil {
+                cur.Right = &utils.TreeNode{Val: val}
+                break
+            } else {
+                cur = cur.Right
+            }
+        } else {
+            if cur.Left == nil {
+                cur.Left = &utils.TreeNode{Val: val}
+                break
+            } else {
+                cur = cur.Left
+            }
+        }
+    }
+    return root
+}
