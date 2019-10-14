@@ -22,6 +22,10 @@ func (l *ListNode) String() string {
 	return buf.String()
 }
 
+func IsEqualList(h1, h2 *ListNode) bool {
+	return h1.String() == h2.String()
+}
+
 func ConstructFromSlice(s []int) *ListNode {
 	var head, prev *ListNode
 	for i, c := range s {
