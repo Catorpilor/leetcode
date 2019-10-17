@@ -13,6 +13,7 @@ func mergeKLists(lists []*utils.ListNode) *utils.ListNode {
 }
 
 func bruteForce(lists []*utils.ListNode) *utils.ListNode {
+    // Space O(N) time O(NlgN)
     nodes := make([]int, 0, 10000)
     for _, l := range lists {
         for l != nil {
