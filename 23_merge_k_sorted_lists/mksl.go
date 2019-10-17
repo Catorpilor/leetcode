@@ -4,7 +4,7 @@ import (
     "math"
     "sort"
 
-    "github.com/catorpilor/leetcode/utils"
+    "github.com/catorpilor/LeetCode/utils"
 )
 
 func mergeKLists(lists []*utils.ListNode) *utils.ListNode {
