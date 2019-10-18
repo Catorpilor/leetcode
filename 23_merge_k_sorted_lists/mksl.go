@@ -1,6 +1,7 @@
 package mksl
 
 import (
+    "container/heap"
     "math"
     "sort"
 
@@ -53,4 +54,36 @@ func compare(lists []*utils.ListNode) *utils.ListNode {
         pointers[idx] = pointers[idx].Next
     }
     return utils.ConstructFromSlice(sortedNodes)
+}
+
+func priorityQueue(lists []*utils.ListNode) *utils.ListNode {
+    // Time O(Nlgk) k is the number of linked lists
+    // the comparision will reduced to O(lgk) for every pop and push to prioirty queue
+    // get the node from pq costs O(1)
+    // there are N nodes
+
+    // Space O(N) creating a new linked lists
+    pq := &utils.ListNodePriorityQueue{}
+    for _, head := range lists {
+        if head != nil {
+            // for example [[]]
+            heap.Push(pq, head)
+        }
+    }
+    if pq.Len() < 1 {
+        return nil
+    }
+    res := heap.Pop(pq).(*utils.ListNode)
+    if res.Next != nil {
+        heap.Push(pq, res.Next)
+    }
+    tail := res
+    for pq.Len() > 0 {
+        tail.Next = heap.Pop(pq).(*utils.ListNode)
+        tail = tail.Next
+        if tail.Next != nil {
+            heap.Push(pq, tail.Next)
+        }
+    }
+    return res
 }
