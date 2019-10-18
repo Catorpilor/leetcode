@@ -12,12 +12,13 @@ func (pq ListNodePriorityQueue) Swap(i, j int) {
     pq[i], pq[j] = pq[j], pq[i]
 }
 
-func (pq *ListNodePriorityQueue) Push(x *ListNode) {
-    n := len(*pq)
-    *pq = append(*pq, x)
+func (pq *ListNodePriorityQueue) Push(x interface{}) {
+    // n := len(*pq)
+    item := x.(*ListNode)
+    *pq = append(*pq, item)
 }
 
-func (pq *ListNodePriorityQueue) Pop() *ListNode {
+func (pq *ListNodePriorityQueue) Pop() interface{} {
     old := *pq
     n := len(old)
     item := old[n-1]
