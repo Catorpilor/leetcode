@@ -2,6 +2,7 @@ package mksl
 
 import (
     "container/heap"
+    "fmt"
     "math"
     "sort"
 
@@ -86,4 +87,45 @@ func priorityQueue(lists []*utils.ListNode) *utils.ListNode {
         }
     }
     return res
+}
+
+func divideAndConquer(lists []*utils.ListNode) *utils.ListNode {
+    // Time complexity O(Nlogk) Space complexity O(1)
+    n := len(lists)
+    if n < 1 {
+        return nil
+    }
+    interval := 1
+    for interval < n {
+        fmt.Printf("interval: %d\n", interval)
+        for i := 0; i < n-interval; i += interval * 2 {
+            fmt.Printf("current n: %d , i: %d, interval: %d, i+interval: %d\n", n, i, interval, i+interval)
+            lists[i] = merge2Lists(lists[i], lists[i+interval])
+        }
+        interval *= 2
+    }
+    return lists[0]
+}
+
+func merge2Lists(l1, l2 *utils.ListNode) *utils.ListNode {
+    head := &utils.ListNode{Val: 0}
+    pointer := head
+    for l1 != nil && l2 != nil {
+        if l1.Val <= l2.Val {
+            pointer.Next = l1
+            l1 = l1.Next
+        } else {
+            pointer.Next = l2
+            l2 = l2.Next
+            // l2 = l1
+            // l1 = pointer.Next.Next
+        }
+        pointer = pointer.Next
+    }
+    if l1 != nil {
+        pointer.Next = l1
+    } else {
+        pointer.Next = l2
+    }
+    return head.Next
 }
