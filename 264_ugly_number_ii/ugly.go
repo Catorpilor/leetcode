@@ -1,6 +1,10 @@
 package ugly
 
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"container/heap"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func NthUglyNumber(n int) int {
 	// time exceeds
@@ -52,4 +56,33 @@ func NthUglyNumber2(n int) int {
 		}
 	}
 	return dp[n-1]
+}
+
+func NthUglyNumber3(n int) int {
+	if n < 1 {
+		return 0
+	}
+	return useHeap(n)
+}
+
+func useHeap(n int) int {
+	res := make([]int, 1690)
+	pq := &utils.Int64PriorityQueue{}
+	seen := make(map[int64]bool)
+	heap.Push(pq, int64(1))
+	seen[int64(1)] = true
+	primes := []int64{2, 3, 5}
+	var cur, gen int64
+	for i := 0; i < 1690; i++ {
+		cur = heap.Pop(pq).(int64)
+		res[i] = int(cur)
+		for _, p := range primes {
+			gen = p * cur
+			if !seen[gen] {
+				seen[gen] = true
+				heap.Push(pq, gen)
+			}
+		}
+	}
+	return res[n-1]
 }
