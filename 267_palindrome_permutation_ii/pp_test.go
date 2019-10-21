@@ -17,6 +17,7 @@ func TestGeneratePalindromes(t *testing.T) {
 		{"test1", "abc", []string{}},
 		{"test2", "aabb", []string{"abba", "baab"}},
 		{"test3", "aba", []string{"aba"}},
+		{"failed", "aaa", []string{"aaa"}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
