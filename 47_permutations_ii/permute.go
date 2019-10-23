@@ -1,7 +1,5 @@
 package permute
 
-import "fmt"
-
 func permuteUnique(nums []int) [][]int {
 	var res [][]int
 	if nums == nil || len(nums) == 0 {
@@ -18,8 +16,8 @@ func permuteUnique(nums []int) [][]int {
 }
 
 func permute(res *[][]int, hset map[int]int, r []int, n int) {
-	if n <= 0 {
-		fmt.Printf("find one, r is : %v, res: %v\n", r, *res)
+	if n == 0 {
+		// fmt.Printf("find one, r is : %v, res: %v, current n: %d\n", r, *res, n)
 		tmp := make([]int, len(r))
 		copy(tmp, r)
 		*res = append(*res, tmp)
