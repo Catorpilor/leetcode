@@ -1,6 +1,8 @@
 package permute
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestPermuteUnique(t *testing.T) {
 	st := []struct {
