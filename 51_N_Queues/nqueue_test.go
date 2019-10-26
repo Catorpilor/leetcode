@@ -13,7 +13,7 @@ func TestSolveNQueues(t *testing.T) {
 	}{
 		{"n=1", 1, [][]string{[]string{"Q"}}},
 		{"n=2", 2, [][]string{}},
-		{"n=3", 3, [][]string{[]string{"Q..", "..Q", ".Q."}, []string{"..Q", "Q..", ".Q."}}},
+		{"n=4", 4, [][]string{[]string{".Q..", "...Q", "Q...", "..Q."}, []string{"..Q.", "Q...", "...Q", ".Q.."}}},
 	}
 
 	for _, tt := range st {
