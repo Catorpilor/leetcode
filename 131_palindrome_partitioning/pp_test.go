@@ -14,7 +14,7 @@ func TestPartition(t *testing.T) {
 		{"empty", "", [][]string{}},
 		{"single letter", "a", [][]string{[]string{"a"}}},
 		{"3 letters identical", "aaa", [][]string{[]string{"a", "a", "a"}, []string{"a", "aa"}, []string{"aa", "a"}, []string{"aaa"}}},
-		{"unique string", "abc", [][]string{[]string{"a"}, []string{"b"}, []string{"c"}}},
+		{"unique string", "abc", [][]string{[]string{"a", "b", "c"}}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

@@ -4,29 +4,25 @@ import "fmt"
 
 func partition(s string) [][]string {
 	var res [][]string
-	n := len(s)
-	for i := 0; i < n; i++ {
-		permute(&res, []string{}, i, i, n, s)
-	}
+	permute(&res, []string{}, 0, s)
 	return res
 }
 
-func permute(res *[][]string, bid []string, start, cur, n int, s string) {
-	fmt.Printf("bid: %v, start: %d, cur: %d\n", bid, start, cur)
-	if cur == n {
+func permute(res *[][]string, bid []string, cur int, s string) {
+	fmt.Printf("bid: %v, cur: %d\n", bid, cur)
+	if cur == len(s) {
 		tmp := make([]string, len(bid))
 		copy(tmp, bid)
 		*res = append(*res, tmp)
-		return
-	}
-	// a 0, 1
-	// ab
-	for i := cur; i < n; i++ {
-		if isPalindrome(s[start : i+1]) {
-			fmt.Printf("bid: %v, s[start:i+1] : %s, i: %d\n", bid, s[start:i+1], i)
-			bid = append(bid, s[start:i+1])
+	} else {
+		for i := cur; i < len(s); i++ {
+			if isPalindrome(s[cur : i+1]) {
+				bl := len(bid)
+				bid = append(bid, s[cur:i+1])
+				permute(res, bid, i+1, s)
+				bid = bid[:bl]
+			}
 		}
-		permute(res, bid, start, i+1, n, s)
 	}
 }
 
