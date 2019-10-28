@@ -16,7 +16,7 @@ func permute(res *[][]string, bid []string, cur int, s string) {
 		*res = append(*res, tmp)
 	} else {
 		for i := cur; i < len(s); i++ {
-			if isPalindrome(s[cur : i+1]) {
+			if isPalindromeWithBoundary(s, cur, i) {
 				bl := len(bid)
 				bid = append(bid, s[cur:i+1])
 				permute(res, bid, i+1, s)
@@ -31,6 +31,16 @@ func isPalindrome(s string) bool {
 		if s[i] != s[j] {
 			return false
 		}
+	}
+	return true
+}
+func isPalindromeWithBoundary(s string, l, r int) bool {
+	for l < r {
+		if s[l] != s[r] {
+			return false
+		}
+		l++
+		r--
 	}
 	return true
 }
