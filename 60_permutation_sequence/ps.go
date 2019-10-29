@@ -15,6 +15,10 @@ func getPermutation(n, k int) string {
 	}
 	res := make([]string, 0, k)
 	genRes(&res, nums)
+	for j := 1; j < k; j++ {
+		nextPermutation(nums)
+		genRes(&res, nums)
+	}
 
 	// var sb strings.Builder
 	// for i := 0; i < n; i++ {
@@ -31,15 +35,26 @@ func getPermutation(n, k int) string {
 // src are monotonically increasing "123456...n"
 
 func nextPermutation(nums []int) {
-	i := len(nums) - 2
-	for i >= 0 && nums[i+1] > nums[i] {
+	i, j := len(nums)-2, len(nums)-1
+
+	for i >= 0 && nums[i+1] < nums[i] {
 		i--
 	}
 	if i >= 0 {
-		j := len(nums) - 1
 		for j >= 0 && nums[j] < nums[i] {
 			j--
 		}
+	}
+	// swap nums[i], nums[j]
+	nums[i], nums[j] = nums[j], nums[i]
+	reverse(nums, i+1, len(nums)-1)
+}
+
+func reverse(nums []int, left, right int) {
+	for left < right {
+		nums[left], nums[right] = nums[right], nums[left]
+		left++
+		right--
 	}
 }
 
