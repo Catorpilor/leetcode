@@ -31,6 +31,34 @@ func getPermutation(n, k int) string {
 	return res[k-1]
 }
 
+// based on the top voted discussion
+// time complexity O(N) Space complexity O(N)
+func getKthPermutation(n, k int) string {
+	if n < 1 {
+		return ""
+	}
+	factorial := make([]int, n+1)
+	factorial[0] = 1
+	factor := 1
+	for i := 1; i < n+1; i++ {
+		factor *= i
+		factorial[i] = factor
+	}
+	nums := make([]int, n)
+	for i := 0; i < n; i++ {
+		nums[i] = i + 1
+	}
+	k--
+	var st strings.Builder
+	for i := 1; i <= n; i++ {
+		idx := k / factorial[n-i]
+		st.WriteString(strconv.Itoa(nums[idx]))
+		nums = append(nums[:idx], nums[idx+1:]...)
+		k -= idx * factorial[n-i]
+	}
+	return st.String()
+}
+
 // just call nextPermutation k times
 // src are monotonically increasing "123456...n"
 
