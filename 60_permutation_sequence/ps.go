@@ -33,6 +33,19 @@ func getPermutation(n, k int) string {
 
 // based on the top voted discussion
 // time complexity O(N) Space complexity O(N)
+// the permutations are in order
+// for example n=4 [1,2,3,4] k=14
+// the permutation sequences are
+// 1 + permutation_sequences(2,3,4)  total # is 6 = (n-1)!
+// 2 + permutation_sequences(1,3,4)  total # is 6 = (n-1)!
+// 3 + permutation_sequences(1,2,4)  total # is 6 = (n-1)!
+// 4 + permutation_sequences(1,2,3)  total # is 6 = (n-1)!
+// we should know that the 14th sequence should be in the 3rd set
+// to get that  use this formular idx = k/(n-1)! = 13/6 = 2, so the first number is 3
+// pick 3 out of [1,2,3,4] so the array becomes [1,2,4]
+// then we update k, k = k - idx*(n-1)! # of skipped sequences
+// then we continue to find the next bit.
+
 func getKthPermutation(n, k int) string {
 	if n < 1 {
 		return ""
