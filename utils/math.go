@@ -1,5 +1,9 @@
 package utils
 
+import (
+	"math"
+)
+
 func Max(a, b int) int {
 	if a > b {
 		return a
@@ -38,4 +42,10 @@ func Abs(a int) int {
 		return 0
 	}
 	return a
+}
+
+func Pow(base, exp int) int{
+	fbase, fexp := float64(base), float64(exp)
+	res := math.Pow(fbase, fexp)
+	return int(res)
 }
