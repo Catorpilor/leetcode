@@ -1,5 +1,7 @@
 package unique
 
+import "math"
+
 func countUniqueNumbers(n int) int {
 	return dp(n)
 }
@@ -26,4 +28,32 @@ func dp(n int) int {
 		n--
 	}
 	return res
+}
+
+func backtracking(n int) int {
+	if n > 10 {
+		return backtracking(10)
+	}
+	fmax := math.Pow10(n)
+	used := make([]bool, 10)
+	return permute(float64(0), fmax, &used)
+}
+
+func permute(cur, fmax float64, used *[]bool) int {
+	if cur >= fmax {
+		return 0
+	}
+	count := 1
+	for i := 0; i < 10; i++ {
+		if cur == float64(0) && i == 0 {
+			// skip the leading 0
+			continue
+		}
+		if !((*used)[i]) {
+			(*used)[i] = true
+			count += permute(cur*10+float64(i), fmax, used)
+			(*used)[i] = false
+		}
+	}
+	return count
 }
