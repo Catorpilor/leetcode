@@ -36,3 +36,36 @@ func permute(res *[]string, bid, s string, pos, dots int) {
 		permute(res, tmp, s, pos+i, dots+1)
 	}
 }
+
+func iterator(s string) []string {
+	var res []string
+	n := len(s)
+	if n < 4 {
+		return res
+	}
+	for a := 1; a < 4; a++ {
+		for b := 1; b < 4; b++ {
+			for c := 1; c < 4; c++ {
+				for d := 1; d < 4; d++ {
+					if a+b+c+d == n {
+						partA := s[:a]
+						partB := s[a : a+b]
+						partC := s[b+a : c+a+b]
+						partD := s[c+a+b:]
+						ai, _ := strconv.Atoi(partA)
+						bi, _ := strconv.Atoi(partB)
+						ci, _ := strconv.Atoi(partC)
+						di, _ := strconv.Atoi(partD)
+						if ai <= 255 && bi <= 255 && ci <= 255 && di <= 255 {
+							if len(partA) > 0 && partA[0] == '0' {
+								continue
+							}
+							res = append(res, partA+"."+partB+"."+partC+"."+partD)
+						}
+					}
+				}
+			}
+		}
+	}
+	return res
+}
