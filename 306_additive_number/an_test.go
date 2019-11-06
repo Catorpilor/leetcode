@@ -12,6 +12,7 @@ func TestIsAdditive(t *testing.T) {
 		{"invalid string", "12", false},
 		{"testcase1", "112358", true},
 		{"testcase2", "199100199", true},
+		{"failed1", "12122436", true},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
