@@ -7,7 +7,12 @@ func TestIsAdditive(t *testing.T) {
 		name string
 		num  string
 		exp  bool
-	}{}
+	}{
+		{"empty", "", false},
+		{"invalid string", "12", false},
+		{"testcase1", "112358", true},
+		{"testcase2", "199100199", true},
+	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
 			out := isAdditive(tt.num)
