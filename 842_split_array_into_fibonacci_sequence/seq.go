@@ -2,6 +2,7 @@ package seq
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 
 	"github.com/catorpilor/LeetCode/utils"
@@ -33,14 +34,17 @@ func isValid(i, j, n int, s string) (res []int, f bool) {
 	if s[i] == '0' && j > 1 {
 		return
 	}
-	x1, _ := strconv.Atoi(s[:i])
-	x2, _ := strconv.Atoi(s[i : i+j])
+	x1, _ := strconv.ParseInt(s[:i], 10, 64)
+	x2, _ := strconv.ParseInt(s[i:i+j], 10, 64)
 	tmp1, tmp2 := x1, x2
 	var sum string
 	for start := i + j; start != n; start += len(sum) {
 		tmp2 += tmp1
 		tmp1 = tmp2 - tmp1
-		sum = strconv.FormatInt(int64(tmp2), 10)
+		if tmp1 > math.MaxInt32 || tmp2 > math.MaxInt32 {
+			return
+		}
+		sum = strconv.FormatInt(tmp2, 10)
 		tn := start + len(sum)
 		if tn > n {
 			tn = n
@@ -48,12 +52,12 @@ func isValid(i, j, n int, s string) (res []int, f bool) {
 		if sum != s[start:tn] {
 			return
 		}
-		fmt.Printf("x1:%d, x2:%d,sum:%s,res:%v\n", x1, x2, sum, res)
+		fmt.Printf("x1:%d, x2:%d,sum:%s,res:%v, start: %d, tn: %d\n", x1, x2, sum, res, start, tn)
 		// res = append(res, x1, x2, tmp2)
 		if len(res) == 0 {
-			res = append(res, x1, x2, tmp2)
+			res = append(res, int(x1), int(x2), int(tmp2))
 		} else {
-			res = append(res, tmp2)
+			res = append(res, int(tmp2))
 		}
 		// if tn == n {
 		// 	res = append(res, tmp2)
