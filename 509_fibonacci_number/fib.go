@@ -19,6 +19,8 @@ func iterTopDown(n int) int {
 }
 
 func matrix(n int) int {
+	// time complexity O(lgN)
+	// space complexity O(lgN)
 	if n <= 1 {
 		return n
 	}
