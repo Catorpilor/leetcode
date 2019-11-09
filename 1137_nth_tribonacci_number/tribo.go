@@ -14,3 +14,21 @@ func tribonacci(n int) int {
 	}
 	return x2
 }
+
+// time complexity O(38) = O(1)
+// space complexity O(38)
+func precompute(res *[]int, n int) {
+	for i := 3; i < n; i++ {
+		(*res)[i] = (*res)[i-2] + (*res)[i-3] + (*res)[i-1]
+	}
+}
+
+func memorization(n int) int {
+	if n <= 1 {
+		return n
+	}
+	res := make([]int, 38)
+	res[1], res[2] = 1, 1
+	precompute(&res, 38)
+	return res[n]
+}
