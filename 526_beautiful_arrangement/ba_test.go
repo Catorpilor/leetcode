@@ -10,7 +10,7 @@ func TestBeautyArrangement(t *testing.T) {
 	}{
 		{"N=1", 1, 1},
 		{"N=2", 2, 2},
-		{"N=3", 3, 1},
+		{"N=3", 3, 3},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
