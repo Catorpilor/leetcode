@@ -91,3 +91,30 @@ func bfs(s string, set map[string]bool, n int) bool {
 	}
 	return false
 }
+
+func wordBreak3(s string, words []string) bool {
+	n := len(s)
+	nw := len(words)
+	set := make(map[string]bool, nw)
+	for _, word := range words {
+		set[word] = true
+	}
+
+	return dp(s, set, n)
+}
+
+func dp(s string, set map[string]bool, n int) bool {
+	dp := make([]bool, n+1)
+	dp[0] = true
+	// i represents the length of substring s' starting from beginning.
+	// j refers to the index partition the current substring s' into smaller substrings s1'[0:j] and s2'[j:i]
+	for i := 1; i <= n; i++ {
+		for j := 0; j < i; j++ {
+			if dp[j] && set[s[j:i]] {
+				dp[i] = true
+				break
+			}
+		}
+	}
+	return dp[n]
+}
