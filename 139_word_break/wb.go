@@ -1,5 +1,7 @@
 package wb
 
+import "github.com/catorpilor/LeetCode/utils"
+
 func wordBreak(s string, words []string) bool {
 	n := len(s)
 	nw := len(words)
@@ -52,5 +54,40 @@ func dfs(cache map[string]bool, s string, idx, n int, set map[int]bool) bool {
 		}
 	}
 	set[idx] = true
+	return false
+}
+
+func wordBreak2(s string, words []string) bool {
+	n := len(s)
+	nw := len(words)
+	if n == 0 || nw == 0 {
+		return false
+	}
+	set := make(map[string]bool, len(words))
+	for _, word := range words {
+		set[word] = true
+	}
+
+	return bfs(s, set, n)
+}
+
+func bfs(s string, set map[string]bool, n int) bool {
+	queue := utils.NewQueue()
+	queue.Enroll(0)
+	visited := make([]bool, n)
+	for !queue.IsEmpty() {
+		start := queue.Pull().(int)
+		if !visited[start] {
+			for end := start + 1; end <= n; end++ {
+				if set[s[start:end]] {
+					queue.Enroll(end)
+					if end == n {
+						return true
+					}
+				}
+			}
+		}
+		visited[start] = true
+	}
 	return false
 }
