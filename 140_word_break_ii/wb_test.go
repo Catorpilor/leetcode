@@ -16,7 +16,7 @@ func TestWordBreak(t *testing.T) {
         {"testcase2", "applepenapple", []string{"apple", "pen"}, []string{"apple pen apple"}},
         {"testcase3", "catsandog", []string{"cats", "cat", "sand", "dog", "and"}, []string{}},
         {"failed1", "cars", []string{"car", "ca", "rs"}, []string{"ca rs"}},
-        {"failed2", "bb", []string{"a", "b", "bb", "bbbb"}, []string{"b b"}},
+        {"failed2", "bb", []string{"a", "b", "bb", "bbbb"}, []string{"b b", "bb"}},
         // tle
         {"tle", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab",
             []string{"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"}, []string{}},
