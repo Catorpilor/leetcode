@@ -71,6 +71,8 @@ func TestLongestPrefixOf(t *testing.T) {
 	}{
 		{"query is helloer", "helloer", "hello"},
 		{"query is hello", "hello", "hello"},
+		{"query is his", "his", "hi"},
+		{"query is newser", "newser", "news"},
 		{"not exists", "jimmy", ""},
 	}
 	setup()
