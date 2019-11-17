@@ -1,7 +1,5 @@
 package utils
 
-import "fmt"
-
 // TSTNode represents the ternary search trie node
 type TSTNode struct {
 	value               interface{}
@@ -47,7 +45,6 @@ func (t *TernarySearchTrie) Contains(key string) bool {
 }
 
 func (t *TernarySearchTrie) Get(key string) interface{} {
-	fmt.Printf("t: %v\n", t)
 	x := get(t.root, key, 0)
 	if x == nil {
 		return nil
