@@ -29,15 +29,48 @@ func put(node *TSTNode, key string, val interface{}, d int) *TSTNode {
 		}
 	}
 	if c < node.cb {
+		//fmt.Printf("node.cb: %c, and c: %c,go to left\n", node.cb, c)
 		node.left = put(node.left, key, val, d)
 	} else if c > node.cb {
+		//fmt.Printf("node.cb: %c, and c: %c,go to right\n", node.cb, c)
 		node.right = put(node.right, key, val, d)
 	} else if d < len(key)-1 {
+		//fmt.Printf("node.cb: %c, and c: %c,go to middle\n", node.cb, c)
 		node.middle = put(node.middle, key, val, d+1)
 	} else {
+		//fmt.Printf("node.c: %c, d=%d, len(key):%d\n", node.cb, d, len(key))
 		node.value = val
 	}
 	return node
+}
+
+func (t *TernarySearchTrie) LongestPrefixOf(query string) string {
+	length := search(t.root, query, 0, 0)
+	return query[:length]
+}
+
+func search(node *TSTNode, query string, d, length int) int {
+	if node == nil {
+		return length
+	}
+	if node.value != nil {
+		length = d + 1 // d+1 means the actually length
+	}
+	if d == len(query) {
+		return length
+	}
+	c := query[d]
+	if c < node.cb {
+		// fmt.Printf("node.cb: %c, and c: %c,go to left\n", node.cb, c)
+		return search(node.left, query, d, length)
+	} else if c > node.cb {
+		// fmt.Printf("node.cb: %c, and c: %c,go to right\n", node.cb, c)
+		return search(node.right, query, d, length)
+	} else if d < len(query) {
+		// fmt.Printf("node.cb: %c, and c: %c,go to middle with d:%d, and query:%d\n", node.cb, c, d, len(query))
+		return search(node.middle, query, d+1, length)
+	}
+	return length
 }
 
 func (t *TernarySearchTrie) Contains(key string) bool {

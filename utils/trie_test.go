@@ -62,3 +62,24 @@ func TestContains(t *testing.T) {
 		})
 	}
 }
+
+func TestLongestPrefixOf(t *testing.T) {
+	st := []struct {
+		name  string
+		query string
+		exp   string
+	}{
+		{"query is helloer", "helloer", "hello"},
+		{"query is hello", "hello", "hello"},
+		{"not exists", "jimmy", ""},
+	}
+	setup()
+	for _, tt := range st {
+		t.Run(tt.name, func(t *testing.T) {
+			out := tst.LongestPrefixOf(tt.query)
+			if out != tt.exp {
+				t.Fatalf("with query: %s waned %s but got %s", tt.query, tt.exp, out)
+			}
+		})
+	}
+}
