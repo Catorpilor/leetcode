@@ -13,7 +13,7 @@ type TernarySearchTrie struct {
 
 func NewTST() *TernarySearchTrie {
 	return &TernarySearchTrie{
-		Root: &TSTNode{},
+		//	Root: &TSTNode{}, not a R-way trie, root is not empty
 	}
 }
 
