@@ -2,9 +2,9 @@ package utils
 
 // TSTNode represents the ternary search trie node
 type TSTNode struct {
-	value               interface{}
-	cb                  byte
-	left, middle, right *TSTNode
+	Value               interface{}
+	Cb                  byte
+	Left, Middle, Right *TSTNode
 }
 
 type TernarySearchTrie struct {
@@ -25,21 +25,21 @@ func put(node *TSTNode, key string, val interface{}, d int) *TSTNode {
 	c := key[d]
 	if node == nil {
 		node = &TSTNode{
-			cb: c,
+			Cb: c,
 		}
 	}
-	if c < node.cb {
-		//fmt.Printf("node.cb: %c, and c: %c,go to left\n", node.cb, c)
-		node.left = put(node.left, key, val, d)
-	} else if c > node.cb {
-		//fmt.Printf("node.cb: %c, and c: %c,go to right\n", node.cb, c)
-		node.right = put(node.right, key, val, d)
+	if c < node.Cb {
+		//fmt.Printf("node.Cb: %c, and c: %c,go to left\n", node.Cb, c)
+		node.Left = put(node.Left, key, val, d)
+	} else if c > node.Cb {
+		//fmt.Printf("node.Cb: %c, and c: %c,go to right\n", node.Cb, c)
+		node.Right = put(node.Right, key, val, d)
 	} else if d < len(key)-1 {
-		//fmt.Printf("node.cb: %c, and c: %c,go to middle\n", node.cb, c)
-		node.middle = put(node.middle, key, val, d+1)
+		//fmt.Printf("node.Cb: %c, and c: %c,go to Middle\n", node.Cb, c)
+		node.Middle = put(node.Middle, key, val, d+1)
 	} else {
-		//fmt.Printf("node.c: %c, d=%d, len(key):%d\n", node.cb, d, len(key))
-		node.value = val
+		//fmt.Printf("node.c: %c, d=%d, len(key):%d\n", node.Cb, d, len(key))
+		node.Value = val
 	}
 	return node
 }
@@ -53,22 +53,22 @@ func search(node *TSTNode, query string, d, length int) int {
 	if node == nil {
 		return length
 	}
-	if node.value != nil {
+	if node.Value != nil {
 		length = d + 1 // d+1 means the actually length
 	}
 	if d == len(query) {
 		return length
 	}
 	c := query[d]
-	if c < node.cb {
-		// fmt.Printf("node.cb: %c, and c: %c,go to left\n", node.cb, c)
-		return search(node.left, query, d, length)
-	} else if c > node.cb {
-		// fmt.Printf("node.cb: %c, and c: %c,go to right\n", node.cb, c)
-		return search(node.right, query, d, length)
+	if c < node.Cb {
+		// fmt.Printf("node.Cb: %c, and c: %c,go to Left\n", node.Cb, c)
+		return search(node.Left, query, d, length)
+	} else if c > node.Cb {
+		// fmt.Printf("node.Cb: %c, and c: %c,go to Right\n", node.Cb, c)
+		return search(node.Right, query, d, length)
 	} else if d < len(query) {
-		// fmt.Printf("node.cb: %c, and c: %c,go to middle with d:%d, and query:%d\n", node.cb, c, d, len(query))
-		return search(node.middle, query, d+1, length)
+		// fmt.Printf("node.Cb: %c, and c: %c,go to Middle with d:%d, and query:%d\n", node.Cb, c, d, len(query))
+		return search(node.Middle, query, d+1, length)
 	}
 	return length
 }
@@ -82,7 +82,7 @@ func (t *TernarySearchTrie) Get(key string) interface{} {
 	if x == nil {
 		return nil
 	}
-	return x.value
+	return x.Value
 }
 
 func get(node *TSTNode, key string, d int) *TSTNode {
@@ -90,12 +90,12 @@ func get(node *TSTNode, key string, d int) *TSTNode {
 		return nil
 	}
 	c := key[d]
-	if c < node.cb {
-		return get(node.left, key, d)
-	} else if c > node.cb {
-		return get(node.right, key, d)
+	if c < node.Cb {
+		return get(node.Left, key, d)
+	} else if c > node.Cb {
+		return get(node.Right, key, d)
 	} else if d < len(key)-1 {
-		return get(node.middle, key, d+1)
+		return get(node.Middle, key, d+1)
 	} else {
 		return node
 	}
