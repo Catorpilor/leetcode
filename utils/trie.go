@@ -8,17 +8,17 @@ type TSTNode struct {
 }
 
 type TernarySearchTrie struct {
-	root *TSTNode
+	Root *TSTNode
 }
 
 func NewTST() *TernarySearchTrie {
 	return &TernarySearchTrie{
-		root: &TSTNode{},
+		Root: &TSTNode{},
 	}
 }
 
 func (t *TernarySearchTrie) Put(key string, val interface{}) {
-	t.root = put(t.root, key, val, 0)
+	t.Root = put(t.Root, key, val, 0)
 }
 
 func put(node *TSTNode, key string, val interface{}, d int) *TSTNode {
@@ -45,7 +45,7 @@ func put(node *TSTNode, key string, val interface{}, d int) *TSTNode {
 }
 
 func (t *TernarySearchTrie) LongestPrefixOf(query string) string {
-	length := search(t.root, query, 0, 0)
+	length := search(t.Root, query, 0, 0)
 	return query[:length]
 }
 
@@ -78,7 +78,7 @@ func (t *TernarySearchTrie) Contains(key string) bool {
 }
 
 func (t *TernarySearchTrie) Get(key string) interface{} {
-	x := get(t.root, key, 0)
+	x := get(t.Root, key, 0)
 	if x == nil {
 		return nil
 	}
