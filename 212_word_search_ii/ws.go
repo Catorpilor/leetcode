@@ -53,7 +53,7 @@ func helper(res *[]string, s string, board [][]byte, x, y, n, m, idx int) bool {
 	return ret
 }
 
-func withTrie(board [][]byte, words []string) []string {
+func withTSTTrie(board [][]byte, words []string) []string {
 	var res []string
 	n := len(board)
 	if n < 1 {
@@ -70,42 +70,44 @@ func withTrie(board [][]byte, words []string) []string {
 	for i := 0; i < n; i++ {
 		for j := 0; j < m; j++ {
 			permute(&res, board, tst.Root, i, j, n, m)
+			// fmt.Println("loop here")
 		}
 	}
 	return res
 }
 
 func permute(res *[]string, board [][]byte, node *utils.TSTNode, i, j, n, m int) {
+	if i < 0 || i >= n || j < 0 || j >= m {
+		return
+	}
 	c := board[i][j]
+	// fmt.Printf("node:%v, i:%d,j%d,c:%c\n", node, i, j, c)
 	if c == '#' || node == nil {
 		return
 	}
-	if node.Value != nil {
+	if node.Value != nil && node.Cb == c {
 		if s, ok := node.Value.(string); ok {
 			*res = append(*res, s)
 			node.Value = nil // remove duplicates
-			return
 		}
 	}
 	if c > node.Cb {
+		// fmt.Println("go right")
 		node = node.Right
+		permute(res, board, node, i, j, n, m)
 	} else if c < node.Cb {
+		// fmt.Println("go left")
 		node = node.Left
+		permute(res, board, node, i, j, n, m)
 	} else {
+		// fmt.Println("go middle")
 		node = node.Middle
-	}
-	board[i][j] = '#'
-	if i > 0 {
+		board[i][j] = '#'
 		permute(res, board, node, i-1, j, n, m)
-	}
-	if j > 0 {
 		permute(res, board, node, i, j-1, n, m)
-	}
-	if i < n-1 {
 		permute(res, board, node, i+1, j, n, m)
-	}
-	if j < m-1 {
 		permute(res, board, node, i, j+1, n, m)
+		board[i][j] = c
 	}
-	board[i][j] = c
+
 }
