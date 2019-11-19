@@ -21,9 +21,9 @@ func NewRTrie(r int) *RTrie {
 	return &RTrie{Root: &TrieNode{Children: make([]*TrieNode, r)}, r: r}
 }
 
-func (rt *RTrie) Put(w string) {
+func (rt *RTrie) Put(key string, value interface{}) {
 	p := rt.Root
-	for _, c := range w {
+	for _, c := range key {
 		idx := c - 'a'
 		if p.Children[idx] == nil {
 			p.Children[idx] = &TrieNode{
@@ -32,7 +32,7 @@ func (rt *RTrie) Put(w string) {
 		}
 		p = p.Children[idx]
 	}
-	p.Value = w
+	p.Value = value
 }
 
 func (rt *RTrie) Contains(query string) bool {
