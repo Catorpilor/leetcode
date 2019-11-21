@@ -15,14 +15,14 @@ func isMatchTLE(s, p string) bool {
 	if p[0] == '*' {
 		var ret bool
 		for i := range s {
-			ret = ret || isMatch(s[i:], p[1:])
+			ret = ret || isMatchTLE(s[i:], p[1:])
 			if ret {
 				break
 			}
 		}
 		return ret
 	} else if p[0] == s[0] || p[0] == '?' {
-		return isMatch(s[1:], p[1:])
+		return isMatchTLE(s[1:], p[1:])
 	}
 
 	return false
@@ -43,29 +43,31 @@ func allAsterisk(p string) bool {
 func isMatch(s, p string) bool {
 	var i, j int
 	ast_pos, pos := -1, 0
-	if len(p) < 1 {
-		return false
-	}
+	// if len(p) < 1 {
+	// 	return false
+	// }
 
 	for i < len(s) {
-		if s[i] == p[j] || p[j] == '?' {
+		if j < len(p) && (s[i] == p[j] || p[j] == '?') {
 			i++
 			j++
-			continue
-		}
-		if p[j] == '*' {
+		} else if j < len(p) && p[j] == '*' {
+			// the zero case
 			ast_pos = j
 			j++
 			pos = i
-			continue
-		}
-		if ast_pos != -1 {
+		} else if ast_pos != -1 {
+			// s[i] != p[j] and there is an asterisk exists.
 			j = ast_pos + 1
+			// one or more case when there is a '*'
+			// move forward i
 			pos++
 			i = pos
-			continue
+		} else {
+			// s[i] != p[j] && no '*' found
+			// just return false
+			return false
 		}
-		return false
 	}
 	for j < len(p) && p[j] == '*' {
 		j++
