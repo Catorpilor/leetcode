@@ -74,3 +74,49 @@ func isMatch(s, p string) bool {
 	}
 	return j == len(p)
 }
+
+func dp(s, p string) bool {
+	ns, np := len(s), len(p)
+	if p == s || p == "*" {
+		return true
+	}
+	if ns == 0 || np == 0 {
+		return false
+	}
+	dpm := make([][]bool, np+1)
+	for i := range dpm {
+		dpm[i] = make([]bool, ns+1)
+	}
+	dpm[0][0] = true
+	for pIdx := 1; pIdx < np+1; pIdx++ {
+		// p[pIdx-1] == '*'
+		if p[pIdx-1] == '*' {
+			sIdx := 1
+			// dpm[pIdx-1][sIdx-1] is the previous match, one character before
+			// here we find the first sIdx in `s` with previous match.
+			for !dpm[pIdx-1][sIdx-1] && sIdx < ns+1 {
+				sIdx++
+			}
+			// if s match p
+			// then s match p* as well
+			dpm[pIdx][sIdx-1] = dpm[pIdx-1][sIdx-1]
+			// if s match p
+			// then s(other characters) matches p* as well
+			for sIdx < ns+1 {
+				dpm[pIdx][sIdx] = true
+				sIdx++
+			}
+		} else if p[pIdx-1] == '?' {
+			for sIdx := 1; sIdx < ns+1; sIdx++ {
+				dpm[pIdx][sIdx] = dpm[pIdx-1][sIdx-1]
+			}
+		} else {
+			for sIdx := 1; sIdx < ns+1; sIdx++ {
+				// match is possible if there is a previous match and
+				// current character is same
+				dpm[pIdx][sIdx] = dpm[pIdx-1][sIdx-1] && p[pIdx-1] == s[sIdx-1]
+			}
+		}
+	}
+	return dpm[np][ns]
+}
