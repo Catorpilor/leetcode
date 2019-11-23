@@ -40,20 +40,26 @@ func allAsterisk(p string) bool {
 	return true
 }
 
+// a backtracking strategy
 func isMatch(s, p string) bool {
 	var i, j int
+	// ast_pos stores the previous star position
+	// pos stores the current i in s when there is a star in p.
 	ast_pos, pos := -1, 0
 	// if len(p) < 1 {
 	// 	return false
 	// }
 
 	for i < len(s) {
+		// common sense, if s[i] = p[j] or p[j] = '?' both move forward
 		if j < len(p) && (s[i] == p[j] || p[j] == '?') {
 			i++
 			j++
 		} else if j < len(p) && p[j] == '*' {
-			// the zero case
+			// p[j] is a star
+			// update ast_pos and pos
 			ast_pos = j
+			// the '*' matches 0 character
 			j++
 			pos = i
 		} else if ast_pos != -1 {
