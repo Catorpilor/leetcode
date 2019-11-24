@@ -2,6 +2,9 @@ package ed
 
 import "github.com/catorpilor/LeetCode/utils"
 
+// using dp
+// time complexity O(mn)
+// space complexity O(mn)
 func minDistance(word1, word2 string) int {
 	n1, n2 := len(word1), len(word2)
 	if n1 == 0 {
