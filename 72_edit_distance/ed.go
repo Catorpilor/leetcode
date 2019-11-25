@@ -48,3 +48,32 @@ func minDistance(word1, word2 string) int {
 
 	return dp[n1][n2]
 }
+
+// minDistance2 using dp to implement
+// time complexity O(mn)
+// space complexity O(n)
+func minDistance2(word1, word2 string) int {
+	m, n := len(word1), len(word2)
+	if word1 == word2 {
+		return 0
+	}
+	dp := make([]int, n+1)
+	for i := 1; i <= n; i++ {
+		dp[i] = i
+	}
+	var upleft int
+	for i := 1; i <= m; i++ {
+		upleft = dp[0]
+		dp[0] = i
+		for j := 1; j <= n; j++ {
+			pre, cur := dp[j-1], dp[j]
+			if word1[i-1] == word2[j-1] {
+				dp[j] = upleft
+			} else {
+				dp[j] = utils.Min(pre, utils.Min(cur, upleft)) + 1
+			}
+			upleft = cur
+		}
+	}
+	return dp[n]
+}
