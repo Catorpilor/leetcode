@@ -2,6 +2,9 @@ package dots
 
 import "github.com/catorpilor/LeetCode/utils"
 
+// minDistance using dp to solve the problem.
+// time complexity is O(mn)
+// space complexity is o(n)
 func minDistance(word1, word2 string) int {
 	if word1 == word2 {
 		return 0
