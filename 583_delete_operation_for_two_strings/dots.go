@@ -30,3 +30,35 @@ func minDistance(word1, word2 string) int {
 	}
 	return dp[n]
 }
+
+// diff **wrong** solution
+// for example word1="eat" word2="are"
+// diff returns 2 but the result is 4
+// it's a common lcs problem.
+func diff(word1, word2 string) int {
+	if word1 == word2 {
+		return 0
+	}
+	m, n := len(word1), len(word2)
+	if m == 0 {
+		return n
+	}
+	if n == 0 {
+		return m
+	}
+	hset := make(map[rune]int, m+n)
+	for _, b := range word1 {
+		hset[b]++
+	}
+	for _, b := range word2 {
+		if _, exists := hset[b]; exists {
+			hset[b]--
+			if hset[b] == 0 {
+				delete(hset, b)
+			}
+		} else {
+			hset[b]++
+		}
+	}
+	return len(hset)
+}
