@@ -7,16 +7,7 @@ import (
 )
 
 func predictTheWinner(nums []int) bool {
-	// return helper(nums, 0, len(nums)-1) >= 0
-	n := len(nums)
-	cache := make([][]int, n)
-	for i := range cache {
-		cache[i] = make([]int, n)
-		for j := range cache[i] {
-			cache[i][j] = math.MinInt32
-		}
-	}
-	return withMemo(nums, 0, n-1, cache) >= 0
+	return helper(nums, 0, len(nums)-1) >= 0
 }
 
 // helper implements maxmin algorithm
@@ -34,15 +25,12 @@ func helper(nums []int, s, e int) int {
 	return utils.Max(nums[s]-helper(nums, s+1, e), nums[e]-helper(nums, s, e-1))
 }
 
-// withMemo implements maxmin algorithm
-// time complexity O(n^2)
-// space complexity O(n^2)
 func withMemo(nums []int, s, e int, mem [][]int) int {
 	if mem[s][e] == math.MinInt32 {
 		if s == e {
 			mem[s][e] = nums[e]
-		} else {
-			mem[s][e] = utils.Max(nums[s]-withMemo(nums, s+1, e, mem), nums[e]-withMemo(nums, s, e-1, mem))
+		}else{
+			mem[s][e] = utils.Max(nums[s]-withMemo(nums,s+1,e,mem), nums[e]-withMemo(nums, s,e-1))
 		}
 	}
 	return mem[s][e]

@@ -8,7 +8,6 @@ func TestPredictTheWinner(t *testing.T) {
 		nums []int
 		exp  bool
 	}{
-		{"empty", []int{}, false},
 		{"single", []int{1}, true},
 		{"testcase1", []int{1, 5, 2}, false},
 		{"testcase2", []int{1, 5, 233, 7}, true},
