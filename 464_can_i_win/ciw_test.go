@@ -11,6 +11,7 @@ func TestCanIWin(t *testing.T) {
         {"desired less or eq maxChoosable", 20, 10, true},
         {"desired larger than maxChoosable", 10, 11, false},
         {"testcase1", 10, 56, false},
+        {"testcase2", 10, 15, true},
     }
     for _, tt := range st {
         t.Run(tt.name, func(t *testing.T) {
