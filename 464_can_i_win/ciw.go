@@ -1,5 +1,8 @@
 package ciw
 
+// canIWin solve using dfs+backtrakcing.
+// with memorization time complexity is o(2^n)
+// without memorization time complexity is O(n!)
 func canIWin(maxChooseable, desired int) bool {
     if maxChooseable >= desired {
         return true
@@ -15,7 +18,6 @@ func canIWin(maxChooseable, desired int) bool {
 }
 
 func helper(set map[int]bool, used []bool, target int) bool {
-    // fmt.Printf("turn:%d, s:%d, e:%d, target:%d\n", turn, s, e, target)
     if target <= 0 {
         return false
     }
@@ -25,6 +27,7 @@ func helper(set map[int]bool, used []bool, target int) bool {
         for i := 1; i < len(used); i++ {
             if !used[i] {
                 used[i] = true
+                // player #1 pick i, and player #2 lose
                 if !helper(set, used, target-i) {
                     set[key] = true
                     used[i] = false
