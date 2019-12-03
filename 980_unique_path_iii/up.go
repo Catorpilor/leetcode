@@ -5,6 +5,7 @@ var (
 )
 
 func uniquePath(grid [][]int) int {
+	// cells init to 1 including the starting point
 	cells = 1
 	for i := range grid {
 		for j := range grid[i] {
