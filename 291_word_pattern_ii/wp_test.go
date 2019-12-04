@@ -14,6 +14,7 @@ func TestIsMatch(t *testing.T) {
 		{"testcase1", "abab", "redblueredblue", true},
 		{"testcase2", "aaaa", "asdasdasdasd", true},
 		{"testcase3", "aabb", "xyzabcxzyabc", false},
+		{"failed1", "ab", "aa", false},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
