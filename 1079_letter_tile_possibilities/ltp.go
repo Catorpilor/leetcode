@@ -31,3 +31,25 @@ func helper(res map[string]bool, st []byte, idx int) {
     res[string(c)] = true
     helper(res, st, idx+1)
 }
+
+func numOfPossibilities2(tiles string) int {
+    count := make([]int, 26)
+    for i := range tiles {
+        count[tiles[i]-'A']++
+    }
+    return helper2(count)
+}
+
+func helper2(count []int) int {
+    var res int
+    for i := range count {
+        if count[i] == 0 {
+            continue
+        }
+        count[i]--
+        res++
+        res += helper2(count)
+        count[i]++
+    }
+    return res
+}
