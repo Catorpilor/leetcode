@@ -36,6 +36,7 @@ func TestNumOfPosBt(t *testing.T) {
         {"identical", "AAA", 3},
         {"testcase1", "AAB", 8},
         {"testcase2", "AAABBC", 188},
+        {"testcase3", "ABC", 15},
     }
     for _, tt := range st {
         t.Run(tt.name, func(t *testing.T) {

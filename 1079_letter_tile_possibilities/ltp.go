@@ -40,6 +40,28 @@ func numOfPossibilities2(tiles string) int {
     return helper2(count)
 }
 
+/*
+
+for example tiles = "ABC", count is [1,1,1,0,0,0...]
+1. pick tile "A" res = 1, count = [0,1,1,0,0,0,0....]
+                 A, B ,C
+                 0, 1, 1
+                  / \
+      pick tile B/   \ pick tile C
+                /     \
+               /       \
+            A,B,C     A,B,C
+            0,0,1     0,1,0
+              |          \
+              |           \
+            A,B,C        A,B,C
+            0,0,0        0,0,0
+So the valid tiles are ["A","AB","ABC", "AC","ACB"]
+2. same as above
+The valid tiles beings with B are ["B","BA","BAC","BC","BCA"]
+The valid tiles beings with C are ["C","CA","CAB","CB","CBA"]
+*/
+
 func helper2(count []int) int {
     var res int
     for i := range count {
@@ -47,8 +69,11 @@ func helper2(count []int) int {
             continue
         }
         count[i]--
+        // pick this tile
         res++
+        // add the # of picks of it's children
         res += helper2(count)
+        // backtrack, unpick this tile.
         count[i]++
     }
     return res
