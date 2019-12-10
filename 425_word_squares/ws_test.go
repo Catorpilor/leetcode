@@ -12,6 +12,7 @@ func TestWordSquares(t *testing.T) {
 		exp   [][]string
 	}{
 		{"empty", []string{}, [][]string{}},
+		{"failed1", []string{"ab", "ba"}, [][]string{[]string{"ab", "ba"}, []string{"ba", "ab"}}},
 		{"testcase1", []string{"area", "lead", "wall", "lady", "ball"}, [][]string{[]string{"wall", "area", "lead", "lady"},
 			[]string{"ball", "area", "lead", "lady"}}},
 	}
