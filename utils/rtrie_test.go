@@ -10,7 +10,7 @@ func rsetup() {
 	}
 	words := []string{"hello", "hell", "hi", "journal", "job", "news", "newspaper"}
 	for _, word := range words {
-		rtrie.Put(word)
+		rtrie.Put(word, word)
 	}
 }
 

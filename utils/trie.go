@@ -44,6 +44,34 @@ func put(node *TSTNode, key string, val interface{}, d int) *TSTNode {
 	return node
 }
 
+func (t *TernarySearchTrie) WithPrefix(query string) []interface{} {
+	node := get(t.Root, query, 0)
+	// fmt.Printf("node: %#v\n", node)
+	if node == nil {
+		return nil
+	}
+	var res []interface{}
+	if node.Value != nil {
+		res = append(res, node.Value)
+	}
+	prefixWithNode(node.Middle, &res)
+	return res
+}
+
+func prefixWithNode(node *TSTNode, res *[]interface{}) {
+	if node == nil {
+		return
+	}
+	// fmt.Printf("node with prefix : %#v\n", node)
+	if node.Value != nil {
+		*res = append(*res, node.Value)
+	}
+
+	prefixWithNode(node.Middle, res)
+	prefixWithNode(node.Left, res)
+	prefixWithNode(node.Right, res)
+}
+
 func (t *TernarySearchTrie) LongestPrefixOf(query string) string {
 	length := search(t.Root, query, 0, 0)
 	return query[:length]
@@ -86,7 +114,7 @@ func (t *TernarySearchTrie) Get(key string) interface{} {
 }
 
 func get(node *TSTNode, key string, d int) *TSTNode {
-	if node == nil {
+	if node == nil || key == "" {
 		return nil
 	}
 	c := key[d]

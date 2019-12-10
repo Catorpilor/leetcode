@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -10,7 +11,7 @@ func setup() {
 	tst = NewTST()
 	ss := []string{"hello", "hell", "hi", "news", "newspaper"}
 	for _, s := range ss {
-		tst.Put(s, 1)
+		tst.Put(s, s)
 	}
 }
 
@@ -18,25 +19,25 @@ func TestGet(t *testing.T) {
 	st := []struct {
 		name string
 		key  string
-		exp  int
+		exp  string
 	}{
-		{"get hello", "hello", 1},
-		{"get hell", "hell", 1},
-		{"get his", "his", 0},
+		{"get hello", "hello", "hello"},
+		{"get hell", "hell", "hell"},
+		{"get his", "his", ""},
 	}
 	setup()
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
 			out := tst.Get(tt.key)
-			var v int
+			var v string
 			var ok bool
-			if v, ok = out.(int); !ok {
+			if v, ok = out.(string); !ok {
 				if out != nil {
 					t.Fatalf("wanted int but got %v with type: %T", out, out)
 				}
 			}
 			if v != tt.exp {
-				t.Fatalf("with key: %s wanted %d but got %d", tt.key, tt.exp, v)
+				t.Fatalf("with key: %s wanted %s but got %s", tt.key, tt.exp, v)
 			}
 		})
 	}
@@ -59,6 +60,29 @@ func TestContains(t *testing.T) {
 			if out != tt.exp {
 				t.Fatalf("with key: %s wanted %t but got %t", tt.key, tt.exp, out)
 			}
+		})
+	}
+}
+
+func TestWithPrefix(t *testing.T) {
+	st := []struct {
+		name   string
+		prefix string
+		exp    []interface{}
+	}{
+		{"prefix is empty", "", []interface{}{}},
+		{"prefix is h", "h", []interface{}{"hello", "hell", "hi"}},
+		{"prefix is he", "he", []interface{}{"hello", "hell"}},
+		{"prefix is abc", "abc", []interface{}{}},
+	}
+	setup()
+	for _, tt := range st {
+		t.Run(tt.name, func(t *testing.T) {
+			out := tst.WithPrefix(tt.prefix)
+			if !reflect.DeepEqual(tt.exp, out) {
+				t.Fatalf("with prefix: %s wanted %v but got %v", tt.prefix, tt.exp, out)
+			}
+			t.Log("pass")
 		})
 	}
 }
