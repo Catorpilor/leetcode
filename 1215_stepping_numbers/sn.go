@@ -1,9 +1,18 @@
 package sn
 
-import "strconv"
+import (
+    "sort"
+    "strconv"
+)
 
 func countingStepNumbers(low, hi int) []int {
-    return bruteForce(low, hi)
+    // return bruteForce(low, hi)
+    var res []int
+    for i := 0; i <= 9; i++ {
+        dfs(low, hi, int64(i), &res)
+    }
+    sort.Slice(res, func(i, j int) bool { return res[i] < res[j] })
+    return res
 }
 
 func bruteForce(low, hi int) []int {
@@ -33,4 +42,29 @@ func isStepping(i int) bool {
         }
     }
     return true
+}
+
+// dfs version
+// for single digit 0,1,2,3,4,5,6,7,8,9 all fit
+// For number from 1 to 9, append a new digit to the end that is 1 away from current.
+// For example, 1 will be 12 and 10, same for others.
+// If new numbers are in range, add them to list.
+func dfs(low, hi int, cur int64, res *[]int) {
+    if cur >= int64(low) && cur <= int64(hi) {
+        *res = append(*res, int(cur))
+    }
+    if cur == int64(0) || cur > int64(hi) {
+        return
+    }
+    // Recursively, find the last digit of a number, append a new digit that is 1 away from current last digit.
+    lastDigit := cur % 10
+    inc, dec := cur*10+1+lastDigit, cur*10+lastDigit-1
+    if lastDigit == 0 {
+        dfs(low, hi, inc, res)
+    } else if lastDigit == 9 {
+        dfs(low, hi, dec, res)
+    } else {
+        dfs(low, hi, inc, res)
+        dfs(low, hi, dec, res)
+    }
 }
