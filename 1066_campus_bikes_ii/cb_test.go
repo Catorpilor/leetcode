@@ -11,6 +11,7 @@ func TestAssignBikes(t *testing.T) {
 		{"empty workers", [][]int{}, [][]int{[]int{1, 2}}, 0},
 		{"empty bikes", [][]int{[]int{0, 0}}, [][]int{}, 0},
 		{"testcase1", [][]int{[]int{0, 0}, []int{2, 1}}, [][]int{[]int{1, 2}, []int{3, 3}}, 6},
+		{"testcase2", [][]int{[]int{0, 0}, []int{1, 1}, []int{2, 0}}, [][]int{[]int{1, 0}, []int{2, 2}, []int{2, 1}}, 4},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
