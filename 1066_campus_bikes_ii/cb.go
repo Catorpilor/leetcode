@@ -1,7 +1,6 @@
 package cb
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/catorpilor/LeetCode/utils"
@@ -49,22 +48,29 @@ func useDp(workers, bikes [][]int) int {
 	dp := make([][]int, nw+1)
 	// init dp
 	for i := range dp {
-		dp[i] = make([]int, 1<<nb)
+		// there are 1<<nb states
+		// for  example 3 bikes 000,001,010,100,101,111...etc.
+		dp[i] = make([]int, (1 << nb))
 		for j := 0; j < (1 << nb); j++ {
+			// not overflow
 			dp[i][j] = math.MaxInt32 / 2
 		}
 	}
+	dp[0][0] = 0
 	for i := 1; i <= nw; i++ {
 		for s := 1; s < (1 << nb); s++ {
 			for j := 0; j < nb; j++ {
 				if (s & (1 << j)) == 0 {
+					// bike j already be assigned
 					continue
 				}
+				// get prev state by just clear the jth bit in s
 				prev := s ^ (1 << j)
+				// fmt.Printf("prev is: %d, dp[i-1][prev]: %d, i:%d, s: %d\n", prev, dp[i-1][prev], i, s)
 				dp[i][s] = utils.Min(dp[i][s], dp[i-1][prev]+dis(workers[i-1], bikes[j]))
 				if i == nw {
 					res = utils.Min(res, dp[i][s])
-					fmt.Printf("all the worker are assigned, res:%d, dp[i][s]:%d\n", res, dp[i][s])
+					// fmt.Printf("all the worker are assigned, res:%d, dp[i][s]:%d\n", res, dp[i][s])
 				}
 			}
 		}
