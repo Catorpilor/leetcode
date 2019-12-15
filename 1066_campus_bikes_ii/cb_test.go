@@ -47,3 +47,26 @@ func TestUseDp(t *testing.T) {
 	}
 
 }
+
+func TestNumOfOnes(t *testing.T) {
+	st := []struct {
+		name string
+		i    int
+		exp  int
+	}{
+		{"i eq 0", 0, 0},
+		{"i eq 1", 1, 1},
+		{"i eq 3", 3, 2},
+		{"i eq 7", 7, 3},
+		{"i eq 8", 8, 1},
+	}
+	for _, tt := range st {
+		t.Run(tt.name, func(t *testing.T) {
+			out := numOfOnes(tt.i)
+			if out != tt.exp {
+				t.Fatalf("with i:%d waned %d but got %d", tt.i, tt.exp, out)
+			}
+			t.Log("pass")
+		})
+	}
+}

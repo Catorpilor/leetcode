@@ -53,7 +53,11 @@ func useDp(workers, bikes [][]int) int {
 		dp[i] = make([]int, (1 << nb))
 		for j := 0; j < (1 << nb); j++ {
 			// not overflow
-			dp[i][j] = math.MaxInt32 / 2
+			if numOfOnes(j) == nw {
+				dp[i][j] = math.MaxInt32 / 2
+			} else {
+				dp[i][j] = math.MaxInt32
+			}
 		}
 	}
 	dp[0][0] = 0
@@ -66,6 +70,12 @@ func useDp(workers, bikes [][]int) int {
 				}
 				// get prev state by just clear the jth bit in s
 				prev := s ^ (1 << j)
+				// ignore some states when nb > nw
+				//  for example nw = 1, nb = 3 there are only 3 valid states 001, 010, 100
+				// we can just ignore the rest by checking the numOfOnes(s) == numOfWorkers
+				if dp[i-1][prev] == math.MaxInt32 {
+					break
+				}
 				// fmt.Printf("prev is: %d, dp[i-1][prev]: %d, i:%d, s: %d\n", prev, dp[i-1][prev], i, s)
 				dp[i][s] = utils.Min(dp[i][s], dp[i-1][prev]+dis(workers[i-1], bikes[j]))
 				if i == nw {
@@ -74,6 +84,15 @@ func useDp(workers, bikes [][]int) int {
 				}
 			}
 		}
+	}
+	return res
+}
+
+func numOfOnes(i int) int {
+	var res int
+	for i > 0 {
+		i &= (i - 1)
+		res++
 	}
 	return res
 }
