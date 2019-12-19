@@ -61,7 +61,7 @@ func bucket(workers, bikes [][]int) []int {
 			bkt[dis] = append(bkt[dis], pair{w: i, b: j})
 		}
 	}
-	res := make([]int, nb)
+	res := make([]int, nw)
 	for i := range res {
 		res[i] = -1
 	}
