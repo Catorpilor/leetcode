@@ -3,7 +3,10 @@ package mcsp
 import "github.com/catorpilor/leetcode/utils"
 
 func maxLength(arr []string) int {
-	return bitSets(arr)
+	// return bitSets(arr)
+	var res int
+	dfs(arr, 0, "", &res)
+	return res
 }
 
 func bitSets(arr []string) int {
@@ -28,6 +31,27 @@ func bitSets(arr []string) int {
 		}
 	}
 	return res
+}
+
+func dfs(arr []string, index int, s string, res *int) {
+	*res = utils.Max(*res, len(s))
+	if index >= len(arr) {
+		return
+	}
+	for i := index; i < len(arr); i++ {
+		if !hasDups(s + arr[i]) {
+			dfs(arr, i+1, s+arr[i], res)
+		}
+	}
+}
+
+func hasDups(s string) bool {
+	var a, dup int
+	for i := range s {
+		dup |= a & (1 << (s[i] - 'a'))
+		a |= 1 << (s[i] - 'a')
+	}
+	return dup > 0
 }
 
 /*
