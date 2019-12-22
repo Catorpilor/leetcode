@@ -1,11 +1,16 @@
 package mcsp
 
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"strings"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func maxLength(arr []string) int {
 	// return bitSets(arr)
 	var res int
-	dfs(arr, 0, "", &res)
+	// dfs(arr, 0, "", &res)
+	backTrack(arr, 0, []string{}, &res)
 	return res
 }
 
@@ -42,6 +47,22 @@ func dfs(arr []string, index int, s string, res *int) {
 		if !hasDups(s + arr[i]) {
 			dfs(arr, i+1, s+arr[i], res)
 		}
+	}
+}
+
+func backTrack(arr []string, index int, tt []string, res *int) {
+	*res = utils.Max(*res, len(strings.Join(tt, "")))
+	if index >= len(arr) {
+		return
+	}
+	for i := index; i < len(arr); i++ {
+		tn := len(tt)
+		tt = append(tt, arr[i])
+		if !hasDups(strings.Join(tt, "")) {
+			backTrack(arr, i+1, tt, res)
+		}
+		// pop the last
+		tt = tt[:tn]
 	}
 }
 
