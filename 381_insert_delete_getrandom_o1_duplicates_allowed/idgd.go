@@ -1,6 +1,9 @@
 package idgd
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type RandomizedCollection struct {
 	hashset map[int][]int
@@ -28,6 +31,7 @@ func (this *RandomizedCollection) Remove(val int) bool {
 	v1 := this.hashset[val]
 	pos := v1[sn-1]
 	key := this.res[n-1]
+	fmt.Printf("key:%d, pos:%d, v1:%v, this.hashset[key]:%v\n", key, pos, v1, this.hashset[key])
 	// swap
 	this.res[pos], this.res[n-1] = this.res[n-1], this.res[pos]
 	v := this.hashset[key]
