@@ -58,19 +58,22 @@ func (this *RandomizedCollection) Remove(val int) bool {
 	if _, exists := this.hashset[val]; !exists {
 		return false
 	}
-	sn, n := len(this.hashset[val]), len(this.res)
-	v1 := this.hashset[val]
-	pos := v1[sn-1]
-	key := this.res[n-1]
+	u := this.hashset[val]
+	pos, err := u.Iter()
+	if err != nil {
+		return false
+	}
+	//decrement pos
+	u.Remove(pos)
+	n := len(this.res)
+	ul := this.hashset[this.res[n-1]]
+	ul.Add(pos)
+	ul.Remove(n - 1)
 	// swap
 	this.res[pos], this.res[n-1] = this.res[n-1], this.res[pos]
-	v := this.hashset[key]
-	v[len(v)-1] = pos
-	this.hashset[key] = v
-	this.hashset[val] = v1[:sn-1]
+	// shink
 	this.res = this.res[:n-1]
 	return true
-
 }
 
 /** Get a random element from the collection. */
