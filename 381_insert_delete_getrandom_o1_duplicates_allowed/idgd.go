@@ -6,6 +6,7 @@ import (
 )
 
 type unordered_map struct {
+	// key is the pos, val is the count
 	set map[int]int
 }
 
@@ -27,6 +28,13 @@ func (u unordered_map) Iter() (int, error) {
 
 func (u unordered_map) Add(val int) {
 	u.set[val]++
+}
+
+func (u unordered_map) Remove(val int) {
+	u.set[val]--
+	if u.set[val] == 0 {
+		delete(u.set, val)
+	}
 }
 
 type RandomizedCollection struct {
