@@ -6,8 +6,7 @@ var mt *MaxStack
 
 func setup() func() {
 	if mt == nil {
-		tmp := Constructor()
-		mt = &tmp
+		mt = Constructor()
 	}
 	// push
 	res := []int{2, 1, 5, 3, 5, 4}
