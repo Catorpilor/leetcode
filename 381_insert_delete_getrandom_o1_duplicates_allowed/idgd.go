@@ -20,7 +20,7 @@ func (u unordered_map) Exists(val int) bool {
 }
 
 func (u unordered_map) Iter() (int, error) {
-	for k := range u {
+	for k := range u.set {
 		return k, nil
 	}
 	return -1, errors.New("empty set")
