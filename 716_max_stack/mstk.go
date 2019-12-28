@@ -53,3 +53,51 @@ func (this *MaxStack) PopMax() int {
 	}
 	return curMax
 }
+
+type MaxStack2 struct {
+	list, maxList []int
+}
+
+func NewMaxStack2() *MaxStack2 {
+	return &MaxStack2{
+		list:    make([]int, 0),
+		maxList: make([]int, 0),
+	}
+}
+
+func (this *MaxStack2) Push(x int) {
+	this.list = append(this.list, x)
+	if len(this.maxList) == 0 || x >= this.PeekMax() {
+		this.maxList = append(this.maxList, x)
+	}
+}
+
+func (this *MaxStack2) PeekMax() int {
+	return this.maxList[len(this.maxList)-1]
+}
+
+func (this *MaxStack2) Top() int {
+	return this.list[len(this.list)-1]
+}
+
+func (this *MaxStack2) Pop() int {
+	v := this.Top()
+	if v == this.PeekMax() {
+		this.maxList = this.maxList[:len(this.maxList)-1]
+	}
+	this.list = this.list[:len(this.list)-1]
+	return v
+}
+
+func (this *MaxStack2) PopMax() int {
+	v := this.PeekMax()
+	tmp := make([]int, 0, len(this.list))
+	for this.Top() != v {
+		tmp = append(tmp, this.Pop())
+	}
+	this.Pop()
+	for i := len(tmp) - 1; i >= 0; i-- {
+		this.Push(tmp[i])
+	}
+	return v
+}
