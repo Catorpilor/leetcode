@@ -12,7 +12,8 @@ func maxSum(A []int, l, m int) int {
     for i := 1; i < n; i++ {
         presum[i] = presum[i-1] + A[i]
     }
-    return withPresum(presum, l, m)
+    // return withPresum(presum, l, m)
+    return utils.Max(cal(presum, l, m), cal(presum, m, l))
 }
 
 func withPresum(preSum []int, l, m int) int {
@@ -25,6 +26,15 @@ func withPresum(preSum []int, l, m int) int {
         // lmax+presum[i]-presum[i-m] represents L subarray before M subarray
         // mmax+presum[i]-presum[i-l] represents M subarray before L subarray
         res = utils.Max(res, utils.Max(lmax+preSum[i]-preSum[i-m], mmax+preSum[i]-preSum[i-l]))
+    }
+    return res
+}
+
+func cal(preSum []int, l, m int) int {
+    res, lmax := preSum[l+m-1], preSum[l-1]
+    for i := l + m; i < len(preSum); i++ {
+        lmax = utils.Max(lmax, preSum[i-m]-preSum[i-m-l])
+        res = utils.Max(res, lmax+preSum[i]-preSum[i-m])
     }
     return res
 }
