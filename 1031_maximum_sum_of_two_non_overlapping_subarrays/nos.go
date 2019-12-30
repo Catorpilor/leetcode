@@ -33,6 +33,7 @@ func withPresum(preSum []int, l, m int) int {
 func cal(preSum []int, l, m int) int {
     res, lmax := preSum[l+m-1], preSum[l-1]
     for i := l + m; i < len(preSum); i++ {
+        // lmax stores the max L continous subarray sum that before M
         lmax = utils.Max(lmax, preSum[i-m]-preSum[i-m-l])
         res = utils.Max(res, lmax+preSum[i]-preSum[i-m])
     }
