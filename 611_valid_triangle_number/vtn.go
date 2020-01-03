@@ -68,6 +68,28 @@ func useBs(nums []int) int {
 	return res
 }
 
+// backward time complexity O(n^2) space complexity O(1)
+func backward(nums []int) int {
+	var res int
+	sort.Slice(nums, func(i, j int) bool { return nums[i] <= nums[j] })
+	n := len(nums)
+	// from right to left
+	for i := n - 1; i >= 2; i-- {
+		l, r := 0, i-1
+		for l < r {
+			if nums[l]+nums[r] > nums[i] {
+				// in the [l, r] range all satisify the nums[l]+nums[r] > nums[r]
+				res += r - l
+				r--
+			} else {
+				// increment l
+				l++
+			}
+		}
+	}
+	return res
+}
+
 // func helper(nums []int, res *int, pos int) {
 
 // }
