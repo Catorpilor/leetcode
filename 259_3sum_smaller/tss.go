@@ -30,3 +30,26 @@ func bruteForce(nums []int, target int) int {
 	}
 	return res
 }
+
+// iterator same as 611 time complexity O(n^2)
+func iterator(nums []int, target int) int {
+	var res int
+	n := len(nums)
+	if n < 3 {
+		return res
+	}
+	sort.Slice(nums, func(i, j int) bool { return nums[i] < nums[j] })
+	for i := 0; i < n-2; i++ {
+		l, r := i+1, n-1
+		for l < r {
+			sum := nums[i] + nums[l] + nums[r]
+			if sum < target {
+				res += r - l
+				l++
+				continue
+			}
+			r--
+		}
+	}
+	return res
+}
