@@ -90,6 +90,31 @@ func backward(nums []int) int {
 	return res
 }
 
+// iterator time complexity is O(n^2) space complexity is O(1)
+func iterator(nums []int) int {
+	var res int
+	n := len(nums)
+	if n < 3 {
+		return res
+	}
+	sort.Slice(nums, func(i, j int) bool { return nums[i] <= nums[j] })
+	for i := 0; i < n-2; i++ {
+		if nums[i] == 0 {
+			continue
+		}
+		k := i + 2
+		for j := i + 1; j < n-1; j++ {
+			for ; k < n; k++ {
+				if nums[i]+nums[j] <= nums[k] {
+					break
+				}
+			}
+			res += k - j - 1
+		}
+	}
+	return res
+}
+
 // func helper(nums []int, res *int, pos int) {
 
 // }
