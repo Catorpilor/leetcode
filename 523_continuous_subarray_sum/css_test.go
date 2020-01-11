@@ -13,6 +13,7 @@ func TestCheckSubArraySum(t *testing.T) {
 		{"not found", []int{1, 2, 3}, 4, false},
 		{"testcase1", []int{1, 1, 1}, 2, true},
 		{"testcase2", []int{23, 2, 4, 6, 7}, 6, true},
+		{"failed1", []int{0, 0}, 0, true},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
