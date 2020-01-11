@@ -42,11 +42,8 @@ func bruteForce(nums []int, k int) int {
 	}
 	var res, sum int
 	for i := range nums {
-		sum = nums[i]
-		if sum == k {
-			res = utils.Max(res, 1)
-		}
-		for j := i + 1; j < n; j++ {
+		sum = 0
+		for j := i; j < n; j++ {
 			sum += nums[j]
 			if sum == k {
 				res = utils.Max(res, j-i+1)
