@@ -91,3 +91,27 @@ func bruteForce(nums []int) int {
 	}
 	return res
 }
+
+// dp same idea as bruteForce, but use two slice to store the max height
+// from both directions, time complexity is 0(N), space complexity is O(N)
+func dp(nums []int) int {
+	n := len(nums)
+	if n <= 2 {
+		return 0
+	}
+	maxL := make([]int, n)
+	maxL[0] = nums[0]
+	for i := 1; i < n; i++ {
+		maxL[i] = utils.Max(nums[i], maxL[i-1])
+	}
+	maxR := make([]int, n)
+	maxR[n-1] = nums[n-1]
+	for i := n - 2; i >= 0; i-- {
+		maxR[i] = utils.Max(nums[i], maxR[i+1])
+	}
+	var res int
+	for i := 1; i < n-1; i++ {
+		res += utils.Min(maxL[i], maxR[i]) - nums[i]
+	}
+	return res
+}
