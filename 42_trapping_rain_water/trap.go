@@ -64,3 +64,30 @@ func Trap2(nums []int) int {
 	}
 	return res
 }
+
+func bruteForce(nums []int) int {
+	n := len(nums)
+	if n <= 2 {
+		return 0
+	}
+	var res, maxL, maxR int
+	for i := range nums {
+		maxL, maxR = 0, 0
+		for j := 0; j < i; j++ {
+			if nums[j] > maxL {
+				maxL = nums[j]
+			}
+		}
+		for j := i + 1; j < n; j++ {
+			if nums[j] > maxR {
+				maxR = nums[j]
+			}
+		}
+		units := utils.Min(maxL, maxR) - nums[i]
+		if units > 0 {
+			res += units
+		}
+
+	}
+	return res
+}
