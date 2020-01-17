@@ -12,10 +12,12 @@ func NewQuickFind(n int) *QuickFind {
     return &QuickFind{store: st}
 }
 
+// Find time complexity O(1)
 func (qf *QuickFind) Find(i, j int) bool {
     return qf.store[i] == qf.store[j]
 }
 
+// Union time complexity O(N)
 func (qf *QuickFind) Union(i, j int) {
     qi := qf.store[i]
     for i := range qf.store {
