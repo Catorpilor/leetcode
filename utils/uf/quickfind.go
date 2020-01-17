@@ -1,5 +1,7 @@
 package uf
 
+// QuickFind M union-find ops on a N objects
+// worst time complexity is O(MN)
 type QuickFind struct {
     store []int
 }
