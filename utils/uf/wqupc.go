@@ -9,21 +9,26 @@ type WQUPC struct {
 
 func NewWQUPC(n int) *WQUPC {
     st := make([]int, n)
+    sz := make([]int, n)
     for i := range st {
         st[i] = i
+        sz[i] = 1
     }
-    return &WQUPC{store: st, sz: make([]int, n)}
+    return &WQUPC{store: st, sz: sz}
 }
 
 // Find time complexity proportional to depth of i/j, depth is at most lgN
 // worst case O(lgN)
 func (qu *WQUPC) Find(i, j int) bool {
-    return qu.root(i) == qu.root(j)
+    return qu.Root(i) == qu.Root(j)
 }
 
 // Union just like Find, time complexity Worst Case O(lgN)
 func (qu *WQUPC) Union(i, j int) {
-    ri, rj := qu.root(i), qu.root(j)
+    ri, rj := qu.Root(i), qu.Root(j)
+    if ri == rj {
+        return
+    }
     if qu.sz[ri] < qu.sz[rj] {
         qu.store[ri] = rj
         qu.sz[rj] += qu.sz[ri]
@@ -33,7 +38,7 @@ func (qu *WQUPC) Union(i, j int) {
     }
 }
 
-func (qu *WQUPC) root(i int) int {
+func (qu *WQUPC) Root(i int) int {
     for qu.store[i] != i {
         // make every other nodes in path points to its grandparent
         qu.store[i] = qu.store[qu.store[i]]
