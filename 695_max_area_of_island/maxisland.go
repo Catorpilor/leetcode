@@ -1,6 +1,9 @@
 package maxisland
 
-import "github.com/catorpilor/leetcode/utils/uf"
+import (
+    "github.com/catorpilor/leetcode/utils"
+    "github.com/catorpilor/leetcode/utils/uf"
+)
 
 func maxArea(grid [][]int) int {
     return dfs(grid)
@@ -53,6 +56,7 @@ func helper(grid [][]int, i, j, m, n int) int {
     return res
 }
 
+// withUnionFind time complexity is O(MN), space complexity is O(M*N)
 func withUnionFind(grid [][]int) int {
     m := len(grid)
     if m < 1 {
@@ -97,6 +101,49 @@ func withUnionFind(grid [][]int) int {
     for _, v := range hset {
         if v > res {
             res = v
+        }
+    }
+    return res
+}
+
+type pos struct {
+    x, y int
+}
+
+func bfs(grid [][]int) int {
+    m := len(grid)
+    if m < 1 {
+        return 0
+    }
+    n := len(grid[0])
+    if n < 1 {
+        return 0
+    }
+    queue := utils.NewQueue()
+    dirs := []int{-1, 0, 1, 0, -1}
+    var res int
+    for i := 0; i < m; i++ {
+        for j := 0; j < n; j++ {
+            if grid[i][j] == 1 {
+                grid[i][j] = 0
+                queue.Enroll(pos{i, j})
+                // cur area size
+                cur := 1
+                for !queue.IsEmpty() {
+                    p := queue.Pull().(pos)
+                    for k := 0; k < 4; k++ {
+                        nx, ny := p.x+dirs[k], p.y+dirs[k+1]
+                        if nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] == 1 {
+                            queue.Enroll(pos{nx, ny})
+                            grid[nx][ny] = 0
+                            cur++
+                        }
+                    }
+                }
+                if cur > res {
+                    res = cur
+                }
+            }
         }
     }
     return res
