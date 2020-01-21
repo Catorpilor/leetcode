@@ -1,6 +1,7 @@
 package mtd
 
 import (
+	"math"
 	"sort"
 	"strconv"
 	"strings"
@@ -9,7 +10,7 @@ import (
 )
 
 func minDiff(tps []string) int {
-	return bruteForce(tps)
+	return iterator(tps)
 }
 
 // iterator time complexity is O(nlgn), space complexity is O(N)
@@ -43,14 +44,14 @@ func iterator(tps []string) int {
 	sort.Slice(tps, func(i, j int) bool { return tps[i] < tps[j] })
 	n := len(tps)
 
-	ret := diffs(hset, tps[0], tps[n-1])
+	ret := diffWithHset(hset, tps[0], tps[n-1])
 	for i := 0; i < n-1; i++ {
-		ret = utils.Min(ret, diffs(hset, tps[i], tps[i+1]))
+		ret = utils.Min(ret, diffWithHset(hset, tps[i], tps[i+1]))
 	}
 	return ret
 }
 
-func diffs(hset map[string]int, left, right string) int {
+func diffWithHset(hset map[string]int, left, right string) int {
 	f := func(c rune) bool {
 		return c == ':'
 	}
@@ -64,4 +65,32 @@ func diffs(hset map[string]int, left, right string) int {
 		lt += 24 * 60
 	}
 	return utils.Abs(rt - lt)
+}
+
+func simpler(tps []string) int {
+	sort.Slice(tps, func(i, j int) bool { return tps[i] < tps[j] })
+	n := len(tps)
+	res := math.MaxInt32
+	var j int
+	for i := 0; i < n; i++ {
+		j = i - 1
+		if i == 0 {
+			j = n - 1
+		}
+		dif := utils.Abs(diffs(tps[j], tps[i]))
+		dif = utils.Min(dif, 1440-dif)
+		if dif < res {
+			res = dif
+		}
+	}
+	return res
+}
+
+func diffs(l, r string) int {
+	hl, _ := strconv.Atoi(l[:2])
+	ml, _ := strconv.Atoi(l[3:])
+	hr, _ := strconv.Atoi(r[:2])
+	mr, _ := strconv.Atoi(r[3:])
+	return (hr-hl)*60 + (mr - ml)
+
 }
