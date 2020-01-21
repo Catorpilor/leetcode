@@ -10,6 +10,7 @@ func TestMinDiff(t *testing.T) {
     }{
         {"just two", []string{"03:00", "00:00"}, 180},
         {"testcase1", []string{"03:15", "00:00", "23:58"}, 2},
+        {"failed1", []string{"12:01", "23:59"}, 718},
     }
     for _, tt := range st {
         t.Run(tt.name, func(t *testing.T) {
