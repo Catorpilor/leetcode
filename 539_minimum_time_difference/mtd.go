@@ -78,6 +78,7 @@ func simpler(tps []string) int {
 			j = n - 1
 		}
 		dif := utils.Abs(diffs(tps[j], tps[i]))
+		// 1400-dif for cases ["00:00", "23:59"]
 		dif = utils.Min(dif, 1440-dif)
 		if dif < res {
 			res = dif
@@ -92,5 +93,37 @@ func diffs(l, r string) int {
 	hr, _ := strconv.Atoi(r[:2])
 	mr, _ := strconv.Atoi(r[3:])
 	return (hr-hl)*60 + (mr - ml)
+}
 
+// bucket use bucket sort, time complexity is O(N), space complexity is O(1)
+func bucket(tps []string) int {
+	bks := make([]bool, 1440)
+	for _, s := range tps {
+		h, _ := strconv.Atoi(s[:2])
+		m, _ := strconv.Atoi(s[3:])
+		if bks[h*60+m] {
+			// there are duplicates
+			return 0
+		}
+		bks[h*60+m] = true
+	}
+	prev, last, first, res := 0, math.MinInt32, math.MaxInt32, math.MaxInt32
+	for i := 0; i < 1440; i++ {
+		if bks[i] {
+			if first != math.MaxInt32 {
+				if res > i-prev {
+					res = i - prev
+				}
+			}
+			if first > i {
+				first = i
+			}
+			if last < i {
+				last = i
+			}
+			prev = i
+		}
+	}
+	res = utils.Min(res, 1440+first-last)
+	return res
 }
