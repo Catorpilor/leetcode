@@ -88,6 +88,8 @@ func diffOne(a, b string) bool {
 	return diffs == 1
 }
 
+// bfsWithPattern time complexity  O(M*N) M is len(lists), N is len(beg)
+// space complexity O(M)
 func bfsWithPattern(beg, end string, lists []string) int {
 	hset := make(map[string][]string, len(lists))
 	withPattern(hset, lists, len(beg))
