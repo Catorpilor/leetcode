@@ -21,6 +21,9 @@ func bfsWithPattern(beg, end string, bank []string) int {
 			if str == end {
 				return level
 			}
+			if visited[str] {
+				continue
+			}
 			visited[str] = true
 			for i := 0; i < len(beg); i++ {
 				key := str[:i] + "*" + str[i+1:]
