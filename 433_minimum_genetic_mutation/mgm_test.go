@@ -9,8 +9,9 @@ func TestMinMutation(t *testing.T) {
 		bank       []string
 		exp        int
 	}{
-		{"empty bank", "AACC", "AATT", []string{}, 0},
+		{"empty bank", "AACC", "AATT", []string{}, -1},
 		{"testcase1", "AACCGGTT", "AACCGGTA", []string{"AACCGGTA"}, 1},
+		{"testcase2", "AACCGGTT", "AAACGGTA", []string{"AACCGGTA", "AACCGCTA", "AAACGGTA"}, 2},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
