@@ -34,12 +34,12 @@ func bfs(root *utils.TreeNode) [][]int {
 			for i, j := 0, len(next)-1; i < j; i, j = i+1, j-1 {
 				lnodes[i], lnodes[j] = lnodes[j], lnodes[i]
 			}
-			zag = false
 		}
 		if len(lnodes) != 0 {
 			res = append(res, lnodes)
 		}
 		leveld = next
+		zag = !zag
 	}
 	return res
 }
