@@ -3,7 +3,7 @@ package btzz
 import "github.com/catorpilor/leetcode/utils"
 
 func zigzagLevel(root *utils.TreeNode) [][]int {
-	return bfs(root)
+	return bfsV2(root)
 }
 
 func bfs(root *utils.TreeNode) [][]int {
@@ -40,6 +40,38 @@ func bfs(root *utils.TreeNode) [][]int {
 		}
 		leveld = next
 		zag = !zag
+	}
+	return res
+}
+
+// bfsV2 time complexity is O(NlgN), space complexity is O(NlgN)
+func bfsV2(root *utils.TreeNode) [][]int {
+	if root == nil {
+		return [][]int{}
+	}
+	var res [][]int
+	q := make([]*utils.TreeNode, 0, 10000)
+	q = append(q, root)
+	zag := false
+	for len(q) != 0 {
+		l := len(q)
+		next := make([]int, 0, 10000)
+		for i := 0; i < l; i++ {
+			if zag {
+				next = append([]int{q[i].Val}, next...)
+			} else {
+				next = append(next, q[i].Val)
+			}
+			if q[i].Left != nil {
+				q = append(q, q[i].Left)
+			}
+			if q[i].Right != nil {
+				q = append(q, q[i].Right)
+			}
+		}
+		q = q[l:]
+		zag = !zag
+		res = append(res, next)
 	}
 	return res
 }
