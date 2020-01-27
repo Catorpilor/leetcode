@@ -1,6 +1,8 @@
 package ladder
 
 import (
+	"math"
+
 	"github.com/catorpilor/leetcode/utils"
 )
 
@@ -85,4 +87,61 @@ func neighbors(s string, dict map[string]bool) []string {
 		}
 	}
 	return ret
+}
+
+func bfsPath(beg, end string, list []string) [][]string {
+	n := len(list)
+	if n < 1 {
+		return [][]string{}
+	}
+	words := make(map[string]bool, n)
+	for _, str := range list {
+		words[str] = true
+	}
+	if !words[end] {
+		return [][]string{}
+	}
+	var res [][]string
+	q := utils.NewQueue()
+	visited := make(map[string]bool, n)
+	q.Enroll([]string{beg})
+	level, minLevel := 1, math.MaxInt32
+	for !q.IsEmpty() {
+		op := q.Pull().([]string)
+		nop := len(op)
+		if nop > level {
+			// new level
+			for k := range visited {
+				delete(words, k)
+				delete(visited, k)
+			}
+			if nop > minLevel {
+				break
+			} else {
+				level = nop
+			}
+		}
+		last := op[nop-1]
+		// find next words in the list
+		for i := 0; i < len(last); i++ {
+			nw := []byte(last)
+			for c := 'a'; c <= 'z'; c++ {
+				nw[i] = byte(c)
+				if words[string(nw)] {
+					newPath := make([]string, nop+1)
+					copy(newPath, op)
+					newPath[nop] = string(nw)
+					visited[string(nw)] = true
+					if string(nw) == end {
+						res = append(res, newPath)
+						minLevel = level
+					} else {
+						q.Enroll(newPath)
+					}
+				}
+			}
+		}
+	}
+
+	return res
 }
