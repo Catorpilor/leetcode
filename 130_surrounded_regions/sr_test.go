@@ -13,7 +13,7 @@ func TestRegions(t *testing.T) {
 	}{
 		{"empty board", [][]byte{}, [][]byte{}},
 		{"all xes", [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}, [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}},
-		{"all oes", [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}, [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'x', 'o'}, []byte{'o', 'o', 'o'}}},
+		{"all oes", [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}, [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
