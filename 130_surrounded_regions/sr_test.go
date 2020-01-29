@@ -12,8 +12,8 @@ func TestRegions(t *testing.T) {
 		exp   [][]byte
 	}{
 		{"empty board", [][]byte{}, [][]byte{}},
-		{"all xes", [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}, [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}},
-		{"all oes", [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}, [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}},
+		{"all xes", [][]byte{[]byte{'X', 'X'}, []byte{'X', 'X'}}, [][]byte{[]byte{'X', 'X'}, []byte{'X', 'X'}}},
+		{"all oes", [][]byte{[]byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}}, [][]byte{[]byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
@@ -33,8 +33,8 @@ func TestBfs(t *testing.T) {
 		exp   [][]byte
 	}{
 		{"empty board", [][]byte{}, [][]byte{}},
-		{"all xes", [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}, [][]byte{[]byte{'x', 'x'}, []byte{'x', 'x'}}},
-		{"all oes", [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}, [][]byte{[]byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}, []byte{'o', 'o', 'o'}}},
+		{"all xes", [][]byte{[]byte{'X', 'X'}, []byte{'X', 'X'}}, [][]byte{[]byte{'X', 'X'}, []byte{'X', 'X'}}},
+		{"all oes", [][]byte{[]byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}}, [][]byte{[]byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}, []byte{'O', 'O', 'O'}}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

@@ -120,20 +120,17 @@ func bfs(board [][]byte) [][]byte {
 			if tmp[p.x][p.y] == 'O' {
 				if p.x > 0 && tmp[p.x-1][p.y] == 'O' {
 					next = append(next, pair{p.x - 1, p.y})
-					tmp[p.x-1][p.y] = 'E'
 				}
 				if p.y > 0 && tmp[p.x][p.y-1] == 'O' {
 					next = append(next, pair{p.x, p.y - 1})
-					tmp[p.x][p.y-1] = 'E'
 				}
 				if p.x < n-1 && tmp[p.x+1][p.y] == 'O' {
 					next = append(next, pair{p.x + 1, p.y})
-					tmp[p.x+1][p.y] = 'E'
 				}
 				if p.y < m-1 && tmp[p.x][p.y+1] == 'O' {
 					next = append(next, pair{p.x, p.y + 1})
-					tmp[p.x][p.y+1] = 'E'
 				}
+				tmp[p.x][p.y] = 'E'
 			}
 		}
 		edges = next
