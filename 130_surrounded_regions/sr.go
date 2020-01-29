@@ -78,3 +78,75 @@ func helper(board [][]byte, i, j, m, n int) {
 		helper(board, i, j+1, m, n)
 	}
 }
+
+func bfs(board [][]byte) [][]byte {
+	m := len(board)
+	if m < 1 {
+		return board
+	}
+	n := len(board[0])
+	if n < 1 {
+		return board
+	}
+	tmp := make([][]byte, m)
+	for i := range tmp {
+		tmp[i] = make([]byte, n)
+		copy(tmp[i], board[i])
+	}
+	type pair struct {
+		x, y int
+	}
+	// edges stores the o's position at the boarder
+	edges := make([]pair, 0, 2*m+2*n)
+	for j := 0; j < n; j++ {
+		if tmp[0][j] == 'O' {
+			edges = append(edges, pair{0, j})
+		}
+		if tmp[m-1][j] == 'O' {
+			edges = append(edges, pair{m - 1, j})
+		}
+	}
+	for i := 1; i < m-1; i++ {
+		if tmp[i][0] == 'O' {
+			edges = append(edges, pair{i, 0})
+		}
+		if tmp[i][n-1] == 'O' {
+			edges = append(edges, pair{i, n - 1})
+		}
+	}
+	for len(edges) != 0 {
+		next := make([]pair, 0, n+m)
+		for _, p := range edges {
+			if tmp[p.x][p.y] == 'O' {
+				if p.x > 0 && tmp[p.x-1][p.y] == 'O' {
+					next = append(next, pair{p.x - 1, p.y})
+					tmp[p.x-1][p.y] = 'E'
+				}
+				if p.y > 0 && tmp[p.x][p.y-1] == 'O' {
+					next = append(next, pair{p.x, p.y - 1})
+					tmp[p.x][p.y-1] = 'E'
+				}
+				if p.x < n-1 && tmp[p.x+1][p.y] == 'O' {
+					next = append(next, pair{p.x + 1, p.y})
+					tmp[p.x+1][p.y] = 'E'
+				}
+				if p.y < m-1 && tmp[p.x][p.y+1] == 'O' {
+					next = append(next, pair{p.x, p.y + 1})
+					tmp[p.x][p.y+1] = 'E'
+				}
+			}
+		}
+		edges = next
+	}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if tmp[i][j] == 'O' {
+				tmp[i][j] = 'X'
+			}
+			if tmp[i][j] == 'E' {
+				tmp[i][j] = 'O'
+			}
+		}
+	}
+	return tmp
+}
