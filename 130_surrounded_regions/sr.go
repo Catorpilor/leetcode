@@ -1,5 +1,7 @@
 package sr
 
+import "github.com/catorpilor/leetcode/utils/uf"
+
 func solved(board [][]byte) [][]byte {
 	return dfs(board)
 }
@@ -142,6 +144,48 @@ func bfs(board [][]byte) [][]byte {
 			}
 			if tmp[i][j] == 'E' {
 				tmp[i][j] = 'O'
+			}
+		}
+	}
+	return tmp
+}
+
+func withUnionFind(board [][]byte) [][]byte {
+	m := len(board)
+	if m < 1 {
+		return board
+	}
+	n := len(board[0])
+	if n < 1 {
+		return board
+	}
+	tmp := make([][]byte, m)
+	for i := range tmp {
+		tmp[i] = make([]byte, n)
+		copy(tmp[i], board[i])
+	}
+	dirs := [5]int{-1, 0, 1, 0, -1}
+	qf := uf.NewWQUPC(m*n + 1)
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if (i == 0 || j == 0 || i == m-1 || j == n-1) && tmp[i][j] == 'O' {
+				// connect to a dummy node
+				qf.Union(i*n+j, n*m)
+			} else if tmp[i][j] == 'O' {
+				for k := 0; k < 4; k++ {
+					x, y := dirs[k]+i, dirs[k+1]+j
+					if x > 0 && x < m && y > 0 && y < n && tmp[x][y] == 'O' {
+						qf.Union(x*n+y, i*n+j)
+					}
+				}
+
+			}
+		}
+	}
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			if tmp[i][j] == 'O' && !qf.Find(i*n+j, m*n) {
+				tmp[i][j] = 'X'
 			}
 		}
 	}
