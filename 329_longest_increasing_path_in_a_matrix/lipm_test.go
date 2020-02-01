@@ -9,7 +9,9 @@ func TestLongestIncPath(t *testing.T) {
 		exp    int
 	}{
 		{"empty matrix", [][]int{}, 0},
-		{"testcase1", [][]int{[]int{9, 9, 4}, []int{6, 6, 8}, []int{2, 1, 1}}, 4},
+		{"all equal", [][]int{[]int{1, 1}, []int{1, 1}}, 1},
+		{"dec", [][]int{[]int{9, 8, 7}, []int{4, 5, 6}, []int{3, 2, 1}}, 9},
+		{"testcase1", [][]int{[]int{9, 9, 8}, []int{6, 6, 8}, []int{2, 1, 1}}, 4},
 		{"testcase2", [][]int{[]int{3, 4, 5}, []int{3, 2, 6}, []int{2, 2, 1}}, 4},
 	}
 	for _, tt := range st {
