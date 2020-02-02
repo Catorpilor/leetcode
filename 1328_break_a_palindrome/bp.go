@@ -1,7 +1,7 @@
 package bp
 
 func breakPalindrome(s string) string {
-	return bruteForce(s)
+	return iterator(s)
 }
 
 // bruteForce time complexity O(N^2)
@@ -39,4 +39,28 @@ func isPalindrome(s string) bool {
 		}
 	}
 	return true
+}
+
+// iterator time complexity is O(N)
+func iterator(s string) string {
+	n := len(s)
+	if n <= 1 {
+		return ""
+	}
+	sb := []byte(s)
+	for i := 0; i < n; i++ {
+		j := n - 1 - i
+		if i == j {
+			// n is odd, skip this character
+			// for example aacaa, if we change c to a, this is still a palindrome
+			continue
+		}
+		if sb[i] != byte('a') {
+			sb[i] = byte('a')
+			return string(sb)
+		}
+	}
+	// all 'a's
+	sb[n-1] = byte('b')
+	return string(sb)
 }

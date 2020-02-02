@@ -10,6 +10,7 @@ func TestBreakPalindrome(t *testing.T) {
 		{"aa", "aa", "ab"},
 		{"aba", "aba", "abb"},
 		{"testcase1", "abccba", "aaccba"},
+		{"testcase2", "aacaa", "aacab"},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
