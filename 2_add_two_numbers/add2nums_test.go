@@ -17,6 +17,7 @@ func TestAddTwoNums(t *testing.T) {
 		{"testcase1", utils.ConstructFromSlice([]int{2, 4, 3}), utils.ConstructFromSlice([]int{5, 6, 4}), utils.ConstructFromSlice([]int{7, 0, 8})},
 		{"edgecase1", utils.ConstructFromSlice([]int{1, 9, 9, 9}), utils.ConstructFromSlice([]int{9}), utils.ConstructFromSlice([]int{0, 0, 0, 0, 1})},
 		{"edgecase2", utils.ConstructFromSlice([]int{9, 9, 9, 9}), utils.ConstructFromSlice([]int{1, 0, 0, 0, 9, 9}), utils.ConstructFromSlice([]int{0, 0, 0, 0, 0, 0, 1})},
+		{"failed1", utils.ConstructFromSlice([]int{9, 8}), utils.ConstructFromSlice([]int{1}), utils.ConstructFromSlice([]int{0, 9})},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

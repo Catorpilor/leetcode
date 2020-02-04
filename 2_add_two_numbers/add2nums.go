@@ -38,6 +38,7 @@ func iter(l1, l2 *utils.ListNode) *utils.ListNode {
 			break
 		}
 		h1.Val++
+		carrier = false
 		if h1.Val >= 10 {
 			h1.Val %= 10
 			carrier = true
