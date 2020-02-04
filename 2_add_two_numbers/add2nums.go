@@ -3,7 +3,7 @@ package add2nums
 import "github.com/catorpilor/leetcode/utils"
 
 func addTwoNums(l1, l2 *utils.ListNode) *utils.ListNode {
-	return iter(l1, l2)
+	return useSentinel(l1, l2)
 }
 
 func iter(l1, l2 *utils.ListNode) *utils.ListNode {
@@ -50,4 +50,25 @@ func iter(l1, l2 *utils.ListNode) *utils.ListNode {
 		prev1.Next = &utils.ListNode{Val: 1}
 	}
 	return l1
+}
+
+func useSentinel(l1, l2 *utils.ListNode) *utils.ListNode {
+	sentinel := &utils.ListNode{}
+	cur := sentinel
+	carrier := 0
+	for l1 != nil || l2 != nil || carrier > 0 {
+		sum := carrier
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+		carrier = sum / 10
+		cur.Next = &utils.ListNode{Val: sum % 10}
+		cur = cur.Next
+	}
+	return sentinel.Next
 }
