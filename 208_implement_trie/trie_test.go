@@ -20,4 +20,18 @@ func TestInsert(t *testing.T) {
 	if gtrie.Search("apple") != true {
 		t.Fatal("trie inserted apple should exists")
 	}
+	gtrie.Insert("banana")
+	if gtrie.Search("bana") != false {
+		t.Fatal("bana shuold not exists")
+	}
+}
+
+func TestStartWith(t *testing.T) {
+	f := prepare()
+	defer f()
+	gtrie.Insert("apple")
+	gtrie.Insert("appoly")
+	if gtrie.StartWith("app") != true {
+		t.Fatal("startWith app should return true")
+	}
 }
