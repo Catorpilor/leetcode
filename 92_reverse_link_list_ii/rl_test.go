@@ -16,6 +16,7 @@ func TestReverseList(t *testing.T) {
 		{"single node", utils.ConstructFromSlice([]int{1}), 1, 1, utils.ConstructFromSlice([]int{1})},
 		{"reverse whole list", utils.ConstructFromSlice([]int{1, 2, 3}), 1, 3, utils.ConstructFromSlice([]int{3, 2, 1})},
 		{"testcase1", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 2, 4, utils.ConstructFromSlice([]int{1, 4, 3, 2, 5})},
+		{"testcase2", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 1, 5, utils.ConstructFromSlice([]int{5, 4, 3, 2, 1})},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
