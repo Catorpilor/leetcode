@@ -1,7 +1,6 @@
 package dis
 
 import (
-	"fmt"
 	"sort"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -24,7 +23,6 @@ func KthDistance(nums []int, k int) int {
 	sort.Slice(distances, func(i, j int) bool {
 		return distances[i] <= distances[j]
 	})
-	fmt.Println(distances)
 	return distances[k]
 }
 
