@@ -15,13 +15,15 @@ My submissions for [LeetCode Oj][leetoj].
 ### Array
 | Title | Solution | Difficulty |
 | ----- | :--------: | :----------: |
-| [1 Two Sum](https://leetcode.com/problems/two-sum) | | Easy |
+| [1. Two Sum](https://leetcode.com/problems/two-sum) | | Easy |
 
 ### Linked List
 | Title | Solution | Difficulty |
 | ----- | :--------: | :----------: |
-| [148 Sort List](https://leetcode.com/problems/sort-list) | [Bottom Up Merge Sort](https://github.com/Catorpilor/LeetCode/commit/99df0859d99cb317fef5f3f3123a8b3d40a2634c) | Medium |
-| [92 Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii) | [Use Dummmy Head to iterator the list](https://github.com/Catorpilor/LeetCode/commit/618f1c447efcf638eedda013de27fbc2a54a9354) | Medium |
+| [148. Sort List](https://leetcode.com/problems/sort-list) | [Bottom Up Merge Sort](https://github.com/Catorpilor/LeetCode/commit/99df0859d99cb317fef5f3f3123a8b3d40a2634c) | Medium |
+| [92. Reverse Linked List II](https://leetcode.com/problems/reverse-linked-list-ii) | [Use Dummmy Head to iterator the list](https://github.com/Catorpilor/LeetCode/commit/618f1c447efcf638eedda013de27fbc2a54a9354) | Medium |
+| [2. Add Two Numbere](https://leetcode.com/problems/add-two-numbers/) | [Use Sentinel Node](https://github.com/Catorpilor/LeetCode/commit/7a6644f371fd2a75587d97b9cd8cda74755271a0) | Medium |
+| [21. Merge Two Sorted List](https://leetcode.com/problems/merge-two-sorted-lists/) | [Using golang channel](https://github.com/Catorpilor/Leetcode/21_merge_two_sorted_lists) | Easy |
 
 [leetoj]:https://oj.leetcode.com/
 

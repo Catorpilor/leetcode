@@ -1,13 +1,10 @@
 package sort
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+import "github.com/catorpilor/leetcode/utils"
 
-func MergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-	var ret, last *ListNode
-	min := make(chan *ListNode)
+func MergeTwoLists(l1 *utils.ListNode, l2 *utils.ListNode) *utils.ListNode {
+	var ret, last *utils.ListNode
+	min := make(chan *utils.ListNode)
 	go func() {
 		defer close(min)
 		for {
