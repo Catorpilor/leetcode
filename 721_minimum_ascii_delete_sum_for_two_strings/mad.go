@@ -1,6 +1,6 @@
 package mad
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // minDeleteSum use dp to solve the problem
 // time complexity o(mn)

@@ -3,7 +3,7 @@ package tslk
 import (
 	"sort"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func twoSumLessThanK(nums []int, k int) int {

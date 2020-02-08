@@ -3,7 +3,7 @@ package dis
 import (
 	"testing"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func TestDistributeCoins(t *testing.T) {

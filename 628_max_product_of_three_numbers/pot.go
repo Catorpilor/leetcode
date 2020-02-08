@@ -1,7 +1,10 @@
 package pot
 
-import "sort"
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"sort"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func MaxPot(nums []int) int {
 	// sort slice

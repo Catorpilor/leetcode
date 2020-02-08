@@ -3,7 +3,7 @@ package ws
 import (
 	"fmt"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func findWords(board [][]byte, words []string) []string {

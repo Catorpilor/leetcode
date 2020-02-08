@@ -1,6 +1,6 @@
 package ed
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // using dp
 // time complexity O(mn)

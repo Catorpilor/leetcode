@@ -3,7 +3,7 @@ package an
 import (
 	"strconv"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func isAdditive(s string) bool {

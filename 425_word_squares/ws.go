@@ -3,7 +3,7 @@ package ws
 import (
 	"strings"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func buildWithWords(words []string) *utils.TernarySearchTrie {

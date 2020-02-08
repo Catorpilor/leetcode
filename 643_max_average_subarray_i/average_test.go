@@ -1,7 +1,10 @@
 package average
 
-import "testing"
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"testing"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func TestMaxAverage(t *testing.T) {
 	st := []struct {

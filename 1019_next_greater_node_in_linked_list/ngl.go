@@ -1,7 +1,7 @@
 package ngl
 
 import (
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func nextLargeNode(head *utils.ListNode) []int {
