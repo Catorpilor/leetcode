@@ -26,6 +26,7 @@ func KthDistance(nums []int, k int) int {
 	return distances[k]
 }
 
+// KthDistance2 use bucket sort, time complexity is O(n^2), space complexty is O(1)
 func KthDistance2(nums []int, k int) int {
 	n := len(nums)
 	if n <= 1 || k < 1 || k > n*(n-1)/2 {
@@ -48,6 +49,7 @@ func KthDistance2(nums []int, k int) int {
 	return -1
 }
 
+// KthDistance3 use binary search time complexity is O(nlgn), space complexity is O(1)
 func KthDistance3(nums []int, k int) int {
 	n := len(nums)
 	if n <= 1 || k < 1 || k > n*(n-1)/2 {
