@@ -16,7 +16,7 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | ----- | :--------: | :----------: |
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | | Easy |
-| [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Bucket Sort, Binary Search](chttps://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
+| [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Bucket Sort, Binary Search](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
 
 ### Linked List
 | Title | Solution | Difficulty |
