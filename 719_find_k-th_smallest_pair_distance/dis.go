@@ -59,12 +59,7 @@ func KthDistance3(nums []int, k int) int {
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] <= nums[j]
 	})
-	low := nums[1] - nums[0]
-	for i := 2; i < n; i++ {
-		if nums[i]-nums[i-1] < low {
-			low = nums[i] - nums[i-1]
-		}
-	}
+	low := 0
 	hi := nums[n-1] - nums[0]
 	var mid int
 	for low < hi {
@@ -126,12 +121,7 @@ func KthDistance4(nums []int, k int) int {
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] <= nums[j]
 	})
-	low := nums[1] - nums[0]
-	for i := 2; i < n; i++ {
-		if nums[i]-nums[i-1] < low {
-			low = nums[i] - nums[i-1]
-		}
-	}
+	low := 0
 	hi := nums[n-1] - nums[0]
 	var mid int
 	for low < hi {

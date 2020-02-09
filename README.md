@@ -26,6 +26,11 @@ My submissions for [LeetCode Oj][leetoj].
 | [2. Add Two Numbere](https://leetcode.com/problems/add-two-numbers/) | [Use Sentinel Node](https://github.com/Catorpilor/LeetCode/commit/7a6644f371fd2a75587d97b9cd8cda74755271a0) | Medium |
 | [21. Merge Two Sorted List](https://leetcode.com/problems/merge-two-sorted-lists/) | [Using golang channel](https://github.com/Catorpilor/LeetCode/tree/master/21_merge_two_sorted_lists) | Easy |
 
+
+### Sliding Window
+| Title | Solution | Difficulty |
+| ----- | :--------: | :----------: 
+| [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Binary Search+Sliding Window](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
 [leetoj]:https://oj.leetcode.com/
 
 
