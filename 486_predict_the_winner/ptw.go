@@ -3,7 +3,7 @@ package ptw
 import (
 	"math"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func predictTheWinner(nums []int) bool {

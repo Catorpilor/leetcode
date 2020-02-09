@@ -1,6 +1,6 @@
 package lswt
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // LengthOfLongestSubstring returns the longest substring with at most two distinct characters
 func LengthOfLongestSubstring(s string) int {

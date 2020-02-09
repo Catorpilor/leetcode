@@ -1,7 +1,6 @@
 package dis
 
 import (
-	"fmt"
 	"sort"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -24,10 +23,10 @@ func KthDistance(nums []int, k int) int {
 	sort.Slice(distances, func(i, j int) bool {
 		return distances[i] <= distances[j]
 	})
-	fmt.Println(distances)
 	return distances[k]
 }
 
+// KthDistance2 use bucket sort, time complexity is O(n^2), space complexty is O(1)
 func KthDistance2(nums []int, k int) int {
 	n := len(nums)
 	if n <= 1 || k < 1 || k > n*(n-1)/2 {
@@ -50,6 +49,7 @@ func KthDistance2(nums []int, k int) int {
 	return -1
 }
 
+// KthDistance3 use binary search time complexity is O(nlgn), space complexity is O(1)
 func KthDistance3(nums []int, k int) int {
 	n := len(nums)
 	if n <= 1 || k < 1 || k > n*(n-1)/2 {
@@ -59,12 +59,7 @@ func KthDistance3(nums []int, k int) int {
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] <= nums[j]
 	})
-	low := nums[1] - nums[0]
-	for i := 2; i < n; i++ {
-		if nums[i]-nums[i-1] < low {
-			low = nums[i] - nums[i-1]
-		}
-	}
+	low := 0
 	hi := nums[n-1] - nums[0]
 	var mid int
 	for low < hi {
@@ -126,12 +121,7 @@ func KthDistance4(nums []int, k int) int {
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] <= nums[j]
 	})
-	low := nums[1] - nums[0]
-	for i := 2; i < n; i++ {
-		if nums[i]-nums[i-1] < low {
-			low = nums[i] - nums[i-1]
-		}
-	}
+	low := 0
 	hi := nums[n-1] - nums[0]
 	var mid int
 	for low < hi {

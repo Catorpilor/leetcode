@@ -1,7 +1,7 @@
 package ifc
 
 import (
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 type CombinationIterator struct {

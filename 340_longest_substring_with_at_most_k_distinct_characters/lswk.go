@@ -1,6 +1,6 @@
 package lswk
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // LongestSubstringAtmostK returns the longest substring with at most K distinct characters
 func LongestSubstringAtmostK(s string, k int) int {

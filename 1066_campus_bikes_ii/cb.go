@@ -3,7 +3,7 @@ package cb
 import (
 	"math"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func assignBikes(workers, bikes [][]int) int {

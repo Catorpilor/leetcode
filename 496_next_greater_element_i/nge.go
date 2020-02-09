@@ -1,6 +1,6 @@
 package nge
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 func nextGreaterElement(nums1, nums2 []int) []int {
 	n1, n2 := len(nums1), len(nums2)

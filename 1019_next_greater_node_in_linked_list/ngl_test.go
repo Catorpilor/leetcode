@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func TestNextLargeNode(t *testing.T) {

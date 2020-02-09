@@ -5,7 +5,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 // Calculator calculate s

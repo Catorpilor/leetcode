@@ -1,6 +1,6 @@
 package subSumk
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 func maxSubLen(nums []int, k int) int {
 	return preSumWithHash(nums, k)

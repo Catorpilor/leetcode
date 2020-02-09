@@ -3,7 +3,7 @@ package ri
 import (
 	"container/heap"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func ConstructIt(tickets [][]string) []string {

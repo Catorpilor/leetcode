@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func countingStepNumbers(low, hi int) []int {

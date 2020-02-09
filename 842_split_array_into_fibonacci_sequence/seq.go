@@ -5,7 +5,7 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func splitIntoFib(s string) []int {

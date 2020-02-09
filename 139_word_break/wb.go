@@ -1,6 +1,6 @@
 package wb
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 func wordBreak(s string, words []string) bool {
 	n := len(s)

@@ -46,10 +46,8 @@ func helper(res []float64) bool {
 				n := len(res)
 				res = append(res, v)
 				helper(res)
-				res = resFCGFDERCX FDDDDD          S
-
+				res = res[:n]
 			}
-
 		}
 	}
 	return false

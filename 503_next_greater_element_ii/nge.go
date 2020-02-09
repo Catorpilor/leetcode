@@ -1,6 +1,6 @@
 package nge
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 func nextGreaterElement(nums []int) []int {
 	// return expended(nums)

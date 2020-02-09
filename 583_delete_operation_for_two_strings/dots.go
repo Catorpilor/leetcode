@@ -1,6 +1,6 @@
 package dots
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // minDistance using dp to solve the problem.
 // time complexity is O(mn)

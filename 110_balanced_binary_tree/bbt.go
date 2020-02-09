@@ -15,7 +15,7 @@ func isBalancedTD(root *TreeNode) bool {
 	l := depth(root.Left)
 	r := depth(root.Right)
 
-	return (l-r <= 1 && l-r >= -1) && isBalanced(root.Left) && isBalanced(root.Right)
+	return (l-r <= 1 && l-r >= -1) && isBalancedTD(root.Left) && isBalancedTD(root.Right)
 }
 
 func depth(root *TreeNode) int {

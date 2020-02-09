@@ -1,6 +1,6 @@
 package gray
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // sovled based on top voted discussion
 // generate the sequence iteratively. For example, when n=3, we can get the result based on n=2.

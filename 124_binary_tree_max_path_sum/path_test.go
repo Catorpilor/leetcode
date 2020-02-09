@@ -1,7 +1,10 @@
 package path
 
-import "testing"
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"testing"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func TestMaxPathSum(t *testing.T) {
 	st := []struct {

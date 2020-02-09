@@ -1,8 +1,11 @@
 package sum
 
-import "testing"
-import "github.com/catorpilor/leetcode/utils"
-import "math"
+import (
+	"math"
+	"testing"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func TestSumNumbers(t *testing.T) {
 	st := []struct {

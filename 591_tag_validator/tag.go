@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/catorpilor/LeetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 type sb struct {

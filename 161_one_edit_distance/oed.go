@@ -1,6 +1,6 @@
 package oed
 
-import "github.com/catorpilor/LeetCode/utils"
+import "github.com/catorpilor/leetcode/utils"
 
 // isOneEditDistance using dp to solve this problem
 // time complexity O(mn)
