@@ -46,9 +46,36 @@ func isEqualRNode(l1, l2 *RNode) bool {
 	return true
 }
 
+// dcopy time compleixty O(N), space complextiy O(1)
 func dcopy(head *RNode) *RNode {
 	if head == nil {
 		return head
 	}
-	return nil
+	c := head
+	// extend linked list
+	// for example 1->2->3->4 after this loop becomes 1->1'->2->2'->3->3'->4->4'
+	for c != nil {
+		next := c.Next
+		node := &RNode{Val: c.Val, Next: next}
+		c.Next = node
+		c = next
+	}
+	// update extended random links
+	c = head
+	for c != nil {
+		if c.Random != nil {
+			c.Next.Random = c.Random.Next
+		}
+		c = c.Next.Next
+	}
+	c = head
+	copyHead := c.Next
+	copied := copyHead
+	for copied.Next != nil {
+		c.Next = c.Next.Next
+		c = c.Next
+		copied.Next = copied.Next.Next
+		copied = copied.Next
+	}
+	return copyHead
 }
