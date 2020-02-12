@@ -52,6 +52,7 @@ func IsPalindromeWithAlloc(head *utils.ListNode) bool {
 	return true
 }
 
+// IsPalindrome use two pointers time complexity O(N), space complexity O(1)
 func IsPalindrome(head *utils.ListNode) bool {
 	if head == nil || head.Next == nil {
 		return true
