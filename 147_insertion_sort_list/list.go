@@ -27,3 +27,28 @@ func insertSort(head *utils.ListNode) *utils.ListNode {
 	}
 	return dummy.Next
 }
+
+// fasterInsertSort average time complexity O(N), worst case O(N^2)
+func fasterInsertSort(head *utils.ListNode) *utils.ListNode {
+	if head == nil {
+		return head
+	}
+	dummy := &utils.ListNode{Next: head}
+	prev, cur := head, head.Next
+	for cur != nil {
+		if cur.Val >= prev.Val {
+			prev = cur
+			cur = cur.Next
+			continue
+		}
+		prev.Next = cur.Next
+		spot := dummy
+		for spot.Next.Val <= cur.Val {
+			spot = spot.Next
+		}
+		cur.Next = spot.Next
+		spot.Next = cur
+		cur = prev.Next
+	}
+	return dummy.Next
+}
