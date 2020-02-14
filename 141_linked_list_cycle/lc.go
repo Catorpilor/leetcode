@@ -19,7 +19,7 @@ func twoPointers(head *utils.ListNode) bool {
 		}
 		slow = slow.Next
 		fast = fast.Next
-		if fast.Next != nil {
+		if fast != nil && fast.Next != nil {
 			fast = fast.Next
 		}
 	}
