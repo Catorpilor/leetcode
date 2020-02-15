@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+// ListNode is a node structure in a list
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -22,29 +23,39 @@ func (l *ListNode) String() string {
 	return buf.String()
 }
 
+// IsEqualList checks l1 == l2
 func IsEqualList(h1, h2 *ListNode) bool {
 	return h1.String() == h2.String()
 }
 
+// ConstructFromSlice returns a *ListNode built by s
 func ConstructFromSlice(s []int) *ListNode {
-	var head, prev *ListNode
-	for i, c := range s {
-		if i == 0 {
-			head = &ListNode{
-				Val:  c,
-				Next: nil,
-			}
-			prev = head
-		} else {
-			cur := &ListNode{
-				Val:  c,
-				Next: nil,
-			}
-			if prev != nil {
-				prev.Next = cur
-			}
-			prev = cur
-		}
+	// var head, prev *ListNode
+	// for i, c := range s {
+	// 	if i == 0 {
+	// 		head = &ListNode{
+	// 			Val:  c,
+	// 			Next: nil,
+	// 		}
+	// 		prev = head
+	// 	} else {
+	// 		cur := &ListNode{
+	// 			Val:  c,
+	// 			Next: nil,
+	// 		}
+	// 		if prev != nil {
+	// 			prev.Next = cur
+	// 		}
+	// 		prev = cur
+	// 	}
+	// }
+	// return head
+	dummy := &ListNode{}
+	pre := dummy
+	for i := range s {
+		node := &ListNode{Val: s[i]}
+		pre.Next = node
+		pre = node
 	}
-	return head
+	return dummy.Next
 }
