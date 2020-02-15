@@ -26,3 +26,22 @@ func TestAddTwo(t *testing.T) {
 		})
 	}
 }
+
+func TestReverse(t *testing.T) {
+	st := []struct {
+		name      string
+		head, exp *utils.ListNode
+	}{
+		{"single node", utils.ConstructFromSlice([]int{1}), utils.ConstructFromSlice([]int{1})},
+		{"testcase1", utils.ConstructFromSlice([]int{1, 2, 3}), utils.ConstructFromSlice([]int{3, 2, 1})},
+	}
+	for _, tt := range st {
+		t.Run(tt.name, func(t *testing.T) {
+			out := reverse(tt.head)
+			if !utils.IsEqualList(tt.exp, out) {
+				t.Fatalf("with head: %s wanted %s but got %s", tt.head, tt.exp, out)
+			}
+			t.Log("pass")
+		})
+	}
+}
