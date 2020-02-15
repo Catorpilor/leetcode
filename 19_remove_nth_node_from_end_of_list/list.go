@@ -28,3 +28,23 @@ func iterator(head *utils.ListNode, n int) *utils.ListNode {
 	dummy.Next = utils.ReverseList(dummy.Next)
 	return dummy.Next
 }
+
+// iteratorOneWay use two pointers, time complextity O(N), space complexity O(1)
+func iteratorOneWay(head *utils.ListNode, n int) *utils.ListNode {
+	if head == nil {
+		return head
+	}
+	// two pointers
+	dummy := &utils.ListNode{Next: head}
+	l, r := dummy, dummy
+	// l, r with n+1 gap
+	for i := 1; i <= n+1; i++ {
+		r = r.Next
+	}
+	for r != nil {
+		r, l = r.Next, l.Next
+	}
+	// when r reaches the end, l.Next is the node to remove
+	l.Next = l.Next.Next
+	return dummy.Next
+}
