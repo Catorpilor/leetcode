@@ -20,6 +20,7 @@ func TestReorderList(t *testing.T) {
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
 			out := reorderList(tt.head)
+			// var out *utils.ListNode
 			if !utils.IsEqualList(tt.exp, out) {
 				t.Fatalf("with input list: %s wanted %s but got %s", tt.head, tt.exp, out)
 			}
