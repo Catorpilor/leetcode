@@ -53,9 +53,8 @@ func ConstructFromSlice(s []int) *ListNode {
 	dummy := &ListNode{}
 	pre := dummy
 	for i := range s {
-		node := &ListNode{Val: s[i]}
-		pre.Next = node
-		pre = node
+		pre.Next = &ListNode{Val: s[i]}
+		pre = pre.Next
 	}
 	return dummy.Next
 }
