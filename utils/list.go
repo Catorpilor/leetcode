@@ -59,3 +59,19 @@ func ConstructFromSlice(s []int) *ListNode {
 	}
 	return dummy.Next
 }
+
+// ReverseList return the reversed  list
+func ReverseList(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+	next := head.Next
+	head.Next = nil
+	for next != nil {
+		tmp := next.Next
+		next.Next = head
+		head = next
+		next = tmp
+	}
+	return head
+}
