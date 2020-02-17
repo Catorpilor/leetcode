@@ -55,3 +55,13 @@ func useBit(num int) bool {
 	// so that (num & (0xaaaaaaaa) == 0 )
 	return (num > 0) && ((num & (num - 1)) == 0) && ((num & 0xaaaaaaaa) == 0)
 }
+
+// useBitAndMath time complexity O(1), space complexity O(1)
+func useBitAndMath(num int) bool {
+	// same as useBit, num is power of 2 (num > 0) && ((num & (num-1)) == 0)
+	// num = 2^a, only when a is even it's the power of 4
+	// a = 2*k or a = 2*k+1
+	// (2^2k mod 3) = (4^k mod 3) = ((3+1)^k mod 3) = 1
+	// (2^(2k+1) mod 3) = ((2*4^k) mod 3) = ((2 * (3+1)^k) mod 3) = 2
+	return (num > 0) && ((num & (num - 1)) == 0) && (num%3 == 1)
+}
