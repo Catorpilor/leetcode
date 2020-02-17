@@ -22,7 +22,7 @@ My submissions for [LeetCode Oj][leetoj].
 ### Bit
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------: |
-| [342. Power Of Four]() | [Use loop](https://github.com/Catorpilor/LeetCode/commit/b3de7801f000e27a48489c87cc9ec8d8700e9487) | Easy |
+| [342. Power Of Four]() | [Use loop](https://github.com/Catorpilor/LeetCode/commit/b3de7801f000e27a48489c87cc9ec8d8700e9487), [Bit Manipulation](https://github.com/Catorpilor/LeetCode/commit/09f66a3fac85c648d3bb32bbbf35713efd297f3a) | Easy |
 
 ### Linked List
 | Title | Solution | Difficulty |
