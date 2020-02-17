@@ -9,14 +9,20 @@ My submissions for [LeetCode Oj][leetoj].
 * [Breadth First Search](#breadth-first-search)
 * [Two Pointers](#two-pointers)
 * [Sliding Window](#sliding-window) 
+* [Bit](#bit)
 
 ## Categories
 
 ### Array
 | Title | Solution | Difficulty |
-| :----- | :--------: | :----------: |
+| :----- | :-------- | :----------: |
 | [1. Two Sum](https://leetcode.com/problems/two-sum) | | Easy |
 | [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Bucket Sort, Binary Search](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
+
+### Bit
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------: |
+| [342. Power Of Four]() | [Use loop](https://github.com/Catorpilor/LeetCode/commit/b3de7801f000e27a48489c87cc9ec8d8700e9487) | Easy |
 
 ### Linked List
 | Title | Solution | Difficulty |
