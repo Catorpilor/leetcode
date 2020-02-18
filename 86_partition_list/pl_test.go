@@ -8,12 +8,14 @@ import (
 
 func TestPartition(t *testing.T) {
 	st := []struct {
-		name      string
-		head, exp *utils.ListNode
-		x         int
+		name string
+		head *utils.ListNode
+		x    int
+		exp  *utils.ListNode
 	}{
 		{"empty list", nil, 3, nil},
 		{"single node", utils.ConstructFromSlice([]int{1}), 2, utils.ConstructFromSlice([]int{1})},
+		{"failed1", utils.ConstructFromSlice([]int{2, 1}), 2, utils.ConstructFromSlice([]int{1, 2})},
 		{"all identical", utils.ConstructFromSlice([]int{2, 2, 2, 2, 2}), 3, utils.ConstructFromSlice([]int{2, 2, 2, 2, 2})},
 		{"testcase1", utils.ConstructFromSlice([]int{1, 4, 3, 2, 5, 2}), 3, utils.ConstructFromSlice([]int{1, 2, 2, 4, 3, 5})},
 	}
