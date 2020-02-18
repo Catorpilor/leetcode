@@ -37,8 +37,8 @@ func iteratorOneWay(head *utils.ListNode, n int) *utils.ListNode {
 	// two pointers
 	dummy := &utils.ListNode{Next: head}
 	l, r := dummy, dummy
-	// l, r with n+1 gap
-	for i := 1; i <= n+1; i++ {
+	// l, r with n+1 distance
+	for dis := 1; dis <= n+1; dis++ {
 		r = r.Next
 	}
 	for r != nil {
