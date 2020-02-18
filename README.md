@@ -10,6 +10,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Two Pointers](#two-pointers)
 * [Sliding Window](#sliding-window) 
 * [Bit](#bit)
+* [Stack](#stack)
 
 ## Categories
 
@@ -41,10 +42,16 @@ My submissions for [LeetCode Oj][leetoj].
 | [445. Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/) | [reverse the list](https://github.com/Catorpilor/LeetCode/commit/731ce77ff0c2bb5e54f942e38e74ecf77d8efc97) | Medium |
 | [143. Reorder List](https://leetcode.com/problems/reorder-list/) | [Two Pointers](https://github.com/Catorpilor/LeetCode/commit/94da054756575941d9d091bb424623960a546471) | Medium |
 | [19. ](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | [Two Pointers with n+1 gap](https://github.com/Catorpilor/LeetCode/commit/e20c05a68af0e1867f9962daf7f0513a0950b14b) | Medium |
+
 ### Sliding Window
 | Title | Solution | Difficulty |
-| :----- | :-------- | :----------: 
+| :----- | :-------- | :----------:|
 | [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Binary Search+Sliding Window](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
+
+### Stack 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions) | [Use stack to track function id](https://github.com/Catorpilor/LeetCode/commit/3d468f85757fa0d435fa52e3714cdcc47da072c1) | Medium |
 
 
 
