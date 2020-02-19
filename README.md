@@ -43,6 +43,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [143. Reorder List](https://leetcode.com/problems/reorder-list/) | [Two Pointers](https://github.com/Catorpilor/LeetCode/commit/94da054756575941d9d091bb424623960a546471) | Medium |
 | [19. Remove Nth Node from end of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/) | [Two Pointers with n+1 gap](https://github.com/Catorpilor/LeetCode/commit/e20c05a68af0e1867f9962daf7f0513a0950b14b) | Medium |
 | [86. Partition List](https://leetcode.com/problems/partition-list/) | [Two pointers](https://github.com/Catorpilor/LeetCode/commit/f12b0cfede621f9283731c3b839a96f9e3054b12) | Medium |
+| [369. Plus One Linked List](https://leetcode.com/problems/plus-one-linked-list) | [Dummy Node](https://github.com/Catorpilor/LeetCode/commit/36348f1bee5394b755dc2b4b40878d6170e30235) | Medium |
 
 ### Sliding Window
 | Title | Solution | Difficulty |
