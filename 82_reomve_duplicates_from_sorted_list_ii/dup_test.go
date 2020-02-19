@@ -1,6 +1,7 @@
 package dup
 
 import (
+	"math"
 	"testing"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -15,6 +16,8 @@ func TestDeleteDups(t *testing.T) {
 		{"single node", utils.ConstructFromSlice([]int{1}), utils.ConstructFromSlice([]int{1})},
 		{"all identical", utils.ConstructFromSlice([]int{1, 1, 1, 1, 1}), nil},
 		{"testcase1", utils.ConstructFromSlice([]int{1, 1, 2, 2, 3, 4}), utils.ConstructFromSlice([]int{3, 4})},
+		{"failed1", utils.ConstructFromSlice([]int{1, 2, 3, 3, 4, 4, 5}), utils.ConstructFromSlice([]int{1, 2, 5})},
+		{"failed2", utils.ConstructFromSlice([]int{math.MinInt32, 2, math.MaxInt32}), utils.ConstructFromSlice([]int{math.MinInt32, 2, math.MaxInt32})},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
