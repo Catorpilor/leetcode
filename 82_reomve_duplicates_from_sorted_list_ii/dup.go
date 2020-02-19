@@ -7,11 +7,11 @@ import (
 )
 
 func deleteDups(head *utils.ListNode) *utils.ListNode {
-	return useDummy(head)
+	return useHelper(head)
 }
 
-// useDummy time complexity O(N), space complexity O(N)
-func useDummy(head *utils.ListNode) *utils.ListNode {
+// useHelper time complexity O(N), space complexity O(N)
+func useHelper(head *utils.ListNode) *utils.ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
