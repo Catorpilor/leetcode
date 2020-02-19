@@ -36,3 +36,29 @@ func helper(prev int, cur *utils.ListNode) *utils.ListNode {
 	}
 	return helper(cur.Val, cur.Next)
 }
+
+// useDummy time complexity O(N), space complexity O(1)
+func useDummy(head *utils.ListNode) *utils.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dummy := &utils.ListNode{Next: head}
+	pre := dummy
+	for head != nil && head.Next != nil {
+		if head.Val == head.Next.Val {
+			for head != nil && head.Next != nil && head.Val == head.Next.Val {
+				head = head.Next
+			}
+			// for example 1->1->1->2->2
+			//                   ^
+			//                   head
+			// update head to head.Next and iterator again
+			head = head.Next
+			pre.Next = head
+		} else {
+			pre = pre.Next
+			head = head.Next
+		}
+	}
+	return dummy.Next
+}
