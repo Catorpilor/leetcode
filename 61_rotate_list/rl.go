@@ -33,3 +33,28 @@ func useReverse(head *utils.ListNode, k int) *utils.ListNode {
 	dummy.Next = utils.ReverseList(tail)
 	return dummy.Next
 }
+
+// useIter time complexity O(N), space complexity O(1)
+func useIter(head *utils.ListNode, k int) *utils.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	oldTail := head
+	n := 1
+	for oldTail.Next != nil {
+		oldTail = oldTail.Next
+		n++
+	}
+	// make it a ring
+	oldTail.Next = head
+	// new tail at pos n - k%n -1
+	newTail := head
+	for i := 0; i < n-k%n-1; i++ {
+		newTail = newTail.Next
+	}
+	// newHead at pos n - k%n
+	newHead := newTail.Next
+	// break the ring
+	newTail.Next = nil
+	return newHead
+}
