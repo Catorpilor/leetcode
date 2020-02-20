@@ -45,6 +45,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [86. Partition List](https://leetcode.com/problems/partition-list/) | [Two pointers](https://github.com/Catorpilor/LeetCode/commit/f12b0cfede621f9283731c3b839a96f9e3054b12) | Medium |
 | [369. Plus One Linked List](https://leetcode.com/problems/plus-one-linked-list) | [Dummy Node](https://github.com/Catorpilor/LeetCode/commit/36348f1bee5394b755dc2b4b40878d6170e30235) | Medium |
 | [82. Remove Duplicates From Sorted Linkde List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) | [Dummy Node with recursive helper func](https://github.com/Catorpilor/LeetCode/commit/30c14ef05ad92feb4f575e718946f18e837c068a), [Dummy Node in place](https://github.com/Catorpilor/LeetCode/commit/36348f1bee5394b755dc2b4b40878d6170e30235) | Medium |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list) | [Two Pointers](https://github.com/Catorpilor/LeetCode/commit/6aefb8243572176a66cc2f36684dd5bdfcca64c0) | Easy |
 
 ### Sliding Window
 | Title | Solution | Difficulty |
