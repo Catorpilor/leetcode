@@ -47,7 +47,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [82. Remove Duplicates From Sorted Linkde List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) | [Dummy Node with recursive helper func](https://github.com/Catorpilor/LeetCode/commit/30c14ef05ad92feb4f575e718946f18e837c068a), [Dummy Node in place](https://github.com/Catorpilor/LeetCode/commit/36348f1bee5394b755dc2b4b40878d6170e30235) | Medium |
 | [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list) | [Two Pointers](https://github.com/Catorpilor/LeetCode/commit/6aefb8243572176a66cc2f36684dd5bdfcca64c0) | Easy |
 | [61. Rotate List](https://leetcode.com/problems/rotate-list/) | [reverse list](https://github.com/Catorpilor/LeetCode/commit/8a9fb5923c043083959c59ef855021f0ca44c845) | Medium |
-
+| [1171. Remove Zero Sum Consecutive Nodes from Linked List](https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/) | [Two passes preSum with hashmap](https://github.com/Catorpilor/LeetCode/commit/09e6e6e0345843dca02a8530323bb6bb3ee788f1) | Medium |
 ### Sliding Window
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
