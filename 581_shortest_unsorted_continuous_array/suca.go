@@ -8,7 +8,8 @@ import (
 )
 
 func unsortedSubarray(nums []int) int {
-	return myWay(nums)
+	// return myWay(nums)
+	return useStack(nums)
 }
 
 // myWay time complexity O(N!)
@@ -93,6 +94,38 @@ func useSort(nums []int) int {
 			l = utils.Min(l, i)
 			r = utils.Max(r, i)
 		}
+	}
+	if l > r {
+		return 0
+	}
+	return r - l + 1
+}
+
+// useStack time complexity O(N), space complexity O(N)
+func useStack(nums []int) int {
+	n := len(nums)
+	st := make([]int, 0, n)
+	l, r := n, 0
+	// traverse nums from left to right, if nums in ascending order, push index to st
+	for i := 0; i < n; i++ {
+		// if nums[i] < nums[i-1], means nums[i] at wrong pos, pop from stack to find the proper pos
+		// and update l
+		for len(st) > 0 && nums[st[len(st)-1]] > nums[i] {
+			nst := len(st)
+			l = utils.Min(l, st[nst-1])
+			st = st[:nst-1]
+		}
+		st = append(st, i)
+	}
+	// clear
+	st = st[:0]
+	for i := n - 1; i >= 0; i-- {
+		for len(st) > 0 && nums[st[len(st)-1]] < nums[i] {
+			nst := len(st)
+			r = utils.Max(r, st[nst-1])
+			st = st[:nst-1]
+		}
+		st = append(st, i)
 	}
 	if l > r {
 		return 0
