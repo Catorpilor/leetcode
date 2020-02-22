@@ -2,6 +2,7 @@ package suca
 
 import (
 	"fmt"
+	"sort"
 
 	"github.com/catorpilor/leetcode/utils"
 )
@@ -73,6 +74,27 @@ func selectionSort(nums []int) int {
 		}
 	}
 	if r < l {
+		return 0
+	}
+	return r - l + 1
+}
+
+// useSort time complexity O(NlgN), space complexity O(N)
+func useSort(nums []int) int {
+	n := len(nums)
+	local := make([]int, n)
+	copy(local, nums)
+	sort.Slice(local, func(i, j int) bool {
+		return local[i] <= local[j]
+	})
+	l, r := n, 0
+	for i := 0; i < n; i++ {
+		if local[i] != nums[i] {
+			l = utils.Min(l, i)
+			r = utils.Max(r, i)
+		}
+	}
+	if l > r {
 		return 0
 	}
 	return r - l + 1
