@@ -2,6 +2,7 @@ package suca
 
 import (
 	"fmt"
+	"math"
 	"sort"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -9,7 +10,8 @@ import (
 
 func unsortedSubarray(nums []int) int {
 	// return myWay(nums)
-	return useStack(nums)
+	// return useStack(nums)
+	return fourPasses(nums)
 }
 
 // myWay time complexity O(N!)
@@ -128,6 +130,45 @@ func useStack(nums []int) int {
 		st = append(st, i)
 	}
 	if l > r {
+		return 0
+	}
+	return r - l + 1
+}
+
+// fourPasses time complexity O(N), space complexity O(1)
+func fourPasses(nums []int) int {
+	lMin, rMax := math.MaxInt32, math.MinInt32
+	n := len(nums)
+	// lMin represents the min when nums[i] < nums[i-1]
+	// from left to right it should be ascending
+	for i := 1; i < n; i++ {
+		if nums[i] < nums[i-1] {
+			// descending
+			lMin = utils.Min(lMin, nums[i])
+		}
+	}
+	// rMax represents the max when nums[i] > nums[i+1]
+	// from right to left it should be descending,
+	for i := n - 2; i >= 0; i-- {
+		if nums[i] > nums[i+1] {
+			// ascending
+			rMax = utils.Max(rMax, nums[i])
+		}
+	}
+	var l, r int
+	for ; l < n; l++ {
+		// find the proper postion for lMin
+		if nums[l] > lMin {
+			break
+		}
+	}
+	for r = n - 1; r >= 0; r-- {
+		// find the proper postion for rMax
+		if nums[r] < rMax {
+			break
+		}
+	}
+	if l >= r {
 		return 0
 	}
 	return r - l + 1
