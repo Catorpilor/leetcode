@@ -1,6 +1,10 @@
 package suca
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func unsortedSubarray(nums []int) int {
 	return myWay(nums)
@@ -50,4 +54,26 @@ func helper(nums []int) (int, int) {
 		r--
 	}
 	return minIdx, maxIdx
+}
+
+// selectionSort time complexity O(N^2), space complexity O(1)
+func selectionSort(nums []int) int {
+	n := len(nums)
+	// just like selection sort, l, r are boundaries of the range needed to be sorted
+	l, r := n, 0
+	for i := 0; i < n-1; i++ {
+		for j := i + 1; j < n; j++ {
+			if nums[j] < nums[i] {
+				// nums[i] and nums[j] are in the wrong position
+				// update l, left most position
+				l = utils.Min(l, i)
+				// update r, right most position
+				r = utils.Max(r, j)
+			}
+		}
+	}
+	if r < l {
+		return 0
+	}
+	return r - l + 1
 }
