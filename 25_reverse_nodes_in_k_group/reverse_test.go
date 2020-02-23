@@ -16,7 +16,8 @@ func TestReverseKGroup(t *testing.T) {
 		{"head is nill", nil, 1, nil},
 		{"single node", utils.ConstructFromSlice([]int{1}), 1, utils.ConstructFromSlice([]int{1})},
 		{"reverse n", utils.ConstructFromSlice([]int{1, 2, 3, 4}), 4, utils.ConstructFromSlice([]int{4, 3, 2, 1})},
-		{"testcase1", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 2, utils.ConstructFromSlice([]int{2, 1, 3, 4, 5})},
+		{"testcase1", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 2, utils.ConstructFromSlice([]int{2, 1, 4, 3, 5})},
+		{"testcase2", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 3, utils.ConstructFromSlice([]int{3, 2, 1, 4, 5})},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
