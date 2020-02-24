@@ -52,6 +52,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [25. Reverse Nodes in k-Groups](https://leetcode.com/problems/reverse-nodes-in-k-group) | [using iterator](https://github.com/Catorpilor/LeetCode/commit/b8e13ed1168c7027313ec4bf5d2e95dd512a85db) | Hard |
 | [1290. Convert Binary Number to Integer](https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [strconv.ParseUInt's implementation](https://github.com/Catorpilor/LeetCode/commit/6151890e0576e57906c126d70939e449dbc9ea84) | Easy |
 | [707. Design Linked List](https://leetcode.com/problems/design-linked-list/) | [Single Linked List with Count](https://github.com/Catorpilor/LeetCode/commit/d636c9c35e9e9852a357322b3b52bb924ca70cfd) | Medium |
+| [725. Split Linked List In Parts](https://leetcode.com/problems/split-linked-list-in-parts/) | [Two passes](https://github.com/Catorpilor/LeetCode/commit/95841a76275386578cb4c3be6ae2b96c53d6d89a) | Medium |
 ### Sliding Window
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
