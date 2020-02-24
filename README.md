@@ -50,6 +50,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [61. Rotate List](https://leetcode.com/problems/rotate-list/) | [reverse list](https://github.com/Catorpilor/LeetCode/commit/8a9fb5923c043083959c59ef855021f0ca44c845) | Medium |
 | [1171. Remove Zero Sum Consecutive Nodes from Linked List](https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/) | [Two passes preSum with hashmap](https://github.com/Catorpilor/LeetCode/commit/09e6e6e0345843dca02a8530323bb6bb3ee788f1) | Medium |
 | [25. Reverse Nodes in k-Groups](https://leetcode.com/problems/reverse-nodes-in-k-group) | [using iterator](https://github.com/Catorpilor/LeetCode/commit/b8e13ed1168c7027313ec4bf5d2e95dd512a85db) | Hard |
+| [1290. Convert Binary Number to Integer](https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/) | [strconv.ParseUInt's implementation](https://github.com/Catorpilor/LeetCode/commit/6151890e0576e57906c126d70939e449dbc9ea84) | Easy |
 ### Sliding Window
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
