@@ -16,6 +16,7 @@ func TestSplitIntoParts(t *testing.T) {
 		{"empty head", nil, 3, []*utils.ListNode{nil, nil, nil}},
 		{"single node", utils.ConstructFromSlice([]int{1}), 3, []*utils.ListNode{utils.ConstructFromSlice([]int{1}), nil, nil}},
 		{"testcase1", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 2, []*utils.ListNode{utils.ConstructFromSlice([]int{1, 2, 3}), utils.ConstructFromSlice([]int{4, 5})}},
+		{"testcase2", utils.ConstructFromSlice([]int{1, 2, 3, 4, 5}), 1, []*utils.ListNode{utils.ConstructFromSlice([]int{1, 2, 3, 4, 5})}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
