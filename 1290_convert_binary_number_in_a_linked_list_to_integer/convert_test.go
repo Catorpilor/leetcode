@@ -49,3 +49,20 @@ func TestDecimalValueUseOr(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkIterator(b *testing.B) {
+	var ret int
+	head := utils.ConstructFromSlice([]int{1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1})
+	for n := 0; n < b.N; n++ {
+		ret = iterator(head)
+	}
+	b.Log(ret)
+}
+func BenchmarkUseOr(b *testing.B) {
+	var ret int
+	head := utils.ConstructFromSlice([]int{1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1})
+	for n := 0; n < b.N; n++ {
+		ret = useOr(head)
+	}
+	b.Log(ret)
+}
