@@ -1,6 +1,8 @@
 package linked
 
-import "github.com/catorpilor/leetcode/utils"
+import (
+	"github.com/catorpilor/leetcode/utils"
+)
 
 // MyLinkedList wraps utils.ListNode
 type MyLinkedList struct {
@@ -63,6 +65,7 @@ func (ll *MyLinkedList) DeleteAtIndex(index int) {
 	if index < 0 || index >= ll.N {
 		return
 	}
+	ll.N--
 	prev := ll.Head
 	for i := 0; i < index; i++ {
 		prev = prev.Next

@@ -71,3 +71,27 @@ func TestDeleteAtIndex(t *testing.T) {
 	}
 
 }
+
+func TestFailed1(t *testing.T) {
+	f := setup()
+	defer f()
+	list.AddAtHead(7)
+	list.AddAtHead(2)
+	list.AddAtHead(1)
+	list.AddAtIndex(3, 0)
+	shouldBe := "1->2->7->0"
+	if list.String() != shouldBe {
+		t.Fatalf("list shoud be: %s but got: %s", shouldBe, list)
+	}
+	list.DeleteAtIndex(2)
+	shouldBe = "1->2->0"
+	if list.String() != shouldBe {
+		t.Fatalf("list shoud be: %s but got: %s", shouldBe, list)
+	}
+	list.AddAtHead(6)
+	list.AddAtTail(4)
+	shouldBe = "6->1->2->0->4"
+	if list.String() != shouldBe {
+		t.Fatalf("list shoud be: %s but got: %s", shouldBe, list)
+	}
+}
