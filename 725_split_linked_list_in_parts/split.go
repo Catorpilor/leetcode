@@ -6,7 +6,7 @@ func splitIntoParts(root *utils.ListNode, k int) []*utils.ListNode {
 	return iterator(root, k)
 }
 
-// iterator time compleixty O(N), space complexity O(1)
+// iterator time compleixty O(N), space complexity O(K)
 func iterator(root *utils.ListNode, k int) []*utils.ListNode {
 	res := make([]*utils.ListNode, k)
 	// traverse count the number of nodes
