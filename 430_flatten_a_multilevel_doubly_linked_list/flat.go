@@ -73,3 +73,24 @@ func useStack(head *Node) *Node {
 	}
 	return dummy.Next
 }
+
+// iterator time complexity O(N), space complexity O(1)
+func iterator(head *Node) *Node {
+	for h := head; h != nil; h = h.Next {
+		if h.Child != nil {
+			next := h.Next
+			h.Next = h.Child
+			h.Next.Prev = h
+			h.Child = nil
+			p := h.Next
+			for p.Next != nil {
+				p = p.Next
+			}
+			p.Next = next
+			if next != nil {
+				next.Prev = p
+			}
+		}
+	}
+	return head
+}
