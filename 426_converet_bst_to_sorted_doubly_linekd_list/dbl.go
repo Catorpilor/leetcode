@@ -47,3 +47,35 @@ func inOrder(cur *utils.TreeNode) {
 		inOrder(cur.Right)
 	}
 }
+
+// useStack time complexity O(N), space complexity O(N)
+func useStack(root *utils.TreeNode) *utils.TreeNode {
+	if root == nil {
+		return root
+	}
+	dummy := &utils.TreeNode{}
+	st := make([]*utils.TreeNode, 0, 2000)
+	prev := dummy
+	cur := root
+	n := len(st)
+	for n > 0 || cur != nil {
+		for cur != nil {
+			st = append(st, cur)
+			cur = cur.Left
+		}
+		n = len(st)
+		// pop from stack
+		cur = st[n-1]
+		st = st[:n-1]
+		n--
+		// update pointers
+		prev.Right = cur
+		cur.Left = prev
+		prev = cur
+		cur = cur.Right
+	}
+	// prev point to the last node, make it a cycle
+	dummy.Right.Left = prev
+	prev.Right = dummy.Right
+	return dummy.Right
+}
