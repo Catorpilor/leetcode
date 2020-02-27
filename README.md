@@ -78,6 +78,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [200. Number OfIslands](https://leetcode.com/problems/number-of-islands/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/7c017b9ca955368a1472156b81b258a338a244b9) | Medium |
 | [100. Same Tree](https://leetcode.com/problems/same-tree/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/74bd71a521412d0641c0276c2879fe12c26c2dba) | Easy |
+| [101. Symmeetric Tree](https://leetcode.com/problems/symmetric-tree/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/7937741c167b85461c20a66b2d9b7a61ede83a76) | Easy |
 
 
 
