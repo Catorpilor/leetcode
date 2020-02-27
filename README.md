@@ -67,6 +67,18 @@ My submissions for [LeetCode Oj][leetoj].
 | [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions) | [Use stack to track function id](https://github.com/Catorpilor/LeetCode/commit/3d468f85757fa0d435fa52e3714cdcc47da072c1) | Medium |
 
 
+### Breadth First Search 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [200. Number OfIslands](https://leetcode.com/problems/number-of-islands/) | [use BFS](https://github.com/Catorpilor/LeetCode/commit/7c017b9ca955368a1472156b81b258a338a244b9) | Medium |
+
+
+### Depth First Search 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [200. Number OfIslands](https://leetcode.com/problems/number-of-islands/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/7c017b9ca955368a1472156b81b258a338a244b9) | Medium |
+
+
 
 [leetoj]:https://oj.leetcode.com/
 
