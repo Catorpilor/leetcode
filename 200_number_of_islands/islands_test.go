@@ -17,7 +17,7 @@ func TestNumOfIslands(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := NumOfIslands(c.grid)
+			ret := numOfIslands(c.grid)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v",
 					c.exp, ret, c.grid)
@@ -26,7 +26,7 @@ func TestNumOfIslands(t *testing.T) {
 	}
 }
 
-func TestNumOfIslands2(t *testing.T) {
+func TestUseBFS(t *testing.T) {
 	st := []struct {
 		name string
 		grid [][]byte
@@ -41,7 +41,7 @@ func TestNumOfIslands2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := NumOfIslands2(c.grid)
+			ret := useBfs(c.grid)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v",
 					c.exp, ret, c.grid)
@@ -50,7 +50,7 @@ func TestNumOfIslands2(t *testing.T) {
 	}
 }
 
-func TestNumOfIslands3(t *testing.T) {
+func TestUseUnionFind(t *testing.T) {
 	st := []struct {
 		name string
 		grid [][]byte
@@ -65,7 +65,7 @@ func TestNumOfIslands3(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := NumOfIslands3(c.grid)
+			ret := useUnionFind(c.grid)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v",
 					c.exp, ret, c.grid)

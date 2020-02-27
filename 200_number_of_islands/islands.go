@@ -4,7 +4,8 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func NumOfIslands(grid [][]byte) int {
+// numOfIslands time complexity O(MN), space complexity O(MN)
+func numOfIslands(grid [][]byte) int {
 	row := len(grid)
 	if row == 0 {
 		return 0
@@ -21,31 +22,27 @@ func NumOfIslands(grid [][]byte) int {
 			if grid[i][j] == '1' {
 				// root of tree
 				ret++
-				dfs(&grid, i, j, row, col)
+				dfs(grid, i, j, row, col)
 			}
 		}
 	}
 	return ret
 }
 
-func dfs(grid *[][]byte, curRow, curCol, rows, cols int) {
+func dfs(grid [][]byte, i, j, m, n int) {
 	// set grid[curRow][curCol] to '0' marked visited
-	(*grid)[curRow][curCol] = '0'
-	if curRow-1 >= 0 && (*grid)[curRow-1][curCol] == '1' {
-		dfs(grid, curRow-1, curCol, rows, cols)
-	}
-	if curRow+1 < rows && (*grid)[curRow+1][curCol] == '1' {
-		dfs(grid, curRow+1, curCol, rows, cols)
-	}
-	if curCol+1 < cols && (*grid)[curRow][curCol+1] == '1' {
-		dfs(grid, curRow, curCol+1, rows, cols)
-	}
-	if curCol-1 >= 0 && (*grid)[curRow][curCol-1] == '1' {
-		dfs(grid, curRow, curCol-1, rows, cols)
+	grid[i][j] = '0'
+	pos := [5]int{-1, 0, 1, 0, -1}
+	for k := 0; k < 4; k++ {
+		nx, ny := i+pos[k], j+pos[k+1]
+		if nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] == '1' {
+			dfs(grid, nx, ny, m, n)
+		}
 	}
 }
 
-func NumOfIslands2(grid [][]byte) int {
+// useBfs time complexity O(MN), space complexity O(MN)
+func useBfs(grid [][]byte) int {
 	rows := len(grid)
 	if rows == 0 {
 		return 0
@@ -58,6 +55,7 @@ func NumOfIslands2(grid [][]byte) int {
 	var ret int
 	type pair struct{ r, c int }
 	q := utils.NewQueue()
+	pos := [5]int{-1, 0, 1, 0, -1}
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
 			if grid[i][j] == '1' {
@@ -66,21 +64,12 @@ func NumOfIslands2(grid [][]byte) int {
 				q.Enroll(pair{i, j})
 				for !q.IsEmpty() {
 					p := q.Pull().(pair)
-					if p.r-1 >= 0 && grid[p.r-1][p.c] == '1' {
-						q.Enroll(pair{p.r - 1, p.c})
-						grid[p.r-1][p.c] = '0'
-					}
-					if p.r+1 < rows && grid[p.r+1][p.c] == '1' {
-						q.Enroll(pair{p.r + 1, p.c})
-						grid[p.r+1][p.c] = '0'
-					}
-					if p.c-1 >= 0 && grid[p.r][p.c-1] == '1' {
-						q.Enroll(pair{p.r, p.c - 1})
-						grid[p.r][p.c-1] = '0'
-					}
-					if p.c+1 < cols && grid[p.r][p.c+1] == '1' {
-						q.Enroll(pair{p.r, p.c + 1})
-						grid[p.r][p.c+1] = '0'
+					for k := 0; k < 4; k++ {
+						nx, ny := p.r+pos[k], p.c+pos[k+1]
+						if nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid[nx][ny] == '1' {
+							q.Enroll(pair{nx, ny})
+							grid[nx][ny] = '0'
+						}
 					}
 				}
 			}
@@ -89,7 +78,8 @@ func NumOfIslands2(grid [][]byte) int {
 	return ret
 }
 
-func NumOfIslands3(grid [][]byte) int {
+// useUnionFind time complexity O(MN), space complexity O(MN)
+func useUnionFind(grid [][]byte) int {
 	// union-find
 	rows := len(grid)
 	if rows == 0 {
@@ -133,23 +123,29 @@ func NumOfIslands3(grid [][]byte) int {
 		}
 		count--
 	}
-
+	pos := [5]int{-1, 0, 1, 0, -1}
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
 			if grid[i][j] == '1' {
 				grid[i][j] = '0' // mark visited
-				if i > 0 && grid[i-1][j] == '1' {
-					union(i*cols+j, (i-1)*cols+j)
+				for k := 0; k < 4; k++ {
+					nx, ny := i+pos[k], j+pos[k+1]
+					if nx >= 0 && nx < rows && ny >= 0 && ny < cols && grid[nx][ny] == '1' {
+						union(i*cols+j, nx*cols+ny)
+					}
 				}
-				if i+1 < rows && grid[i+1][j] == '1' {
-					union(i*cols+j, (i+1)*cols+j)
-				}
-				if j > 0 && grid[i][j-1] == '1' {
-					union(i*cols+j, i*cols+j-1)
-				}
-				if j+1 < cols && grid[i][j+1] == '1' {
-					union(i*cols+j, i*cols+j+1)
-				}
+				// if i > 0 && grid[i-1][j] == '1' {
+				// 	union(i*cols+j, (i-1)*cols+j)
+				// }
+				// if i+1 < rows && grid[i+1][j] == '1' {
+				// 	union(i*cols+j, (i+1)*cols+j)
+				// }
+				// if j > 0 && grid[i][j-1] == '1' {
+				// 	union(i*cols+j, i*cols+j-1)
+				// }
+				// if j+1 < cols && grid[i][j+1] == '1' {
+				// 	union(i*cols+j, i*cols+j+1)
+				// }
 			}
 		}
 	}
