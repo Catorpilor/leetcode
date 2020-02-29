@@ -11,6 +11,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Sliding Window](#sliding-window) 
 * [Bit](#bit)
 * [Stack](#stack)
+* [HashMap](#hashmap)
 
 ## Categories
 
@@ -67,6 +68,10 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions) | [Use stack to track function id](https://github.com/Catorpilor/LeetCode/commit/3d468f85757fa0d435fa52e3714cdcc47da072c1) | Medium |
 
+### HashMap
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [1048. Longest String Chain](https://leetcode.com/problems/longest-string-chain/) | [hashmap + DFS + Memorization](https://github.com/Catorpilor/LeetCode/commit/1c3f2d553eae35b77d66901157699209fd5d9de1) | Medium |
 
 ### Breadth First Search 
 | Title | Solution | Difficulty |
