@@ -67,6 +67,7 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions) | [Use stack to track function id](https://github.com/Catorpilor/LeetCode/commit/3d468f85757fa0d435fa52e3714cdcc47da072c1) | Medium |
+| [394. Decode String](https://leetcode.com/problems/decode-string/) | [use two stacks](https://github.com/catorpilor/LeetCode/tree/master/394_decode_string) | Medium |
 
 ### HashMap
 | Title | Solution | Difficulty |
