@@ -63,3 +63,51 @@ func helper(g map[int][]int, low, disc []int, cur, prev int, idx *int) {
 		}
 	}
 }
+
+func useKosaraju(g map[int][]int, n int) [][]int {
+	st := make([]int, 0, n)
+	visited := make([]bool, n)
+	for i := range visited {
+		if !visited[i] {
+			dfs(g, i, visited, &st)
+		}
+	}
+	// reverse the graph
+
+	// unclear the flat
+	for i := range visited {
+		visited[i] = false
+	}
+	var res [][]int
+	nst := len(st)
+	for nst > 0 {
+		group := make([]int, 0, n)
+		top := st[nst-1]
+		st = st[:nst-1]
+		if !visited[top] {
+			visited[top] = true
+			group = append(group, top)
+			for _, j := range g[top] {
+				if !visited[j] {
+					visited[j] = true
+					group = append(group, j)
+				}
+			}
+		}
+		if len(group) > 0 {
+			res = append(res, group)
+		}
+		nst = len(st)
+	}
+	return res
+}
+
+func dfs(g map[int][]int, cur int, visited []bool, st *[]int) {
+	visited[cur] = true
+	for _, j := range g[cur] {
+		if !visited[j] {
+			dfs(g, j, visited, st)
+		}
+	}
+	(*st) = append((*st), cur)
+}
