@@ -56,3 +56,46 @@ func helper(res *[][]int, g map[int][]int, low, disc []int, cur, pre int, idx *i
 		}
 	}
 }
+
+func useRank(n int, conns [][]int) [][]int {
+	rank := make([]int, n)
+	for i := range rank {
+		rank[i] = -2
+	}
+	// build adjancency list
+	g := make(map[int][]int, n)
+	for _, c := range conns {
+		h, t := c[0], c[1]
+		g[h] = append(g[h], t)
+		g[t] = append(g[t], h)
+	}
+	var res [][]int
+	dfs(&res, g, rank, 0, 0)
+	return res
+}
+
+func dfs(edges *[][]int, g map[int][]int, rank []int, cur, depth int) int {
+	if rank[cur] >= 0 {
+		// already visited
+		return rank[cur]
+	}
+	rank[cur] = depth
+	minRank := depth
+	for _, neighbor := range g[cur] {
+		if rank[neighbor] == depth-1 || rank[neighbor] > depth {
+			// skip u->v and v->u || already visited node
+			continue
+		}
+		soFar := dfs(edges, g, rank, neighbor, depth+1)
+		if soFar > depth {
+			// fmt.Printf("soFar: %d, depth: %d, %d->%d\n", soFar, depth, cur, neighbor)
+			// not in the cycle, cur->neighbor is the critical path
+			*edges = append((*edges), []int{cur, neighbor})
+		} else {
+			// detect a cycle, cur -> neighbor in the cycle
+			// fmt.Printf("in the cycle %d->%d or %d->%d\n", cur, neighbor, neighbor, cur)
+		}
+		minRank = utils.Min(minRank, soFar)
+	}
+	return minRank
+}
