@@ -59,3 +59,57 @@ func reverse(s string) string {
 	}
 	return string(b)
 }
+
+func useBackTracking(s string) []string {
+	var left, right int
+	for i := range s {
+		if s[i] == '(' {
+			left++
+		} else if s[i] == ')' {
+			if left == 0 {
+				right++
+			} else if left > 0 {
+				left--
+			}
+		}
+	}
+	var ans []string
+	seen := make(map[string]bool)
+	backtrack(&ans, s, seen, 0, 0, 0, left, right, []byte{})
+	return ans
+}
+
+// backtrack worst case "(((((((" time complexity O(2^N)
+func backtrack(ans *[]string, s string, seen map[string]bool, idx, leftP, rightP, leftRem, rightRem int, expr []byte) {
+	if idx == len(s) {
+		if leftRem == 0 && rightRem == 0 && !seen[string(expr)] {
+			tmp := make([]byte, len(expr))
+			copy(tmp, expr)
+			st := string(tmp)
+			seen[st] = true
+			*ans = append((*ans), st)
+		}
+	} else {
+		ch := s[idx]
+		curLen := len(expr)
+		if (ch == '(' && leftRem > 0) || (ch == ')' && rightRem > 0) {
+			// remove case
+			if ch == '(' {
+				backtrack(ans, s, seen, idx+1, leftP, rightP, leftRem-1, rightRem, expr)
+			} else {
+				backtrack(ans, s, seen, idx+1, leftP, rightP, leftRem, rightRem-1, expr)
+			}
+		}
+		// append
+		expr = append(expr, ch)
+		if ch != '(' && ch != ')' {
+			backtrack(ans, s, seen, idx+1, leftP, rightP, leftRem, rightRem, expr)
+		} else if ch == '(' {
+			backtrack(ans, s, seen, idx+1, leftP+1, rightP, leftRem, rightRem, expr)
+		} else if rightP < leftP {
+			backtrack(ans, s, seen, idx+1, leftP, rightP+1, leftRem, rightRem, expr)
+		}
+		// backtrack
+		expr = expr[:curLen]
+	}
+}
