@@ -89,6 +89,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [104. Max Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/) | [DFS](https://github.com/Catorpilor/LeetCode/commit/c84edc14074af9eee10e2ff9069fdfb164cd6a1b) | Easy |
 | [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | [use DFS and a global max](https://leetcode.com/problems/binary-tree-maximum-path-sum/discuss/39775/Accepted-short-solution-in-Java) | Hard |
 | [1192. Critical Connections in a Network](https://leetcode.com/problems/critical-connections-in-a-network/) | [Tarjan's algorithm](https://github.com/Catorpilor/LeetCode/commit/a87fc61295487927e2aaf769cb4596d24bfded88) | Hard |
+| [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) | [use backtracking](https://github.com/Catorpilor/LeetCode/commit/3b276e204b8676d90a547015c4d4a64382ae437a) | Hard |
 
 
 
