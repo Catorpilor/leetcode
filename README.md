@@ -74,6 +74,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [1048. Longest String Chain](https://leetcode.com/problems/longest-string-chain/) | [hashmap + DFS + Memorization](https://github.com/Catorpilor/LeetCode/commit/1c3f2d553eae35b77d66901157699209fd5d9de1) | Medium |
 | [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) | [use hashmaps](https://github.com/Catorpilor/LeetCode/commit/849be1ac6c15247dfcaf4ff82c1af8ad9b68150a) | Medium |
+| [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/) | [hashmap and array](https://github.com/Catorpilor/LeetCode/blob/master/380_insert_delete_getrandom_o1/idg.go) | Medium |
 
 ### Breadth First Search 
 | Title | Solution | Difficulty |
