@@ -12,6 +12,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Bit](#bit)
 * [Stack](#stack)
 * [HashMap](#hashmap)
+* [Heap](#heap)
 
 ## Categories
 
@@ -98,6 +99,10 @@ My submissions for [LeetCode Oj][leetoj].
 | [106. Construct Binary Tree From Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/a2d745498967424126a7606c7d712c908f60b873) | Medium |
 
 
+### Heap
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) | [use max-k-heap](https://github.com/Catorpilor/LeetCode/commit/c064fa6fa0891a2601b019c24562baea653b72d3) | Medium |
 
 [leetoj]:https://oj.leetcode.com/
 
