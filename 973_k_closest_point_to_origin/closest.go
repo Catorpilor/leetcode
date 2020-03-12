@@ -51,3 +51,43 @@ func useHeap(points [][]int, k int) [][]int {
 	}
 	return ans
 }
+
+// useQuickSelect time complexity O(N), space complexity O(1)
+func useQuickSelect(points [][]int, k int) [][]int {
+	n := len(points)
+	if n == k {
+		return points
+	}
+	l, r := 0, n-1
+	for l <= r {
+		mid := helper(points, l, r)
+		if mid == k {
+			break
+		} else if mid < k {
+			l = mid + 1
+		} else {
+			r = mid - 1
+		}
+	}
+	return points[:k]
+}
+
+func helper(points [][]int, l, r int) int {
+	pivot := points[l]
+	for l < r {
+		for l < r && compare(points[r], pivot) >= 0 {
+			r--
+		}
+		points[l] = points[r]
+		for l < r && compare(points[l], pivot) <= 0 {
+			l++
+		}
+		points[r] = points[l]
+	}
+	points[l] = pivot
+	return l
+}
+
+func compare(p1, p2 []int) int {
+	return p1[0]*p1[0] + p1[1]*p1[1] - p2[0]*p2[0] - p2[1]*p2[1]
+}
