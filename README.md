@@ -102,7 +102,7 @@ My submissions for [LeetCode Oj][leetoj].
 ### Heap
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
-| [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) | [use max-k-heap](https://github.com/Catorpilor/LeetCode/commit/c064fa6fa0891a2601b019c24562baea653b72d3) | Medium |
+| [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) | [use max-k-heap](https://github.com/Catorpilor/LeetCode/commit/c064fa6fa0891a2601b019c24562baea653b72d3), [use quick select](https://github.com/Catorpilor/LeetCode/commit/d6dcf60c2c7f9202935069f5249d993ef2073298) | Medium |
 
 [leetoj]:https://oj.leetcode.com/
 
