@@ -74,3 +74,29 @@ func nlg(head *utils.ListNode) []int {
 	}
 	return res
 }
+
+// useBruteForce time complexity O(N^2), space complexity O(N)
+func useBruteForce(head *utils.ListNode) []int {
+	var res []int
+	if head == nil {
+		return res
+	}
+	if head.Next == nil {
+		return []int{0}
+	}
+	cur := head
+	for cur != nil {
+		right := cur.Next
+		for right != nil && right.Val <= cur.Val {
+			right = right.Next
+		}
+		if right == nil {
+			res = append(res, 0)
+
+		} else {
+			res = append(res, right.Val)
+		}
+		cur = cur.Next
+	}
+	return res
+}
