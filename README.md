@@ -13,6 +13,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Stack](#stack)
 * [HashMap](#hashmap)
 * [Heap](#heap)
+* [Random](#random)
 
 ## Categories
 
@@ -104,6 +105,10 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [973. K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/) | [use max-k-heap](https://github.com/Catorpilor/LeetCode/commit/c064fa6fa0891a2601b019c24562baea653b72d3), [use quick select](https://github.com/Catorpilor/LeetCode/commit/d6dcf60c2c7f9202935069f5249d993ef2073298) | Medium |
 
+### Random
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/) | [use rand.Intn and binary search](https://github.com/Catorpilor/LeetCode/commit/7d24c845cf620f1e7c9ee9f024646a2e94245dfb) | Medium |
 [leetoj]:https://oj.leetcode.com/
 
 
