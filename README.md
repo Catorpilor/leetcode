@@ -109,6 +109,7 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/) | [use rand.Intn and binary search](https://github.com/Catorpilor/LeetCode/commit/7d24c845cf620f1e7c9ee9f024646a2e94245dfb) | Medium |
+
 [leetoj]:https://oj.leetcode.com/
 
 
