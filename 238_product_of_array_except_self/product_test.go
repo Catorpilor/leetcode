@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestProductOfArray(t *testing.T) {
+func TestUseAddSpace(t *testing.T) {
 	st := []struct {
 		name      string
 		nums, exp []int
@@ -18,7 +18,7 @@ func TestProductOfArray(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := ProductOfArray(c.nums)
+			ret := useAddSpace(c.nums)
 			if !reflect.DeepEqual(ret, c.exp) {
 				t.Fatalf("expected %v but got %v, with input %v",
 					c.exp, ret, c.nums)
@@ -27,7 +27,7 @@ func TestProductOfArray(t *testing.T) {
 	}
 }
 
-func TestProductOfArray2(t *testing.T) {
+func TestUseConstantSpace(t *testing.T) {
 	st := []struct {
 		name      string
 		nums, exp []int
@@ -40,7 +40,7 @@ func TestProductOfArray2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := ProductOfArray2(c.nums)
+			ret := useConstantSpace(c.nums)
 			if !reflect.DeepEqual(ret, c.exp) {
 				t.Fatalf("expected %v but got %v, with input %v",
 					c.exp, ret, c.nums)
