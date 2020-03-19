@@ -24,6 +24,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Bucket Sort, Binary Search](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
 | [581. Shortest Unsorted Continuous Subarray]() | [four passes](https://github.com/Catorpilor/LeetCode/commit/335d9616860cc8a34f90bcabb78552a1066a117d) | Easy |
 | [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [use lowerBound](https://github.com/Catorpilor/LeetCode/commit/458e3a6fa4118085b5c954b40beeeea197925c62) | Medium |
+| [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | [use two additional product array](https://github.com/Catorpilor/LeetCode/commit/d0c01ec075aedbf7b2eb26c7105820af29ad73c4) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
