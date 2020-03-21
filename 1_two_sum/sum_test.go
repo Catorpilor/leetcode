@@ -12,8 +12,8 @@ func TestTwoSums(t *testing.T) {
 		target int
 		exp    []int
 	}{
-		{"empty slice", nil, 0, nil},
-		{"not found", []int{1, 2, 3, 4}, 9, nil},
+		{"empty slice", nil, 0, []int{}},
+		{"not found", []int{1, 2, 3, 4}, 9, []int{}},
 		{"testcase1", []int{2, 11, 15, 7}, 9, []int{0, 3}},
 		{"testcase2", []int{20, 3, -11, 5}, 9, []int{0, 2}},
 	}
