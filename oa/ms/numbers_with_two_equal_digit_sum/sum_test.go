@@ -13,6 +13,7 @@ func TestDigitSum(t *testing.T) {
 		{"all equal", []int{111, 21, 12, 30}, 141},
 		{"testcase1", []int{51, 71, 17, 42}, 93},
 		{"testcase2", []int{42, 33, 60}, 102},
+		{"testcase3", []int{-111, 21, 12, 30, 60}, 51},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
