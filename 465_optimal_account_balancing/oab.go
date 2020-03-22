@@ -25,9 +25,9 @@ func settle(start int, debt []int) int {
 	r := 1<<31 - 1
 	for i := start + 1; i < len(debt); i++ {
 		if debt[i]*debt[start] < 0 { // skip same sign debt
-			debt[i] += debt[start]
+			debt[i] += debt[start] // clear debt at start
 			r = utils.Min(r, 1+settle(start+1, debt))
-			debt[i] -= debt[start]
+			debt[i] -= debt[start] // backtracking
 		}
 	}
 	return r
