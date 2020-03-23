@@ -14,6 +14,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [HashMap](#hashmap)
 * [Heap](#heap)
 * [Random](#random)
+* [DP](#dp)
 
 ## Categories
 
@@ -110,6 +111,11 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [528. Random Pick with Weight](https://leetcode.com/problems/random-pick-with-weight/) | [use rand.Intn and binary search](https://github.com/Catorpilor/LeetCode/commit/7d24c845cf620f1e7c9ee9f024646a2e94245dfb) | Medium |
+
+### DP
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [123. Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/) | [use dp[k][j] to represent at day j's max profit with at most k transactions](https://github.com/Catorpilor/LeetCode/commit/a36801ccf5980be8db6fdb59772a7c20b5af536d) | Hard |
 
 [leetoj]:https://oj.leetcode.com/
 
