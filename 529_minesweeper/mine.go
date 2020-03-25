@@ -15,10 +15,10 @@ func UpdateBoard(board [][]byte, click []int) [][]byte {
 		return board
 	}
 	x, y := click[0], click[1]
+	pos := [][]int{[]int{-1, 0}, []int{-1, 1}, []int{-1, -1}, []int{0, -1}, []int{0, 1}, []int{1, 1}, []int{1, -1}}
 	if board[x][y] == 'M' {
 		board[x][y] = 'X'
 	} else {
-		pos := [][]int{[]int{-1, 0}, []int{-1, 1}, []int{-1, -1}, []int{0, -1}, []int{0, 1}, []int{1, 1}, []int{1, -1}}
 		dfs(board, x, y, m, n, pos)
 	}
 	return board

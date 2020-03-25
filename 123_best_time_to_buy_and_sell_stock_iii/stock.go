@@ -30,6 +30,13 @@ func Stock(prices []int) int {
 	for i := 1; i <= 2; i++ {
 		tempMax := dp[i-1][0] - prices[0]
 		for j := 1; j < n; j++ {
+			// for the original dp equation
+			// for m:=0; m<j;m++ {
+			// 	// there is a lot of re-compuate of max(dp[i-1][m]-prices[m])
+			// 	// so we use a temp var to store the max(dp[i-1][m] - prices[m]) we found so far when
+			// 	// iterate the prices array.
+			// 	dp[i][j] = utils.Max(dp[i][j], utils.Max(dp[i][j-1], prices[j]+dp[i-1][m]-prices[m]))
+			// }
 			dp[i][j] = utils.Max(dp[i][j-1], prices[j]+tempMax)
 			tempMax = utils.Max(tempMax, dp[i-1][j]-prices[j])
 		}
