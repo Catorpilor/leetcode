@@ -15,6 +15,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Heap](#heap)
 * [Random](#random)
 * [DP](#dp)
+* [Design](#design)
 
 ## Categories
 
@@ -116,6 +117,11 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [123. Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/) | [use dp[k][j] to represent at day j's max profit with at most k transactions](https://github.com/Catorpilor/LeetCode/commit/a36801ccf5980be8db6fdb59772a7c20b5af536d) | Hard |
+
+### Design
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [146. LRU Cache](https://leetcode.com/problems/lru-cache/) | [use doubly linked list with hashmap](https://github.com/Catorpilor/LeetCode/commit/191d2a78d6204275e3db1dc4853f0a99ea368bc4) | Medium |
 
 [leetoj]:https://oj.leetcode.com/
 
