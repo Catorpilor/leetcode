@@ -72,3 +72,27 @@ func useSentinel(l1, l2 *utils.ListNode) *utils.ListNode {
 	}
 	return sentinel.Next
 }
+
+func fasterVersion(l1, l2 *utils.ListNode) *utils.ListNode {
+	head := &utils.ListNode{}
+	cur := head
+	sum := 0
+	for {
+		if l1 != nil {
+			sum += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			sum += l2.Val
+			l2 = l2.Next
+		}
+		cur.Val = sum % 10
+		sum /= 10
+		if l1 == nil && l2 == nil && sum == 0 {
+			break
+		}
+		cur.Next = &utils.ListNode{}
+		cur = cur.Next
+	}
+	return head
+}

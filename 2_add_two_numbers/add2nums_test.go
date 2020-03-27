@@ -29,3 +29,20 @@ func TestAddTwoNums(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkAddTwoNums(b *testing.B) {
+	cmps := []struct {
+		name string
+		fun  func(l1, l2 *utils.ListNode) *utils.ListNode
+	}{
+		{"straight", useSentinel},
+		{"faster version", fasterVersion},
+	}
+	for _, addNums := range cmps {
+		b.Run(addNums.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				_ = addNums.fun(utils.ConstructFromSlice([]int{9, 9, 9, 9}), utils.ConstructFromSlice([]int{1, 0, 0, 0, 9, 9}))
+			}
+		})
+	}
+}
