@@ -2,7 +2,8 @@ package interleave
 
 func isInterLeaving(s1, s2, s3 string) bool {
 	// return useRecursion(s1, s2, s3, 0, 0, 0)
-	return useDP(s1, s2, s3)
+	// return useDP(s1, s2, s3)
+	return useDPLessSpace(s1, s2, s3)
 }
 
 // useRecursion time complexity O(2^(M+N)) space complexity O(M+N)
@@ -60,4 +61,31 @@ func useDP(s1, s2, s3 string) bool {
 		}
 	}
 	return dp[n1][n2]
+}
+
+// useDPLessSpace time complexity O(MN), space complexity O(N)
+func useDPLessSpace(s1, s2, s3 string) bool {
+	n1, n2, n3 := len(s1), len(s2), len(s3)
+	if n1+n2 != n3 {
+		return false
+	}
+	dp := make([]bool, n2+1)
+	dp[0] = true
+	for j := 1; j <= n2; j++ {
+		dp[j] = s3[j-1] == s2[j-1] && dp[j-1]
+	}
+	// fmt.Printf("m:0, dp:%v\n", dp)
+	var leftStatus, topStatus bool
+	for i := 1; i <= n1; i++ {
+		// calculate dp[i][0]
+		dp[0] = s1[i-1] == s3[i-1] && dp[0]
+		leftStatus = dp[0]
+		for j := 1; j <= n2; j++ {
+			topStatus = dp[j]
+			dp[j] = (s3[i+j-1] == s1[i-1] && topStatus) || (s3[i+j-1] == s2[j-1] && leftStatus)
+			leftStatus = dp[j]
+		}
+		// fmt.Printf("m:%d, dp:%v\n", i, dp)
+	}
+	return dp[n2]
 }
