@@ -16,6 +16,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Random](#random)
 * [DP](#dp)
 * [Design](#design)
+* [Binary Search](#binary-search)
 
 ## Categories
 
@@ -123,6 +124,13 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [146. LRU Cache](https://leetcode.com/problems/lru-cache/) | [use doubly linked list with hashmap](https://github.com/Catorpilor/LeetCode/commit/191d2a78d6204275e3db1dc4853f0a99ea368bc4) | Medium |
+
+
+### Binary Search
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum | 
+
 
 [leetoj]:https://oj.leetcode.com/
 
