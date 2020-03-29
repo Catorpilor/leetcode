@@ -119,3 +119,61 @@ func maxPalinLength(b []byte, l, r int) int {
 	}
 	return count
 }
+
+func isPalindrome(s string) bool {
+	n := len(s)
+	for i, j := 0, n-1; i < j; i, j = i+1, j-1 {
+		if s[i] != s[j] {
+			return false
+		}
+	}
+	return true
+}
+
+func isGood(x int, s string) int {
+	for l := 0; l+x <= len(s); l++ {
+		if isPalindrome(s[l : l+x]) {
+			return l
+		}
+	}
+	return -1
+}
+
+// useBinarySearch time compleixty O(N^2 * lg(N)), space complexity O(1)
+func useBinarySearch(s string) string {
+	n := len(s)
+	if n <= 1 {
+		return s
+	}
+	var startPos, maxLen int
+	for parity := 0; parity < 2; parity++ {
+		low, high := 1, n
+		if low%2 != parity {
+			low++
+		}
+		if high%2 != parity {
+			high--
+		}
+		for low <= high {
+			mid := low + (high-low)/2
+			if mid%2 != parity {
+				mid++
+			}
+			if mid > high {
+				break
+			}
+			tmp := isGood(mid, s)
+			if tmp != -1 {
+				// found one
+				if mid > maxLen {
+					maxLen = mid
+					startPos = tmp
+				}
+				low = mid + 2
+			} else {
+				high = mid - 2
+			}
+		}
+	}
+	return s[startPos : startPos+maxLen]
+}
