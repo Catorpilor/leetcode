@@ -177,3 +177,49 @@ func useBinarySearch(s string) string {
 	}
 	return s[startPos : startPos+maxLen]
 }
+
+// useExpendingFromCenter time complexity O(N^2), space complexity O(1)
+func useExpendingFromCenter(s string) string {
+	n := len(s)
+	if n <= 1 {
+		return s
+	}
+	var startPos, maxLen int
+	// odd ones
+	for x := 0; x < n; x++ {
+		for k := 0; x-k >= 0 && x+k < n; k++ {
+			if s[x-k] != s[x+k] {
+				break
+			}
+			tmp := 2*k + 1
+			// fmt.Printf("odd ones startPos:%d, maxLen:%d, x:%d, k:%d, left:%d, right:%d\n", startPos, maxLen, x, k, x-k, x+k)
+			if tmp > maxLen {
+				maxLen = tmp
+				startPos = x - k
+				// fmt.Printf("odd found: startPos:%d, maxLen:%d\n", startPos, maxLen)
+			}
+		}
+	}
+	// even palindromes
+	// for example
+	// s = "a b b a"
+	//       ^ ^ ^
+	// x=0   | | |
+	// x=1     | |
+	// x=2       |
+	for x := 0; x < n-1; x++ {
+		for k := 1; x+1-k >= 0 && x+k < n; k++ {
+			if s[x+1-k] != s[x+k] {
+				break
+			}
+			// fmt.Printf("even ones startPos:%d, maxLen:%d, x:%d, k:%d, left:%d, right:%d\n", startPos, maxLen, x, k, x+1-k, x+k)
+			tmp := 2 * k
+			if tmp > maxLen {
+				maxLen = tmp
+				startPos = x + 1 - k
+				// fmt.Printf("even found: startPos:%d, maxLen:%d\n", startPos, maxLen)
+			}
+		}
+	}
+	return s[startPos : startPos+maxLen]
+}
