@@ -1,5 +1,7 @@
 package lps
 
+import "github.com/catorpilor/leetcode/utils"
+
 // Lps returns the longest papindromic substring in s
 func Lps(s string) string {
 	n := len(s)
@@ -222,4 +224,51 @@ func useExpendingFromCenter(s string) string {
 		}
 	}
 	return s[startPos : startPos+maxLen]
+}
+
+func preProcess(s string) []byte {
+	n := len(s)
+	sb := make([]byte, 2*n+3)
+	sb[0] = '$'
+	sb[2*n+2] = '@'
+	for i := range s {
+		sb[2*i+1] = '#'
+		sb[2*i+2] = s[i]
+	}
+	sb[2*n+1] = '#'
+	return sb
+}
+
+// useMancher time complexity O(N), space complexity O(N)
+func useMancher(s string) string {
+	n := len(s)
+	if n <= 1 {
+		return s
+	}
+	sb := preProcess(s)
+	nsb := len(sb)
+	lpc := make([]int, nsb)
+	var center, right int
+	for i := 1; i < nsb-1; i++ {
+		mirror := 2*center - i
+		if right > i {
+			lpc[i] = utils.Min(right-i, lpc[mirror])
+		}
+		for sb[i+1+lpc[i]] == sb[i-(1+lpc[i])] {
+			lpc[i]++
+		}
+		if i+lpc[i] > right {
+			center = i
+			right = i + lpc[i]
+		}
+	}
+	var maxLen int
+	for i := 1; i < nsb; i++ {
+		if lpc[i] > maxLen {
+			maxLen = lpc[i]
+			center = i
+		}
+	}
+	return s[(center-1-maxLen)/2 : (center-1+maxLen)/2]
+
 }
