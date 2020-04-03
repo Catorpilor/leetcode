@@ -4,17 +4,21 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func MaxSubArray(nums []int) int {
+func maxSubArray(nums []int) int {
+	return useGreedy(nums)
+}
+
+// useGreedy time complexity O(N), space complexity O(1)
+func useGreedy(nums []int) int {
 	if len(nums) < 1 {
 		return 0
 	}
-	sum, maxSofar := 0, nums[0]
-	for _, c := range nums {
-		sum += c
-		maxSofar = utils.Max(sum, maxSofar)
-		sum = utils.Max(sum, 0)
+	sum, maxSofar := nums[0], nums[0]
+	for i := 1; i < len(nums); i++ {
+		maxSofar = utils.Max(nums[i], maxSofar+nums[i])
+		sum = utils.Max(sum, maxSofar)
 	}
-	return maxSofar
+	return sum
 }
 
 func MaxSubArray2(nums []int) int {

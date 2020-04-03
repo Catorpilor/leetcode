@@ -15,7 +15,7 @@ func TestMaxSubArray(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := MaxSubArray(c.nums)
+			ret := maxSubArray(c.nums)
 			if ret != c.exp {
 				t.Fatalf("expectde %d but got %d, with inputs %v",
 					c.exp, ret, c.nums)
