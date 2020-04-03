@@ -10,7 +10,12 @@ func squareDigit(n int) int {
 	return ret
 }
 
-func IsHappy(n int) bool {
+func isHappy(n int) bool {
+	return useFloyd(n)
+}
+
+// useFloyd time complexity O(lgN), space complexity O(1)
+func useFloyd(n int) bool {
 	slow, fast := n, n
 	for {
 		slow = squareDigit(slow)

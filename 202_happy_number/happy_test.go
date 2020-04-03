@@ -15,7 +15,7 @@ func TestIsHappy(t *testing.T) {
 
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := IsHappy(c.n)
+			ret := isHappy(c.n)
 			if ret != c.exp {
 				t.Fatalf("expected %t but got %t ,with input %d",
 					c.exp, ret, c.n)
