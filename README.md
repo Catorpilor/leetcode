@@ -17,6 +17,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [DP](#dp)
 * [Design](#design)
 * [Binary Search](#binary-search)
+* [Math](#math)
 
 ## Categories
 
@@ -130,6 +131,11 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum | 
+
+### Binary Search
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
 
 
 [leetoj]:https://oj.leetcode.com/
