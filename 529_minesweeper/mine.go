@@ -1,7 +1,5 @@
 package mine
 
-import "fmt"
-
 func UpdateBoard(board [][]byte, click []int) [][]byte {
 	m := len(board)
 	if m < 1 {
@@ -31,10 +29,9 @@ func dfs(board [][]byte, x, y, m, n int, dirs [][]int) {
 	}
 	adjMineCnt := adjMines(board, x, y, m, n)
 	if adjMineCnt > 0 {
-		board[x][y] = '0' + 1
+		board[x][y] = byte('0' + adjMineCnt)
 	} else {
 		board[x][y] = byte('B')
-		fmt.Printf("board[x]= %v\n", board[x])
 		for _, v := range dirs {
 			dfs(board, x+v[0], y+v[1], m, n, dirs)
 		}
