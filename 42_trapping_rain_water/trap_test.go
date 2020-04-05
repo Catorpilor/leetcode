@@ -25,7 +25,7 @@ func TestTrap(t *testing.T) {
 	}
 }
 
-func TestTrap2(t *testing.T) {
+func TestUseTwoPointers(t *testing.T) {
 	st := []struct {
 		name   string
 		height []int
@@ -39,7 +39,7 @@ func TestTrap2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := Trap2(c.height)
+			ret := useTwoPointers(c.height)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v",
 					c.exp, ret, c.height)

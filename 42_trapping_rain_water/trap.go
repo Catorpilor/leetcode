@@ -32,39 +32,51 @@ func Trap(nums []int) int {
 	return ret
 }
 
-func Trap2(nums []int) int {
+func useTwoPointers(nums []int) int {
 	// O(n) time and O(1) space
 	n := len(nums)
 	if n <= 2 {
 		return 0
 	}
-	left, right, maxLeft, maxRight := 0, n-1, 0, 0
+	left, right, maxLeft, maxRight := 0, n-1, nums[0], nums[n-1]
 	var res int
 	// Search from left to right and maintain a max height of left and right separately,
 	// which is like a one-side wall of partial container.
 	// Fix the higher one and flow water from the lower part.
 	// For example, if current height of left is lower, we fill water in the left bin.
 	// Until left meets right, we filled the whole container.
-	for left <= right {
-		if nums[left] <= nums[right] {
-			if nums[left] >= maxLeft {
-				maxLeft = nums[left]
+	for left < right {
+		/*
+			if nums[left] <= nums[right] {
+				if nums[left] >= maxLeft {
+					maxLeft = nums[left]
+				} else {
+					res += maxLeft - nums[left]
+				}
+				left++
 			} else {
-				res += maxLeft - nums[left]
+				if nums[right] >= maxRight {
+					maxRight = nums[right]
+				} else {
+					res += maxRight - nums[right]
+				}
+				right--
 			}
+		*/
+		if maxLeft < maxRight {
+			res += maxLeft - nums[left]
 			left++
+			maxLeft = utils.Max(maxLeft, nums[left])
 		} else {
-			if nums[right] >= maxRight {
-				maxRight = nums[right]
-			} else {
-				res += maxRight - nums[right]
-			}
+			res += maxRight - nums[right]
 			right--
+			maxRight = utils.Max(maxRight, nums[right])
 		}
 	}
 	return res
 }
 
+// bruteForce time complexity O(N^2), space complexity O(1)
 func bruteForce(nums []int) int {
 	n := len(nums)
 	if n <= 2 {
@@ -72,6 +84,8 @@ func bruteForce(nums []int) int {
 	}
 	var res, maxL, maxR int
 	for i := range nums {
+		// maxL the max height of nums[0:i]
+		// maxR the max height of nums[i+1:]
 		maxL, maxR = 0, 0
 		for j := 0; j < i; j++ {
 			if nums[j] > maxL {
@@ -99,6 +113,7 @@ func dp(nums []int) int {
 	if n <= 2 {
 		return 0
 	}
+	// maxL  and maxR are the prefix/post Max array
 	maxL := make([]int, n)
 	maxL[0] = nums[0]
 	for i := 1; i < n; i++ {
