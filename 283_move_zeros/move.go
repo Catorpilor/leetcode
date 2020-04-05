@@ -24,6 +24,24 @@ func MoveZeroes(nums []int) []int {
 
 // moveZeros time complexity O(N), space complexity O(1)
 func moveZeros(nums []int) []int {
+	return useTwoPointers(nums)
+}
+
+func MoveZeroes2(nums []int) []int {
+	leftZeroIdx := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			if i > leftZeroIdx {
+				nums[leftZeroIdx] = nums[i]
+				nums[i] = 0
+			}
+			leftZeroIdx += 1
+		}
+	}
+	return nums
+}
+
+func useTwoPointers(nums []int) []int {
 	n := len(nums)
 	if n <= 1 {
 		return nums
@@ -49,16 +67,17 @@ func moveZeros(nums []int) []int {
 	return nums
 }
 
-func MoveZeroes2(nums []int) []int {
-	leftZeroIdx := 0
-	for i := 0; i < len(nums); i++ {
-		if nums[i] != 0 {
-			if i > leftZeroIdx {
-				nums[leftZeroIdx] = nums[i]
-				nums[i] = 0
-			}
-			leftZeroIdx += 1
+// useOnePointer time complexity O(N), space complexity O(1)
+func useOnePointer(nums []int) []int {
+	var nxt int // nxt point to the next position for a non-zero value
+	for _, num := range nums {
+		if num != 0 {
+			nums[nxt] = num
+			nxt++
 		}
+	}
+	for i := nxt; i < len(nums); i++ {
+		nums[i] = 0
 	}
 	return nums
 }
