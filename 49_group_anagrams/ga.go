@@ -13,18 +13,13 @@ func GroupAnagrams(input []string) [][]string {
 
 // time complex O(nKLogK) K is the max length of str in input
 // space Complexity O(nK)
-func ga1(input []string) [][]string {
+func useHashmap(input []string) [][]string {
 	n := len(input)
 	lc := make(map[string][]string, n)
 	for _, str := range input {
-		// old school
 		// sort str alphabetically
 		k := sortString(str)
-		if v, exists := lc[k]; !exists {
-			lc[k] = []string{str}
-		} else {
-			lc[k] = append(v, str)
-		}
+		lc[k] = append(lc[k], str)
 	}
 	out := make([][]string, 0, len(lc))
 	for _, v := range lc {
