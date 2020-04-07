@@ -9,5 +9,15 @@ func useHashmap(arr []int) int {
 	if n <= 1 {
 		return 0
 	}
-	return n
+	set := make(map[int]bool, n)
+	for _, num := range arr {
+		set[num] = true
+	}
+	var ans int
+	for _, num := range arr {
+		if set[num+1] {
+			ans++
+		}
+	}
+	return ans
 }
