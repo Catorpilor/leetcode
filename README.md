@@ -18,6 +18,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Design](#design)
 * [Binary Search](#binary-search)
 * [Math](#math)
+* [String](#string)
 
 ## Categories
 
@@ -137,6 +138,12 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
+
+
+### String 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/531e98d44ba9289cebd329b0cc9bee4f6065dd8c) | Easy |
 
 
 [leetoj]:https://oj.leetcode.com/
