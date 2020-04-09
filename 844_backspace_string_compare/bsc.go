@@ -6,7 +6,7 @@ func backspaceCompare(s, t string) bool {
 	return useStack(s, t)
 }
 
-// useStack time complexity O(N), space complexity O(N)
+// useStack time complexity O(M+N), space complexity O(M+N)
 func useStack(s, t string) bool {
 	ns, nt := len(s), len(t)
 	st1, st2 := make([]byte, 0, ns), make([]byte, 0, nt)
