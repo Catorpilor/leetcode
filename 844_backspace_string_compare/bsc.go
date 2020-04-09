@@ -33,3 +33,43 @@ func useStack(s, t string) bool {
 	}
 	return bytes.Equal(st1, st2)
 }
+
+// useTwoPointers time complexity O(M+N), space complexity O(1)
+func useTwoPointers(s, t string) bool {
+	ns, nt := len(s), len(t)
+	i, j := ns-1, nt-1
+	skipS, skipT := 0, 0
+	for i >= 0 || j >= 0 {
+		for i >= 0 {
+			if s[i] == '#' {
+				skipS++
+				i--
+			} else if skipS > 0 {
+				skipS--
+				i--
+			} else {
+				break
+			}
+		}
+		for j >= 0 {
+			if t[j] == '#' {
+				skipT++
+				j--
+			} else if skipT > 0 {
+				skipT--
+				j--
+			} else {
+				break
+			}
+		}
+		if i >= 0 && j >= 0 && s[i] != t[j] {
+			return false
+		}
+		if (i >= 0) != (j >= 0) {
+			return false
+		}
+		i--
+		j--
+	}
+	return true
+}
