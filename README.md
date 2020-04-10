@@ -31,6 +31,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | [use lowerBound](https://github.com/Catorpilor/LeetCode/commit/458e3a6fa4118085b5c954b40beeeea197925c62) | Medium |
 | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | [use two additional product array](https://github.com/Catorpilor/LeetCode/commit/d0c01ec075aedbf7b2eb26c7105820af29ad73c4) | Medium |
 | [283. Move Zeros](https://leetcode.com/problems/move-zeroes/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/64638a1c73dd34442a72ec9e97b82c4a8e29730a) | Easy |
+| [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | [use sort](https://github.com/Catorpilor/LeetCode/commit/806634240ed572628110c4b2173ad07d0e5f1d45) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
