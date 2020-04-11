@@ -12,9 +12,9 @@ func TestRestoreIpAddresses(t *testing.T) {
 		exp  []string
 	}{
 		{"empty str", "", []string{}},
-		{"not a valid ip", "012313321", []string{}},
-		{"testcase1", "25525511125", []string{"255.255.111.25", "255.255.11.125"}},
-		{"testcase2", "2552552550", []string{"255.255.255.0", "255.255.25.50"}},
+		{"not a valid ip", "012313321", []string{"0.123.133.21"}},
+		{"testcase1", "25525511125", []string{"255.255.11.125", "255.255.111.25"}},
+		{"testcase2", "2552552550", []string{"255.255.25.50", "255.255.255.0"}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

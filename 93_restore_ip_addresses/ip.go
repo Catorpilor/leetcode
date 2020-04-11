@@ -1,6 +1,9 @@
 package ip
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 func restoreIpAddresses(s string) []string {
 	var res []string
@@ -8,7 +11,9 @@ func restoreIpAddresses(s string) []string {
 	if n < 4 {
 		return res
 	}
-	permute(&res, "", s, 0, 0)
+	// permute(&res, "", s, 0, 0)
+	bb := make([]byte, 0, n+3)
+	useBackTrack(&res, s, bb, 4)
 	return res
 }
 
@@ -34,6 +39,32 @@ func permute(res *[]string, bid, s string, pos, dots int) {
 			tmp = bid + "." + seg
 		}
 		permute(res, tmp, s, pos+i, dots+1)
+	}
+}
+
+func useBackTrack(ans *[]string, s string, bid []byte, segment int) {
+	if len(s) < segment || len(s) > segment*3 {
+		return
+	}
+	if segment == 0 && len(s) == 0 {
+		*ans = append(*ans, string(bid))
+		return
+	}
+	nb := len(bid)
+	for i := 1; i < 4; i++ {
+		if i > len(s) {
+			return
+		}
+		if (i > 1 && s[0] == '0') || (i == 3 && s[:i] > "255") {
+			return
+		}
+		bid = append(bid, []byte(s[:i])...)
+		if segment > 1 {
+			bid = append(bid, '.')
+		}
+		fmt.Println(string(bid))
+		useBackTrack(ans, s[i:], bid, segment-1)
+		bid = bid[:nb]
 	}
 }
 
