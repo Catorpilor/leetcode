@@ -32,6 +32,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/) | [use two additional product array](https://github.com/Catorpilor/LeetCode/commit/d0c01ec075aedbf7b2eb26c7105820af29ad73c4) | Medium |
 | [283. Move Zeros](https://leetcode.com/problems/move-zeroes/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/64638a1c73dd34442a72ec9e97b82c4a8e29730a) | Easy |
 | [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) | [use sort](https://github.com/Catorpilor/LeetCode/commit/806634240ed572628110c4b2173ad07d0e5f1d45) | Medium |
+| [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | [simple traverse](https://github.com/Catorpilor/LeetCode/commit/500dddb86e8eada99292e84b1fd3bc43fe72b4c4) | Easy |
 
 ### Bit
 | Title | Solution | Difficulty |
