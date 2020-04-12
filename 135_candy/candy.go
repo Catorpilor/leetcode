@@ -6,7 +6,8 @@ import (
 
 func numOfCandies(ratings []int) int {
 	// return useBruteForce(ratings)
-	return useTwoArray(ratings)
+	// return useTwoArray(ratings)
+	return useOneArray(ratings)
 }
 
 // useBruteForce time complexity O(N^2), space complexity O(N)
@@ -46,6 +47,8 @@ func useTwoArray(ratings []int) int {
 	if n <= 1 {
 		return n
 	}
+	// leftTurn just to satisfy the left side rule.
+	// rightTurn just to satisfy the right side rule.
 	leftTurn, rightTurn := make([]int, n), make([]int, n)
 	leftTurn[0], rightTurn[n-1] = 1, 1
 	for i := 1; i < n; i++ {
@@ -65,6 +68,33 @@ func useTwoArray(ratings []int) int {
 	var ans int
 	for i := 0; i < n; i++ {
 		ans += utils.Max(leftTurn[i], rightTurn[i])
+	}
+	return ans
+}
+
+// useOneArray time complexity O(N), space compleixyt O(N)
+func useOneArray(ratings []int) int {
+	n := len(ratings)
+	if n <= 1 {
+		return n
+	}
+	candies := make([]int, n)
+	for i := range candies {
+		candies[i] = 1
+	}
+	// left turn only to satisfy the left side rule.
+	for i := 1; i < n; i++ {
+		if ratings[i] > ratings[i-1] {
+			candies[i] = candies[i-1] + 1
+		}
+	}
+	var ans int
+	ans += candies[n-1] // the right most one only satisfy the left rule.
+	for i := n - 2; i >= 0; i-- {
+		if ratings[i] > ratings[i+1] {
+			candies[i] = utils.Max(candies[i], candies[i+1]+1)
+		}
+		ans += candies[i]
 	}
 	return ans
 }
