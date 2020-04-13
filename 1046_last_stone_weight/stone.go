@@ -27,3 +27,44 @@ func useSort(stones []int) int {
 	}
 	return 0
 }
+
+// useBucket time complexity O(N+W), space compleixty O(W)
+func useBucket(stones []int) int {
+	n := len(stones)
+	if n < 1 {
+		return 0
+	}
+	maxWeight := stones[0]
+	for i := 1; i < n; i++ {
+		if stones[i] > maxWeight {
+			maxWeight = stones[i]
+		}
+	}
+	bucket := make([]int, maxWeight+1)
+	// distrubute to buckets
+	for i := range stones {
+		bucket[stones[i]]++
+	}
+	currentWeight := maxWeight
+	biggestWeight := 0
+	for currentWeight > 0 {
+		if bucket[currentWeight] == 0 {
+			currentWeight--
+		} else if biggestWeight == 0 {
+			bucket[currentWeight] %= 2
+			if bucket[currentWeight] == 1 {
+				biggestWeight = currentWeight
+			}
+			currentWeight--
+		} else {
+			bucket[currentWeight]--
+			if biggestWeight-currentWeight <= currentWeight {
+				bucket[biggestWeight-currentWeight]++
+				biggestWeight = 0
+			} else {
+				biggestWeight -= currentWeight
+			}
+		}
+	}
+	return biggestWeight
+}
