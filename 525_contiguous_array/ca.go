@@ -22,3 +22,24 @@ func useBruteForce(nums []int) int {
     }
     return ans
 }
+
+// useHashmap time complexity O(N), space complexity O(N)
+func useHashmap(nums []int) int {
+    n := len(nums)
+    set := make(map[int]int, n)
+    set[0] = -1 // -1 index is an even point
+    count, delta, ans := 0, 0, 0
+    for i := range nums {
+        delta = 1
+        if nums[i] == 0 {
+            delta = -1
+        }
+        count += delta
+        if v, exists := set[count]; exists {
+            ans = utils.Max(ans, i-v)
+        } else {
+            set[count] = i
+        }
+    }
+    return ans
+}
