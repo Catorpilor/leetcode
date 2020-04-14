@@ -72,6 +72,8 @@ My submissions for [LeetCode Oj][leetoj].
 | [817. Linked List Components](https://leetcode.com/problems/linked-list-components/) | [iterator+set](https://github.com/Catorpilor/LeetCode/commit/bb1a2cd3055888a5ccd981a4b65ee7e9a24bd4d3) | Medium |
 | [430. Flatten a Multilevel Doubly Linked List](https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/) | [preOrder use recursion](https://github.com/Catorpilor/LeetCode/commit/625ad8cbb761118179be64e8e8de048ea696e85a) | Medium |
 | [426. Convert Binary Search Tree to Sorted Doubly Linked List](https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/) | [inOrder traversal using stack](https://github.com/Catorpilor/LeetCode/commit/f35f4f23422292efd2612c22851edd0718cf2e9f) | Medium |
+
+
 ### Sliding Window
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
@@ -90,6 +92,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/) | [use hashmaps](https://github.com/Catorpilor/LeetCode/commit/849be1ac6c15247dfcaf4ff82c1af8ad9b68150a) | Medium |
 | [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/) | [hashmap and array](https://github.com/Catorpilor/LeetCode/blob/master/380_insert_delete_getrandom_o1/idg.go) | Medium |
 | [381. Insert Delete GetRandom O(1) - Duplicates allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/) | [use hashmap and unordered_set](https://github.com/Catorpilor/LeetCode/blob/master/381_insert_delete_getrandom_o1_duplicates_allowed/idgd.go) | Hard |
+| [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/417dfe8a553e06418edb455f5482da568143ceae) | Medium |
 
 ### Breadth First Search 
 | Title | Solution | Difficulty |
