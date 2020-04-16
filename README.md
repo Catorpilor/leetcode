@@ -152,6 +152,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/531e98d44ba9289cebd329b0cc9bee4f6065dd8c) | Easy |
 | [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) | [use stack and hashmap](https://github.com/Catorpilor/LeetCode/commit/9239401d5560079ec5cfd0a651f9783552cab4fe) | Hard |
+| [678. Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | [greedy](https://github.com/Catorpilor/LeetCode/commit/af493e3657a17d3bd482669c189510fb3392328b) | Medium |
 
 
 [leetoj]:https://oj.leetcode.com/
