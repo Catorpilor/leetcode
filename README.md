@@ -112,6 +112,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [301. Remove Invalid Parentheses](https://leetcode.com/problems/remove-invalid-parentheses/) | [use backtracking](https://github.com/Catorpilor/LeetCode/commit/3b276e204b8676d90a547015c4d4a64382ae437a) | Hard |
 | [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/130fb8d90846fc29d0ba1498c904edf477d3ce3d) | Medium |
 | [106. Construct Binary Tree From Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/a2d745498967424126a7606c7d712c908f60b873) | Medium |
+| [1026. Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/) | [use dfs with min and max node](https://github.com/Catorpilor/LeetCode/commit/5b82d6feca297918a2573bd107894c134e414fb2) | Medium |
 
 
 ### Heap
