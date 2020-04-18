@@ -1,5 +1,6 @@
 package pps
 
+// prevPerm time complexity O(N), space complexity O(1)
 func prevPerm(nums []int) []int {
     n := len(nums)
     if n <= 1 {
