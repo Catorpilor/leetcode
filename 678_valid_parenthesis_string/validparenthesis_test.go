@@ -49,3 +49,27 @@ func TestIsValidParenthesisUseDfs(t *testing.T) {
         })
     }
 }
+
+func TestIsValidParenthesisUseTwoPasses(t *testing.T) {
+    st := []struct {
+        name string
+        s    string
+        exp  bool
+    }{
+        {"empty string", "", true},
+        {"just a *", "*", true},
+        {"testcase1", ")(", false},
+        {"testcase2", "())()", false},
+        {"testcase3", "(*)*(((*", false},
+        {"testcase4", "(()((*)*))", true},
+    }
+    for _, tt := range st {
+        t.Run(tt.name, func(t *testing.T) {
+            out := useTwoPasses(tt.s)
+            if out != tt.exp {
+                t.Fatalf("with input s:%s wanted %t but got %t", tt.s, tt.exp, out)
+            }
+            t.Log("pass")
+        })
+    }
+}

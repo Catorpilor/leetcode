@@ -78,3 +78,32 @@ func helper(memo *[][]int, s string, idx, count int) bool {
     }
     return ret
 }
+
+func useTwoPasses(s string) bool {
+    var bal int
+    n := len(s)
+    for i := 0; i < n; i++ {
+        if s[i] == '(' || s[i] == '*' {
+            bal++
+        } else {
+            bal--
+            if bal == -1 {
+                return false
+            }
+        }
+    }
+    bal = 0
+    // traverse the string reversely
+    for i := n - 1; i >= 0; i-- {
+        if s[i] == ')' || s[i] == '*' {
+            bal++
+        } else {
+            bal--
+            if bal == -1 {
+                return false
+            }
+        }
+    }
+    return true
+
+}
