@@ -22,7 +22,7 @@ func TestPrevPermOne(t *testing.T) {
         t.Run(tt.name, func(t *testing.T) {
             out := prevPerm(tt.nums)
             if !reflect.DeepEqual(tt.exp, out) {
-                t.Fatalf("with input nums:%v wanted %v but got %v", tt.num, tt.exp, out)
+                t.Fatalf("with input nums:%v wanted %v but got %v", tt.nums, tt.exp, out)
             }
             t.Log("pass")
         })
