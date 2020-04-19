@@ -156,6 +156,12 @@ My submissions for [LeetCode Oj][leetoj].
 | [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) | [use stack and hashmap](https://github.com/Catorpilor/LeetCode/commit/9239401d5560079ec5cfd0a651f9783552cab4fe) | Hard |
 | [678. Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | [greedy](https://github.com/Catorpilor/LeetCode/commit/af493e3657a17d3bd482669c189510fb3392328b) | Medium |
 
+### Binary Search 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [use binary search with one pass](https://github.com/Catorpilor/LeetCode/commit/5b07240bd1338018c52573204253ca80bdc8f823) | Medium |
+
+
 
 [leetoj]:https://oj.leetcode.com/
 
