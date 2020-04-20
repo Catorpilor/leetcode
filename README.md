@@ -113,6 +113,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [105. Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/130fb8d90846fc29d0ba1498c904edf477d3ce3d) | Medium |
 | [106. Construct Binary Tree From Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/a2d745498967424126a7606c7d712c908f60b873) | Medium |
 | [1026. Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/) | [use dfs with min and max node](https://github.com/Catorpilor/LeetCode/commit/5b82d6feca297918a2573bd107894c134e414fb2) | Medium |
+| [1008. Construct Binary Search Tree from Preorder Traversal](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/) | [use dfs with sliced orders](https://github.com/Catorpilor/LeetCode/commit/46ba78433ae89f0c2eb9ea85664d771f6f70b016) | Medium |
 
 
 ### Heap
@@ -142,10 +143,7 @@ My submissions for [LeetCode Oj][leetoj].
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum | 
-
-### Binary Search
-| Title | Solution | Difficulty |
-| :----- | :-------- | :----------:|
+| [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [use binary search with one pass](https://github.com/Catorpilor/LeetCode/commit/5b07240bd1338018c52573204253ca80bdc8f823) | Medium |
 | [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
 
 
@@ -155,11 +153,6 @@ My submissions for [LeetCode Oj][leetoj].
 | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/531e98d44ba9289cebd329b0cc9bee4f6065dd8c) | Easy |
 | [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) | [use stack and hashmap](https://github.com/Catorpilor/LeetCode/commit/9239401d5560079ec5cfd0a651f9783552cab4fe) | Hard |
 | [678. Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | [greedy](https://github.com/Catorpilor/LeetCode/commit/af493e3657a17d3bd482669c189510fb3392328b) | Medium |
-
-### Binary Search 
-| Title | Solution | Difficulty |
-| :----- | :-------- | :----------:|
-| [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [use binary search with one pass](https://github.com/Catorpilor/LeetCode/commit/5b07240bd1338018c52573204253ca80bdc8f823) | Medium |
 
 
 
