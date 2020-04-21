@@ -6,12 +6,13 @@ func constructTree(order []int) *utils.TreeNode {
     return useDFS(order)
 }
 
-// useDFS time complexity O(N), space complexity O(N)
+// useDFS time complexity O(N^2), space complexity O(N)
 func useDFS(order []int) *utils.TreeNode {
     n := len(order)
     if n == 0 {
         return nil
     }
+    // for example order=[1,2,3,4,5,6,7,....] it's unbalanced binary tree.
     root := &utils.TreeNode{Val: order[0]}
     pos := 1
     for pos < n {
