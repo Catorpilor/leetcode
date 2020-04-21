@@ -1,9 +1,15 @@
 package ctp
 
-import "github.com/catorpilor/leetcode/utils"
+import (
+    "math"
+
+    "github.com/catorpilor/leetcode/utils"
+)
 
 func constructTree(order []int) *utils.TreeNode {
-    return useDFS(order)
+    // return useDFS(order)
+    var idx int
+    return useDFSWithLinear(order, &idx, math.MaxInt32)
 }
 
 // useDFS time complexity O(N^2), space complexity O(N)
@@ -23,5 +29,19 @@ func useDFS(order []int) *utils.TreeNode {
     }
     root.Left = useDFS(order[1:pos])
     root.Right = useDFS(order[pos:])
+    return root
+}
+
+// useDFSWithLinear time complexity O(N), space complexity O(N)
+func useDFSWithLinear(order []int, idx *int, max int) *utils.TreeNode {
+
+    if (*idx) == len(order) || order[(*idx)] > max {
+        return nil
+    }
+    root := &utils.TreeNode{Val: order[(*idx)]}
+    (*idx)++
+    root.Left = useDFSWithLinear(order, idx, root.Val)
+    // idx need to be a reference, otherwise we're revisiting some indexes in the left subtree.
+    root.Right = useDFSWithLinear(order, idx, max)
     return root
 }
