@@ -56,6 +56,32 @@ func helper(nums []int) ([]int, bool) {
 	return temp, true
 }
 
+func permute(nums []int) [][]int {
+	n := len(nums)
+	var ans [][]int
+	set := make(map[int]bool, n)
+	backtrack(&ans, []int{}, nums, set, n)
+	return ans
+}
+
+// backtrack time complexity O(N*N!), space complexity O(N)
+func backtrack(ans *[][]int, store, nums []int, set map[int]bool, n int) {
+	ns := len(store)
+	if ns == n {
+		*ans = append((*ans), store)
+		return
+	}
+	for i := 0; i < n; i++ {
+		if !set[nums[i]] {
+			store = append(store, nums[i])
+			set[nums[i]] = true
+			backtrack(ans, store, nums, set, n)
+			set[nums[i]] = false
+			store = store[:ns]
+		}
+	}
+}
+
 func Permute2(nums []int) [][]int {
 	res := make([][]int, 0)
 	helper2(nums, 0, len(nums), &res)
