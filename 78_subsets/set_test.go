@@ -1,6 +1,9 @@
 package set
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestSubSets(t *testing.T) {
 	st := []struct {
@@ -13,8 +16,8 @@ func TestSubSets(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := SubSets(c.nums)
-			if len(ret) != len(c.exp) {
+			ret := subSets(c.nums)
+			if !reflect.DeepEqual(c.exp, ret) {
 				t.Fatalf("expected %v but got %v with input %v",
 					c.exp, ret, c.nums)
 			}

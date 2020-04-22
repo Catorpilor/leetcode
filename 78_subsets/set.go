@@ -1,13 +1,22 @@
 package set
 
-func SubSets(nums []int) [][]int {
-	ret := make([][]int, 0)
-	ret = append(ret, []int{}, nums)
-	for i := 1; i < len(nums); i++ {
-		temp := make([]int, 0)
-		helper(&ret, nums, temp, 0, i)
-	}
+func subSets(nums []int) [][]int {
+	n := len(nums)
+	total := 1 << n
+	ret := make([][]int, 0, total)
+	backtrack(&ret, []int{}, nums, 0)
 	return ret
+}
+
+// backtrack time complexity # of nodes O(2^N), space complexity O(N)
+func backtrack(ret *[][]int, store, nums []int, pos int) {
+	*ret = append((*ret), store)
+	for i := pos; i < len(nums); i++ {
+		ns := len(store)
+		store = append(store, nums[i])
+		backtrack(ret, store, nums, i+1)
+		store = store[:ns]
+	}
 }
 
 func helper(res *[][]int, nums, temp []int, start, target int) {
@@ -29,7 +38,7 @@ func SubSets2(nums []int) [][]int {
 	// bit manupulation
 	n := len(nums)
 	total := 1 << uint(n)
-	ret := make([][]int, 0)
+	ret := make([][]int, 0, total)
 	for i := 0; i < total; i++ {
 		var cur []int
 		for j := 0; j < n; j++ {
