@@ -16,7 +16,7 @@ func TestSubArraySum(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := SubArraySum(c.nums, c.k)
+			ret := subArraySum(c.nums, c.k)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v and %d",
 					c.exp, ret, c.nums, c.k)
@@ -25,7 +25,7 @@ func TestSubArraySum(t *testing.T) {
 	}
 }
 
-func TestSubArraySum2(t *testing.T) {
+func TestUseHashmap(t *testing.T) {
 	st := []struct {
 		name   string
 		nums   []int
@@ -39,7 +39,7 @@ func TestSubArraySum2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := SubArraySum2(c.nums, c.k)
+			ret := useHashMap(c.nums, c.k)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v and %d",
 					c.exp, ret, c.nums, c.k)

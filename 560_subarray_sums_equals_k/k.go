@@ -1,7 +1,11 @@
 package sum
 
-func SubArraySum(nums []int, k int) int {
-	// O(n^2)
+func subArraySum(nums []int, k int) int {
+	return useBruteForce(nums, k)
+}
+
+// useBruteForce time complexity O(n^2), space complexity O(1)
+func useBruteForce(nums []int, k int) int {
 	n := len(nums)
 	if n < 1 {
 		return 0
@@ -24,7 +28,8 @@ func SubArraySum(nums []int, k int) int {
 	return ret
 }
 
-func SubArraySum2(nums []int, k int) int {
+// useHashmMap time complexity O(N), space complexity O(N)
+func useHashMap(nums []int, k int) int {
 	var count, sum int
 	// record[k]=v means how many sub-arrays sums equals to k
 	// preSum for nums [-3,1,2,-3,5] is
