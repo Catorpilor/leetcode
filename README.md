@@ -93,6 +93,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [380. Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/) | [hashmap and array](https://github.com/Catorpilor/LeetCode/blob/master/380_insert_delete_getrandom_o1/idg.go) | Medium |
 | [381. Insert Delete GetRandom O(1) - Duplicates allowed](https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/) | [use hashmap and unordered_set](https://github.com/Catorpilor/LeetCode/blob/master/381_insert_delete_getrandom_o1_duplicates_allowed/idgd.go) | Hard |
 | [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/417dfe8a553e06418edb455f5482da568143ceae) | Medium |
+| [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/460de11226f31792f07ec2733e984530ba05788c) | Medium |
 
 ### Breadth First Search 
 | Title | Solution | Difficulty |
