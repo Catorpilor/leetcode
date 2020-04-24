@@ -146,6 +146,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum | 
 | [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [use binary search with one pass](https://github.com/Catorpilor/LeetCode/commit/5b07240bd1338018c52573204253ca80bdc8f823) | Medium |
 | [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
+| [Leftmost Column with at least a One](https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/530/week-3/3306/) | [use binary search (lower bound)](https://github.com/Catorpilor/LeetCode/commit/0b2bb1f6e40ac90a29d87fc19163fd40f3168b61) | Meidum |
 
 
 ### String 
