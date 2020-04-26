@@ -133,6 +133,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [123. Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/) | [use dp[k][j] to represent at day j's max profit with at most k transactions](https://github.com/Catorpilor/LeetCode/commit/a36801ccf5980be8db6fdb59772a7c20b5af536d) | Hard |
 | [97. Interleaving String](https://leetcode.com/problems/interleaving-string/) | [Use a 2D array, dp[i][j] represents whether s1[:i], s2[:j] and s3[:i+j] are interleaving strings](https://github.com/Catorpilor/LeetCode/commit/ad54a15afcad1ea8a5bde09564d021a6199de5a6) | Hard |
 | [64. Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/) | [dp[i] = min(dp[i],dp[i-1]) + grid[j][i]](https://github.com/Catorpilor/LeetCode/commit/71c5056d8b343616f75d3c99c87ac99db8d7fa90) | Medium |
+| [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) | [use dp with less space](https://github.com/Catorpilor/LeetCode/commit/c4d8ae4982e0a83b450fe89fe943cefae1a839fd) | Medium |
 
 ### Design
 | Title | Solution | Difficulty |
