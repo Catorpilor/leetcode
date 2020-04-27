@@ -5,46 +5,54 @@ import (
 )
 
 // MaxSquare returns a max all 1s square inside matrix
-func MaxSquare(matrix [][]int) int {
-	if matrix == nil {
+func maxSquare(matrix [][]int) int {
+	return useBruteForce(matrix)
+}
+
+// useBruteForce
+// if we find a 1, we move diagonally
+// and check this square if it is all 1s
+// if it is true update the maxSqrLen,
+// otherwise move forward
+// time complexity: O((mn)^2)
+// space: O(1)
+func useBruteForce(matrix [][]int) int {
+	m := len(matrix)
+	if m < 1 {
 		return 0
 	}
-	// brute force
-	// if we find a 1, we move diagonally
-	// and check this square if it is all 1s
-	// if it is true update the maxSqrLen,
-	// otherwise move forward
-	// time complexity: O((mn)^2)
-	// space: O(1)
-	row, col := len(matrix), len(matrix[0])
-	var maxSqlLen int
-	for i := 0; i < row; i++ {
-		for j := 0; j < col; j++ {
+	n := len(matrix[0])
+	if n < 1 {
+		return 0
+	}
+	var maxSqrlen int
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
 			if matrix[i][j] == 1 {
-				tm, flag := 1, true
-				for tm+i < row && tm+j < col && flag {
-					for k := j; k <= tm+j; k++ {
-						if matrix[i+tm][k] == 0 {
+				tmpLen := 1
+				flag := true
+				for tmpLen+j < n && tmpLen+i < m && flag {
+					for k := j; k <= tmpLen+j; k++ {
+						if matrix[i+tmpLen][k] == 0 {
 							flag = false
 							break
 						}
 					}
-					for k := i; k <= i+tm; k++ {
-						if matrix[k][j+tm] == 0 {
+					for k := i; k <= i+tmpLen; k++ {
+						if matrix[k][j+tmpLen] == 0 {
 							flag = false
 							break
 						}
 					}
 					if flag {
-						tm += 1
+						tmpLen++
 					}
 				}
-				maxSqlLen = utils.Max(maxSqlLen, tm)
-
+				maxSqrlen = utils.Max(maxSqrlen, tmpLen)
 			}
 		}
 	}
-	return maxSqlLen * maxSqlLen
+	return maxSqrlen * maxSqrlen
 }
 
 // MaxSquare2 returns a all 1s square inside matrix
