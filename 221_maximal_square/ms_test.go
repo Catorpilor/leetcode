@@ -25,7 +25,7 @@ func TestMaxSquare(t *testing.T) {
 	}
 }
 
-func TestMaxSquare2(t *testing.T) {
+func TestMaxSquareUseDP(t *testing.T) {
 	// t.Fatal("not implemented")
 	st := []struct {
 		name    string
@@ -40,7 +40,7 @@ func TestMaxSquare2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := MaxSquare2(c.maxtrix)
+			ret := useDP(c.maxtrix)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d, with input %v",
 					c.exp, ret, c.maxtrix)
@@ -49,7 +49,7 @@ func TestMaxSquare2(t *testing.T) {
 	}
 }
 
-func TestMaxSquare3(t *testing.T) {
+func TestMaxSquareUseDPWithLessSpace(t *testing.T) {
 	// t.Fatal("not implemented")
 	st := []struct {
 		name    string
@@ -64,7 +64,7 @@ func TestMaxSquare3(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := MaxSquare3(c.maxtrix)
+			ret := useDPWithLessSpace(c.maxtrix)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d, with input %v",
 					c.exp, ret, c.maxtrix)
