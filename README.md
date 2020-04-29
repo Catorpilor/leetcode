@@ -35,6 +35,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | [simple traverse](https://github.com/Catorpilor/LeetCode/commit/500dddb86e8eada99292e84b1fd3bc43fe72b4c4) | Easy |
 | [135. Candy](https://leetcode.com/problems/candy/) | [use one array two passes](https://github.com/Catorpilor/LeetCode/commit/06eb7bf91068d52fa78e7ec4d120c4236bf88334) | Hard |
 | [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) | [use bucket](https://github.com/Catorpilor/LeetCode/commit/65f480f5d6119caef1258e513ca2dcb5d36e45ef) | Easy |
+| [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/60daa2680d2722b0de998f354ee0179db63e268d) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
