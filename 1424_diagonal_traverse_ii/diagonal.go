@@ -3,7 +3,8 @@ package diagonal
 import "github.com/catorpilor/leetcode/utils"
 
 func diagonalTraverse(nums [][]int) []int {
-    return useHashmap(nums)
+    // return useHashmap(nums)
+    return useBucket(nums)
 }
 
 // func useBruteForce(nums [][]int) []int {
@@ -57,6 +58,36 @@ func useHashmap(nums [][]int) []int {
             tmp[l], tmp[r] = tmp[r], tmp[l]
         }
         ans = append(ans, tmp...)
+    }
+    return ans
+}
+
+// useBucket time complexity O(N), space complexity O(N)
+func useBucket(nums [][]int) []int {
+    m := len(nums)
+    if m < 1 {
+        return nil
+    }
+    if m == 1 {
+        return nums[0]
+    }
+    var bucket [][]int
+    for i := range nums {
+        for j := range nums[i] {
+            if i+j == len(bucket) {
+                bucket = append(bucket, []int{})
+            }
+            bucket[i+j] = append(bucket[i+j], nums[i][j])
+        }
+    }
+    var ans []int
+    maxK := len(bucket)
+    for k := 0; k < maxK; k++ {
+        // reverse
+        for l, r := 0, len(bucket[k])-1; l < r; l, r = l+1, r-1 {
+            bucket[k][l], bucket[k][r] = bucket[k][r], bucket[k][l]
+        }
+        ans = append(ans, bucket[k]...)
     }
     return ans
 }
