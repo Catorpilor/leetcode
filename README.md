@@ -37,6 +37,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) | [use bucket](https://github.com/Catorpilor/LeetCode/commit/65f480f5d6119caef1258e513ca2dcb5d36e45ef) | Easy |
 | [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/60daa2680d2722b0de998f354ee0179db63e268d) | Medium |
 | [278. First Bad Version](https://leetcode.com/problems/first-bad-version/) | [use binary search](https://github.com/Catorpilor/LeetCode/commit/412d9699d5d866ce5b28030e24070b47e34e1abe) | Easy |
+| [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | [use stack](https://github.com/Catorpilor/LeetCode/commit/b4ac1a22c3d16e8c2d83a85880b4b74ad823b231) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
