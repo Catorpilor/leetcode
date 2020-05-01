@@ -8,9 +8,9 @@ func TestFirstBadVersion(t *testing.T) {
         vers []int
         exp  int
     }{
-        {"single ver", []int{0}, 1},
-        {"testcase1", []int{1, 1, 1, 1, 0, 0, 0}, 5},
-        {"testcase2", []int{1, 1, 0, 0, 0, 0}, 3},
+        {"single ver", []int{0}, 0},
+        {"testcase1", []int{1, 1, 1, 1, 0, 0, 0}, 4},
+        {"testcase2", []int{1, 1, 0, 0, 0, 0}, 2},
     }
     for _, tt := range st {
         t.Run(tt.name, func(t *testing.T) {
