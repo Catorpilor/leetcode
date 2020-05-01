@@ -36,6 +36,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [135. Candy](https://leetcode.com/problems/candy/) | [use one array two passes](https://github.com/Catorpilor/LeetCode/commit/06eb7bf91068d52fa78e7ec4d120c4236bf88334) | Hard |
 | [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/) | [use bucket](https://github.com/Catorpilor/LeetCode/commit/65f480f5d6119caef1258e513ca2dcb5d36e45ef) | Easy |
 | [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/60daa2680d2722b0de998f354ee0179db63e268d) | Medium |
+| [278. First Bad Version](https://leetcode.com/problems/first-bad-version/) | [use binary search](https://github.com/Catorpilor/LeetCode/commit/412d9699d5d866ce5b28030e24070b47e34e1abe) | Easy |
 
 ### Bit
 | Title | Solution | Difficulty |
