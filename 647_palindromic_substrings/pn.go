@@ -1,7 +1,5 @@
 package pn
 
-import "fmt"
-
 func countSubString(s string) int {
 	return expendFromCenter(s)
 }
@@ -35,7 +33,6 @@ func useBruteForce(s string) int {
 	for k := 2; k <= n; k++ {
 		for i := 0; i+k <= n; i++ {
 			if isPalindrome(s[i : i+k]) { // O(N)
-				fmt.Println(s[i : i+k])
 				ans++
 			}
 		}
