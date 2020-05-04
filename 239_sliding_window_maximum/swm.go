@@ -1,6 +1,7 @@
 package swm
 
 import (
+	"fmt"
 	"math"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -47,12 +48,14 @@ func dp(nums []int, k, n int) []int {
 		}
 
 		j := n - i - 1
-		if (j+1)%k == 0 {
+		if j%k == 0 {
 			right[j] = nums[j]
 		} else {
 			right[j] = utils.Max(right[j+1], nums[j])
 		}
 	}
+	fmt.Println(left)
+	fmt.Println(right)
 	res := make([]int, n-k+1)
 	for i := 0; i < n-k+1; i++ {
 		res[i] = utils.Max(left[i+k-1], right[i])
