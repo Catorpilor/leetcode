@@ -10,7 +10,7 @@ func TestCanConstruct(t *testing.T) {
     }{
         {"both empty", "", "", true},
         {"magazine is empty", "abc", "", false},
-        {"ransom is empty", "", "abc", false},
+        {"ransom is empty", "", "abc", true},
         {"testcase1", "aa", "aab", true},
     }
     for _, tt := range st {
