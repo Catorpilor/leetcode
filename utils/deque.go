@@ -1,5 +1,10 @@
 package utils
 
+import (
+    "fmt"
+    "strings"
+)
+
 // DNode represents the double linked node
 type DNode struct {
     Val        interface{}
@@ -21,6 +26,16 @@ func NewDeque() *Deque {
         head: head,
         tail: tail,
     }
+}
+
+func (deq *Deque) String() string {
+    cur := deq.head.Next
+    var sb strings.Builder
+    for cur != deq.tail {
+        fmt.Fprintf(&sb, "%d=", cur.Val.(int))
+        cur = cur.Next
+    }
+    return sb.String()
 }
 
 // IsEmpty check deque is empty or not
