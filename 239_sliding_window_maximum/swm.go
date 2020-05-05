@@ -7,7 +7,7 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func MaxSlidingWindow(nums []int, k int) []int {
+func maxSlidingWindow(nums []int, k int) []int {
 	n := len(nums)
 	if n <= 1 {
 		return nums
@@ -54,11 +54,45 @@ func dp(nums []int, k, n int) []int {
 			right[j] = utils.Max(right[j+1], nums[j])
 		}
 	}
-	fmt.Println(left)
-	fmt.Println(right)
 	res := make([]int, n-k+1)
 	for i := 0; i < n-k+1; i++ {
 		res[i] = utils.Max(left[i+k-1], right[i])
+	}
+	return res
+}
+
+// useDeque time complexity O(N), space complexity O(N)
+func useDeque(nums []int, k int) []int {
+	n := len(nums)
+	if n < 1 || k <= 0 {
+		return nil
+	}
+	res := make([]int, n-k+1)
+	ri := 0
+	dq := utils.NewDeque()
+	for i := 0; i < n; i++ {
+		// fmt.Printf("idx:%d, deq: %s\n", i, dq.String())
+		// remove numbers out of range k
+		// in one iteration we only pop one element and push back 1.
+		if !dq.IsEmpty() && dq.Front().(int) < i-k+1 {
+			// fmt.Printf("before remove from front, got element %d\n", dq.Front().(int))
+			dq.PopFront()
+		}
+		// remove smaller numbers in k range as they are useless
+		// Now only those elements within [i-(k-1),i] are in the deque.
+		// We then discard elements smaller than a[i] from the tail.
+		// This is because if a[x] <a[i] and x<i, then a[x] has no chance to be the "max" in [i-(k-1),i],
+		// or any other subsequent window: a[i] would always be a better candidate.
+		for !dq.IsEmpty() && nums[dq.Back().(int)] < nums[i] {
+			// fmt.Printf("before remove from back, got element %d\n", dq.Back().(int))
+			dq.PopBack()
+		}
+		dq.PushBack(i)
+		fmt.Printf("after push back i:%d, deq: %s\n", i, dq.String())
+		if i >= k-1 {
+			res[ri] = nums[dq.Front().(int)]
+			ri++
+		}
 	}
 	return res
 }
