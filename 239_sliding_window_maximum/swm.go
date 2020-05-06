@@ -1,7 +1,6 @@
 package swm
 
 import (
-	"fmt"
 	"math"
 
 	"github.com/catorpilor/leetcode/utils"
@@ -83,13 +82,15 @@ func useDeque(nums []int, k int) []int {
 		// We then discard elements smaller than a[i] from the tail.
 		// This is because if a[x] <a[i] and x<i, then a[x] has no chance to be the "max" in [i-(k-1),i],
 		// or any other subsequent window: a[i] would always be a better candidate.
-		for !dq.IsEmpty() && nums[dq.Back().(int)] < nums[i] {
+		for !dq.IsEmpty() && nums[dq.Back().(int)] <= nums[i] {
 			// fmt.Printf("before remove from back, got element %d\n", dq.Back().(int))
 			dq.PopBack()
 		}
 		dq.PushBack(i)
-		fmt.Printf("after push back i:%d, deq: %s\n", i, dq.String())
+		// fmt.Printf("after push back i:%d, deq: %s\n", i, dq.String())
 		if i >= k-1 {
+			// As a result elements in the deque are ordered in both sequence in array and their value.
+			// At each step the head of the deque is the max element in [i-(k-1),i]
 			res[ri] = nums[dq.Front().(int)]
 			ri++
 		}
