@@ -1,5 +1,7 @@
 package limit
 
+import "github.com/catorpilor/leetcode/utils"
+
 func longestSubarray(nums []int, limit int) int {
     return usebf(nums, limit)
 }
@@ -33,4 +35,31 @@ func max(a, b int) int {
         return a
     }
     return b
+}
+
+// useDeque time complexity O(N), space complexity O(N)
+func useDeque(nums []int, limit int) int {
+    maxd, mind := utils.NewDeque(), utils.NewDeque()
+    var i, j int
+    n := len(nums)
+    for ; j < n; j++ {
+        for !maxd.IsEmpty() && nums[j] > maxd.Back().(int) {
+            maxd.PopBack()
+        }
+        for !mind.IsEmpty() && nums[j] < mind.Back().(int) {
+            mind.PopBack()
+        }
+        maxd.PushBack(nums[j])
+        mind.PushBack(nums[j])
+        if maxd.Front().(int)-mind.Front().(int) > limit {
+            if maxd.Front().(int) == nums[i] {
+                maxd.PopFront()
+            }
+            if mind.Front().(int) == nums[i] {
+                mind.PopFront()
+            }
+            i++
+        }
+    }
+    return j - i
 }
