@@ -118,6 +118,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [106. Construct Binary Tree From Inorder and Postorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/a2d745498967424126a7606c7d712c908f60b873) | Medium |
 | [1026. Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/) | [use dfs with min and max node](https://github.com/Catorpilor/LeetCode/commit/5b82d6feca297918a2573bd107894c134e414fb2) | Medium |
 | [1008. Construct Binary Search Tree from Preorder Traversal](https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/) | [use dfs with sliced orders](https://github.com/Catorpilor/LeetCode/commit/46ba78433ae89f0c2eb9ea85664d771f6f70b016) | Medium |
+| [993. Cousins in Binary Tree](https://leetcode.com/problems/cousins-in-binary-tree/) | [use dfs](https://github.com/Catorpilor/LeetCode/commit/2f271f0b28f2b127bbc852b8ae3a509c86fc87bf) | Easy |
 
 
 ### Heap
