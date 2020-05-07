@@ -95,3 +95,34 @@ func useDequev2(nums []int, limit int) int {
     }
     return ans
 }
+
+// useSliceAsDeque time complexity O(N), space complexity O(N)
+func useSliceAsDeque(nums []int, limit int) int {
+    n := len(nums)
+    maxd, mind := make([]int, 0, n), make([]int, 0, n)
+    var l, r, ans int
+    for ; r < n; r++ {
+        l1, l2 := len(maxd), len(mind)
+        for l1 > 0 && nums[maxd[l1-1]] < nums[r] {
+            maxd = maxd[:l1-1]
+            l1--
+        }
+        for l2 > 0 && nums[mind[l2-1]] > nums[r] {
+            mind = mind[:l2-1]
+            l2--
+        }
+        maxd = append(maxd, r)
+        mind = append(mind, r)
+        if nums[maxd[0]]-nums[mind[0]] > limit {
+            l++
+            if maxd[0] < l {
+                maxd = maxd[1:]
+            }
+            if mind[0] < l {
+                mind = mind[1:]
+            }
+        }
+        ans = utils.Max(ans, r-l+1)
+    }
+    return ans
+}
