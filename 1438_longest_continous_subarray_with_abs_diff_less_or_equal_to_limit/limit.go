@@ -81,7 +81,7 @@ func useDequev2(nums []int, limit int) int {
         }
         maxd.PushBack(nums[j])
         mind.PushBack(nums[j])
-        for maxd.Front().(int)-mind.Front().(int) > limit {
+        if maxd.Front().(int)-mind.Front().(int) > limit {
             // shrink the queue, move the left boundary to the right.
             if maxd.Front().(int) == nums[i] {
                 maxd.PopFront()
