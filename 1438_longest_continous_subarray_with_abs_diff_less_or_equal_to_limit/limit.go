@@ -63,3 +63,35 @@ func useDeque(nums []int, limit int) int {
     }
     return j - i
 }
+
+// useDequev2 time complexity O(N), space complexity O(N)
+func useDequev2(nums []int, limit int) int {
+    // maxd is a monotonic descreasing queue
+    // mind is a monotonic increasing queue
+    maxd, mind := utils.NewDeque(), utils.NewDeque()
+    var i, j int
+    n := len(nums)
+    var ans int
+    for ; j < n; j++ {
+        for !maxd.IsEmpty() && nums[j] > maxd.Back().(int) {
+            maxd.PopBack()
+        }
+        for !mind.IsEmpty() && nums[j] < mind.Back().(int) {
+            mind.PopBack()
+        }
+        maxd.PushBack(nums[j])
+        mind.PushBack(nums[j])
+        for maxd.Front().(int)-mind.Front().(int) > limit {
+            // shrink the queue, move the left boundary to the right.
+            if maxd.Front().(int) == nums[i] {
+                maxd.PopFront()
+            }
+            if mind.Front().(int) == nums[i] {
+                mind.PopFront()
+            }
+            i++
+        }
+        ans = utils.Max(ans, j-i+1)
+    }
+    return ans
+}
