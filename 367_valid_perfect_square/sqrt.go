@@ -15,7 +15,7 @@ func IsPerfectSqure(num int) bool {
 // 25 = 1 + 3 + 5 + 7 + 9
 // n*n = 1 + 3 + 5 + 7 + 9 + ... (n * (1 + 2n-1) / 2 )
 
-func IsPerfectSqure2(num int) bool {
+func useMath(num int) bool {
 	i := 1
 	for num > 0 {
 		num, i = num-i, i+2
@@ -23,19 +23,24 @@ func IsPerfectSqure2(num int) bool {
 	return num == 0
 }
 
-func IsPerfectSqure3(num int) bool {
+func useBinarySearch(num int) bool {
 	// binary search
 	if num <= 0 {
 		return false
 	}
-	l, r := 1, num
-	for l < r {
-		mid := l + (r-l)/2 + 1
-		if num/mid >= mid {
-			l = mid
+	if num == 1 {
+		return true
+	}
+	l, r := 1, num/2
+	for l <= r {
+		mid := l + (r-l)/2
+		if mid*mid == num {
+			return true
+		} else if mid*mid < num {
+			l = mid + 1
 		} else {
 			r = mid - 1
 		}
 	}
-	return l*l == num
+	return false
 }
