@@ -12,6 +12,7 @@ func TestSingleDup(t *testing.T) {
 		{"testcase1", []int{1, 1, 2}, 2},
 		{"testcase2", []int{1, 2, 2}, 1},
 		{"testcase3", []int{1, 1, 2, 2, 3}, 3},
+		{"testcase4", []int{1, 1, 2, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7}, 5},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
