@@ -163,6 +163,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [678. Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) | [greedy](https://github.com/Catorpilor/LeetCode/commit/af493e3657a17d3bd482669c189510fb3392328b) | Medium |
 | [771. Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/74465ea385357ba8b264f3f5ba8429ab0bc92aa4) | Easy |
 | [383. Ransom Note](https://leetcode.com/problems/ransom-note/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/5ce20bfc50dacf5b66f9600b889b4a61c7a54caa) | Easy |
+| [402. Remove K Digits](https://leetcode.com/problems/remove-k-digits/) | [use greedy with stack](https://github.com/Catorpilor/LeetCode/commit/bc1a5481e77af69c9085f0ea485afcb77999d468) | Medium |
 
 
 
