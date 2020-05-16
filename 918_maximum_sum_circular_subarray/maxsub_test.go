@@ -24,3 +24,24 @@ func TestMaxSubSum(t *testing.T) {
         })
     }
 }
+
+func TestUseKadane(t *testing.T) {
+    st := []struct {
+        name string
+        nums []int
+        exp  int
+    }{
+        {"all negs", []int{-2, -3, -1}, -1},
+        {"all pos", []int{1, 2, 3}, 6},
+        {"testcase1", []int{5, -3, 5}, 7},
+    }
+    for _, tt := range st {
+        t.Run(tt.name, func(t *testing.T) {
+            out := useKadane(tt.nums, len(tt.nums))
+            if out != tt.exp {
+                t.Fatalf("with input nums: %v wanted %d but got %d", tt.nums, tt.exp, out)
+            }
+            t.Log("pass")
+        })
+    }
+}
