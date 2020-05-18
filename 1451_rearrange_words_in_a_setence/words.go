@@ -1,6 +1,7 @@
 package words
 
 import (
+    "sort"
     "strings"
     "unicode"
 )
@@ -11,7 +12,7 @@ func rearrangeWords(text string) string {
 
 // useBruteForce time complexity O(N), space complexity O(10000*MaxLen)
 func useBruteForce(text string) string {
-    arr := strings.Fields(text)
+    arr := strings.Fields(strings.ToLower(text))
     set := make([][]string, 10_000)
     for i := range arr {
         set[len(arr[i])] = append(set[len(arr[i])], arr[i])
@@ -33,11 +34,33 @@ func useBruteForce(text string) string {
                 bc[0] = up
                 //arr[i] = string(bc)
             }
-        } else {
-            bc[0] = bc[0] | ('x' - 'X')
-            //arr[i] = string(bc)
         }
         ans[i] = string(bc)
     }
     return strings.Join(ans, " ")
+}
+
+type stringSlice []string
+
+func (ss stringSlice) Len() int {
+    return len(ss)
+}
+
+func (ss stringSlice) Less(i, j int) bool {
+    return len(ss[i]) < len(ss[j])
+}
+
+func (ss stringSlice) Swap(i, j int) {
+    ss[i], ss[j] = ss[j], ss[i]
+}
+
+// useStableSort time complexity O(N*lgN), space compelxity O(1)
+func useStableSort(text string) string {
+    arr := strings.Fields(strings.ToLower(text))
+    sort.Stable(stringSlice(arr))
+    bc := []byte(arr[0])
+    up := byte(unicode.ToUpper(rune(bc[0])))
+    bc[0] = up
+    arr[0] = string(bc)
+    return strings.Join(arr, " ")
 }
