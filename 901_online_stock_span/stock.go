@@ -13,7 +13,9 @@ func Construct() *StockSpanner {
     return &StockSpanner{}
 }
 
-// Next worst case time complexity O(N), average O(1)
+// Next amotized O(1)
+// One price will be pushed once and popped once.
+// So 2 * N times stack operations and N times calls.
 func (ss *StockSpanner) Next(price int) int {
     res := 1
     nl := len(ss.store)
