@@ -29,6 +29,7 @@ func TestNext(t *testing.T) {
         t.Run(tt.name, func(t *testing.T) {
             out := ss.Next(tt.price)
             if out != tt.exp {
+                // t.Logf("ss.minQ:%v, ss.MaxQ:%v", ss.minQ, ss.maxQ)
                 t.Fatalf("after add: %d wanted %d but got %d", tt.price, tt.exp, out)
             }
             t.Log("pass")
