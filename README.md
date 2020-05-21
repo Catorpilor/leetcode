@@ -38,6 +38,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [1424. Diagonal Traverse II](https://leetcode.com/problems/diagonal-traverse-ii/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/60daa2680d2722b0de998f354ee0179db63e268d) | Medium |
 | [278. First Bad Version](https://leetcode.com/problems/first-bad-version/) | [use binary search](https://github.com/Catorpilor/LeetCode/commit/412d9699d5d866ce5b28030e24070b47e34e1abe) | Easy |
 | [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | [use stack](https://github.com/Catorpilor/LeetCode/commit/b4ac1a22c3d16e8c2d83a85880b4b74ad823b231) | Medium |
+| [1277. Count Square Submatrices with All Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones/) | [use dp](https://github.com/Catorpilor/LeetCode/commit/78f8cb0ed4b6081265431531ce09b3a0db1e45e6) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
