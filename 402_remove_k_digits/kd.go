@@ -1,7 +1,7 @@
 package kd
 
 import (
-	"github.com/catorpilor/leetCode/utils"
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func removeKDigits(num string, k int) string {
