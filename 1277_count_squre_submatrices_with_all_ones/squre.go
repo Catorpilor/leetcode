@@ -35,6 +35,34 @@ func useBottomUpDP(matrix [][]int) int {
             }
         }
     }
+
+    // more comments
+    // for example with matrix:
+    // [  0,1,2
+    // 0 [1,1,1]
+    // 1 [1,1,1]
+    // 2 [1,1,1]
+    // 3 [1,1,1]
+    // ]
+    // we just calcute the top left corner, which means at pos(i,j) we can
+    // only go right or bottom to remove the duplicates.
+    // after initialize dp
+    // [  0,1,2
+    // 0 [0,0,1]
+    // 1 [0,0,1]
+    // 2 [0,0,1]
+    // 3 [1,1,1]
+    // ]
+    // after traverse the matrix, we got
+    // [  0,1,2
+    // 0 [3,2,1]
+    // 1 [3,2,1]
+    // 2 [2,2,1]
+    // 3 [1,1,1]
+    // ]
+    // so at pos(0,0) we got 3 squares, [0,0] length=1,  length=2 and  length=3
+    //  at pos(1,1) we got 2 squres, [1,1] length=1 and length=2
+    // so the final answer just sum them up.
     // fmt.Println(dp)
     return ans
 }
