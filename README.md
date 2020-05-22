@@ -166,6 +166,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [771. Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/) | [use #hashmap](https://github.com/Catorpilor/LeetCode/commit/74465ea385357ba8b264f3f5ba8429ab0bc92aa4) | Easy |
 | [383. Ransom Note](https://leetcode.com/problems/ransom-note/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/5ce20bfc50dacf5b66f9600b889b4a61c7a54caa) | Easy |
 | [402. Remove K Digits](https://leetcode.com/problems/remove-k-digits/) | [use greedy with stack](https://github.com/Catorpilor/LeetCode/commit/bc1a5481e77af69c9085f0ea485afcb77999d468) | Medium |
+| [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/d219f95c08d6fe281c95cd1263e26abc2e67adea) | Medium |
 
 
 
