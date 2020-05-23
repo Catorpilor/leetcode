@@ -8,7 +8,6 @@ func TestScoreOfParenthese(t *testing.T) {
 		s    string
 		exp  int
 	}{
-		{"invalid pair", ")(", 0},
 		{"testcase1", "()", 1},
 		{"testcase2", "()()", 2},
 		{"testcase3", "(())", 2},
