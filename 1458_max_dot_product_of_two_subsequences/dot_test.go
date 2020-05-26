@@ -11,7 +11,7 @@ func TestMaxDotProduct(t *testing.T) {
 		{"all single", []int{-1}, []int{1}, -1},
 		{"testcase1", []int{-1, -1}, []int{1, 1}, -1},
 		{"testcase2", []int{3, -2}, []int{2, -6, 7}, 21},
-		{"testcase3", []int{2, 1, -2, 5}, []int{3, 0, 6}, 18},
+		{"testcase3", []int{2, 1, -2, 5}, []int{3, 0, -6}, 18},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
