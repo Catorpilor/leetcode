@@ -2,6 +2,8 @@ package pb
 
 import (
 	"sort"
+
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func possibleBipartition(n int, dis [][]int) bool {
@@ -68,6 +70,46 @@ func helper(adj [][]int, set map[int]int, curNode, color int) bool {
 	for _, node := range adj[curNode] {
 		if !helper(adj, set, node, color^1) {
 			return false
+		}
+	}
+	return true
+}
+
+func useBFS(n int, dis [][]int) bool {
+	// build a graph use adjacency list
+	adj := make([][]int, n+1)
+	for i := range adj {
+		adj[i] = make([]int, 0, n)
+	}
+	for _, pair := range dis {
+		p0, p1 := pair[0], pair[1]
+		adj[p0] = append(adj[p0], p1)
+		adj[p1] = append(adj[p1], p0)
+	}
+	set := make(map[int]int, n)
+	queue := utils.NewQueue()
+	type node struct {
+		id, color int
+	}
+	for i := 1; i <= n; i++ {
+		for !queue.IsEmpty() {
+			cur := queue.Pull().(node)
+			// set[cur.id] = cur.color
+			nbColor := cur.color ^ 1
+			for _, p := range adj[cur.id] {
+				if v, exists := set[p]; exists {
+					if v != nbColor {
+						return false
+					}
+					continue
+				}
+				set[p] = nbColor
+				queue.Enroll(node{id: p, color: nbColor})
+			}
+		}
+		if _, exists := set[i]; !exists {
+			queue.Enroll(node{id: i, color: 0})
+			set[i] = 0
 		}
 	}
 	return true
