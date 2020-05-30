@@ -41,6 +41,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [739. Daily Temperatures](https://leetcode.com/problems/daily-temperatures/) | [use stack](https://github.com/Catorpilor/LeetCode/commit/b4ac1a22c3d16e8c2d83a85880b4b74ad823b231) | Medium |
 | [1277. Count Square Submatrices with All Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones/) | [use dp](https://github.com/Catorpilor/LeetCode/commit/78f8cb0ed4b6081265431531ce09b3a0db1e45e6) | Medium |
 | [1035. Uncrossed Lines](https://leetcode.com/problems/uncrossed-lines/) | [use dp same approach as longest common sequences](https://github.com/Catorpilor/LeetCode/commit/f682fc1bd8544672a4ec5535b08725cb7aa1c55c) | Medium |
+| [1338. Reduce Array Size to The Half](https://leetcode.com/problems/reduce-array-size-to-the-half/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/48232406b3ee5daf1c843a04227c93e341fe067e) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
