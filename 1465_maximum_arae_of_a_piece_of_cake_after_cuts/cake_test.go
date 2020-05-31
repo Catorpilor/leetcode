@@ -10,8 +10,9 @@ func TestMaxAera(t *testing.T) {
 		vertical   []int
 		exp        int
 	}{
-		{"testcase1", 5, 4, []int{1, 2, 4}, []int{1, 3}, 4},
-		{"testcase2", 5, 4, []int{3, 1}, []int{1}, 9},
+		{"testcase1", 4, 5, []int{1, 2, 4}, []int{1, 3}, 4},
+		{"testcase2", 4, 5, []int{3, 1}, []int{1}, 6},
+		{"testcase3", 4, 5, []int{3}, []int{3}, 9},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
