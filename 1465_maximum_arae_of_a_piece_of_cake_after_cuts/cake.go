@@ -49,3 +49,39 @@ func useBruteForce(w, h int, horizontalCuts, verticalCuts []int) int {
 	}
 	return ans
 }
+
+// useMath time complexity O(MlgM + NlgN), space complexity O(1)
+func useMath(w, h int, horizontalCuts, verticalCuts []int) int {
+	// we just need to find the max diffs between the cuts.
+	// for example w = 4, h = 4, hc = [1,2,4], vc = [1,3]
+	// diff = cur - hc[j-1]
+	// the diffs between hc and cake boundary is [1, 1, 2, 1],  max height = 2
+	// same approach vc is [1,2,1] max width is 2
+	// max area is 4
+	m, n := len(horizontalCuts), len(verticalCuts)
+	sort.Slice(horizontalCuts, func(i, j int) bool {
+		return horizontalCuts[i] < horizontalCuts[j]
+	})
+	sort.Slice(verticalCuts, func(i, j int) bool {
+		return verticalCuts[i] < verticalCuts[j]
+	})
+	maxW := horizontalCuts[0]
+	maxH := verticalCuts[0]
+	for i := 1; i <= m; i++ {
+		cur := h
+		if i < m {
+			cur = horizontalCuts[i]
+		}
+		maxW = utils.Max(maxW, cur-horizontalCuts[i-1])
+	}
+	for j := 1; j <= n; j++ {
+		cur := w
+		if j < n {
+			cur = verticalCuts[j]
+		}
+		maxH = utils.Max(maxH, cur-verticalCuts[j-1])
+	}
+	area := int64(maxW * maxH)
+	area %= mod
+	return int(area)
+}
