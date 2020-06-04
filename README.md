@@ -180,6 +180,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [1457. Pseudo-Palindromic Paths in a Binary Tree](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/) | [use backtracking](https://github.com/Catorpilor/LeetCode/commit/3d4dfce80f647ce9fd8518ee9bd39303c72c5a83) | Meidum |
 | [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/) | [convert to a tree like problem then use dfs](https://github.com/Catorpilor/LeetCode/commit/82d91aaa63175ee502ece4d0d84d492b7e4965e9) | Medium |
+| [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [use dfs](https://github.com/Catorpilor/LeetCode/commit/40bac2eb4dbc139240e1f1242a065b3fbe4fbdda) | Medium |
 
 
 
