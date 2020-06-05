@@ -14,8 +14,8 @@ func TestLargestSubset(t *testing.T) {
 	}{
 		{"single element", []int{1}, []int{1}},
 		{"all identical", []int{1, 1, 1}, []int{1, 1, 1}},
-		{"testcase1", []int{1, 2, 3}, []int{1, 2}},
-		{"testcase2", []int{8, 1, 4, 2}, []int{1, 2, 4, 8}},
+		{"testcase1", []int{1, 2, 3}, []int{2, 1}},
+		{"testcase2", []int{8, 1, 4, 2}, []int{8, 4, 2, 1}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
