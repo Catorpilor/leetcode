@@ -42,6 +42,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [1277. Count Square Submatrices with All Ones](https://leetcode.com/problems/count-square-submatrices-with-all-ones/) | [use dp](https://github.com/Catorpilor/LeetCode/commit/78f8cb0ed4b6081265431531ce09b3a0db1e45e6) | Medium |
 | [1035. Uncrossed Lines](https://leetcode.com/problems/uncrossed-lines/) | [use dp same approach as longest common sequences](https://github.com/Catorpilor/LeetCode/commit/f682fc1bd8544672a4ec5535b08725cb7aa1c55c) | Medium |
 | [1338. Reduce Array Size to The Half](https://leetcode.com/problems/reduce-array-size-to-the-half/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/48232406b3ee5daf1c843a04227c93e341fe067e) | Medium |
+| [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/) | [use dp](https://github.com/Catorpilor/LeetCode/commit/c458ef8016fb5ba837815cfc20499799162c7ed2) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
@@ -180,6 +181,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [1457. Pseudo-Palindromic Paths in a Binary Tree](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/) | [use backtracking](https://github.com/Catorpilor/LeetCode/commit/3d4dfce80f647ce9fd8518ee9bd39303c72c5a83) | Meidum |
 | [1466. Reorder Routes to Make All Paths Lead to the City Zero](https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/) | [convert to a tree like problem then use dfs](https://github.com/Catorpilor/LeetCode/commit/82d91aaa63175ee502ece4d0d84d492b7e4965e9) | Medium |
+| [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [use dfs](https://github.com/Catorpilor/LeetCode/commit/40bac2eb4dbc139240e1f1242a065b3fbe4fbdda) | Medium |
 
 
 
