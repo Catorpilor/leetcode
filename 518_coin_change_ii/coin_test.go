@@ -10,7 +10,7 @@ func TestChange(t *testing.T) {
 		exp    int
 	}{
 		{"only one coin", []int{1}, 5, 1},
-		{"testcase1", []int{1, 2, 3}, 5, 4},
+		{"testcase1", []int{1, 2, 3}, 5, 5},
 		{"testcase2", []int{2}, 3, 0},
 		{"testcase3", []int{10}, 10, 1},
 	}
