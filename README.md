@@ -20,6 +20,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Math](#math)
 * [String](#string)
 * [Tree](#tree)
+* [Graph](#graph)
 
 ## Categories
 
@@ -184,6 +185,10 @@ My submissions for [LeetCode Oj][leetoj].
 | [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [use dfs](https://github.com/Catorpilor/LeetCode/commit/40bac2eb4dbc139240e1f1242a065b3fbe4fbdda) | Medium |
 
 
+### Graph 
+| Title | Solution | Difficulty |
+| :----- | :-------- | :----------:|
+| [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) | [use floyd wrashall](https://github.com/Catorpilor/LeetCode/commit/ff3e2c1378248b757bc7d2bc190d5aa204fa561b) | Medium | 
 
 [leetoj]:https://oj.leetcode.com/
 
