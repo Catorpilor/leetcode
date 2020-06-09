@@ -4,6 +4,27 @@ func change(amount int, coins []int) int {
 	return useDP(amount, coins)
 }
 
+// useBF time compleixty O(2^N), space complexity O(N)
+func useBF(amount int, coins []int) int {
+	return helper(amount, coins, 0)
+}
+
+func helper(amount int, coins []int, idx int) int {
+	if amount < 0 {
+		return 0
+	}
+	if amount == 0 {
+		// find one solution
+		return 1
+	}
+	if amount > 0 && idx >= len(coins) {
+		// can not find a solution
+		return 0
+	}
+	// include this coin + exclude this coin
+	return helper(amount-coins[idx], coins, idx) + helper(amount, coins, idx+1)
+}
+
 // useDP time complexity O(MN), space complexity O(MN)
 func useDP(amount int, coins []int) int {
 	n := len(coins)
