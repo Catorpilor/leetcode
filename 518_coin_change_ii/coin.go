@@ -7,9 +7,6 @@ func change(amount int, coins []int) int {
 // useDP time complexity O(MN), space complexity O(MN)
 func useDP(amount int, coins []int) int {
 	n := len(coins)
-	if n == 0 || (n == 1 && amount%coins[0] != 0) {
-		return 0
-	}
 	dp := make([][]int, amount+1)
 	for i := range dp {
 		dp[i] = make([]int, n+1)
