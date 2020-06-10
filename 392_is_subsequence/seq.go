@@ -43,14 +43,14 @@ func IsSubBS(s, t string) bool {
 		if dict[c] == nil {
 			return false
 		}
-		t := dict[c]
-		j := sort.Search(len(t), func(i int) bool {
-			return t[i] >= prev
+		tt := dict[c]
+		j := sort.Search(len(tt), func(i int) bool {
+			return tt[i] >= prev
 		})
-		if j == len(t) {
+		if j == len(tt) {
 			return false
 		}
-		prev = t[j] + 1
+		prev = tt[j] + 1
 	}
 	return true
 }
