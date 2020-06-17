@@ -14,8 +14,10 @@ func useTwoPointers(arr []int, target int) int {
 	return -1
 }
 
+// useOnepass time complexity O(N), space complexity O(N)
 func useOnepass(arr []int, target int) int {
 	n := len(arr)
+	// best[i] represents the minimum subarray with target sum equal to target ending at postion i
 	best := make([]int, n)
 	for i := range best {
 		best[i] = math.MaxInt32
@@ -25,6 +27,7 @@ func useOnepass(arr []int, target int) int {
 	for i := range arr {
 		sum += arr[i]
 		for sum > target {
+			// resize the window
 			sum -= arr[start]
 			start++
 		}
