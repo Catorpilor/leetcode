@@ -13,6 +13,8 @@ func TestLongestSubArrayOfOnes(t *testing.T) {
 		{"single one", []int{1}, 0},
 		{"testcaes1", []int{1, 1, 0, 1}, 3},
 		{"testcase2", []int{0, 1, 1, 1, 0, 1, 1}, 5},
+		{"testcase3", []int{1, 1, 0, 0, 1, 1, 1, 0, 1}, 4},
+		{"failed1", []int{1, 0, 0, 1, 0}, 1},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
