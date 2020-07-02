@@ -10,7 +10,7 @@ func TestArrangeCoins(t *testing.T) {
 	}{
 		{"n=1", 1, 1},
 		{"n=0", 0, 0},
-		{"n=5", 5, 3},
+		{"n=5", 5, 2},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
