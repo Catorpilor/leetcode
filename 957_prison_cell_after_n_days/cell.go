@@ -1,7 +1,13 @@
 package cell
 
+import (
+	"strconv"
+	"strings"
+)
+
 func afterNDays(cell []int, n int) []int {
-	return useBruteForce(cell, n)
+	// return useBruteForce(cell, n)
+	return useHashmap(cell, n)
 }
 
 // time complexity O(N), space complexity O(1)
@@ -25,4 +31,41 @@ func nextDay(cell []int) []int {
 		}
 	}
 	return tmp
+}
+
+func useHashmap(cell []int, n int) []int {
+	orignal := make([]int, 8)
+	copy(orignal, cell)
+	set := make(map[string]bool)
+	hasCycle := false
+	var length int
+	for i := 0; i < n; i++ {
+		nd := nextDay(cell)
+		key := intSliceToString(nd)
+		if set[key] {
+			// we found a cycle
+			hasCycle = true
+			break
+		}
+		set[key] = true
+		length++
+		cell = nd
+	}
+	if hasCycle {
+		n %= length
+		for i := 0; i < n; i++ {
+			cell = nextDay(cell)
+		}
+	}
+	return cell
+
+}
+
+func intSliceToString(a []int) string {
+	b := make([]string, 8)
+	for i, v := range a {
+		b[i] = strconv.Itoa(v)
+	}
+
+	return strings.Join(b, "")
 }
