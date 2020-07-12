@@ -87,3 +87,30 @@ func useGreedy(arr []int) int {
 	}
 	return ans
 }
+
+// useStack time complexity O(N), space complexity O(N)
+func useStack(arr []int) int {
+	n := len(arr)
+	// st is the monotonic decrasing stack, the top is the smallest.
+	st := make([]int, 0, n)
+	st = append(st, math.MaxInt32)
+	var res int
+	for _, num := range arr {
+		nst := len(st)
+		for nst > 0 && st[nst-1] <= num {
+			mid := st[nst-1]
+			st = st[:nst-1]
+			nst--
+			res += mid * utils.Min(num, st[nst-1])
+		}
+		st = append(st, num)
+	}
+	nst := len(st)
+	for nst > 2 {
+		top := st[nst-1]
+		nst--
+		st = st[:nst]
+		res += top * st[nst-1]
+	}
+	return res
+}
