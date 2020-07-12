@@ -48,3 +48,42 @@ func max(arr []int) int {
 	}
 	return ans
 }
+
+func minIdx(arr []int) int {
+	n := len(arr)
+	if n < 1 {
+		return -1
+	}
+	ans := 0
+	for i := 1; i < n; i++ {
+		if arr[i] < arr[ans] {
+			ans = i
+		}
+	}
+	return ans
+}
+
+// useGreedy time complexity O(N^2), space complexity O(1)
+// we need to leave the max nodes close to the root to minimize the sum of non-leaf nodes.
+// so the key point here is to use greedy to pick the smallest ones one at a time to build a
+// subtree.
+func useGreedy(arr []int) int {
+	var ans int
+	n := len(arr)
+	for n > 1 {
+		idx := minIdx(arr)
+		// fmt.Printf("arr:%v, idx:%d\n", arr, idx)
+		if idx > 0 && idx < n-1 {
+			ans += arr[idx] * utils.Min(arr[idx-1], arr[idx+1])
+		} else {
+			if idx == 0 {
+				ans += arr[idx] * arr[idx+1]
+			} else {
+				ans += arr[idx] * arr[idx-1]
+			}
+		}
+		arr = append(arr[:idx], arr[idx+1:]...)
+		n = len(arr)
+	}
+	return ans
+}
