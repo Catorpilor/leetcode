@@ -8,3 +8,14 @@ func ReverseBits(n uint32) uint32 {
 	n = ((n & 0xAAAAAAAA) >> 1) | ((n & 0x55555555) << 1)
 	return n
 }
+
+func byteByByte(n uint32) uint32 {
+	var ans uint32
+	power := uint32(31)
+	for n != 0 {
+		ans += (n&1)<<power
+		n >>= 1
+		power--
+	}
+	return ans
+}

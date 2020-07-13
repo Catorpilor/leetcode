@@ -24,3 +24,25 @@ func TestReverseBits(t *testing.T) {
 	}
 	t.Log("pass")
 }
+
+
+
+func TestByteByByte(t *testing.T){
+	st := []struct{
+		name string
+		input, exp uint32
+	}{
+		{"single digit", 1, 2147483648},
+		{"0", 0, 0},
+		{"multiple digits", 43261596, 964176192},
+	}
+	for _, tt := range st {
+		t.Run(tt.name,func(t *testing.T){
+			out := byteByByte(tt.input)
+			if out != tt.exp {
+				t.Fatalf("with input nums:%d, wanted %d but got %d", tt.input, tt.exp, out)
+			}
+			t.Log("pass")
+		})
+	}
+}
