@@ -13,6 +13,7 @@ func TestAngleClock(t *testing.T) {
 		{"3:30", 3, 30, 75},
 		{"3:15", 3, 15, 7.5},
 		{"12:00", 12, 0, 0},
+		{"failed 4:50", 4, 50, 155},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
