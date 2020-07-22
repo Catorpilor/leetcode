@@ -67,6 +67,7 @@ func useTopSortWithPriorityQueue(n int, dependencies [][]int, k int) int {
 	// this not working... we should use depth instead
 	// failed example n=12, deps{[1,2],[1,3],[7,5],[7,6],[4,8],[8,9],[9,10],[10,11],[11,12]}, k=2
 	// wanted 6 but use out degrees we got 7.
+	// update: depth approach is not working either, the only way to solve it is to use dp....
 	outdegrees := make([]int, n+1)
 	for _, dep := range dependencies {
 		p, q := dep[0], dep[1]
