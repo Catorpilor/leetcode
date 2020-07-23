@@ -3,6 +3,9 @@ package course
 import (
 	"container/heap"
 	"fmt"
+	"math/bits"
+
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func minSems(n int, deps [][]int, k int) int {
@@ -149,4 +152,44 @@ func (pq *PriorityQueue) Pop() interface{} {
 
 func (pq PriorityQueue) Top() int {
 	return pq[0].index
+}
+
+// useBitMaskDP time complexity O(3^N), space complexity O(N)
+func useBitMaskDP(n int, dependencies [][]int, k int) int {
+	nd := len(dependencies)
+	if nd == 0 {
+		return n/k + 1
+	}
+	pre := make([]int, n)
+	for _, edge := range dependencies {
+		p, q := edge[0]-1, edge[1]-1
+		pre[q] |= 1 << p
+	}
+	dp := make([]int, 1<<n)
+	for i := 1; i < len(dp); i++ {
+		dp[i] = n
+	}
+	for i := 0; i < (1 << n); i++ {
+		// i is the bit representation of a combination of courses.
+		// dp[i] is the minimum days to complete all the courses
+		var ex int
+		// find  out ex, the bit representation of the all courses that we can study now
+		// since we have i and pre[j], we know course j can be studied if i contains all it's prerequisites ((i & pre[j]) == pre[j])
+		for j := 0; j < n; j++ {
+			if i&pre[j] == pre[j] {
+				ex |= 1 << j
+			}
+		}
+		ex &= ^i
+		// enumerate all the bit 1 combinations of ex
+		// this is a typical method to enumerate all subsets of a bit representation:
+		// for (int i = s; i; i = (i - 1) &ｓ)
+		for s := ex; s != 0; s = (s - 1) & ex {
+			if bits.OnesCount(uint(s)) <= k {
+				dp[i|s] = utils.Min(dp[i|s], dp[i]+1)
+			}
+		}
+
+	}
+	return dp[1<<n-1]
 }
