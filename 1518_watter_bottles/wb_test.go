@@ -19,7 +19,7 @@ func TestWatterBottles(t *testing.T) {
 			if out != tt.exp {
 				t.Fatalf("with input numBottles:%d and numExchange:%d wanted %d but got %d", tt.numBottles, tt.numExchange, tt.exp, out)
 			}
-			t.Log("pass")
+			t.Log("passef")
 		})
 	}
 }
