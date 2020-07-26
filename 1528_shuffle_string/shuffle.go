@@ -4,6 +4,7 @@ func shuffleString(s string, indices []int) string {
 	return useTraverse(s, indices)
 }
 
+// useTraverse time complexity O(N), space complexity O(1)
 func useTraverse(s string, indices []int) string {
 	n := len(s)
 	if n < 1 {
