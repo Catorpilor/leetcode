@@ -4,7 +4,12 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func LeastInterval(tasks []byte, n int) int {
+func leastInterval(tasks []byte, n int) int {
+	return useGreedy(tasks, n)
+}
+
+// useGreedy time complexity O(N), space complexity O(1)
+func useGreedy(tasks []byte, n int) int {
 	hm := make([]int, 26)
 	var id, maxF, numOfMaxF int
 	for _, b := range tasks {

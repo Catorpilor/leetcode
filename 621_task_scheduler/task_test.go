@@ -15,7 +15,7 @@ func TestLeastInterval(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := LeastInterval(c.tasks, c.n)
+			ret := leastInterval(c.tasks, c.n)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v and %d",
 					c.exp, ret, c.tasks, c.n)
