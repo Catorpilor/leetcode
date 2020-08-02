@@ -17,7 +17,7 @@ func TestWinnerOfGame(t *testing.T) {
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
-			out := winnerOfGame(tt.arr, tt.k)
+			out := useOnePassWithStack(tt.arr, tt.k)
 			if out != tt.exp {
 				t.Fatalf("with input arr:%v and k:%d wanted %d but got %d", tt.arr, tt.k, tt.exp, out)
 			}

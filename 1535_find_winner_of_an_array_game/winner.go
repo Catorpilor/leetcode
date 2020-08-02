@@ -47,3 +47,32 @@ func useTwoPassWithStack(arr []int, k int) int {
 	}
 	return maxV
 }
+
+// useOnePassWithStack time complexity O(N), space complexity O(N)
+func useOnePassWithStack(arr []int, k int) int {
+	n := len(arr)
+	st := make([]int, 0, n)
+	count := make([]int, n)
+	for i := 0; i < n; i++ {
+		nst := len(st)
+		if nst > 0 {
+			top := st[nst-1]
+			if arr[top] > arr[i] {
+				count[top]++
+				if count[top] >= k {
+					return arr[top]
+				}
+				continue
+			} else {
+				st = st[:nst-1]
+				nst--
+				count[i]++
+				if count[i] >= k {
+					return arr[i]
+				}
+			}
+		}
+		st = append(st, i)
+	}
+	return arr[st[0]]
+}
