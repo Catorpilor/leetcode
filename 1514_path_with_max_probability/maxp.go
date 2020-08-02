@@ -3,6 +3,8 @@ package maxp
 import (
 	"fmt"
 	"math"
+
+	"github.com/catorpilor/leetcode/utils"
 )
 
 func maxProb(n int, edges [][]int, succProb []float64, start, end int) float64 {
@@ -53,4 +55,30 @@ func dfs(ret *float64, adj map[int][]int, cost map[string]float64, visited []boo
 	preKey := fmt.Sprintf("%d-%d", prev, cur)
 	// fmt.Printf("preKey:%s, cost[preKey]=%f, curP:%f\n",preKey, cost[preKey], curP)
 	curP /= cost[preKey]
+}
+
+// useBellmanFord time complexity O(|V|*|E|), space compelxity O(N*len(edges))
+func useBellmanFord(n int, edges [][]int, succProb []float64, start, end int) float64 {
+	// adj
+	g := make(map[int][][]int, n)
+	for i, edge := range edges {
+		start, end := edge[0], edge[1]
+		g[start] = append(g[start], []int{end, i})
+		g[end] = append(g[end], []int{start, i})
+	}
+	costs := make([]float64, n)
+	costs[start] = 1.0
+	q := utils.NewQueue()
+	q.Enroll(start)
+	for !q.IsEmpty() {
+		cur := q.Pull().(int)
+		for _, pair := range g[cur] {
+			neighbor, idx := pair[0], pair[1]
+			if costs[cur]*succProb[idx] > costs[neighbor] {
+				costs[neighbor] = costs[cur] * succProb[idx]
+				q.Enroll(neighbor)
+			}
+		}
+	}
+	return costs[end]
 }
