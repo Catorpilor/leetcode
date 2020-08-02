@@ -8,7 +8,7 @@ func winnerOfGame(arr []int, k int) int {
 
 // useStack time complexity O(N), space complexity O(N)
 func useTwoPassWithStack(arr []int, k int) int {
-	1n := len(arr)
+	n := len(arr)
 	posOfPeeks := make([]int, 0, n)
 	var maxV int
 	for i := 0; i < n; i++ {
