@@ -1,4 +1,4 @@
-## LeetCode 
+## LeetCode
 My submissions for [LeetCode Oj][leetoj].
 
 ## Tags
@@ -8,7 +8,7 @@ My submissions for [LeetCode Oj][leetoj].
 * [Depth First Search](#depth-first-search)
 * [Breadth First Search](#breadth-first-search)
 * [Two Pointers](#two-pointers)
-* [Sliding Window](#sliding-window) 
+* [Sliding Window](#sliding-window)
 * [Bit](#bit)
 * [Stack](#stack)
 * [HashMap](#hashmap)
@@ -44,6 +44,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [1035. Uncrossed Lines](https://leetcode.com/problems/uncrossed-lines/) | [use dp same approach as longest common sequences](https://github.com/Catorpilor/LeetCode/commit/f682fc1bd8544672a4ec5535b08725cb7aa1c55c) | Medium |
 | [1338. Reduce Array Size to The Half](https://leetcode.com/problems/reduce-array-size-to-the-half/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/48232406b3ee5daf1c843a04227c93e341fe067e) | Medium |
 | [368. Largest Divisible Subset](https://leetcode.com/problems/largest-divisible-subset/) | [use dp](https://github.com/Catorpilor/LeetCode/commit/c458ef8016fb5ba837815cfc20499799162c7ed2) | Medium |
+| [1535. Find the Winner of an Array Game](https://leetcode.com/problems/find-the-winner-of-an-array-game/) | [use one pass with constant space](https://github.com/Catorpilor/leetcode/commit/def7ea42203fe111784da6848395f090838a9192) | Medium |
 
 ### Bit
 | Title | Solution | Difficulty |
@@ -88,7 +89,7 @@ My submissions for [LeetCode Oj][leetoj].
 | :----- | :-------- | :----------:|
 | [719. Find K-th Smallest Pair Distance](https://leetcode.com/problems/find-k-th-smallest-pair-distance/) | [Binary Search+Sliding Window](https://github.com/Catorpilor/LeetCode/tree/master/719_find_k-th_smallest_pair_distance) | Hard |
 
-### Stack 
+### Stack
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [636. Exclusive Time of Functions](https://leetcode.com/problems/exclusive-time-of-functions) | [Use stack to track function id](https://github.com/Catorpilor/LeetCode/commit/3d468f85757fa0d435fa52e3714cdcc47da072c1) | Medium |
@@ -105,13 +106,13 @@ My submissions for [LeetCode Oj][leetoj].
 | [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/417dfe8a553e06418edb455f5482da568143ceae) | Medium |
 | [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) | [use hashmap](https://github.com/Catorpilor/LeetCode/commit/460de11226f31792f07ec2733e984530ba05788c) | Medium |
 
-### Breadth First Search 
+### Breadth First Search
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [200. Number OfIslands](https://leetcode.com/problems/number-of-islands/) | [use BFS](https://github.com/Catorpilor/LeetCode/commit/7c017b9ca955368a1472156b81b258a338a244b9) | Medium |
 
 
-### Depth First Search 
+### Depth First Search
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [200. Number OfIslands](https://leetcode.com/problems/number-of-islands/) | [use DFS](https://github.com/Catorpilor/LeetCode/commit/7c017b9ca955368a1472156b81b258a338a244b9) | Medium |
@@ -155,14 +156,14 @@ My submissions for [LeetCode Oj][leetoj].
 ### Binary Search
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
-| [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum | 
+| [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | [parity binary search](https://github.com/Catorpilor/LeetCode/commit/7cb1be7ca2a4ef22de5fc2bbd62307f89e9dba13) | Meidum |
 | [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [use binary search with one pass](https://github.com/Catorpilor/LeetCode/commit/5b07240bd1338018c52573204253ca80bdc8f823) | Medium |
 | [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
 | [Leftmost Column with at least a One](https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/530/week-3/3306/) | [use binary search (lower bound)](https://github.com/Catorpilor/LeetCode/commit/0b2bb1f6e40ac90a29d87fc19163fd40f3168b61) | Meidum |
 | [540. Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/) | [use binary search](https://github.com/Catorpilor/LeetCode/commit/4bf354ba4e93492daf01b7b907bcbf6eb467f0ff) | Medium |
 
 
-### String 
+### String
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [844. Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/) | [use two pointers](https://github.com/Catorpilor/LeetCode/commit/531e98d44ba9289cebd329b0cc9bee4f6065dd8c) | Easy |
@@ -177,7 +178,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [1456. Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/) | [use slide window](https://github.com/Catorpilor/LeetCode/commit/2ed1875bb4ded45e1686293a09e1592882f7828c) | Medium |
 
 
-### Tree 
+### Tree
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
 | [1457. Pseudo-Palindromic Paths in a Binary Tree](https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/) | [use backtracking](https://github.com/Catorpilor/LeetCode/commit/3d4dfce80f647ce9fd8518ee9bd39303c72c5a83) | Meidum |
@@ -185,13 +186,9 @@ My submissions for [LeetCode Oj][leetoj].
 | [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [use dfs](https://github.com/Catorpilor/LeetCode/commit/40bac2eb4dbc139240e1f1242a065b3fbe4fbdda) | Medium |
 
 
-### Graph 
+### Graph
 | Title | Solution | Difficulty |
 | :----- | :-------- | :----------:|
-| [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) | [use floyd wrashall](https://github.com/Catorpilor/LeetCode/commit/ff3e2c1378248b757bc7d2bc190d5aa204fa561b) | Medium | 
+| [1462. Course Schedule IV](https://leetcode.com/problems/course-schedule-iv/) | [use floyd wrashall](https://github.com/Catorpilor/LeetCode/commit/ff3e2c1378248b757bc7d2bc190d5aa204fa561b) | Medium |
 
 [leetoj]:https://oj.leetcode.com/
-
-
-
-
