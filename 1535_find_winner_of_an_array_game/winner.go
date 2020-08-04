@@ -76,3 +76,21 @@ func useOnePassWithStack(arr []int, k int) int {
 	}
 	return arr[st[0]]
 }
+
+// useOnePass time complexity O(N), space complexity O(1)
+func useOnePass(arr []int, k int) int {
+	n := len(arr)
+	cur := arr[0]
+	wins := 0
+	for i := 1; i < n; i++ {
+		if arr[i] > cur {
+			cur = arr[i]
+			wins = 0
+		}
+		wins++
+		if wins >= k {
+			break
+		}
+	}
+	return cur
+}
