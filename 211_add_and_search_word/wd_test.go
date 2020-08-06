@@ -34,7 +34,7 @@ func TestAddWord(t *testing.T) {
 
 func TestSearch(t *testing.T) {
 	w := initWithTesting(t)
-	words := []string{"abc", "hello", "hi", "test"}
+	words := []string{"at", "and", "an", "add", "a", "bat"}
 	for _, word := range words {
 		w.AddWord(word)
 	}
@@ -43,11 +43,15 @@ func TestSearch(t *testing.T) {
 		word string
 		exp  bool
 	}{
-		{"testcase1", "hello", true},
-		{"testcase2", "hi", true},
-		{"testcase3", "h....", true},
-		{"testcaes4", "h..", false},
-		{"testcase5", "ab.", true},
+		{"testcase1", "hello", false},
+		{"testcase2", "hi", false},
+		{"testcase3", "h....", false},
+		{"testcase4", "h..", false},
+		{"testcase5", "ab.", false},
+		{"ts6", ".at", true},
+		{"ts7", "an.", true},
+		{"ts8", "a.d.", false},
+		{"ts9", ".", true},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {

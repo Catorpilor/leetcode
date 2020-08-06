@@ -37,7 +37,8 @@ func get(node *trieNode, key string, d int) bool {
 		return false
 	}
 	if d == len(key) {
-		return node.Value != 0
+		fmt.Printf("reach the end, with node.Val:%d\n", node.Value)
+		return node.Value == len(key)
 	}
 	c := key[d]
 	fmt.Printf("node.Cb:%c, c:%c, d:%d\n", node.Cb, c, d)
@@ -46,11 +47,18 @@ func get(node *trieNode, key string, d int) bool {
 			return get(node.Left, key, d)
 		} else if c > node.Cb {
 			return get(node.Right, key, d)
-		} else {
+		} else if d < len(key)-1 {
 			return get(node.Middle, key, d+1)
+		} else {
+			return node.Value == len(key)
 		}
 	} else {
-		return get(node.Left, key, d+1) || get(node.Right, key, d+1) || get(node.Middle, key, d+1)
+		// this is the bottle neck.
+		// maybe.. just maybe tst is not the proper choice for this fuzzy search.
+		if d < len(key)-1 {
+			return get(node.Left, key, d+1) || get(node.Right, key, d+1) || get(node.Middle, key, d+1) || get(node.Left, key, d) || get(node.Right, key, d) || get(node.Middle, key, d)
+		}
+		return node.Value == len(key)
 	}
 	return false
 }
