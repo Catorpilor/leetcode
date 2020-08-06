@@ -63,18 +63,55 @@ func get(node *trieNode, key string, d int) bool {
 	return false
 }
 
+type normalTrieNode struct {
+	children []*normalTrieNode
+	item     string
+}
+
 type WordDict struct {
-	root *trieNode
+	root *normalTrieNode
 }
 
 func Constructor() *WordDict {
-	return &WordDict{}
+	return &WordDict{
+		root: &normalTrieNode{
+			children: make([]*normalTrieNode, 26),
+		},
+	}
 }
 
 func (this *WordDict) AddWord(word string) {
-	this.root = put(this.root, word, len(word), 0)
+	// this.root = put(this.root, word, len(word), 0)
+	node := this.root
+	for _, c := range word {
+		if node.children[c-'a'] == nil {
+			node.children[c-'a'] = &normalTrieNode{
+				children: make([]*normalTrieNode, 26),
+			}
+		}
+		node = node.children[c-'a']
+	}
+	node.item = word
 }
 
 func (this *WordDict) Search(word string) bool {
-	return get(this.root, word, 0)
+	return match(word, 0, this.root)
+}
+
+func match(word string, k int, node *normalTrieNode) bool {
+	if k == len(word) {
+		return node.item != ""
+	}
+	if word[k] != '.' {
+		return node.children[word[k]-'a'] != nil && match(word, k+1, node.children[word[k]-'a'])
+	} else {
+		for _, child := range node.children {
+			if child != nil {
+				if match(word, k+1, child) {
+					return true
+				}
+			}
+		}
+	}
+	return false
 }
