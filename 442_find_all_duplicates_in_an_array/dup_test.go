@@ -14,7 +14,7 @@ func TestFindDuplicates(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := FindDuplicates(c.nums)
+			ret := findDuplicates(c.nums)
 			if len(ret) != len(c.exp) {
 				t.Fatalf("expected %v but got %v with input %v",
 					c.exp, ret, c.nums)
@@ -23,7 +23,7 @@ func TestFindDuplicates(t *testing.T) {
 	}
 }
 
-func TestFindDuplicates2(t *testing.T) {
+func TestUseConstantSpace(t *testing.T) {
 	st := []struct {
 		name      string
 		nums, exp []int
@@ -35,7 +35,7 @@ func TestFindDuplicates2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := FindDuplicates2(c.nums)
+			ret := useConstantSpace(c.nums)
 			if len(ret) != len(c.exp) {
 				t.Fatalf("expected %v but got %v with input %v",
 					c.exp, ret, c.nums)

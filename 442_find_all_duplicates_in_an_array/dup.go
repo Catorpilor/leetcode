@@ -2,7 +2,7 @@ package dup
 
 import "github.com/catorpilor/leetcode/utils"
 
-func FindDuplicates(nums []int) []int {
+func findDuplicates(nums []int) []int {
 	// O(n) space
 	n := len(nums)
 	ret := make([]int, 0)
@@ -19,7 +19,8 @@ func FindDuplicates(nums []int) []int {
 	return ret
 }
 
-func FindDuplicates2(nums []int) []int {
+// useConstantSpace time complexity O(N), space complexity O(1)
+func useConstantSpace(nums []int) []int {
 	// no more extra space
 	// since  1<=nums[i]<=n
 	// we can flip the num at pos nums[i] - 1
