@@ -11,7 +11,7 @@ func useBruteForce(root *utils.TreeNode, sum int) int {
 	if root == nil {
 		return 0
 	}
-	return helper(root, sum) + helper(root.Left, sum) + helper(root.Right, sum)
+	return helper(root, sum) + useBruteForce(root.Left, sum) + useBruteForce(root.Right, sum)
 }
 
 func helper(root *utils.TreeNode, sum int) int {

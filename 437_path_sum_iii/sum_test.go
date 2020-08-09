@@ -16,6 +16,7 @@ func TestPathSum(t *testing.T) {
 	}{
 		{"nil tree", nil, 5, 0},
 		{"testcase1", utils.ConstructTree([]int{10, 5, -3, 3, 2, math.MinInt32, 11, 3, -2, math.MinInt32, 1}), 8, 3},
+		{"testcase2", utils.ConstructTree([]int{1, math.MinInt32, 2, math.MinInt32, 3, math.MinInt32, 4, math.MinInt32, 5}), 3, 2},
 	}
 
 	for _, tt := range st {
