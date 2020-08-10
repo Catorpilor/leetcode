@@ -59,9 +59,11 @@ func useHashmap(arr []int, target int) int {
 	lsize, ans := math.MaxInt32, math.MaxInt32
 	for i := 0; i < n; i++ {
 		sum += arr[i]
+		// there is a subarray ends i with sum = target
 		if v, exists := set[sum-target]; exists {
 			lsize = utils.Min(lsize, i-v)
 		}
+		// looking for another subarray with sum equals target starts with i+1
 		if v, exists := set[sum+target]; exists {
 			ans = utils.Min(ans, lsize+v-i)
 		}
