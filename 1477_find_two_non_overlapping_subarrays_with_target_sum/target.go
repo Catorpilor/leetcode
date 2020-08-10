@@ -44,3 +44,30 @@ func useOnepass(arr []int, target int) int {
 	}
 	return ans
 }
+
+// useHashmap time complexity O(N), space complexity O(N)
+func useHashmap(arr []int, target int) int {
+	n := len(arr)
+	set := make(map[int]int, n)
+	set[0] = -1
+	var sum int
+	for i := range arr {
+		sum += arr[i]
+		set[sum] = i
+	}
+	sum = 0
+	lsize, ans := math.MaxInt32, math.MaxInt32
+	for i := 0; i < n; i++ {
+		sum += arr[i]
+		if v, exists := set[sum-target]; exists {
+			lsize = utils.Min(lsize, i-v)
+		}
+		if v, exists := set[sum+target]; exists {
+			ans = utils.Min(ans, lsize+v-i)
+		}
+	}
+	if ans == math.MaxInt32 {
+		return -1
+	}
+	return ans
+}
