@@ -14,6 +14,7 @@ func TestCanConvert(t *testing.T) {
 		{"testcase1", "input", "ouput", 9, true},
 		{"testcase2", "abc", "bcd", 10, false},
 		{"testcase3", "aab", "bbb", 27, true},
+		{"failed1", "iqssxdlb", "dyuqrwyr", 40, true},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
