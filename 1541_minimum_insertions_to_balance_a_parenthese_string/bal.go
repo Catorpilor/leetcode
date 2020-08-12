@@ -38,3 +38,31 @@ func useStack(s string) int {
 
 	return ans + 2*len(st)
 }
+
+// useOnepass time complexity O(N), space complexity O(1)
+func useOnepass(s string) int {
+	// ans represents the left/right parentheses that already added
+	// rightP represents the right parentheses that are needed.
+	var ans, rightP int
+	for i := 0; i < len(s); i++ {
+		if s[i] == '(' {
+			if rightP&1 != 0 {
+				// if rightP is odd, then we borrow one
+				rightP--
+				// update ans means we add a ) here
+				ans++
+			}
+			// base case ( -> ))
+			rightP += 2
+		} else {
+			// we found a ) and remove one from rightP
+			rightP--
+			if rightP < 0 {
+				rightP += 2
+				// add one left parenthese
+				ans++
+			}
+		}
+	}
+	return ans + rightP
+}
