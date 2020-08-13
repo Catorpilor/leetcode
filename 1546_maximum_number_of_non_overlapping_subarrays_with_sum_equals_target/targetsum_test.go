@@ -11,7 +11,7 @@ func TestMaxSubarray(t *testing.T) {
 	}{
 		{"testcase1", []int{1, 1, 1, 1, 1}, 2, 2},
 		{"testcase2", []int{-1, 3, 5, 1, 4, 2, -9}, 6, 2},
-		{"testcase3", []int{-2, 6, 6, 3, 5, 4, 1, 2, 8, 10}, 10, 3},
+		{"testcase3", []int{-2, 6, 6, 3, 5, 4, 1, 2, 8}, 10, 3},
 		{"testcase4", []int{0, 0, 0}, 0, 3},
 	}
 	for _, tt := range st {
