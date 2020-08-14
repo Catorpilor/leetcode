@@ -20,7 +20,8 @@ func LongestPalindrome(s string) int {
 	return count * 2
 }
 
-func LongestPalindrome2(s string) int {
+// useBucket time complexity O(N), space complexity O(1)
+func useBucket(s string) int {
 	if len(s) <= 1 {
 		return len(s)
 	}
