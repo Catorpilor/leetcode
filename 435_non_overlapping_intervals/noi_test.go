@@ -11,7 +11,7 @@ func TestMinErase(t *testing.T) {
 		{"nil intervals", nil, 0},
 		{"single one", [][]int{[]int{1, 2}}, 0},
 		{"testcase1", [][]int{[]int{1, 2}, []int{2, 3}, []int{3, 4}, []int{1, 3}}, 1},
-		{"testcase2", [][]int{[]int{1, 2}, []int{1, 2}, []int{1, 2}}, 1},
+		{"testcase2", [][]int{[]int{1, 2}, []int{1, 2}, []int{1, 2}}, 2},
 		{"testcase3", [][]int{[]int{1, 2}, []int{2, 3}}, 0},
 	}
 	for _, tt := range st {
