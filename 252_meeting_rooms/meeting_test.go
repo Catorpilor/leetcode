@@ -15,7 +15,7 @@ func TestCanAttendMeetings(t *testing.T) {
 
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := CanAttendMeetings(c.intervals)
+			ret := canAttendMeetings(c.intervals)
 			if ret != c.exp {
 				t.Fatalf("expected %t but got %t, with inputs %v",
 					c.exp, ret, c.intervals)
