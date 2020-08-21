@@ -13,11 +13,8 @@ func useOnePass(arr []int) []int {
 			l++
 		} else {
 			arr[l], arr[r] = arr[r], arr[l]
-		}
-		if arr[r]%2 != 0 {
+			// arr[r] is odd now
 			r--
-		} else {
-			arr[r], arr[l] = arr[l], arr[r]
 		}
 	}
 	return arr
