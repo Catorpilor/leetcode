@@ -161,6 +161,7 @@ My submissions for [LeetCode Oj][leetoj].
 | [202. Happy Number](https://leetcode.com/problems/happy-number/) | [use floyed's algorithm](https://github.com/Catorpilor/LeetCode/commit/f68e0fd4c7d786c2cf73e39cbdb2b40dc1a309f6) | Easy |
 | [Leftmost Column with at least a One](https://leetcode.com/explore/challenge/card/30-day-leetcoding-challenge/530/week-3/3306/) | [use binary search (lower bound)](https://github.com/Catorpilor/LeetCode/commit/0b2bb1f6e40ac90a29d87fc19163fd40f3168b61) | Meidum |
 | [540. Single Element in a Sorted Array](https://leetcode.com/problems/single-element-in-a-sorted-array/) | [use binary search](https://github.com/Catorpilor/LeetCode/commit/4bf354ba4e93492daf01b7b907bcbf6eb467f0ff) | Medium |
+| [1231. Divide Chocolate](https://leetcode.com/problems/divide-chocolate/) | [answer in the range min(chocolate), sum(chocolate)](https://github.com/Catorpilor/leetcode/commit/424a51caffcf98c19f9a03e387dc900b22554398) | Medium |
 
 
 ### String
