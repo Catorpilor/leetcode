@@ -4,7 +4,7 @@ func divideChocolate(chocolate []int, k int) int {
 	return useBinarySearch(chocolate, k)
 }
 
-// useBinarySearch time complexity O(N*log(M)) where M = max(arr) - min(arr), space complexity O(1)
+// useBinarySearch time complexity O(N*log(M)) where M = sum(arr) - min(arr), space complexity O(1)
 func useBinarySearch(chocolate []int, k int) int {
 	n := len(chocolate)
 	if n < 1 {
