@@ -34,3 +34,26 @@ func useDP(days []int, costs []int) int {
 	}
 	return dp[lastDay]
 }
+
+// useQueue time complexity O(N), space complexity O(1)
+func useQueue(days []int, costs []int) int {
+	type pair struct {
+		day  int
+		cost int
+	}
+	lastSeven := make([]pair, 0, 7)
+	lastMonth := make([]pair, 0, 30)
+	var cost int
+	for _, d := range days {
+		for len(lastSeven) != 0 && lastSeven[0].day+7 <= d {
+			lastSeven = lastSeven[1:]
+		}
+		for len(lastMonth) != 0 && lastMonth[0].day+30 <= d {
+			lastMonth = lastMonth[1:]
+		}
+		lastSeven = append(lastSeven, pair{day: d, cost: cost + costs[1]})
+		lastMonth = append(lastMonth, pair{day: d, cost: cost + costs[2]})
+		cost = utils.Min(cost+costs[0], utils.Min(lastMonth[0].cost, lastSeven[0].cost))
+	}
+	return cost
+}
