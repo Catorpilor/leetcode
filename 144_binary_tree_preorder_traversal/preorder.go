@@ -29,3 +29,29 @@ func useStack(root *utils.TreeNode) []int {
 	}
 	return ans
 }
+
+// useMorris time complexity O(N), space complexity O(1)
+func useMorris(root *utils.TreeNode) []int {
+	var ans []int
+	cur := root
+	for cur != nil {
+		if cur.Left == nil {
+			ans = append(ans, cur.Val)
+			cur = cur.Right
+		} else {
+			pre := cur.Left
+			for pre.Right != nil && pre.Right != cur {
+				pre = pre.Right
+			}
+			if pre.Right == nil {
+				pre.Right = cur
+				ans = append(ans, cur.Val)
+				cur = cur.Left
+			} else {
+				pre.Right = nil
+				cur = cur.Right
+			}
+		}
+	}
+	return ans
+}
