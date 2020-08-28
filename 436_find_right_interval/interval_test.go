@@ -13,7 +13,7 @@ func TestRightInterval(t *testing.T) {
 		exp       []int
 	}{
 		{"single one", [][]int{[]int{1, 2}}, []int{-1}},
-		{"testcase1", [][]int{[]int{3, 4}, []int{1, 2}, []int{2, 3}}, []int{-1, 1, 0}},
+		{"testcase1", [][]int{[]int{3, 4}, []int{1, 2}, []int{2, 3}}, []int{-1, 2, 0}},
 		{"testcase2", [][]int{[]int{1, 4}, []int{2, 3}, []int{3, 4}}, []int{-1, 2, -1}},
 	}
 	for _, tt := range st {
