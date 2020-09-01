@@ -1,7 +1,8 @@
 package pattern
 
 func havePattern(arr []int, m, k int) bool {
-	return useStraight(arr, m, k)
+	// return useStraight(arr, m, k)
+	return useOnepass(arr, m, k)
 }
 
 // useStraight time complexity O(N^2), space complexity O(1)
@@ -32,4 +33,22 @@ func isEqual(a, b []int) bool {
 		}
 	}
 	return true
+}
+
+// useOnepass time complexity O(N), space complexity O(1)
+func useOnepass(arr []int, m, k int) bool {
+	n := len(arr)
+	var cnt int
+	for i := 0; i+m < n; i++ {
+		if arr[i] != arr[i+m] {
+			cnt = 0
+		}
+		if arr[i] == arr[i+m] {
+			cnt++
+		}
+		if cnt == (k-1)*m {
+			return true
+		}
+	}
+	return false
 }
