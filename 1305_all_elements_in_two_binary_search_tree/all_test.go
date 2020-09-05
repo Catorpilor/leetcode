@@ -13,7 +13,7 @@ func TestAllElements(t *testing.T) {
 		root1, root2 *utils.TreeNode
 		exp          []int
 	}{
-		{"all nil", nil, nil, nil},
+		{"all nil", nil, nil, []int{}},
 		{"root1 is nil", nil, utils.ConstructTree([]int{2, 1, 3}), []int{1, 2, 3}},
 		{"testcase1", utils.ConstructTree([]int{2, 1, 4}), utils.ConstructTree([]int{1, 0, 3}), []int{0, 1, 1, 2, 3, 4}},
 	}
