@@ -37,3 +37,19 @@ func genNum(nums []int) int {
 	}
 	return ans
 }
+
+// useDfs time complexity O(N) space complexity O(log(N))
+func useDfs(root *utils.TreeNode) int {
+	return dfs(root, 0)
+}
+
+func dfs(root *utils.TreeNode, val int) int {
+	if root == nil {
+		return 0
+	}
+	val = val*2 + root.Val
+	if root.Left == nil && root.Right == nil {
+		return val
+	}
+	return dfs(root.Left, val) + dfs(root.Right, val)
+}
