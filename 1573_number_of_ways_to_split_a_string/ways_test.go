@@ -18,7 +18,7 @@ func TestNumOfWays(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			out := numOfWays(tt.s)
 			if out != tt.exp {
-				t.Fatalf("with input s:%s wanted %t but got %d", tt.s, tt.exp, out)
+				t.Fatalf("with input s:%s wanted %d but got %d", tt.s, tt.exp, out)
 			}
 			t.Log("pass")
 		})
