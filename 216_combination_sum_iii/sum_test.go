@@ -15,7 +15,7 @@ func TestCombinationSum(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := CombinationSum(c.k, c.n)
+			ret := combinationSum(c.k, c.n)
 			if len(ret) != len(c.exp) {
 				t.Fatalf("expected %v but got %v, with input %d and %d",
 					c.exp, ret, c.k, c.n)
