@@ -2,7 +2,7 @@ package robber
 
 import "testing"
 
-func TestRob(t *testing.T) {
+func TestRobUseBruteForce(t *testing.T) {
 	cases := []struct {
 		name   string
 		nums   []int
@@ -18,7 +18,7 @@ func TestRob(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			ret := Rob(c.nums)
+			ret := useBruteforce(c.nums)
 			if c.expect != ret {
 				t.Fatalf("expected %d but got %d, with inputs %v",
 					c.expect, ret, c.nums)
@@ -44,7 +44,7 @@ func TestRobSimplify(t *testing.T) {
 
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			ret := Rob(c.nums)
+			ret := useDPLessSpace(c.nums)
 			if c.expect != ret {
 				t.Fatalf("expected %d but got %d, with inputs %v",
 					c.expect, ret, c.nums)

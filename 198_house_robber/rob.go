@@ -4,7 +4,12 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func Rob(nums []int) int {
+func rob(nums []int) int {
+	return useBruteforce(nums)
+}
+
+// useBruteforce time complexity O(N^2), sapce complexity O(N)
+func useBruteforce(nums []int) int {
 	l := len(nums)
 	if l == 0 {
 		return 0
@@ -31,13 +36,14 @@ func Rob(nums []int) int {
 	return sum[l-1]
 }
 
-func RobSimplify(nums []int) int {
-	prevMax := 0
-	curMax := 0
-	for _, n := range nums {
+//useDPLessSpace time complexity O(N), space complexity O(1)
+func useDPLessSpace(nums []int) int {
+	prevMax := 0 // prevMax represents the max goods so far without rob this house
+	curMax := 0  // curMax represents the max goods so far by robbing this house.
+	for _, num := range nums {
 		temp := curMax
-		if prevMax+n > curMax {
-			curMax = prevMax + n
+		if prevMax+num > curMax {
+			curMax = prevMax + num
 		}
 		prevMax = temp
 	}
