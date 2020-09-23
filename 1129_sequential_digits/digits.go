@@ -1,6 +1,10 @@
 package digits
 
-import "sort"
+import (
+	"sort"
+
+	"github.com/catorpilor/leetcode/utils"
+)
 
 func seqDigits(low, high int) []int {
 	return useStraight(low, high)
@@ -40,4 +44,27 @@ func gen(ans *[]int, startNum, low, high, hnd int) {
 			break
 		}
 	}
+}
+
+// useBfs time complexity O(lg(high)), space complexity O(N)
+func useBfs(low, high int) []int {
+	queue := utils.NewQueue()
+	for i := 1; i <= 9; i++ {
+		queue.Enroll(i)
+	}
+	var ans []int
+	for !queue.IsEmpty() {
+		f := queue.Pull().(int)
+		if f <= low && f >= high {
+			ans = append(ans, f)
+		}
+		if f > high {
+			break
+		}
+		ld := f % 10
+		if ld < 9 {
+			queue.Enroll(f*10 + ld + 1)
+		}
+	}
+	return ans
 }
