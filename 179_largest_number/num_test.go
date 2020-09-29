@@ -11,7 +11,7 @@ func TestLargestNum(t *testing.T) {
 		{"testcase1", []int{0, 0}, "0"},
 		{"testcase2", []int{1}, "1"},
 		{"testcase3", []int{10, 2}, "210"},
-		{"testcase4", []int{3, 30, 34, 5, 9}, "934339"},
+		{"testcase4", []int{3, 30, 34, 5, 9}, "9534330"},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
