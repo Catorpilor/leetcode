@@ -40,3 +40,21 @@ func useBucket(nums []int) string {
 	}
 	return ans
 }
+
+// useSorting time complexity O(N*K*logK) space complexity O(N) where K is the average length of each number.
+func useSorting(nums []int) string {
+	// just sort the nums based on the combination of two
+	sort.Slice(nums, func(i, j int) bool {
+		si, sj := strconv.Itoa(nums[i]), strconv.Itoa(nums[j])
+		return si+sj > sj+si
+	})
+	var sb bytes.Buffer
+	for _, num := range nums {
+		sb.WriteString(strconv.Itoa(num))
+	}
+	ans := sb.String()
+	if ans[0] == '0' {
+		return "0"
+	}
+	return ans
+}
