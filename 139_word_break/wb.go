@@ -100,10 +100,10 @@ func wordBreak3(s string, words []string) bool {
 		set[word] = true
 	}
 
-	return dp(s, set, n)
+	return useDp(s, set, n)
 }
 
-func dp(s string, set map[string]bool, n int) bool {
+func useDp(s string, set map[string]bool, n int) bool {
 	dp := make([]bool, n+1)
 	dp[0] = true
 	// i represents the length of substring s' starting from beginning.
