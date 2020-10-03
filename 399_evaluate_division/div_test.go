@@ -21,7 +21,7 @@ func TestCalcEquation(t *testing.T) {
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
-			out := calcEuqation(tt.equations, tt.values, tt.queries)
+			out := calcEquation(tt.equations, tt.values, tt.queries)
 			if diff := cmp.Diff(tt.exp, out); diff != "" {
 				t.Fatalf("(-wanted, +got) %s", diff)
 			}
