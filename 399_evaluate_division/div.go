@@ -1,7 +1,5 @@
 package div
 
-import "fmt"
-
 func calcEquation(eqs [][]string, vals []float64, queries [][]string) []float64 {
 	// return useBfs(eqs, vals, queries)
 	return useDFS(eqs, queries, vals)
@@ -66,6 +64,7 @@ func helper(adj map[string][]pair, cache map[string]float64, start, end string) 
 	return
 }
 
+// useDFS time complexity O(KN) where k is the number of queries N is the number of nodes. Space complexity O(N)
 func useDFS(eqs, queries [][]string, vals []float64) []float64 {
 	adj := make(map[string][]pair)
 	for i, eq := range eqs {
@@ -76,37 +75,27 @@ func useDFS(eqs, queries [][]string, vals []float64) []float64 {
 		adj[e] = append(adj[e], pair{s, 1 / val})
 	}
 	ans := make([]float64, len(queries))
-	cache := make(map[string]float64)
+	for i := range ans {
+		ans[i] = -1.0
+	}
 	for i, query := range queries {
-		key := fmt.Sprintf("%s/%s", query[0], query[1])
-		if _, exists := cache[key]; !exists {
-			cache[key] = calWeight(query[0], query[1], make(map[string]bool), adj, cache, 1.0)
-		}
-		ans[i] = cache[key]
+		calWeight(query[0], query[1], make(map[string]bool), adj, &ans, i, 1.0)
 	}
 	return ans
 }
 
-func calWeight(start, end string, visited map[string]bool, adj map[string][]pair, cache map[string]float64, val float64) float64 {
+func calWeight(start, end string, visited map[string]bool, adj map[string][]pair, ans *[]float64, idx int, val float64) {
 	if len(adj[start]) == 0 || len(adj[end]) == 0 {
-		return -1.0
+		return
 	}
 	if start == end {
-		// cache[start+"/"+end] = val
-		// cache[end+"/"+start] = 1 / val
-		return val
+		(*ans)[idx] = val
+		return
 	}
-	// key := fmt.Sprintf("%s/%s", start, end)
-	// if v, exists := cache[key]; exists {
-	//	return v
-	// }
 	visited[start] = true
 	for _, next := range adj[start] {
 		if !visited[next.node] {
-			lv := calWeight(next.node, end, visited, adj, cache, val*next.val)
-			cache[next.node+"/"+end] = lv
-			cache[end+"/"+next.node] = 1 / lvx
+			calWeight(next.node, end, visited, adj, ans, idx, val*next.val)
 		}
 	}
-	return -1.0
 }
