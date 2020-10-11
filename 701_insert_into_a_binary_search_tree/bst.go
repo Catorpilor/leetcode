@@ -2,19 +2,25 @@ package bst
 
 import "github.com/catorpilor/leetcode/utils"
 
-func insertTree(root *utils.TreeNode, val int) *utils.TreeNode {
+func insertIntoBST(root *utils.TreeNode, val int) *utils.TreeNode {
+	return helper(root, val)
+}
+
+// helper is a recursive approach. tiem complexity O(N), space complexity O(lgN)
+func helper(root *utils.TreeNode, val int) *utils.TreeNode {
 	if root == nil {
 		return &utils.TreeNode{Val: val}
 	}
 	if root.Val < val {
-		root.Right = insertTree(root.Right, val)
+		root.Right = helper(root.Right, val)
 	} else {
-		root.Left = insertTree(root.Left, val)
+		root.Left = helper(root.Left, val)
 	}
 	return root
 }
 
-func insertTreeIter(root *utils.TreeNode, val int) *utils.TreeNode {
+// useIter time complexity O(N), space complexity O(1)
+func useIter(root *utils.TreeNode, val int) *utils.TreeNode {
 	cur := root
 	if cur == nil {
 		return &utils.TreeNode{Val: val}

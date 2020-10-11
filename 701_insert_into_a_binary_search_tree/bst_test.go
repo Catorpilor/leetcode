@@ -7,7 +7,7 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func TestInsert(t *testing.T) {
+func TestInsertUseRecursion(t *testing.T) {
 	st := []struct {
 		name string
 		root *utils.TreeNode
@@ -21,7 +21,7 @@ func TestInsert(t *testing.T) {
 
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
-			out := insertTree(tt.root, tt.val)
+			out := helper(tt.root, tt.val)
 			if !utils.IsEqual(tt.exp, out) {
 				t.Fatalf("with root:%v and val:%d wanted %v but got %v",
 					utils.LevelOrderTravesal(tt.root), tt.val, utils.LevelOrderTravesal(tt.exp),
@@ -45,7 +45,7 @@ func TestInsertIter(t *testing.T) {
 
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
-			out := insertTreeIter(tt.root, tt.val)
+			out := useIter(tt.root, tt.val)
 			if !utils.IsEqual(tt.exp, out) {
 				t.Fatalf("with root:%v and val:%d wanted %v but got %v",
 					utils.LevelOrderTravesal(tt.root), tt.val, utils.LevelOrderTravesal(tt.exp),
