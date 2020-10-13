@@ -58,3 +58,32 @@ func useIter(head *utils.ListNode, k int) *utils.ListNode {
 	newTail.Next = nil
 	return newHead
 }
+
+// useReverseV2 time complexity O(N), space complexity O(1)
+func useReverseV2(head *utils.ListNode, k int) *utils.ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var n int
+	tmp := head
+	for tmp != nil {
+		n++
+		tmp = tmp.Next
+	}
+	k %= n
+	if k == 0 {
+		return head
+	}
+	// first reverse
+	tail := utils.ReverseList(head)
+	var prev *utils.ListNode
+	oldT := tail
+	for i := 1; i <= k; i++ {
+		tmp := oldT.Next
+		oldT.Next = prev
+		prev = oldT
+		oldT = tmp
+	}
+	tail.Next = utils.ReverseList(oldT)
+	return prev
+}
