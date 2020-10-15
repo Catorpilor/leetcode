@@ -3,6 +3,7 @@ package bst
 import (
 	"bytes"
 	"strconv"
+	"strings"
 
 	"github.com/catorpilor/leetcode/utils"
 )
@@ -23,13 +24,13 @@ func Constructor() *Codec {
 	return &Codec{}
 }
 
-// Serializes a tree to a single string.
+// Serializes a tree to a single string. we use the level order traversal here. time complexity O(N), space complexity O(N)
 func (this *Codec) serialize(root *utils.TreeNode) string {
 	if root == nil {
 		return ""
 	}
 	// just a level order traversal
-	var vals []*utiils.TreeNode
+	var vals []*utils.TreeNode
 	vals = append(vals, root)
 	var sb bytes.Buffer
 	for len(vals) > 0 {
@@ -42,16 +43,21 @@ func (this *Codec) serialize(root *utils.TreeNode) string {
 		if top.Right != nil {
 			vals = append(vals, top.Right)
 		}
+		if len(vals) > 0 {
+			sb.WriteString(" ")
+		}
 	}
 	return sb.String()
 }
 
-// Deserializes your encoded data to tree.
+// deserialize your encoded data to tree.
 func (this *Codec) deserialize(data string) *utils.TreeNode {
 	// construct a bst from level order traversal
+	// split data by space
+	sd := strings.Fields(data)
 	var root *utils.TreeNode
-	for i := range data {
-		val, _ := strconv.Atoi(string(data[i]))
+	for i := range sd {
+		val, _ := strconv.Atoi(string(sd[i]))
 		root = levelOrder(root, val)
 	}
 	return root
