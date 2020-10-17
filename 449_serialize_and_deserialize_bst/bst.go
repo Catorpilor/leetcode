@@ -2,6 +2,7 @@ package bst
 
 import (
 	"bytes"
+	"math"
 	"strconv"
 	"strings"
 
@@ -75,6 +76,51 @@ func levelOrder(root *utils.TreeNode, val int) *utils.TreeNode {
 	}
 	return root
 
+}
+
+func (this *Codec) serializeUseDFS(root *utils.TreeNode) string {
+	if root == nil {
+		return ""
+	}
+	var sb bytes.Buffer
+	helper(&sb, root)
+	return sb.String()
+}
+
+func helper(sb *bytes.Buffer, root *utils.TreeNode) {
+	if root == nil {
+		return
+	}
+	sb.WriteString(strconv.Itoa(root.Val))
+	sb.WriteString(",")
+	helper(sb, root.Left)
+	helper(sb, root.Right)
+}
+
+func (this *Codec) deserializeUseDFS(data string) *utils.TreeNode {
+	if len(data) < 1 {
+		return nil
+	}
+	sd := strings.FieldsFunc(data, func(r rune) bool {
+		return r == ','
+	})
+	return insert(sd, math.MinInt32, math.MaxInt32)
+}
+
+func insert(sd []string, min, max int) *utils.TreeNode {
+	if len(sd) == 0 {
+		return nil
+	}
+	h := sd[0]
+	ih, _ := strconv.Atoi(h)
+	if ih < min || ih > max {
+		return nil
+	}
+	sd = sd[1:]
+	root := &utils.TreeNode{Val: ih}
+	root.Left = insert(sd, min, ih)
+	root.Right = insert(sd, ih, max)
+	return root
 }
 
 /**
