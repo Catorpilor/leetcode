@@ -2,7 +2,7 @@ package stock
 
 import "testing"
 
-func TestStock(t *testing.T) {
+func TestUseDP1(t *testing.T) {
 	st := []struct {
 		name   string
 		prices []int
@@ -15,7 +15,7 @@ func TestStock(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := Stock(c.prices, c.k)
+			ret := useDP1(c.k, c.prices)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v and %d",
 					c.exp, ret, c.prices, c.k)
@@ -24,7 +24,7 @@ func TestStock(t *testing.T) {
 	}
 }
 
-func TestStock2(t *testing.T) {
+func TestuseDP2(t *testing.T) {
 	st := []struct {
 		name   string
 		prices []int
@@ -37,7 +37,7 @@ func TestStock2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := Stock2(c.prices, c.k)
+			ret := useDP2(c.k, c.prices)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v and %d",
 					c.exp, ret, c.prices, c.k)

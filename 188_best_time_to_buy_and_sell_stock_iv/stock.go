@@ -6,15 +6,19 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func Stock(prices []int, k int) int {
+func maxProfit(k int, prices []int) int {
+	return useDP1(k, prices)
+}
+
+// useDP1 time compelxity O(N*K), space complexity O(N*K)
+func useDP1(k int, prices []int) int {
 	n := len(prices)
-	if n <= 1 {
+	if n < 1 || k == 0 {
 		return 0
 	}
-	// simple case
-	if k > n/2 {
-		// means you can make any transactions you want
-		var ans int
+	var ans int
+	if k >= n>>1 {
+		// meas you can make as much transactions as you want
 		for i := 1; i < n; i++ {
 			ans += utils.Max(prices[i]-prices[i-1], 0)
 		}
@@ -37,18 +41,17 @@ func Stock(prices []int, k int) int {
 		dp[i] = make([]int, n)
 	}
 	for i := 1; i <= k; i++ {
-		tempMax := dp[i-1][0] - prices[0]
+		tmpMax := -prices[0]
 		for j := 1; j < n; j++ {
-			dp[i][j] = utils.Max(dp[i][j-1], prices[j]+tempMax)
-			// tmpMax means the maximum profit of just doing at most i-1 transactions,
-			// using at most first j-1 prices, and buying the stock at price[j] - this is used for the next loop.
-			tempMax = utils.Max(tempMax, dp[i-1][j-1]-prices[j])
+			dp[i][j] = utils.Max(dp[i-1][j], tmpMax+prices[j])
+			tmpMax = utils.Max(tmpMax, dp[i-1][j]-prices[j])
 		}
 	}
 	return dp[k][n-1]
 }
 
-func Stock2(prices []int, k int) int {
+// useDP2 time complexity O(N*k), space compelxity O(K)
+func useDP2(k int, prices []int) int {
 	n := len(prices)
 	if n <= 1 {
 		return 0
