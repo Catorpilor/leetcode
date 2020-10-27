@@ -58,3 +58,22 @@ func useBruteForce(a, b []int) int {
 	}
 	return ans
 }
+
+// useDiff time complexity O(N), space complexity O(1)
+func useDiff(a, b []int) int {
+	n := len(a)
+	bkt1, bkt2, same := make([]int, 7), make([]int, 7), make([]int, 7)
+	for i := range a {
+		bkt1[a[i]]++
+		bkt2[b[i]]++
+		if a[i] == b[i] {
+			same[a[i]]++
+		}
+	}
+	for i := 1; i < 7; i++ {
+		if bkt1[i]+bkt2[i]-same[i] == n {
+			return n - utils.Max(bkt1[i], bkt2[i])
+		}
+	}
+	return -1
+}
