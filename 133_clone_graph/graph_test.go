@@ -6,10 +6,10 @@ func TestCloneGraph(t *testing.T) {
 	st := []struct {
 		name string
 		adj  [][]int
-		exp  *node
+		exp  *Node
 	}{
 		{"empty graph", nil, nil},
-		{"single node", [][]int{}, &node{Val: 1}},
+		{"single node", [][]int{}, &Node{Val: 1}},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
