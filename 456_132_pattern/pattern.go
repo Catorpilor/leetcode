@@ -46,3 +46,34 @@ func useBetterBF(nums []int) bool {
 	}
 	return false
 }
+
+// useStack time complexity O(N), space complexity O(N)
+func useStack(nums []int) bool {
+	n := len(nums)
+	if n < 3 {
+		return false
+	}
+	mins := make([]int, n)
+	mins[0] = nums[0]
+	for i := 1; i < n; i++ {
+		mins[i] = utils.Min(mins[i-1], nums[i])
+	}
+	// st store the possbile value for nums[k]
+	st := make([]int, 0, n)
+	for j := n - 1; j >= 0; j-- {
+		if nums[j] > mins[j] {
+			// a possible choice for nums[j]
+			nst := len(st)
+			for nst > 0 && mins[j] >= st[nst-1] {
+				nst--
+				st = st[:nst]
+			}
+			if nst > 0 && st[nst-1] < nums[j] {
+				return true
+			}
+			// a possible nums[k]
+			st = append(st, nums[j])
+		}
+	}
+	return false
+}
