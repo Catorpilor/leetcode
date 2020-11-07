@@ -1,5 +1,7 @@
 package tower
 
+import "math"
+
 func queryGlass(poured, query_row, query_glass int) float64 {
 	return useSimpleMath(poured, query_row, query_glass)
 }
@@ -22,4 +24,23 @@ func useSimpleMath(poured, query_row, query_glass int) float64 {
 		}
 	}
 	return res[query_row][query_glass]
+}
+
+// useDP time complexity O(query_row^2), space complexity O(query_row)
+func useDP(poured, query_row, query_glass int) float64 {
+	res := make([]float64, query_row+1)
+	res[0] = float64(poured)
+	for i := 0; i < query_row; i++ {
+		for j := i; j >= 0; j-- {
+			diff := math.Max(0.0, res[j]-1.0)
+			if j+1 <= query_row {
+				res[j+1] += diff / 2
+			}
+			res[j] = diff / 2
+		}
+	}
+	if res[query_glass] >= 1.0 {
+		return 1.0
+	}
+	return res[query_glass]
 }
