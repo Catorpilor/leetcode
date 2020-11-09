@@ -63,3 +63,21 @@ func useIterator(nums []int) []string {
 	}
 	return res
 }
+
+// useSimpleIter time complexity O(N), space complexity O(1)
+func useSimpleIter(nums []int) []string {
+	n := len(nums)
+	res := make([]string, 0, n)
+	for i := 0; i < n; i++ {
+		prev := nums[i]
+		for i+1 < n && nums[i+1]-nums[i] == 1 {
+			i++
+		}
+		if prev != nums[i] {
+			res = append(res, fmt.Sprintf("%d->%d", prev, nums[i]))
+		} else {
+			res = append(res, strconv.Itoa(nums[i]))
+		}
+	}
+	return res
+}
