@@ -11,6 +11,7 @@ func TestMaxDistToClosest(t *testing.T) {
 		{"only one seat left", []int{1, 1, 0}, 1},
 		{"testcase1", []int{1, 0, 0, 0}, 3},
 		{"testcase2", []int{1, 0, 0, 1, 0, 1}, 1},
+		{"testcase3", []int{1, 0, 0, 0, 1, 0, 1}, 2},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
