@@ -37,3 +37,22 @@ func useStraight(seats []int) int {
 	}
 	return ans
 }
+
+// useOnepass time complexity O(N), space complexity O(1)
+func useOnepass(seats []int) int {
+	n := len(seats)
+	last := -1
+	var ans int
+	for i := 0; i < n; i++ {
+		if seats[i] == 1 {
+			if last < 0 {
+				ans = i
+			} else {
+				ans = utils.Max(ans, (i-last)>>1)
+			}
+			last = i
+		}
+	}
+	ans = utils.Max(ans, n-1-last)
+	return ans
+}
