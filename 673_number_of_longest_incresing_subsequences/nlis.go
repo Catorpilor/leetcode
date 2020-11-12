@@ -1,6 +1,10 @@
 package nlis
 
-func NumberOfLIS(nums []int) int {
+func findNumberOfLIS(nums []int) int {
+	return useDP(nums)
+}
+
+func useDPw(nums []int) int {
 	n := len(nums)
 	if n <= 1 {
 		return n

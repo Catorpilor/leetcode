@@ -38,7 +38,7 @@ func useStraight(seats []int) int {
 	return ans
 }
 
-// useOnepass time complexity O(N), space complexity O(1)
+// useOnepass time complexity O(N), space complexity O(1w)
 func useOnepass(seats []int) int {
 	n := len(seats)
 	last := -1
