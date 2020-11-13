@@ -38,3 +38,38 @@ func useDP(nums []int) int {
 	}
 	return ret
 }
+
+// useSimpleDP time complexity O(N^2), space complexity O(N)
+func useSimpleDP(nums []int) int {
+	n := len(nums)
+	if n <= 1 {
+		return n
+	}
+	// cnt[i] stores the number of lis ends with nums[i]
+	// lens[i] stores the length of lis ends with nums[i]
+	cnt, lens := make([]int, n), make([]int, n)
+	var ans, maxLen int
+	for i := 0; i < n; i++ {
+		cnt[i], lens[i] = 1, 1
+		for j := 0; j < i; j++ {
+			if nums[i] > nums[j] {
+				// a possible lis
+				if lens[i] == lens[j]+1 {
+					cnt[i] += cnt[j]
+				}
+				if lens[i] < lens[j]+1 {
+					lens[i] = lens[j] + 1
+					cnt[i] = cnt[j]
+				}
+			}
+		}
+		if maxLen == lens[i] {
+			ans += cnt[i]
+		}
+		if maxLen < lens[i] {
+			ans = cnt[i]
+			maxLen = lens[i]
+		}
+	}
+	return ans
+}
