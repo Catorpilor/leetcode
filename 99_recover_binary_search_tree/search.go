@@ -4,7 +4,11 @@ import (
 	"github.com/catorpilor/leetcode/utils"
 )
 
-func RecoverTree(root *utils.TreeNode) []int {
+func recoverTree(root *utils.TreeNode) []int {
+	return useInorderTraversal(root)
+}
+
+func useInorderTraversal(root *utils.TreeNode) []int {
 	if root == nil {
 		return nil
 	}
@@ -12,7 +16,7 @@ func RecoverTree(root *utils.TreeNode) []int {
 		return utils.LevelOrderTravesal(root)
 	}
 	// inorder travesal
-	// recursion so bset or normal space complex is O(lgN) and worst case is O(N)
+	// recursion so best or normal space complex is O(lgN) and worst case is O(N)
 	var first, second, prev *utils.TreeNode
 	traverse(root, &first, &second, &prev)
 	// fmt.Println(first, second)
