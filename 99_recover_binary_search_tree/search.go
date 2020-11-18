@@ -41,7 +41,8 @@ func traverse(node *utils.TreeNode, first, second, prev **utils.TreeNode) {
 	traverse(node.Right, first, second, prev)
 }
 
-func RecoverTree2(root *utils.TreeNode) []int {
+// useIter time complexity O(N), space complexity O(1)
+func useIter(root *utils.TreeNode) []int {
 	// morris traversal
 	var first, second, prev, cur *utils.TreeNode
 	cur = root

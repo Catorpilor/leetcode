@@ -21,7 +21,7 @@ func TestRecoverTree(t *testing.T) {
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
 			root := utils.ConstructTree(c.nums)
-			ret := RecoverTree(root)
+			ret := useInorderTraversal(root)
 			if !reflect.DeepEqual(ret, c.exp) {
 				t.Fatalf("expected %v but got %v with input %v",
 					c.exp, ret, c.nums)
@@ -44,7 +44,7 @@ func TestRecoverTree2(t *testing.T) {
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
 			root := utils.ConstructTree(c.nums)
-			ret := RecoverTree2(root)
+			ret := useIter(root)
 			if !reflect.DeepEqual(ret, c.exp) {
 				t.Fatalf("expected %v but got %v with input %v",
 					c.exp, ret, c.nums)
