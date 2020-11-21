@@ -59,6 +59,23 @@ func ConstructFromSlice(s []int) *ListNode {
 	return dummy.Next
 }
 
+// ConstructFromSliceWithCycle returns a ListNode with cycle.
+func ConstructFromSliceWithCycle(s []int) *ListNode {
+	// here we assume the value of each node is unique.
+	set := make(map[int]*ListNode, len(s))
+	dummy := &ListNode{}
+	pre := dummy
+	for _, v := range s {
+		if node, exists := set[v]; exists {
+			pre.Next = node
+		} else {
+			pre.Next = &ListNode{Val: v}
+		}
+		pre = pre.Next
+	}
+	return dummy.Next
+}
+
 // ReverseList return the reversed  list
 func ReverseList(head *ListNode) *ListNode {
 	if head == nil {

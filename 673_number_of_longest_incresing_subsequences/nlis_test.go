@@ -21,7 +21,7 @@ func TestNumberOfLIS(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := NumberOfLIS(c.nums)
+			ret := findNumberOfLIS(c.nums)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d, with input %v",
 					c.exp, ret, c.nums)
