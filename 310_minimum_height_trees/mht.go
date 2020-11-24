@@ -1,7 +1,7 @@
 package mht
 
 func findMinHeightTrees(n int, edges [][]int) []int {
-	return nil
+	return cutTheLeaves(n, edges)
 }
 
 func cutTheLeaves(n int, edges [][]int) []int {
