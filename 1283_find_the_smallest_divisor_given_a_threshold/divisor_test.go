@@ -12,6 +12,7 @@ func TestSmallestDivisor(t *testing.T) {
 		{"testcase1", []int{19}, 5, 4},
 		{"testcase2", []int{1, 2, 5, 9}, 6, 5},
 		{"testcase3", []int{2, 3, 5, 7, 11}, 11, 3},
+		{"testcase4", []int{962551, 933661, 905225, 923035, 990560}, 10, 495280},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
