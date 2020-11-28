@@ -99,3 +99,39 @@ func useStack(l1, l2 *utils.ListNode) *utils.ListNode {
 	return dummy.Next
 
 }
+
+// (7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+// useStackV2 time complexity O(N), space complexity O(N)
+func useStackV2(l1, l2 *utils.ListNode) *utils.ListNode {
+	var s1, s2 []int
+	for l1 != nil {
+		s1 = append(s1, l1.Val)
+		l1 = l1.Next
+	}
+	for l2 != nil {
+		s2 = append(s2, l2.Val)
+	}
+	var sum int
+	dummy := &utils.ListNode{}
+	n1, n2 := len(s1), len(s2)
+	for n1 > 0 || n2 > 0 {
+		if n1 > 0 {
+			sum += s1[n1-1]
+			n1--
+			s1 = s1[:n1]
+		}
+		if n2 > 0 {
+			sum += s2[n2-1]
+			n2--
+			s2 = s2[:n2]
+		}
+		dummy.Val = sum % 10
+		nh := &utils.ListNode{Val: sum / 10, Next: dummy}
+		dummy = nh
+		sum /= 10
+	}
+	if dummy.Val == 0 {
+		return dummy.Next
+	}
+	return dummy
+}
