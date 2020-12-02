@@ -27,7 +27,7 @@ func useBackTracking(res *[][]int, hset map[int]int, r []int, n int) {
 		if hset[k] > 0 {
 			hset[k]--
 			r = append(r, k)
-			permute(res, hset, r, n-1)
+			useBackTracking(res, hset, r, n-1)
 			r = r[:len(r)-1]
 			hset[k]++
 		}
