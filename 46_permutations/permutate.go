@@ -102,3 +102,35 @@ func helper2(nums []int, a, b int, res *[][]int) {
 	}
 	return
 }
+
+func permuteCommon(nums []int) [][]int {
+	var ans [][]int
+	n := len(nums)
+	set := make(map[int]int, n)
+	for i := range nums {
+		set[nums[i]]++
+	}
+	useBF(&ans, set, []int{}, nums, n)
+	return ans
+}
+
+// useBF the same approach to solve 47
+func useBF(ans *[][]int, set map[int]int, cur, nums []int, n int) {
+	if n == 0 {
+		tmp := make([]int, len(cur))
+		copy(tmp, cur)
+		*ans = append((*ans), tmp)
+		return
+	}
+	for k := range set {
+		if set[k] > 0 {
+			nc := len(cur)
+			set[k]--
+			cur = append(cur, k)
+			useBF(ans, set, cur, nums, n-1)
+			set[k]++
+			cur = cur[:nc]
+		}
+	}
+	return
+}
