@@ -10,12 +10,12 @@ func permuteUnique(nums []int) [][]int {
 	for i := range nums {
 		hset[nums[i]]++
 	}
-	permute(&res, hset, []int{}, len(nums))
+	useBackTracking(&res, hset, []int{}, len(nums))
 	return res
 
 }
 
-func permute(res *[][]int, hset map[int]int, r []int, n int) {
+func useBackTracking(res *[][]int, hset map[int]int, r []int, n int) {
 	if n == 0 {
 		// fmt.Printf("find one, r is : %v, res: %v, current n: %d\n", r, *res, n)
 		tmp := make([]int, len(r))
