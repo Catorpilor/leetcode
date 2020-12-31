@@ -2,7 +2,7 @@ package rect
 
 import "testing"
 
-func TestLargestRectangle(t *testing.T) {
+func TestLargestRectangleUseStack(t *testing.T) {
 	st := []struct {
 		name    string
 		heights []int
@@ -16,7 +16,7 @@ func TestLargestRectangle(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := LargestRectangle(c.heights)
+			ret := useStack(c.heights)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d with input %v", c.exp, ret, c.heights)
 			}

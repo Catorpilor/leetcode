@@ -1,51 +1,52 @@
 package rect
 
-import (
-	"github.com/catorpilor/leetcode/utils"
-)
+func largestRectangleArea(heights []int) int {
+	return useStack(heights)
+}
 
-func LargestRectangle(heights []int) int {
+// useStack time compelxity O(N), space complexity O(N)
+func useStack(heights []int) int {
 	n := len(heights)
 	if n < 1 {
 		return 0
 	}
-	if n == 1 {
-		return heights[0]
-	}
-	var top, i, areaSoFar, maxArea int
-	s := utils.NewStack()
+	st := make([]int, 0, n)
+	var i, areaSoFar, maxArea int
+
 	for i < n {
-		// if stack is empty or heights[i] >= heights[top] we keep pushing
-		if s.IsEmpty() || heights[s.Top().(int)] <= heights[i] {
-			s.Push(i)
+		nst := len(st)
+		if nst == 0 || heights[st[nst-1]] <= heights[i] {
+			st = append(st, i)
 			i++
 		} else {
-			// heights[i] is lower than heights[top]
-			// pop
-			v := s.Pop().(int)
-			if s.IsEmpty() {
+			// heights[i] < heights[st.top()]
+			v := st[nst-1]
+			nst--
+			st = st[:nst]
+			if nst == 0 {
 				areaSoFar = heights[v] * i
 			} else {
-				top = s.Top().(int)
-				areaSoFar = heights[v] * (i - top - 1)
+				areaSoFar = heights[v] * (i - st[nst-1] - 1)
 			}
 			if areaSoFar > maxArea {
 				maxArea = areaSoFar
 			}
 		}
 	}
-	for !s.IsEmpty() {
-		v := s.Pop().(int)
-		if s.IsEmpty() {
+	// monotonically increasing heights
+	nst := len(st)
+	for nst > 0 {
+		v := st[nst-1]
+		nst--
+		st = st[:nst]
+		if nst == 0 {
 			areaSoFar = heights[v] * i
 		} else {
-			top = s.Top().(int)
-			areaSoFar = heights[v] * (i - top - 1)
+			areaSoFar = heights[v] * (i - st[nst-1] - 1)
 		}
 		if areaSoFar > maxArea {
 			maxArea = areaSoFar
 		}
-
 	}
 	return maxArea
 }
