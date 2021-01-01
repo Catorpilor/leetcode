@@ -20,13 +20,12 @@ func useHashmap(arr []int, pcs [][]int) bool {
 			continue
 		}
 		start := -1
-		cj := 0
 		for j := range cur {
 			if p, exists := set[cur[j]]; exists {
 				if start == -1 {
 					start = p
 				} else {
-					if j-cj != p-start {
+					if j != p-start {
 						return false
 					}
 				}
