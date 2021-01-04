@@ -1,14 +1,9 @@
 package bbt
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+import "github.com/catorpilor/leetcode/utils"
 
 // topdown approach
-
-func isBalancedTD(root *TreeNode) bool {
+func isBalancedTD(root *utils.TreeNode) bool {
 	if root == nil {
 		return true
 	}
@@ -18,42 +13,35 @@ func isBalancedTD(root *TreeNode) bool {
 	return (l-r <= 1 && l-r >= -1) && isBalancedTD(root.Left) && isBalancedTD(root.Right)
 }
 
-func depth(root *TreeNode) int {
+func depth(root *utils.TreeNode) int {
 	if root == nil {
 		return 0
 	}
 	l := depth(root.Left)
 	r := depth(root.Right)
-	ret := l
-	if r > ret {
-		ret = r
-	}
-	return ret + 1
+	return utils.Max(l, r) + 1
 }
 
 // bottom up
-func isBalancedBU(root *TreeNode) bool {
-	return dfsHeight(root) != -1
+// isBalancedBU time complexity O(N), space complexity O(lgN)
+func isBalancedBU(root *utils.TreeNode) bool {
+	return helper(root) != -1
 }
 
-func dfsHeight(root *TreeNode) int {
+func helper(root *utils.TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	l := dfsHeight(root.Left)
+	l := helper(root.Left)
 	if l == -1 {
 		return -1
 	}
-	r := dfsHeight(root.Right)
+	r := helper(root.Right)
 	if r == -1 {
 		return -1
 	}
 	if (l-r > 1) || (l-r < -1) {
 		return -1
 	}
-	ret := l
-	if r > ret {
-		ret = r
-	}
-	return ret + 1
+	return utils.Max(l, r) + 1
 }
