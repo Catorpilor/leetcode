@@ -34,7 +34,7 @@ func swapByValue(head *utils.ListNode) *utils.ListNode {
 
 // swapNodes time complexity O(N), space complexity O(1)
 func swapNodes(head *utils.ListNode) *utils.ListNode {
-	if head == nil {
+	if head == nil || head.Next == nil {
 		return head
 	}
 	dummy := &utils.ListNode{Next: head}
