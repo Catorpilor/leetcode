@@ -22,6 +22,7 @@ func useDFS(root *utils.TreeNode) *utils.TreeNode {
     if lt != nil {
         lt.Right = root
     } else {
+        // root.Left is nil, so root remains the root
         lh = root
     }
     // rh, _ := helper(root.Right)
@@ -33,25 +34,19 @@ func useDFS(root *utils.TreeNode) *utils.TreeNode {
 func helper(root *utils.TreeNode) (head, tail *utils.TreeNode) {
     if root.Left == nil {
         head = root
-        if root.Right != nil {
-            lh, lt := helper(root.Right)
-            root.Right = lh
-            tail = lt
-        } else {
-            tail = root
-        }
     } else {
         var lt *utils.TreeNode
         head, lt = helper(root.Left)
         lt.Right = root
+        // rearrange the tree to avoid TLE
         root.Left = nil
-        if root.Right == nil {
-            tail = root
-        } else {
-            rh, rt := helper(root.Right)
-            root.Right = rh
-            tail = rt
-        }
+    }
+    if root.Right != nil {
+        lh, lt := helper(root.Right)
+        root.Right = lh
+        tail = lt
+    } else {
+        tail = root
     }
     return
 }
