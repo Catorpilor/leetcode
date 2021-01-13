@@ -12,6 +12,7 @@ func TestMinRes(t *testing.T) {
 		{"testcase1", []int{1, 2}, 3, 1},
 		{"testcase2", []int{3, 3, 4, 5}, 5, 4},
 		{"testcase3", []int{3, 2, 2, 1}, 3, 3},
+		{"failed1", []int{5, 1, 4, 2}, 6, 2},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
