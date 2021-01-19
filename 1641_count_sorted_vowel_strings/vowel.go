@@ -70,3 +70,19 @@ func useDP(n int) int {
 	}
 	return dp[n][5]
 }
+
+// useDPWithConstantSpace time complexity O(N*K), space complexity O(1)
+func useDPWithConstantSpace(n int) int {
+	// n = 1 {1,1,1,1,1}
+	// n = 2 {5,4,3,2,1}
+	// n = 3 {15,10,6,3,1}
+	perm := [5]int{1, 1, 1, 1, 1}
+	for i := 1; i <= n; i++ {
+		sum := 0
+		for j := 4; j >= 0; j-- {
+			perm[j] += sum
+			sum = perm[j]
+		}
+	}
+	return perm[0]
+}
