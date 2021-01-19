@@ -46,3 +46,27 @@ func useBruteForce(n int) int {
 	}
 	return set[n]
 }
+
+// useDP time complexity O(N*K), space complexity O(N*K)
+func useDP(n int) int {
+	// dp[n][k] means the number of strings constructed by at most k different characters.
+	// for example
+	// k = 1 use `u`
+	// k = 2 use `o. u`
+	// etc.
+	dp := make([][]int, n+1)
+	for i := range dp {
+		dp[i] = make([]int, k+1)
+	}
+	for i := 1; i <= n; i++ {
+		for k := 1; k <= 5; k++ {
+			dp[i][k] = dp[i][k-1]
+			if i > 1 {
+				dp[i][k] += dp[i-1][k]
+			} else {
+				dp[i][k] += 1
+			}
+		}
+	}
+	return dp[n][5]
+}
