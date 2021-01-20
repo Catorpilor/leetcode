@@ -7,7 +7,7 @@ func isValid(s string) bool {
 // useStack time complexity O(N), space complexity O(N)
 func useStack(s string) bool {
 	n := len(s)
-	st := make([]rune, 0, n)
+	st := make([]byte, 0, n)
 	for i := range s {
 		switch s[i] {
 		case '(', '{', '[':
