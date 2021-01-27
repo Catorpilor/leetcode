@@ -11,7 +11,7 @@ func TestMinimumEffort(t *testing.T) {
 		{"nil height", nil, 0},
 		{"single row", [][]int{[]int{1, 2, 3}}, 1},
 		{"testcase1", [][]int{[]int{1, 2, 2}, []int{3, 8, 2}, []int{5, 3, 5}}, 2},
-		{"testcase2", [][]int{[]int{1, 2, 3}, []int{3, 8, 4}, []intP{5, 3, 5}}, 1},
+		{"testcase2", [][]int{[]int{1, 2, 3}, []int{3, 8, 4}, []int{5, 3, 5}}, 1},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
