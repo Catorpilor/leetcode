@@ -11,7 +11,6 @@ func simplifyPath(path string) string {
 
 // useStack time complexity O(N), space complexity O(N)
 func useStack(path string) string {
-	path = strings.Replace(path, "//", "/", -1)
 	dirs := strings.FieldsFunc(path, func(c rune) bool {
 		return c == '/'
 	})
