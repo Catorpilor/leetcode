@@ -39,3 +39,26 @@ func useBinarySearch(s string, c byte) []int {
 	}
 	return ans
 }
+
+// useTwoPasses time complexity O(N) space complexity O(N)
+func useTwoPasses(s string, c byte) []int {
+	n := len(s)
+	pos := -n
+	ans := make([]int, n)
+	// first pass
+	for i := range s {
+		if s[i] == c {
+			pos = i
+		}
+		ans[i] = i - pos
+	}
+
+	// second pass
+	for i := n - 1; i >= 0; i-- {
+		if s[i] == c {
+			pos = i
+		}
+		ans[i] = utils.Min(ans[i], pos-i)
+	}
+	return ans
+}
