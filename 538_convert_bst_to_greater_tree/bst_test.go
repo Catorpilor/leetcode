@@ -15,7 +15,7 @@ func TestConvertBST(t *testing.T) {
 	}{
 		{"nil tree", nil, nil},
 		{"single node", utils.ConstructTree([]int{1}), utils.ConstructTree([]int{1})},
-		{"testcase1", utils.ConstructTree([]int{4, 1, 6, 0, 2, 5, 7, math.MinInt32, math.MinInt32, math.MinInt32, 3, math.MinInt32, math.MinInt32, math.MinInt32, 8}), utils.ConstructTree([]int{30, 36, 21, 36, 25, 26, 15, math.MinInt32, math.MinInt32, math.MinInt32, 33, math.MinInt32, math.MinInt32, math.MinInt32, 8})},
+		{"testcase1", utils.ConstructTree([]int{4, 1, 6, 0, 2, 5, 7, math.MinInt32, math.MinInt32, math.MinInt32, 3, math.MinInt32, math.MinInt32, math.MinInt32, 8}), utils.ConstructTree([]int{30, 36, 21, 36, 35, 26, 15, math.MinInt32, math.MinInt32, math.MinInt32, 33, math.MinInt32, math.MinInt32, math.MinInt32, 8})},
 	}
 	for _, tt := range st {
 		t.Run(tt.name, func(t *testing.T) {
