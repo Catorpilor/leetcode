@@ -8,6 +8,7 @@ func convertBST(root *utils.TreeNode) *utils.TreeNode {
 	return root
 }
 
+// useDFS time complexity O(N), space complexity O(log(N))
 func useDFS(root *utils.TreeNode, gsum *int) {
 	if root == nil {
 		return
