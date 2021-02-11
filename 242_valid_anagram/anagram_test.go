@@ -15,11 +15,12 @@ func TestIsAnagram(t *testing.T) {
 
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := IsAnagram2(c.s, c.t)
+			ret := isAnagram(c.s, c.t)
 			if ret != c.exp {
 				t.Fatalf("expected %t but got %t, with input %s and %s",
 					c.exp, ret, c.s, c.t)
 			}
+			t.Log("pass")
 		})
 	}
 }
