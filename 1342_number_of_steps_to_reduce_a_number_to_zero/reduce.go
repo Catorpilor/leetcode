@@ -17,3 +17,17 @@ func useBitOps(num int) int {
 	}
 	return ans
 }
+
+func useBitOps2(num int) int {
+	var ans int
+	for num > 0 {
+		if num&1 != 0 {
+			ans += 2
+		} else {
+			ans += 1
+		}
+		num >>= 1
+	}
+	// last bit 1 no need to divide
+	return ans - 1
+}
