@@ -1,48 +1,29 @@
 package anagram
 
-func IsAnagram(s, t string) bool {
-	if len(s) != len(t) {
-		return false
-	}
-	hm := make(map[rune]int)
-	for _, c := range s {
-		if _, ok := hm[c]; !ok {
-			hm[c] = 1
-		} else {
-			hm[c] += 1
-		}
-	}
-	for _, k := range t {
-		if v, ok := hm[k]; !ok {
-			return false
-		} else {
-			if v == 1 {
-				delete(hm, k)
-			} else {
-				hm[k] -= 1
-			}
-		}
-	}
-
-	return len(hm) == 0
+func isAnagram(s, t string) bool {
+	return useHashmap(s, t)
 }
 
-func IsAnagram2(s, t string) bool {
-	if len(s) != len(t) {
+// useHashmap time complexity O(N), space complexity O(N)
+func useHashmap(s, t string) bool {
+	n1, n2 := len(s), len(t)
+	if n1 != n2 {
 		return false
 	}
-	h := [26]int{}
-	for _, c := range s {
-		h[c-'a'] += 1
-	}
 
-	for _, k := range t {
-		h[k-'a'] -= 1
+	set := make(map[byte]int, n1)
+	for i := range s {
+		set[s[i]]++
 	}
-
-	for _, v := range h {
-		if v != 0 {
+	for i := range t {
+		if v, exists := set[t[i]]; !exists {
 			return false
+		} else {
+			v--
+			if v < 0 {
+				return false
+			}
+			set[t[i]] = v
 		}
 	}
 	return true

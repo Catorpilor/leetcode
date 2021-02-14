@@ -24,3 +24,24 @@ func useStraight(gas, cost []int) int {
 	}
 	return start
 }
+
+// useTwoPasses time complexity O(N), space complexity O(1)
+func useTwoPasses(gas, cost []int) int {
+	n := len(gas)
+	dsum := 0
+	for i := range gas {
+		dsum += gas[i] - cost[i]
+	}
+	if dsum < 0 {
+		return -1
+	}
+	var start, tank int
+	for i := 0; i < n; i++ {
+		tank += gas[i] - cost[i]
+		if tank < 0 {
+			start = i + 1
+			tank = 0
+		}
+	}
+	return start
+}
