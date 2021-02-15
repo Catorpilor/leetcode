@@ -48,6 +48,7 @@ func helper(grid [][]int, ans *int, x, y, k int, visited []bool, n int) {
 	return
 }
 
+// useBFS time complexity O(N^2), space complexity O(N^2)
 func useBFS(grid [][]int) int {
 	n := len(grid)
 	if n < 1 {
