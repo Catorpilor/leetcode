@@ -4,7 +4,7 @@ func isBipartite(graph [][]int) bool {
 	return useDFS(graph)
 }
 
-// useDFS time complexity O(N*|E|), space complexity O(N)
+// useDFS time complexity O(N), space complexity O(N)
 func useDFS(graph [][]int) bool {
 	n := len(graph)
 	colors := make([]int, n)
