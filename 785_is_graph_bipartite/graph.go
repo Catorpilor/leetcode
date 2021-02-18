@@ -32,7 +32,7 @@ func helper(graph [][]int, colors []int, color, node int) bool {
 	return true
 }
 
-// useBFS time complexity O(N), space complexity O(N)
+// useBFS time complexity O(V+E), space complexity O(V)
 func useBFS(graph [][]int) bool {
 	n := len(graph)
 	colors := make([]int, n)
