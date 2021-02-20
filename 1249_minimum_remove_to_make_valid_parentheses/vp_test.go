@@ -8,7 +8,7 @@ func TestMinRemove(t *testing.T) {
 		s    string
 		exp  string
 	}{
-		{"testcase1", "lee(t(c)0)de)", "lee(t(co)de)"},
+		{"testcase1", "lee(t(c)o)de)", "lee(t(co)de)"},
 		{"testcase2", "a)b(c)d", "ab(c)d"},
 		{"testcase3", "))((", ""},
 	}
