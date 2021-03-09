@@ -20,3 +20,19 @@ func useGreedy(push, pop []int) bool {
 	}
 	return j == n
 }
+
+// useConstantSpace time complexity O(N), space complexity O(1)
+func useConstantSpace(pushed, popped []int) bool {
+	n := len(pushed)
+	k := -1 // -1 means empty stack
+	var j int
+	for i := range pushed {
+		k++
+		pushed[k] = pushed[i]
+		for k != -1 && pushed[k] == popped[i] {
+			k--
+			i++
+		}
+	}
+	return k == -1
+}
