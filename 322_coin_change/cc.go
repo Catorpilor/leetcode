@@ -48,7 +48,8 @@ func useBucket(coins []int, amount int) int {
 	return ta[amount]
 }
 
-func CoinChange2(coins []int, amount int) int {
+// useDP time complexity O(MN), space complexity O(N)
+func useDP(coins []int, amount int) int {
 	// ta stores the minimal counts of coins to sum up i
 	ta := make([]int, amount+1)
 	ta[0] = 0

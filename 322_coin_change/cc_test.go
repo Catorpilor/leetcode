@@ -41,7 +41,7 @@ func TestCoinChange2(t *testing.T) {
 	}
 	for _, c := range st {
 		t.Run(c.name, func(t *testing.T) {
-			ret := CoinChange2(c.coins, c.amount)
+			ret := useDP(c.coins, c.amount)
 			if ret != c.exp {
 				t.Fatalf("expected %d but got %d, with input %v and %d",
 					c.exp, ret, c.coins, c.amount)
