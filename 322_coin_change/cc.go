@@ -9,13 +9,17 @@ import (
 
 const MAX_INT = 1<<31 - 1
 
-// CoinChange returns the minimum count for coin in coins to sum up as amount
-func CoinChange(coins []int, amount int) int {
+func coinChange(coins []int, amount int) int {
+	return useBucket(coins, amount)
+}
+
+// useBucket time complexity O(MN) space complxity O(N) where M is the length of coins, N is the number of amount.
+func useBucket(coins []int, amount int) int {
 	if len(coins) < 1 {
 		return -1
 	}
 	sort.Slice(coins, func(i, j int) bool { return coins[i] <= coins[j] })
-	ta := make([]int, amount+1)
+	ta := make([]int, amount+1) // returns the minimum count for coin in coins to sum up as amount
 	ta[0] = 0
 
 	// assume coins are sorted in increasing order
