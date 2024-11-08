@@ -11,7 +11,7 @@ func useHashmap(nums []int, target int) []int {
 	if n < 2 {
 		return ans
 	}
-	// set's key is  target-nums[i] and value is the postion of nums[i]
+	// set's key is  target-nums[i] and value is the position of nums[i]
 	set := make(map[int]int, n)
 	for i, num := range nums {
 		if pos, exists := set[num]; exists {
